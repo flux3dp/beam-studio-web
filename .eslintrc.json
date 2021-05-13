@@ -40,6 +40,21 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/alt-text": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/control-has-associated-label": "off"
+    "jsx-a11y/control-has-associated-label": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 }

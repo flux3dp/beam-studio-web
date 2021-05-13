@@ -1,3 +1,4 @@
 node_modules
 dist
-src/web/app/actions/beambox/svg-editor.ts
+src/web
+src/interfaces/core-interfaces
