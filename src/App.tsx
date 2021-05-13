@@ -1,5 +1,6 @@
 import React from 'react';
-import { SkipConnectMachineComponent } from './components';
+
+import { SkipConnectMachineComponent } from './components/SkipConnectMachine';
 
 const App = () => (
   <div>
