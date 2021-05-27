@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { SkipConnectMachineComponent } from './components/SkipConnectMachine';
+import BeamboxComponent from './components/Beambox';
 
 const App = () => (
   <div>
-    <SkipConnectMachineComponent />
+    <BeamboxComponent />
   </div>
 );
 

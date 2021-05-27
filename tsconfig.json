@@ -22,16 +22,16 @@
     "baseUrl": ".",
     "paths": {
       "app/*": [
-        "src/web/app/*",
+        "src/web/app/*"
       ],
       "helpers/*": [
-        "src/web/helpers/*",
+        "src/web/helpers/*"
       ],
       "interfaces/*": [
-        "src/web/interfaces/*",
+        "src/web/interfaces/*"
       ],
       "implementations/*": [
-        "src/implementations/*",
+        "src/implementations/*"
       ],
     }
   },
