@@ -22,8 +22,6 @@ import 'math';
 import 'units';
 import 'svgutils';
 import 'sanitize';
-import 'history';
-import 'historyrecording';
 import 'coords';
 import 'recalculate';
 import 'select';
@@ -34,7 +32,7 @@ import 'clipper_unminified';
 import 'svgnest';
 import 'svgnestGeoUtil';
 import 'svgnestParallel';
-// import 'svgnestEval';
+import 'svgnestEval';
 import 'jqueryUi';
 import 'jpicker';
 

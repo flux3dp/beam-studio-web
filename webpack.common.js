@@ -47,8 +47,6 @@ module.exports = {
       units: path.join(__dirname, 'public/js/lib/svgeditor/units'),
       svgutils: path.join(__dirname, 'public/js/lib/svgeditor/svgutils'),
       sanitize: path.join(__dirname, 'public/js/lib/svgeditor/sanitize'),
-      history: path.join(__dirname, 'public/js/lib/svgeditor/history'),
-      historyrecording: path.join(__dirname, 'public/js/lib/svgeditor/historyrecording'),
       coords: path.join(__dirname, 'public/js/lib/svgeditor/coords'),
       recalculate: path.join(__dirname, 'public/js/lib/svgeditor/recalculate'),
       select: path.join(__dirname, 'public/js/lib/svgeditor/select'),
