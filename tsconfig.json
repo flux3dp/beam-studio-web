@@ -27,7 +27,7 @@
       "helpers/*": [
         "src/web/helpers/*"
       ],
-      "interfaces/*": [
+      "core-interfaces/*": [
         "src/web/interfaces/*"
       ],
       "implementations/*": [

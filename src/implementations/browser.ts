@@ -1,4 +1,4 @@
-import { IBrowser } from 'src/interfaces/core-interfaces/IBrowser';
+import { IBrowser } from 'core-interfaces/IBrowser';
 
 class WebBrowser implements IBrowser {
   // eslint-disable-next-line class-methods-use-this

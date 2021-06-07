@@ -1,13 +1,22 @@
-import { IStorage, StorageKey } from 'src/interfaces/core-interfaces/IStorage';
+import { IStorage, StorageKey } from 'core-interfaces/IStorage';
 
 class LocalStorage implements IStorage {
   // eslint-disable-next-line class-methods-use-this
   get(name: StorageKey): any {
-    return window.localStorage.getItem(name);
+    let item = window.localStorage.getItem(name || '');
+    item = item === null ? '' : item;
+    try {
+      const tempItem = JSON.parse(item);
+      if (typeof tempItem === 'object') {
+        item = tempItem;
+      }
+    } catch (ex) {
+    }
+    return item;
   }
 
   set(name: StorageKey, val: any): IStorage {
-    window.localStorage.setItem(name, val);
+    window.localStorage.setItem(name, JSON.stringify(val));
     return this;
   }
 

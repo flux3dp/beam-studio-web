@@ -8,7 +8,11 @@
     "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
+    "@simonwep/pickr": "^1.8.1",
     "classnames": "^2.3.1",
+    "eventemitter3": "^4.0.7",
+    "fontkit": "^1.8.1",
+    "jquery": "^3.6.0",
     "react": "^17.0.2",
     "react-contextmenu": "^2.14.0",
     "react-dom": "^17.0.2",
@@ -22,7 +26,10 @@
     "@babel/preset-env": "^7.14.1",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/eventemitter3": "^2.0.2",
+    "@types/fontkit": "^1.8.0",
     "@types/jest": "^26.0.23",
+    "@types/jquery": "^3.5.5",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
     "@types/sprintf-js": "^1.1.2",

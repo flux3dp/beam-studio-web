@@ -19,7 +19,7 @@ module.exports = {
     alias: {
       app: path.resolve(__dirname, 'src/web/app/'),
       helpers: path.resolve(__dirname, 'src/web/helpers/'),
-      interfaces: path.resolve(__dirname, 'src/web/interfaces/'),
+      "core-interfaces": path.resolve(__dirname, 'src/web/interfaces/'),
       implementations: path.resolve(__dirname, 'src/implementations/'),
       /* from beam-studio */
       jquery: path.join(__dirname, 'public/js/lib/svgeditor/jquery'),
@@ -64,6 +64,13 @@ module.exports = {
       canvg: path.join(__dirname, 'public/js/lib/svgeditor/canvg/canvg'),
       rgbcolor: path.join(__dirname, 'public/js/lib/svgeditor/canvg/rgbcolor'),
     },
+    fallback: {
+      fs: false,
+      stream: false,
+      util: false,
+      buffer: false,
+      events: false,
+    },
   },
   module: {
     rules: [
@@ -84,7 +91,7 @@ module.exports = {
           },
         ],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -93,6 +100,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
+        { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
       ],
     }),
   ],
