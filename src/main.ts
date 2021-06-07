@@ -1,7 +1,4 @@
-import $ from 'jquery';
-
-window.$ = $;
-window.jQuery = $;
+import 'jquery';
 
 import 'rgbcolor';
 import 'canvg';
@@ -35,6 +32,8 @@ import 'svgnestParallel';
 import 'svgnestEval';
 import 'jqueryUi';
 import 'jpicker';
+
+process.env = {};
 
 declare global {
   interface Window {
@@ -207,6 +206,15 @@ declare global {
         getSelectorManager: () => any;
         init: (config: any, svgFactory: any) => void;
       };
+      coords: {
+        init: any;
+        remapElement: any;
+      },
+      recalculate: {
+        init: any;
+        recalculateDimensions: any;
+        updateClipPath: any;
+      },
       transformlist: any;
       units: any;
       utilities: any;

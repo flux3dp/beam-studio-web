@@ -1921,6 +1921,7 @@ export default styled(Beambox())`
         opacity: 0.1;
       }
       #dialog_container {
+        display: none;
         color: #626262;
         border-radius: 0;
         border: none;

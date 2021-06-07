@@ -14,4 +14,39 @@
     <div id="root">
     </div>
   </body>
+  <script>
+    function launch() {
+        var cssLink = document.createElement('link'),
+            head = document.querySelector('head'),
+            body = document.querySelector('body'),
+            dev = localStorage['dev'] === 'true',
+            timer;
+
+        // set global definition
+        window.FLUX = {
+            // debug: location.search.indexOf('debug') !== -1 || dev,
+            version: window["electron"] ? electron.version : "web-dev",
+            // timestamp: (new Date()).getTime(),
+            // onLine: navigator.onLine,
+            os: ('undefined' === typeof nw ? undefined : os),
+            // ghostPort: 8000,
+            // allowTracking: false,
+            dev: dev
+        };
+        window.os = 'MacOS';
+        window.process = {};
+        window.Buffer = {};
+
+        // cssLink.setAttribute('rel', 'stylesheet');
+        // cssLink.setAttribute('href', 'css/main.css?v=' + window.FLUX.timestamp);
+        // head.appendChild(cssLink);
+        // head.appendChild(cssLink);
+
+        // if (localStorage.getItem('poke-ip-addr') == 'undefined') {
+        //     localStorage.setItem('poke-ip-addr', '192.168.1.1')
+        // }
+    }
+    launch();
+
+  </script>
 </html>
