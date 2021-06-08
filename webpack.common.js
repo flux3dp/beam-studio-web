@@ -17,6 +17,7 @@ module.exports = {
     ],
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
+      react: path.resolve(__dirname, 'node_modules/react'),
       app: path.resolve(__dirname, 'src/web/app/'),
       helpers: path.resolve(__dirname, 'src/web/helpers/'),
       "core-interfaces": path.resolve(__dirname, 'src/web/interfaces/'),
