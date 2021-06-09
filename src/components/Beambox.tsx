@@ -501,7 +501,7 @@ export default styled(Beambox())`
           .react-contextmenu--visible {
             z-index: 1;
             display: unset;
-            background-color: rgba($color: #ffffff, $alpha: 1);
+            background-color: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.33);
             border-radius: 4px;
             padding: 5px 0px;
@@ -553,6 +553,7 @@ export default styled(Beambox())`
             transform: translateX(4.5px);
           }
           .bar2 {
+            left: 2px;
             transform: translateX(13px) rotate(90deg) translateX(4.5px);
           }
           .bar3 {
@@ -2057,73 +2058,6 @@ export default styled(Beambox())`
           text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
       }
     }
-
-    .zoom-block {
-      display: inline-flex;
-      position: absolute;
-      bottom: 10px;
-      left: 65px;
-      height: 20px;
-      z-index: 1;
-      .zoom-btn {
-          cursor: pointer;
-          display: inline-flex;
-          width: 20px;
-          height: 20px;
-          opacity: 0.7;
-          &:hover {
-              opacity: 1;
-          }
-          img {
-              width: 20px;
-          }
-          .bar {
-              width: 2px;
-              height: 12px;
-              border-radius: 1px;
-              background-color: #444444;
-          }
-          .bar1 {
-              transform: translateX(9px) translateY(4px) rotate(90deg) ;
-          }
-          .bar2 {
-              transform: translateX(7px) translateY(4px);
-          }
-      }
-      .zoom-ratio {
-          cursor: pointer;
-          line-height: 20px;
-          margin: 0 10px;
-          color: #333333;
-          opacity: 0.7;
-          &:hover {
-              opacity: 1;
-          }
-      }
-      .react-contextmenu-wrapper {
-          display: inherit;
-      }
-      .react-contextmenu {
-          display: none;
-      }
-      .react-contextmenu--visible {
-          display: unset;
-          background-color: rgba($color: #FFFFFF, $alpha: 1.0);
-          border: 1px solid rgba(0, 0, 0, 0.33);
-          border-radius: 4px;
-          padding: 5px 0px;
-          .react-contextmenu-item {
-              padding: 0px 20px;
-              line-height: 20px;
-              height: 20px;
-              font-size: 12px;
-              &:hover {
-                  color: #FFFFFF;
-                  background-color: #2e5dea;
-              }
-          }
-      }
-    }
   }
 
   .top-bar {
@@ -2436,6 +2370,73 @@ export default styled(Beambox())`
     }
     .modal-window {
         background: none;
+    }
+  }
+
+  .zoom-block {
+    display: inline-flex;
+    position: absolute;
+    bottom: 10px;
+    left: 65px;
+    height: 20px;
+    z-index: 1;
+    .zoom-btn {
+        cursor: pointer;
+        display: inline-flex;
+        width: 20px;
+        height: 20px;
+        opacity: 0.7;
+        &:hover {
+            opacity: 1;
+        }
+        img {
+            width: 20px;
+        }
+        .bar {
+            width: 2px;
+            height: 12px;
+            border-radius: 1px;
+            background-color: #444444;
+        }
+        .bar1 {
+            transform: translateX(9px) translateY(4px) rotate(90deg) ;
+        }
+        .bar2 {
+            transform: translateX(7px) translateY(4px);
+        }
+    }
+    .zoom-ratio {
+        cursor: pointer;
+        line-height: 20px;
+        margin: 0 10px;
+        color: #333333;
+        opacity: 0.7;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .react-contextmenu-wrapper {
+        display: inherit;
+    }
+    .react-contextmenu {
+        display: none;
+    }
+    .react-contextmenu--visible {
+        display: unset;
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.33);
+        border-radius: 4px;
+        padding: 5px 0px;
+        .react-contextmenu-item {
+            padding: 0px 20px;
+            line-height: 20px;
+            height: 20px;
+            font-size: 12px;
+            &:hover {
+                color: #FFFFFF;
+                background-color: #2e5dea;
+            }
+        }
     }
   }
 
