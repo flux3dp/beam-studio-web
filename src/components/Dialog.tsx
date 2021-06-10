@@ -59,7 +59,7 @@ export default styled(Dialog)`
   }
 
   .modal-window {
-    @include flexbox();
+    display: flex;
     background: rgba(0, 0, 0, .1);
     bottom: 0;
     height: 100%;
@@ -100,7 +100,7 @@ export default styled(Dialog)`
     }
 
     .modal-body {
-        @include flexbox();
+        display: flex;
         max-height: 100%;
     }
 
@@ -150,7 +150,7 @@ export default styled(Dialog)`
     }
 
     .modal-alert {
-        @include flexbox();
+        display: flex;
         background: #F8F8F8;
         flex-direction: column;
         min-height: 100px;
