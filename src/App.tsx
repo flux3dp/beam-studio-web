@@ -1,7 +1,10 @@
+/* eslint-disable import/order */
+import React from 'react';
+
 import { AlertProgressContextProvider } from 'app/contexts/AlertProgressContext';
 import { DialogContextProvider } from 'app/contexts/DialogContext';
-import AlertsAndProgress from 'app/views/dialogs/AlertAndProgress';
-import React from 'react';
+
+import AlertsAndProgressComponent from './components/AlertsAndProgress';
 import BeamboxComponent from './components/Beambox';
 import DialogComponent from './components/Dialog';
 
@@ -10,7 +13,7 @@ const App = () => (
     <DialogContextProvider>
       <BeamboxComponent />
       <DialogComponent />
-      {/* <AlertsAndProgress /> */}
+      <AlertsAndProgressComponent />
     </DialogContextProvider>
   </AlertProgressContextProvider>
 );
