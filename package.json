@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@simonwep/pickr": "^1.8.1",
+    "animate.css": "^4.1.1",
     "classnames": "^2.3.1",
     "eventemitter3": "^4.0.7",
     "fontkit": "^1.8.1",
