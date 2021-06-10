@@ -2551,20 +2551,20 @@ export default styled(Beambox())`
     }
   }
 
-  @media {
-    screen {
-      and {
-        (max-width {
-          &:1100px) {
-            #tools_bottom: not(.expanded) #palette_holder {
-   left: 410px;
-            overflow-x: scroll;
-            padding: 0 5px;
-            margin-top: 2px;
-            height: 30px;
-          }
-        }
-      }
-    }
-  }
+  // @media {
+  //   screen {
+  //     and {
+  //       (max-width {
+  //         &:1100px) {
+  //           #tools_bottom: not(.expanded) #palette_holder {
+  //  left: 410px;
+  //           overflow-x: scroll;
+  //           padding: 0 5px;
+  //           margin-top: 2px;
+  //           height: 30px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 `;
