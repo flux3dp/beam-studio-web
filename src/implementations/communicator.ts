@@ -1,4 +1,5 @@
 import EventEmitter from 'eventemitter3';
+
 import { ICommunicator } from 'core-interfaces/ICommunicator';
 
 export const listener = new EventEmitter();
