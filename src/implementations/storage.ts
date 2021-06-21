@@ -4,13 +4,13 @@ class LocalStorage implements IStorage {
   // eslint-disable-next-line class-methods-use-this
   get(name: StorageKey): any {
     let item = window.localStorage.getItem(name || '');
-    item = item === null ? '' : item;
+    item = item || '';
+    if (!item) return '';
     try {
-      const tempItem = JSON.parse(item);
-      if (typeof tempItem === 'object') {
-        item = tempItem;
-      }
+      const parsedItem = JSON.parse(item);
+      return parsedItem;
     } catch (ex) {
+      console.warn(`Unable to parse ${item} of key: ${name}`);
     }
     return item;
   }
@@ -39,7 +39,7 @@ class LocalStorage implements IStorage {
 
   // eslint-disable-next-line class-methods-use-this
   isExisting(key: StorageKey): boolean {
-    return window.localStorage.getItem(key) === null;
+    return window.localStorage.getItem(key) !== null;
   }
 }
 
