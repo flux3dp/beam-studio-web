@@ -1,6 +1,11 @@
 import Beambox from 'app/pages/Beambox';
 import styled from 'styled-components';
 
+const backgroundColor = '#E0E0DF';
+const panelBorderColor = '#E0E0E0';
+const primaryColor = '#888';
+const sidePanelWidth = '242px';
+
 export default styled(Beambox())`
   &.beambox-studio {
     .left-toolbar {
@@ -91,7 +96,7 @@ export default styled(Beambox())`
           }
         }
         #svgcanvas {
-          background: $backgroundColor;
+          background: ${backgroundColor};
           #rotaryAxis {
             #transparent {
               stroke-width: 5px;
@@ -182,7 +187,7 @@ export default styled(Beambox())`
           background-color: #F0F0F0;
           display: block;
           overflow: initial;
-          border: 1px $panelBorderColor solid;
+          border: 1px ${panelBorderColor} solid;
           border-width: 0 0 1px 0;
 
           #layerbuttons {
@@ -826,7 +831,7 @@ export default styled(Beambox())`
         .btn-go {
           background: #4d4d4d;
           font-size: 23px;
-          width: $sidePanelWidth;
+          width: ${sidePanelWidth};
           height: 100px;
           border: 1px solid #333;
           position: absolute;
@@ -862,14 +867,14 @@ export default styled(Beambox())`
         background-color: #f8f8f8;
         height: 100%;
         margin-top: -1px;
-        border: 1px $panelBorderColor solid;
+        border: 1px ${panelBorderColor} solid;
         border-width: 1px 0 0 0;
         border-radius: 4px;
         .layername {
           line-height: 20px;
           padding: 10px 15px;
           background: #f2f2f2;
-          border-bottom: 1px $panelBorderColor solid;
+          border-bottom: 1px ${panelBorderColor} solid;
           text-align: left;
           color: #333;
           font-weight: bold;
@@ -914,7 +919,7 @@ export default styled(Beambox())`
             line-height: 20px;
             padding: 10px 15px;
             background: #f2f2f2;
-            border: 1px $panelBorderColor solid;
+            border: 1px ${panelBorderColor} solid;
             border-width: 1px 0;
             text-align: left;
             color: #333;
@@ -1184,7 +1189,7 @@ export default styled(Beambox())`
               display: flex;
               justify-content: space-between;
               border-bottom: 1px solid #e0e0df;
-              color: $primaryColor;
+              color: ${primaryColor};
               cursor: pointer;
               line-height: 20px;
               overflow-x: scroll;
@@ -1380,7 +1385,7 @@ export default styled(Beambox())`
           width: 440px;
 
           .custom-presets-list {
-            border: 2px solid $backgroundColor;
+            border: 2px solid ${backgroundColor};
             height: 110px;
             list-style: none;
             overflow: scroll;
@@ -1388,8 +1393,8 @@ export default styled(Beambox())`
 
             &:empty {
               display: flex;
-              background: $primaryColor;
-              color: $backgroundColor;
+              background: ${primaryColor};
+              color: ${backgroundColor};
               align-items: center;
               justify-content: center;
 
@@ -1411,8 +1416,8 @@ export default styled(Beambox())`
             }
 
             .preset-item-name {
-              border-bottom: 1px solid $backgroundColor;
-              color: $primaryColor;
+              border-bottom: 1px solid ${backgroundColor};
+              color: ${primaryColor};
               cursor: pointer;
               height: 40px;
               line-height: 40px;
@@ -2214,7 +2219,7 @@ export default styled(Beambox())`
             ul {
                 border: 1px solid #e0e0e0;
                 border-radius: 2px;
-                color: $primaryColor;
+                color: ${primaryColor};
                 font-family: Helvetica Neue;
                 font-size: 12px;
                 font-weight: 500;
@@ -2264,7 +2269,7 @@ export default styled(Beambox())`
                         padding-top: 3px;
                     }
                     &:hover {
-                        background-color: $primaryColor;
+                        background-color: ${primaryColor};
                         color: #FFF;
                     }
                 }
