@@ -1,3 +1,9 @@
-import { IMenu } from 'core-interfaces/IMenu';
+import AbstractMenu from 'helpers/menubar/AbstractMenu';
 
-export default {} as IMenu;
+class Menu extends AbstractMenu {
+  init(): void {
+    this.initMenuEvents();
+  }
+}
+
+export default new Menu();
