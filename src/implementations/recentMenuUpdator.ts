@@ -1,6 +1,6 @@
-import { IRecentMenuUpdator } from 'core-interfaces/IRecentMenuUpdator';
+import { IRecentMenuUpdater } from 'core-interfaces/IRecentMenuUpdater';
 
 export default {
   update() {
   },
-} as IRecentMenuUpdator;
+} as IRecentMenuUpdater;
