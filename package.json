@@ -20,7 +20,6 @@
     "react-dom": "^17.0.2",
     "react-select": "^4.3.1",
     "sprintf-js": "^1.1.2",
-    "styled-components": "^5.3.0",
     "typescript": "^4.2.4"
   },
   "devDependencies": {
@@ -36,11 +35,9 @@
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
     "@types/sprintf-js": "^1.1.2",
-    "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "babel-loader": "^8.2.2",
-    "babel-plugin-styled-components": "^1.12.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.6",
     "enzyme": "^3.11.0",
@@ -70,8 +67,5 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3",
     "worker-loader": "^3.0.8"
-  },
-  "resolutions": {
-    "styled-components": "^5"
   }
 }

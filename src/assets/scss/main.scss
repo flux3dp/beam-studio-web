@@ -1,8 +1,22 @@
-@import "core/font-awesome";
+@charset "utf-8";
 
-@import "share/modal-window";
+// abstracts font, animations...
+@import "abstracts/__abstracts";
 
-@import "alert/alerts-container";
-@import "beambox/beambox-container";
-@import "dialog/dialog-container";
-@import "monitor/flux-monitor";
+// vendor
+@import "vendor/__verdor";
+
+// base styles written for everywhere
+@import "base/__base";
+
+// small modules or components
+@import "components/__components";
+
+// main layout
+@import "layout/__layout";
+
+// pages contents
+@import "pages/__pages";
+
+// langs overide
+@import "lang/__lang";
