@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
     clean: true,
+    publicPath: '/',
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
@@ -115,8 +116,12 @@ module.exports = {
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
+        { from: path.resolve(__dirname, 'src/assets/examples'), to: path.resolve(__dirname, 'dist/examples') },
       ],
     }),
     new MiniCssExtractPlugin(),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 };
