@@ -4,7 +4,9 @@ export default {
   type: () => (''),
   arch: () => (''),
   release: () => (''),
-  networkInterfaces: () => { },
+  networkInterfaces: () => ({
+    en0: [],
+  }),
   process: {
     exec: (command: string) => Promise.resolve({
       stdout: '',
