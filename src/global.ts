@@ -1,5 +1,9 @@
 declare global {
   interface Window {
+    FLUX: {
+      version: string;
+      dev: boolean;
+    };
     svgedit: {
       NS: { [key: string]: string };
       browser: {

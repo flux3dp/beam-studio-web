@@ -32,5 +32,3 @@ import 'svgnestParallel';
 import 'svgnestEval';
 import 'jqueryUi';
 import 'jpicker';
-
-process.env = {};
