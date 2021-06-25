@@ -5,12 +5,16 @@ import './assets/scss/main.scss';
 // otherwise, the major global variables will not become accessible
 import './main';
 
+import globalHelper from 'helpers/global-helper';
 import storage from 'implementations/storage';
 import router from 'app/router';
+
+globalHelper.setWindowMember();
 
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line no-console
   console.log('Looks like we are in development mode!');
+  window.dev = true;
 }
 
 const { hash } = window.location;
