@@ -36,6 +36,7 @@ const ping = (
     xhr.send(null);
   } catch (e) {
     // this is expected
+    // eslint-disable-next-line no-console
     console.log('exception', e);
   }
 });
