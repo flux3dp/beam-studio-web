@@ -69,11 +69,11 @@
         color: #ffffff;
         background-color: #1877f2;
         border-color: #1877f2;
-        // background-image: url(../img/facebook-icon.svg);
+        background-image: url("#{$s3}/images/facebook-icon.svg");
       }
 
       &.google {
-        // background-image: url(../img/google-icon.svg);
+        background-image: url("#{$s3}/images/google-icon.svg");
       }
     }
   }
