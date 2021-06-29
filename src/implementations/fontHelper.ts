@@ -1,4 +1,4 @@
-import { FontDescriptor, FontDescriptorKeys, IFontScanner } from 'core-interfaces/IFont';
+import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
 import { sender } from 'implementations/communicator';
 
 export const availableFonts = [
@@ -11,30 +11,33 @@ export const availableFonts = [
     style: 'Regular',
     weight: 400,
     width: 5,
-  }
+    displayName: 'Arial',
+  },
 ];
 
 const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
+  // eslint-disable-next-line no-param-reassign
   fontDescriptor.style = fontDescriptor.style || 'Regular';
   let match = availableFonts;
   let font = availableFonts[0];
   if ('postscriptName' in fontDescriptor) {
-    match = match.filter((font) => font.postscriptName === fontDescriptor.postscriptName);
+    match = match.filter((f) => f.postscriptName === fontDescriptor.postscriptName);
     font = match[0] || font;
   }
   if ('family' in fontDescriptor) {
-    match = match.filter((font) => font.family === fontDescriptor.family);
+    match = match.filter((f) => f.family === fontDescriptor.family);
     font = match[0] || font;
   }
   if ('italic' in fontDescriptor) {
-    match = match.filter((font) => font.italic === fontDescriptor.italic);
+    match = match.filter((f) => f.italic === fontDescriptor.italic);
     font = match[0] || font;
   }
-  if ('style' in fontDescriptor)
-    match = match.filter((font) => font.style === fontDescriptor.style);
+  if ('style' in fontDescriptor) {
+    match = match.filter((f) => f.style === fontDescriptor.style);
+  }
   font = match[0] || font;
   if ('weight' in fontDescriptor) {
-    match = match.filter((font) => font.weight === fontDescriptor.weight);
+    match = match.filter((f) => f.weight === fontDescriptor.weight);
     font = match[0] || font;
   }
   return font;
@@ -42,7 +45,7 @@ const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
 
 const findFonts = (fontDescriptor: FontDescriptor): FontDescriptor[] => {
   const matchFamily = fontDescriptor.family
-    ? availableFonts.filter(font => font.family === fontDescriptor.family)
+    ? availableFonts.filter((font) => font.family === fontDescriptor.family)
     : availableFonts;
   const match = matchFamily.filter((font) => {
     const keys = Object.keys(fontDescriptor);
@@ -75,7 +78,13 @@ export default {
   getAvailableFonts(): FontDescriptor[] {
     return availableFonts;
   },
-  substituteFont(postscriptName: string, text: string) {
-    return availableFonts[0] as FontDescriptor;
+  substituteFont(postscriptName: string) {
+    const font = availableFonts.filter((f) => f.postscriptName === postscriptName);
+    return font[0] as FontDescriptor;
   },
-} as IFontScanner;
+  getFontName(font: FontDescriptor): string {
+    const matchedFonts = availableFonts.filter((f) => f.postscriptName === font.postscriptName);
+    if (matchedFonts.length > 0) return matchedFonts[0].displayName;
+    return font.family as string;
+  },
+} as FontHelper;
