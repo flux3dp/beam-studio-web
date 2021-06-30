@@ -21,6 +21,10 @@ class Menu extends AbstractMenu {
   disable(items: string[]): void {
     this.eventEmitter.emit('DISABLE_MENU_ITEM', items);
   }
+
+  updateLanguage(): void {
+    this.eventEmitter.emit('UPDATE_LANGUAGE');
+  }
 }
 
 export default new Menu();
