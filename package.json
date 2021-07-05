@@ -8,6 +8,8 @@
     "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
+    "@sentry/browser": "^6.8.0",
+    "@sentry/tracing": "^6.8.0",
     "@simonwep/pickr": "^1.8.1",
     "animate.css": "^4.1.1",
     "buffer": "^6.0.3",
