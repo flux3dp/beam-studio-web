@@ -21,7 +21,6 @@ import 'svgutils';
 import 'sanitize';
 import 'coords';
 import 'recalculate';
-import 'select';
 import 'draw';
 import 'layer';
 import 'path';

@@ -51,7 +51,6 @@ module.exports = {
       sanitize: path.join(__dirname, 'public/js/lib/svgeditor/sanitize'),
       coords: path.join(__dirname, 'public/js/lib/svgeditor/coords'),
       recalculate: path.join(__dirname, 'public/js/lib/svgeditor/recalculate'),
-      select: path.join(__dirname, 'public/js/lib/svgeditor/select'),
       draw: path.join(__dirname, 'public/js/lib/svgeditor/draw'),
       layer: path.join(__dirname, 'public/js/lib/svgeditor/layer'),
       path: path.join(__dirname, 'public/js/lib/svgeditor/path'),
