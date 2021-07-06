@@ -7,10 +7,10 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].bundle.js',
     clean: true,
   },
-  mode: process.env.NODE_ENV || 'development',
+  mode: 'development',
   resolve: {
     modules: [
       path.join(__dirname, 'public/js/lib'),
@@ -118,6 +118,8 @@ module.exports = {
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
       ],
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
   ],
 };
