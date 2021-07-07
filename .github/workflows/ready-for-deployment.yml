@@ -27,18 +27,18 @@ jobs:
     needs: e2e-test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build dist
-        run: |
-          yarn run build
-          ls
-    - name: Copy files to linode via ssh
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: "./dist/*"
-        target: "/var/www/beam-studio-web"
+      - uses: actions/checkout@v2
+      - name: Build dist
+          run: |
+            yarn run build
+            ls
+      - name: Copy files to linode via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "./dist/*"
+          target: "/var/www/beam-studio-web"
 
