@@ -29,9 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build dist
-          run: |
-            yarn run build
-            ls
+        run: |
+          yarn run build
+          ls
       - name: Copy files to linode via ssh
         uses: appleboy/scp-action@master
         with:
