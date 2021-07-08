@@ -1,4 +1,4 @@
-name: eslint
+name: basic-check
 
 on:
   pull_request:
