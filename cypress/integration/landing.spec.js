@@ -3,7 +3,7 @@ describe('landing', () => {
     cy.visit('/');
 
     cy.get('div.home').should('exist');
-    cy.get('h1.headline').should('have.text', 'Select Language');
+    cy.get('h1.headline').should('have.text', 'Select Languag');
     cy.get('select#select-lang').select('zh-tw');
     cy.get('h1.headline').should('have.text', '請選擇你想使用的語言');
     cy.get('select#select-lang').select('en');
