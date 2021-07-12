@@ -24,22 +24,30 @@ jobs:
       - name: Run e2e tests
         run: |
           yarn run cy:test
-  # deployment:
-  #   needs: e2e-test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Build dist
-  #       run: |
-  #         yarn run build
-  #         ls
-  #     - name: Copy files to linode via ssh
-  #       uses: appleboy/scp-action@master
-  #       with:
-  #         host: ${{ secrets.HOST }}
-  #         username: ${{ secrets.USERNAME }}
-  #         password: ${{ secrets.PASSWORD }}
-  #         port: ${{ secrets.PORT }}
-  #         source: "./dist/*"
-  #         target: "/var/www/beam-studio-web"
-
+      - name: Build artifact
+        run: |
+          yarn run build
+      - name: Archive production artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          retention-days: 7
+          path: |
+            dist
+  deployment:
+    needs: e2e-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+      - name: Deployment via scp
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: "."
+          remote: /var/www/beam-studio-web
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
