@@ -1,11 +1,12 @@
 {
   "name": "beam-studio-web",
   "version": "1.0.0",
-  "description": "web version of beam studio",
+  "description": "Beam Studio Web",
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "cy:dev": "cypress open",
     "cy:run": "cypress run",
     "cy:test": "start-server-and-test start http://localhost:8080 cy:run"
   },
@@ -47,7 +48,7 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.6",
-    "cypress": "^7.6.0",
+    "cypress": "7.7.0",
     "cypress-wait-until": "^1.7.1",
     "cypress-xpath": "^1.6.2",
     "enzyme": "^3.11.0",

@@ -10,7 +10,17 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('landing', () => {
+  cy.visit('/');
+  cy.get('select#select-lang').select('en');
+  cy.get('a.btn').click();
+  cy.get('div.skip').click();
+  cy.get('div.btn-page').click();
+  cy.get('button[data-test-key="no"]').click();
+  cy.get('button[data-test-key="ok"]').click();
+  cy.get('button[data-test-key="no"]').click();
+  cy.get('button[data-test-key="ok"]').click();
+});
 //
 //
 // -- This is a child command --
