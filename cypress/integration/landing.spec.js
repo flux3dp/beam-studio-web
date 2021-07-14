@@ -33,5 +33,5 @@ it('landing', () => {
 
   cy.get('#root')
     .find('div')
-    .should('have.class', 'studio-container beambox-studio en')
+    .should('have.class', 'studio-container beambox-studio en');
 });
