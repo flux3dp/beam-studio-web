@@ -8,7 +8,7 @@ on:
     types: [core_merged]
 
 jobs:
-  e2e-test:
+  deployment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,31 +21,13 @@ jobs:
       - name: Setup web
         run: |
           yarn install
-      - name: Run e2e tests
-        run: |
-          yarn run cy:test
       - name: Build artifact
         run: |
           yarn run build
-      - name: Archive production artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          retention-days: 7
-          path: |
-            dist
-  deployment:
-    needs: e2e-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
       - name: Deployment via scp
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: "."
+          local: dist
           remote: /var/www/beam-studio-web
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
