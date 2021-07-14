@@ -33,3 +33,11 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+  post-deployment-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run e2e test against the production environment
+        run: |
+          yarn install
+          yarn run cy:prod
