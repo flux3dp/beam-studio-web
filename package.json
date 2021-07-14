@@ -20,6 +20,7 @@
     "eventemitter3": "^4.0.7",
     "file-saver": "^2.0.5",
     "fontkit": "^1.8.1",
+    "hotkeys-js": "^3.8.7",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
     "react-contextmenu": "^2.14.0",
