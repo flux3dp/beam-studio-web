@@ -20,5 +20,7 @@ jobs:
         run: |
           yarn install
       - name: Run e2e tests
-        run: |
-          yarn run cy:test
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          command: yarn run cy:test

@@ -18,7 +18,7 @@ describe('drawing', () => {
 
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', '#000')
-    cy.get('#svg_1').should('have.attr', 'fill-opacity').and('eq', '1');
+    // cy.get('#svg_1').should('have.attr', 'fill-opacity').and('eq', '1');
   });
 
   it('ellipse', () => {
@@ -36,7 +36,7 @@ describe('drawing', () => {
 
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', '#000')
-    cy.get('#svg_1').should('have.attr', 'fill-opacity').and('eq', '1');
+    // cy.get('#svg_1').should('have.attr', 'fill-opacity').and('eq', '1');
   });
 
   it('polygon', () => {
@@ -54,6 +54,6 @@ describe('drawing', () => {
 
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'black')
-    cy.get('#svg_1').should('have.attr', 'fill-opacity').and('eq', '1');
+    // cy.get('#svg_1').should('have.attr', 'fill-opacity').and('eq', '1');
   });
 });
