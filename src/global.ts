@@ -186,5 +186,6 @@ declare global {
       units: any;
       utilities: any;
     };
+    Jimp: any;
   }
 }
