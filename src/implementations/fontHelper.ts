@@ -6,12 +6,74 @@ export const availableFonts = [
     family: 'Arial',
     italic: false,
     monospace: false,
-    path: '',
     postscriptName: 'ArialMT',
     style: 'Regular',
     weight: 400,
     width: 5,
     displayName: 'Arial',
+  },
+  {
+    family: 'Arial',
+    italic: false,
+    monospace: false,
+    postscriptName: 'Arial-BoldMT',
+    style: 'Bold',
+    weight: 700,
+    width: 5,
+  },
+  {
+    family: 'Arial',
+    italic: true,
+    monospace: false,
+    postscriptName: 'Arial-BoldItalicMT',
+    style: 'Bold Italic',
+    weight: 700,
+    width: 5,
+  },
+  {
+    family: 'Arial',
+    italic: true,
+    monospace: false,
+    postscriptName: 'Arial-ItalicMT',
+    style: 'Italic',
+    weight: 400,
+    width: 5,
+  },
+  {
+    family: 'Times',
+    italic: false,
+    monospace: false,
+    postscriptName: 'Times-Roman',
+    style: 'Regular',
+    weight: 400,
+    width: 5,
+  },
+  {
+    family: 'Times',
+    italic: false,
+    monospace: false,
+    postscriptName: 'Times-Bold',
+    style: 'Bold',
+    weight: 700,
+    width: 5,
+  },
+  {
+    family: 'Times',
+    italic: true,
+    monospace: false,
+    postscriptName: 'Times-Italic',
+    style: 'Italic',
+    weight: 400,
+    width: 5,
+  },
+  {
+    family: 'Times',
+    italic: true,
+    monospace: false,
+    postscriptName: 'Times-BoldItalic',
+    style: 'Bold Italic',
+    weight: 700,
+    width: 5,
   },
 ];
 
@@ -20,23 +82,23 @@ const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
   fontDescriptor.style = fontDescriptor.style || 'Regular';
   let match = availableFonts;
   let font = availableFonts[0];
-  if ('postscriptName' in fontDescriptor) {
+  if (fontDescriptor.postscriptName) {
     match = match.filter((f) => f.postscriptName === fontDescriptor.postscriptName);
     font = match[0] || font;
   }
-  if ('family' in fontDescriptor) {
+  if (fontDescriptor.family) {
     match = match.filter((f) => f.family === fontDescriptor.family);
     font = match[0] || font;
   }
-  if ('italic' in fontDescriptor) {
+  if (fontDescriptor.italic) {
     match = match.filter((f) => f.italic === fontDescriptor.italic);
     font = match[0] || font;
   }
-  if ('style' in fontDescriptor) {
+  if (fontDescriptor.style) {
     match = match.filter((f) => f.style === fontDescriptor.style);
   }
   font = match[0] || font;
-  if ('weight' in fontDescriptor) {
+  if (fontDescriptor.weight) {
     match = match.filter((f) => f.weight === fontDescriptor.weight);
     font = match[0] || font;
   }
