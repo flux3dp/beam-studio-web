@@ -90,7 +90,7 @@ const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
     match = match.filter((f) => f.family === fontDescriptor.family);
     font = match[0] || font;
   }
-  if (fontDescriptor.italic) {
+  if ('italic' in fontDescriptor && fontDescriptor.italic !== undefined) {
     match = match.filter((f) => f.italic === fontDescriptor.italic);
     font = match[0] || font;
   }
