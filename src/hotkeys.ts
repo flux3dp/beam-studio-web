@@ -6,6 +6,23 @@ import eventEmitterFactory from 'helpers/eventEmitterFactory';
 
 const eventEmitter = eventEmitterFactory.createEventEmitter('top-bar-menu');
 
+// to disable the default behavior and overwrite it
+document.addEventListener('keydown', (event) => {
+  if (event.metaKey && event.which === 187) {
+    event.preventDefault();
+    eventEmitter.emit('MENU_CLICK', null, {
+      id: 'ZOOM_IN',
+    });
+  }
+
+  if (event.metaKey && event.which === 189) {
+    event.preventDefault();
+    eventEmitter.emit('MENU_CLICK', null, {
+      id: 'ZOOM_OUT',
+    });
+  }
+});
+
 const shortcuts = new Map();
 shortcuts.set('command+s', 'SAVE_SCENE');
 shortcuts.set('shift+command+s', 'SAVE_AS');
@@ -20,7 +37,6 @@ shortcuts.set('command+d', 'DUPLICATE');
 shortcuts.set('command+g', 'GROUP');
 shortcuts.set('shift+command+g', 'UNGROUP');
 shortcuts.set('shift+command+x', 'CLEAR_SCENE');
-shortcuts.set('command+-', 'ZOOM_OUT');
 shortcuts.set('command+n', 'ADD_NEW_MACHINE');
 
 for (const [shortcut, action] of shortcuts) {
@@ -32,11 +48,3 @@ for (const [shortcut, action] of shortcuts) {
     return false;
   });
 }
-
-hotkeys('command-+', { splitKey: '-' }, (event) => {
-  event.preventDefault();
-  eventEmitter.emit('MENU_CLICK', null, {
-    id: 'ZOOM_IN',
-  });
-  return false;
-});
