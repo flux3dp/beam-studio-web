@@ -38,6 +38,7 @@ shortcuts.set('command+g', 'GROUP');
 shortcuts.set('shift+command+g', 'UNGROUP');
 shortcuts.set('shift+command+x', 'CLEAR_SCENE');
 shortcuts.set('command+n', 'ADD_NEW_MACHINE');
+shortcuts.set('command+k', 'PREFERENCE');
 
 for (const [shortcut, action] of shortcuts) {
   hotkeys(shortcut, (event) => {
