@@ -3,6 +3,7 @@
 import hotkeys from 'hotkeys-js';
 
 import eventEmitterFactory from 'helpers/eventEmitterFactory';
+import BeamStudioHotKeys from 'app/constants/hotkeys';
 
 const eventEmitter = eventEmitterFactory.createEventEmitter('top-bar-menu');
 
@@ -24,21 +25,12 @@ document.addEventListener('keydown', (event) => {
 });
 
 const shortcuts = new Map();
-shortcuts.set('command+s', 'SAVE_SCENE');
-shortcuts.set('shift+command+s', 'SAVE_AS');
-shortcuts.set('command+e', 'EXPORT_FLUX_TASK');
-shortcuts.set('command+z', 'UNDO');
-shortcuts.set('shift+command+z', 'REDO');
-shortcuts.set('command+x', 'CUT');
-shortcuts.set('command+c', 'COPY');
-shortcuts.set('command+v', 'PASTE');
-shortcuts.set('shift+command+v', 'PASTE_IN_PLACE');
-shortcuts.set('command+d', 'DUPLICATE');
-shortcuts.set('command+g', 'GROUP');
-shortcuts.set('shift+command+g', 'UNGROUP');
-shortcuts.set('shift+command+x', 'CLEAR_SCENE');
-shortcuts.set('command+n', 'ADD_NEW_MACHINE');
-shortcuts.set('command+k', 'PREFERENCE');
+for (const key of Object.keys(BeamStudioHotKeys)) {
+  if (key in ['zoom_in', 'zoom_out']) continue;
+  const { action } = BeamStudioHotKeys[key];
+  const { shortcut } = BeamStudioHotKeys[key].keyboard[window.os];
+  shortcuts.set(shortcut, action);
+}
 
 for (const [shortcut, action] of shortcuts) {
   hotkeys(shortcut, (event) => {

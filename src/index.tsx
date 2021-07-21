@@ -1,16 +1,15 @@
 /* eslint-disable import/order */
 import './assets/scss/main.scss';
 
+import 'helpers/global-helper';
+
 // need to import all required external modules before reading our own files
 // otherwise, the major global variables will not become accessible
 import './main';
 import './hotkeys';
 
-import globalHelper from 'helpers/global-helper';
 import storage from 'implementations/storage';
 import router from 'app/router';
-
-globalHelper.setWindowMember();
 
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line no-console
