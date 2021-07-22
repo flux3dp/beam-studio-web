@@ -1,6 +1,6 @@
 const drawingTools = ['left-Cursor', 'left-Photo', 'left-Text', 'left-Rectangle', 'left-Ellipse', 'left-Polygon', 'left-Line', 'left-Pen'];
 
-it('check the existence of the left toolbar and default active tool', () => {
+it.skip('check the existence of the left toolbar and default active tool', () => {
   cy.landing();
 
   cy.get('div.left-toolbar').should('exist');

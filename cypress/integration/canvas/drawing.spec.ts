@@ -1,4 +1,4 @@
-describe('drawing', () => {
+describe.skip('drawing', () => {
   it('rectangle', () => {
     cy.landing();
 
