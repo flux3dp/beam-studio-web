@@ -1,4 +1,4 @@
-describe('landing', () => {
+describe.skip('landing', () => {
   before(() => {
     cy.visit('/');
 
