@@ -115,17 +115,6 @@
     z-index: 100;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #fff;
-
-    span {
-      &.action {
-        width: 90%;
-      }
-
-      &.hotkey {
-        width: auto;
-        text-align: right;
-      }
-    }
   }
 
   .rc-menu:focus {
