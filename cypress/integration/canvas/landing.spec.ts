@@ -34,10 +34,11 @@ describe('landing', () => {
   it('land to canvas', () => {
     cy.url().should('contain', '#/studio/beambox');
     // cy.get('div.modal-body').should('exist');
-    // cy.get('button[data-test-key="no"]').click();
+    cy.get('button.btn-default:nth-of-type(2)').click();
 
   //   cy.get('div.modal-body').should('exist');
   //   cy.get('button[data-test-key="ok"]').click();
+    cy.get('button.btn-default:nth-of-type(1)').click();
 
   //   cy.get('div.modal-body').should('exist');
   //   cy.get('button[data-test-key="no"]').click();
@@ -45,8 +46,8 @@ describe('landing', () => {
   //   cy.get('div.modal-body').should('exist');
   //   cy.get('button[data-test-key="ok"]').click();
 
-    cy.get('#root')
-      .find('div')
-      .should('have.class', 'studio-container beambox-studio en');
+    // cy.get('#root')
+    //   .find('div')
+    //   .should('have.class', 'studio-container beambox-studio en');
   });
 });
