@@ -19,11 +19,6 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-localStorage.setItem('alert-config', '{"skip-interface-tutorial":true}');
-localStorage.setItem('questionnaire-version', '1');
-localStorage.setItem('rating-record', '{"times":1,"version":"web","score":5,"isVoted":true,"isIgored":true}');
-localStorage.setItem('last-installed-version', 'web');
-
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 });

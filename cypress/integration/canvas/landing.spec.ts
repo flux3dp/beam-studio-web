@@ -1,6 +1,11 @@
 describe('landing', () => {
   before(() => {
     cy.visit('/');
+
+    localStorage.setItem('alert-config', '{"skip-interface-tutorial":true}');
+    localStorage.setItem('questionnaire-version', '1');
+    localStorage.setItem('rating-record', '{"times":1,"version":"web","score":5,"isVoted":true,"isIgored":true}');
+    localStorage.setItem('last-installed-version', 'web');
   });
 
   it('home page', () => {
