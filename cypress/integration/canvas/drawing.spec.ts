@@ -1,9 +1,7 @@
 describe('drawing', () => {
-  beforeEach(() => {
-    cy.landing();
-  });
-
   it('rectangle', () => {
+    cy.landing();
+
     cy.get('div#left-Rectangle').click();
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
@@ -22,6 +20,8 @@ describe('drawing', () => {
   });
 
   it('ellipse', () => {
+    cy.landing();
+
     cy.get('div#left-Ellipse').click();
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
@@ -40,6 +40,8 @@ describe('drawing', () => {
   });
 
   it('polygon', () => {
+    cy.landing();
+
     cy.get('div#left-Polygon').click();
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 

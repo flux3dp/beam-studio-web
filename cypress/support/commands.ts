@@ -12,6 +12,7 @@
 // -- This is a parent command --
 Cypress.Commands.add('landing', () => {
   cy.visit('/');
+
   cy.get('select#select-lang').select('en');
   cy.get('a.btn').click();
   cy.get('div.skip').click();
