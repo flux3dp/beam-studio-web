@@ -4,8 +4,6 @@ describe('landing', () => {
   });
 
   it('home page', () => {
-    // cy.visit('/');
-
     cy.url().should('contain', '#/');
     cy.get('div.home').should('exist');
     cy.get('h1.headline').should('have.text', 'Select Language');
@@ -13,10 +11,6 @@ describe('landing', () => {
     cy.get('h1.headline').should('have.text', '請選擇你想使用的語言');
     cy.get('select#select-lang').select('en');
     cy.get('a.btn').click();
-
-    // cy.url().should('contain', '#/initialize/connect/flux-id-login');
-    // cy.get('div.flux-login').should('exist');
-    // cy.get('div.skip').click();
   });
 
   it('flux login page', () => {
@@ -25,14 +19,14 @@ describe('landing', () => {
     cy.get('div.skip').click();
   });
 
-  it.skip('connection type selection page', () => {
+  it('connection type selection page', () => {
     cy.url().should('contain', '#/initialize/connect/select-connection-type');
     cy.get('div.select-connection-type').should('exist');
     cy.get('div.btn-container').should('have.length', 3);
     cy.get('div.btn-page').click();
   });
 
-  it.skip('land to canvas', () => {
+  it('land to canvas', () => {
     cy.url().should('contain', '#/studio/beambox');
     cy.get('div.modal-body').should('exist');
     cy.get('button[data-test-key="no"]').click();
