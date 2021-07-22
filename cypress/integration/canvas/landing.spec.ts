@@ -5,6 +5,7 @@ describe('landing', () => {
 
   it('home page', () => {
     cy.visit('/');
+
     cy.url().should('contain', '#/');
     cy.get('div.home').should('exist');
     cy.get('h1.headline').should('have.text', 'Select Language');
@@ -12,6 +13,10 @@ describe('landing', () => {
     cy.get('h1.headline').should('have.text', '請選擇你想使用的語言');
     cy.get('select#select-lang').select('en');
     cy.get('a.btn').click();
+
+    cy.url().should('contain', '#/initialize/connect/flux-id-login');
+    cy.get('div.flux-login').should('exist');
+    cy.get('div.skip').click();
   });
 
   it.skip('flux login page', () => {
