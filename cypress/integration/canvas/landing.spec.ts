@@ -1,10 +1,10 @@
 describe('landing', () => {
-  // before(() => {
-  //   cy.visit('/');
-  // });
+  before(() => {
+    cy.visit('/');
+  });
 
   it('home page', () => {
-    cy.visit('/');
+    // cy.visit('/');
 
     cy.url().should('contain', '#/');
     cy.get('div.home').should('exist');
@@ -14,12 +14,12 @@ describe('landing', () => {
     cy.get('select#select-lang').select('en');
     cy.get('a.btn').click();
 
-    cy.url().should('contain', '#/initialize/connect/flux-id-login');
-    cy.get('div.flux-login').should('exist');
-    cy.get('div.skip').click();
+    // cy.url().should('contain', '#/initialize/connect/flux-id-login');
+    // cy.get('div.flux-login').should('exist');
+    // cy.get('div.skip').click();
   });
 
-  it.skip('flux login page', () => {
+  it('flux login page', () => {
     cy.url().should('contain', '#/initialize/connect/flux-id-login');
     cy.get('div.flux-login').should('exist');
     cy.get('div.skip').click();
