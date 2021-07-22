@@ -4,8 +4,6 @@ describe('landing', () => {
   });
 
   it('home page', () => {
-    cy.visit('/');
-
     cy.url().should('contain', '#/');
     cy.get('div.home').should('exist');
     cy.get('h1.headline').should('have.text', 'Select Language');
@@ -28,10 +26,10 @@ describe('landing', () => {
     cy.get('div.btn-page').click();
   });
 
-  // it('land to canvas', () => {
-  //   cy.url().should('contain', '#/studio/beambox');
-  //   cy.get('div.modal-body').should('exist');
-  //   cy.get('button[data-test-key="no"]').click();
+  it('land to canvas', () => {
+    cy.url().should('contain', '#/studio/beambox');
+    cy.get('div.modal-body').should('exist');
+    cy.get('button[data-test-key="no"]').click();
 
   //   cy.get('div.modal-body').should('exist');
   //   cy.get('button[data-test-key="ok"]').click();
@@ -45,5 +43,5 @@ describe('landing', () => {
   //   cy.get('#root')
   //     .find('div')
   //     .should('have.class', 'studio-container beambox-studio en');
-  // });
+  });
 });
