@@ -32,7 +32,7 @@ describe('landing', () => {
   });
 
   it('land to canvas', () => {
-    console.log(document.body.innerHTML);
+    cy.log(document.body.innerHTML);
     cy.url().should('contain', '#/studio/beambox');
     // cy.get('div.modal-body').should('exist');
     // cy.get('button.btn-default:nth-of-type(2)').click();
