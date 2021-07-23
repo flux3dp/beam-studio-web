@@ -115,6 +115,8 @@ module.exports = {
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
+        { from: path.resolve(__dirname, 'public/js/lib/dxf2svg.js'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'public/js/lib/svgeditor/imagetracer.js'), to: path.resolve(__dirname, 'dist') },
       ],
     }),
     new MiniCssExtractPlugin({
