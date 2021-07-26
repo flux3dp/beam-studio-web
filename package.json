@@ -7,7 +7,7 @@
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "cy:dev": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --browser chrome",
     "cy:test": "start-server-and-test start http://localhost:8080 cy:run",
     "cy:prod": "cypress run --config-file cypress.prod.json"
   },
