@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -109,6 +110,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
+    }),
+    new HtmlWebpackTagsPlugin({
+      tags: ['https://unpkg.com/jimp@0.16.1/browser/lib/jimp.js', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js'],
     }),
     new CopyPlugin({
       patterns: [
