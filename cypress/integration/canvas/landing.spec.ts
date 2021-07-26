@@ -1,9 +1,10 @@
-describe('landing', () => {
-  before(() => {
-    cy.visit('/');
-  });
+// describe('landing', () => {
+//   before(() => {
+//     cy.visit('/');
+//   });
 
   it('home page', () => {
+    cy.visit('/');
     cy.url().should('contain', '#/');
     cy.get('div.home').shadow().should('exist');
     // cy.get('h1.headline').should('have.text', 'Select Language');
@@ -44,4 +45,4 @@ describe('landing', () => {
   //     .find('div')
   //     .should('have.class', 'studio-container beambox-studio en');
   // });
-});
+// });
