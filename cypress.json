@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://flux3dp.com/",
+  "baseUrl": "http://localhost:8080",
   "video": true,
   "chromeWebSecurity": false
 }

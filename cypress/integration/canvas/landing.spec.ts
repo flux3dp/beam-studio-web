@@ -6,7 +6,7 @@
   it('home page', () => {
     cy.visit('/');
     // cy.url().should('contain', '#/');
-    cy.get('div.header_inner').should('exist');
+    cy.get('.home').should('exist');
     // cy.get('h1.headline').should('have.text', 'Select Language');
     // cy.get('select#select-lang').select('zh-tw');
     // cy.get('h1.headline').should('have.text', '請選擇你想使用的語言');
