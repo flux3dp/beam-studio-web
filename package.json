@@ -7,7 +7,7 @@
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "cy:dev": "cypress open",
-    "cy:run": "cypress run --browser chrome",
+    "cy:run": "DEBUG=cypress:server:util:process_profiler cypress run --browser chrome",
     "cy:prod": "cypress run --browser chrome --config-file cypress.prod.json"
   },
   "dependencies": {
