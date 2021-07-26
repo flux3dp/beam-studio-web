@@ -1,4 +1,4 @@
-describe('update the preference', () => {
+describe.skip('update the preference', () => {
   before(() => {
     cy.landing();
   });

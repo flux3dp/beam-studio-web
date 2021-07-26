@@ -1,4 +1,4 @@
-it('zoom in/out', () => {
+it.skip('zoom in/out', () => {
   cy.landing();
 
   cy.get('div.zoom-btn.zoom-out').should('exist');

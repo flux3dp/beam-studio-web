@@ -1,4 +1,4 @@
-describe('manipulate layers', () => {
+describe.skip('manipulate layers', () => {
   before(() => {
     cy.landing();
   });

@@ -1,4 +1,4 @@
-describe('drawing', () => {
+describe.skip('drawing', () => {
   beforeEach(() => {
     cy.landing();
   });
