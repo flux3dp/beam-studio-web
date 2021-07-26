@@ -117,6 +117,8 @@ module.exports = {
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
         { from: path.resolve(__dirname, 'public/js/lib/dxf2svg.js'), to: path.resolve(__dirname, 'dist') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/imagetracer.js'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'jimp.js'), to: path.resolve(__dirname, 'dist/js') },
+        { from: path.resolve(__dirname, 'require.min.js'), to: path.resolve(__dirname, 'dist/js') },
       ],
     }),
     new MiniCssExtractPlugin({
