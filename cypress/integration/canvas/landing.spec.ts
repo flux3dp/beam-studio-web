@@ -5,7 +5,6 @@
 
   it('home page', () => {
     cy.visit('/');
-    cy.wait(60000);
     cy.url().should('contain', '#/');
     cy.get('.home').should('exist');
     // cy.get('h1.headline').should('have.text', 'Select Language');
