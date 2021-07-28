@@ -7,7 +7,7 @@ on:
 
 jobs:
   e2e-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup core
@@ -20,13 +20,5 @@ jobs:
         run: |
           yarn install
       - name: Run e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          browser: chrome
-          headless: true
-          start: yarn start
-          wait-on: 'http://localhost:8080'
-          record: true
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        run: |
+          yarn run cy:test
