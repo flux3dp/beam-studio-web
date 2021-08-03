@@ -27,8 +27,7 @@ document.addEventListener('keydown', (event) => {
 const shortcuts = new Map();
 for (const key of Object.keys(BeamStudioHotKeys)) {
   if (key in ['zoom_in', 'zoom_out']) continue;
-  const { action } = BeamStudioHotKeys[key];
-  const { shortcut } = BeamStudioHotKeys[key].keyboard[window.os];
+  const { action, shortcut } = BeamStudioHotKeys[key];
   shortcuts.set(shortcut, action);
 }
 
