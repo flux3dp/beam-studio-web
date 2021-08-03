@@ -2,8 +2,12 @@ name: e2e
 
 on:
   pull_request:
-  repository_dispatch:
-    types: [core_pr]
+  workflow_dispatch:
+    inputs:
+      core_branch:
+        description: 'Core Branch'
+        required: false
+        default: 'master'
 
 jobs:
   e2e-test:
@@ -15,6 +19,7 @@ jobs:
           cd ..
           git clone https://github.com/flux3dp/beam-studio-core.git
           cd beam-studio-core
+          git checkout ${{ github.event.inputs.core_branch }}
           yarn install
       - name: Setup web
         run: |
