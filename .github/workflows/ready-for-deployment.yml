@@ -41,4 +41,6 @@ jobs:
       - name: Run e2e test against the production environment
         run: |
           yarn install
+          export CYPRESS_username=${{ secrets.CYPRESS_USERNAME }}
+          export CYPRESS_password=${{ secrets.CYPRESS_PASSWORD }}
           yarn run cy:prod
