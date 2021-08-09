@@ -26,4 +26,6 @@ jobs:
           yarn install
       - name: Run e2e tests
         run: |
+          export CYPRESS_username=${{ secrets.CYPRESS_USERNAME }}
+          export CYPRESS_password=${{ secrets.CYPRESS_PASSWORD }}
           yarn run cy:test
