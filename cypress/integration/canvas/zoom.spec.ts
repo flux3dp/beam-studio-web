@@ -5,10 +5,19 @@ it('zoom in/out', () => {
   cy.get('div.zoom-ratio').should('exist');
   cy.get('div.zoom-btn.zoom-in').should('exist');
 
-  cy.get('div.zoom-ratio').should('have.text', '100%');
+  let zoomRatio;
+  cy.get('div.zoom-ratio').should(($div) => {
+    zoomRatio = parseInt($div.text().replace('%', ''));
+  });
 
   cy.get('div.zoom-btn.zoom-in').click();
-  cy.get('div.zoom-ratio').should('have.text', '110%');
+  cy.get('div.zoom-ratio').should(($div) => {
+    expect(parseInt($div.text().replace('%', '')) > zoomRatio).to.be.true;
+    zoomRatio = parseInt($div.text().replace('%', ''));
+  });
+
   cy.get('div.zoom-btn.zoom-out').click();
-  cy.get('div.zoom-ratio').should('have.text', '100%');
+  cy.get('div.zoom-ratio').should(($div) => {
+    expect(parseInt($div.text().replace('%', '')) < zoomRatio).to.be.true;
+  });
 });
