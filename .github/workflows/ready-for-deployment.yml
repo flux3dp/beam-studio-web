@@ -36,11 +36,23 @@ jobs:
   post-deployment-test:
     needs: deployment
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - name: Run e2e test against the production environment
-        run: |
-          yarn install
-          export CYPRESS_username=${{ secrets.CYPRESS_USERNAME }}
-          export CYPRESS_password=${{ secrets.CYPRESS_PASSWORD }}
-          yarn run cy:prod
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_username: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          group: 'Group'
+          config-file: cypress.prod.json
+          record: true
+          parallel: true
+          browser: chrome
+          start: |
+            yarn install

@@ -12,6 +12,10 @@ on:
 jobs:
   e2e-test:
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - name: Setup core
@@ -21,11 +25,19 @@ jobs:
           cd beam-studio-core
           git checkout ${{ github.event.inputs.core_branch }}
           yarn install
-      - name: Setup web
-        run: |
-          yarn install
-      - name: Run e2e tests
-        run: |
-          export CYPRESS_username=${{ secrets.CYPRESS_USERNAME }}
-          export CYPRESS_password=${{ secrets.CYPRESS_PASSWORD }}
-          yarn run cy:test
+      - name: Setup web and run e2e tests
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_username: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          config-file: cypress.json
+          record: true
+          parallel: true
+          group: 'Actions example'
+          browser: chrome
+          start: |
+            yarn install
+            yarn start
+          wait-on: 'http://localhost:8080'

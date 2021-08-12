@@ -7,9 +7,7 @@
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "cy:dev": "cypress open",
-    "cy:run": "cypress run --browser chrome",
-    "cy:test": "start-server-and-test start http://localhost:8080 cy:run",
-    "cy:prod": "cypress run --browser chrome --config-file cypress.prod.json"
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@sentry/browser": "^6.8.0",
@@ -71,7 +69,6 @@
     "node-sass": "^6.0.0",
     "path": "^0.12.7",
     "sass-loader": "^12.1.0",
-    "start-server-and-test": "^1.13.1",
     "ts-jest": "^26.5.6",
     "ts-loader": "^9.1.2",
     "tslint": "^6.1.3",
