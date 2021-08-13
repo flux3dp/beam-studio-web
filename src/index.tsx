@@ -14,7 +14,7 @@ import router from 'app/router';
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line no-console
   console.log('Looks like we are in development mode!');
-  window.dev = true;
+  window.FLUX.dev = true;
 }
 
 const { hash } = window.location;
