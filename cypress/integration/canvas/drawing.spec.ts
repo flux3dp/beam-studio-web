@@ -50,7 +50,7 @@ describe('drawing', () => {
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'black');
 
-    cy.get('div.option-input > input').clear().type('8').blur();
+    cy.get('div.option-input > input').focus().clear().type('8').blur();
     cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
   });
 });
