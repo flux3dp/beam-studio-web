@@ -47,10 +47,12 @@ describe('drawing', () => {
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Polygon');
     cy.get('div#object-panel').should('exist');
 
+    cy.wait(500);
+
+    cy.get('div.option-input > input').clear().type('8').blur();
+    cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
+
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'black');
-
-    cy.get('div.option-input > input').focus().clear().type('8').blur();
-    cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
   });
 });
