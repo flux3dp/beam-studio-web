@@ -142,6 +142,10 @@
     // if display: none, text mode will break.
     // this is just a quick workaround. maybe using @include force-hide() is more beautiful.
   }
+
+  .react-contextmenu--visible {
+    z-index: 5;
+  }
 }
 
 #svg_source_editor,

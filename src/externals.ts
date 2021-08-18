@@ -11,7 +11,6 @@ import 'jgraduate';
 import 'spinbtn';
 import 'touch';
 import 'jquerySvg';
-import 'jqueryContextMenu';
 import 'pathseg';
 import 'browser';
 import 'svgtransformlist';
