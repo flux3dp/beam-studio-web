@@ -10,10 +10,10 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('landing', () => {
+Cypress.Commands.add('landing', (opts = {}) => {
   const username = Cypress.env('username');
   const password = Cypress.env('password');
-  cy.visit('/');
+  cy.visit('/', opts);
   cy.get('select#select-lang').select('en');
   cy.get('a.btn').click();
   cy.get('input#email-input').type(username);
@@ -24,6 +24,14 @@ Cypress.Commands.add('landing', () => {
   cy.get('button[data-test-key="ok"]').click();
   cy.get('button[data-test-key="no"]').click();
   cy.get('button[data-test-key="ok"]').click();
+});
+
+Cypress.Commands.add('landingEditor', (opts = {}) => {
+  window.localStorage.setItem('printer-is-ready', 'true');
+  cy.visit('/', opts);
+  cy.get('button[data-test-key="no"]').click();
+  cy.get('button.primary').click();
+  cy.get('button[data-test-key="no"]').click();
 });
 //
 //
