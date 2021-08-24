@@ -103,7 +103,7 @@ module.exports = {
       {
         test: /\.(woff(2)?|ttf|eot|svg|png)$/,
         use: ['file-loader'],
-      }
+      },
     ],
   },
   plugins: [
@@ -113,6 +113,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
+        { from: path.resolve(__dirname, 'src/assets/video'), to: path.resolve(__dirname, 'dist/video') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
         { from: path.resolve(__dirname, 'public/js/lib/dxf2svg.js'), to: path.resolve(__dirname, 'dist') },
