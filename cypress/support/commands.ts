@@ -18,6 +18,7 @@ Cypress.Commands.add('landing', (opts = {}) => {
   cy.get('a.btn').click();
   cy.get('input#email-input').type(username);
   cy.get('input#password-input').type(password);
+  cy.get('div.remember-me').click();
   cy.get('div.primary').click();
   cy.get('div.btn-page').click();
   cy.get('button[data-test-key="no"]').click();
@@ -28,6 +29,7 @@ Cypress.Commands.add('landing', (opts = {}) => {
 
 Cypress.Commands.add('landingEditor', (opts = {}) => {
   window.localStorage.setItem('printer-is-ready', 'true');
+  window.localStorage.setItem('keep-flux-id-login', 'true');
   cy.visit('/', opts);
   cy.get('button[data-test-key="no"]').click();
   cy.get('button.primary').click();
