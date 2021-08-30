@@ -29,6 +29,7 @@ Cypress.Commands.add('landing', (opts = {}) => {
 
 Cypress.Commands.add('landingEditor', (opts = {}) => {
   window.localStorage.setItem('printer-is-ready', 'true');
+  window.localStorage.setItem('keep-flux-id-login', 'true');
   cy.visit('/', opts);
   cy.get('button[data-test-key="no"]').click();
   cy.get('button.primary').click();
