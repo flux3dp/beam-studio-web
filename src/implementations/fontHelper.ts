@@ -1,81 +1,25 @@
 import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
+import getUtilWS from 'helpers/api/utils-ws';
+import i18n from 'helpers/i18n';
 import { sender } from 'implementations/communicator';
 
-export const availableFonts = [
-  {
-    family: 'Arial',
-    italic: false,
-    monospace: false,
-    postscriptName: 'ArialMT',
-    style: 'Regular',
-    weight: 400,
-    width: 5,
-    displayName: 'Arial',
-  },
-  {
-    family: 'Arial',
-    italic: false,
-    monospace: false,
-    postscriptName: 'Arial-BoldMT',
-    style: 'Bold',
-    weight: 700,
-    width: 5,
-  },
-  {
-    family: 'Arial',
-    italic: true,
-    monospace: false,
-    postscriptName: 'Arial-BoldItalicMT',
-    style: 'Bold Italic',
-    weight: 700,
-    width: 5,
-  },
-  {
-    family: 'Arial',
-    italic: true,
-    monospace: false,
-    postscriptName: 'Arial-ItalicMT',
-    style: 'Italic',
-    weight: 400,
-    width: 5,
-  },
-  {
-    family: 'Times',
-    italic: false,
-    monospace: false,
-    postscriptName: 'Times-Roman',
-    style: 'Regular',
-    weight: 400,
-    width: 5,
-  },
-  {
-    family: 'Times',
-    italic: false,
-    monospace: false,
-    postscriptName: 'Times-Bold',
-    style: 'Bold',
-    weight: 700,
-    width: 5,
-  },
-  {
-    family: 'Times',
-    italic: true,
-    monospace: false,
-    postscriptName: 'Times-Italic',
-    style: 'Italic',
-    weight: 400,
-    width: 5,
-  },
-  {
-    family: 'Times',
-    italic: true,
-    monospace: false,
-    postscriptName: 'Times-BoldItalic',
-    style: 'Bold Italic',
-    weight: 700,
-    width: 5,
-  },
-];
+import fontNameMap from './fonts/fontNameMap';
+import googleFonts from './fonts/googleFonts';
+import webFonts from './fonts/webFonts';
+
+const getFonts = () => {
+  const activeLang = i18n.getActiveLang();
+  const googleLangFonts = googleFonts.getAvailableFonts(activeLang);
+  googleFonts.applyStyle(googleLangFonts);
+  const webLangFonts = webFonts.getAvailableFonts(activeLang);
+  webFonts.applyStyle(webLangFonts);
+  return [
+    ...googleLangFonts,
+    ...webLangFonts,
+  ];
+};
+
+export const availableFonts = getFonts();
 
 const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
   // eslint-disable-next-line no-param-reassign
@@ -145,8 +89,24 @@ export default {
     return font[0] as FontDescriptor;
   },
   getFontName(font: FontDescriptor): string {
-    const matchedFonts = availableFonts.filter((f) => f.postscriptName === font.postscriptName);
-    if (matchedFonts.length > 0) return matchedFonts[0].displayName;
+    if (font.family && font.family in fontNameMap) {
+      return fontNameMap[font.family] || font.family;
+    }
     return font.family as string;
+  },
+  async getWebFontAndUpload(postscriptName: string) {
+    const utilWS = getUtilWS();
+    const font = availableFonts.find((f) => f.postscriptName === postscriptName);
+    const fileName = font?.fileName || `${postscriptName}.ttf`;
+    const isExisting = await utilWS.checkExist(`/usr/share/fonts/beam-studio/${fileName}`);
+    if (!isExisting) {
+      const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
+      const resp = await fetch(url);
+      if (resp.status !== 200) return false;
+      const blob = await resp.blob();
+      const res = await utilWS.uploadTo(blob, `/usr/share/fonts/beam-studio/${fileName}`);
+      if (!res) return false;
+    }
+    return true;
   },
 } as FontHelper;
