@@ -261,6 +261,9 @@
   overflow-y: scroll;
   background: white;
   height: 240px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .add-layer-btn {

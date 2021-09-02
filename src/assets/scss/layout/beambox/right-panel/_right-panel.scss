@@ -72,7 +72,8 @@
       height: calc(100% - 70px);
     }
 
-    &.linux {
+    &.linux,
+    &.web {
       width: $winSidePanelWidth;
     }
 
