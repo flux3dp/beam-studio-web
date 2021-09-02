@@ -56,10 +56,6 @@ module.exports = {
       path: path.join(__dirname, 'public/js/lib/svgeditor/path'),
       // svgcanvas: 'public/js/lib/svgeditor/svgcanvas',
       clipper_unminified: path.join(__dirname, 'public/js/lib/clipper_unminified'),
-      svgnest: path.join(__dirname, 'public/js/lib/svg-nest/svgnest'),
-      svgnestGeoUtil: path.join(__dirname, 'public/js/lib/svg-nest/util/geometryutil'),
-      svgnestParallel: path.join(__dirname, 'public/js/lib/svg-nest/util/parallel'),
-      svgnestEval: path.join(__dirname, 'public/js/lib/svg-nest/util/eval'),
       jqueryUi: path.join(__dirname, 'public/js/lib/svgeditor/jquery-ui/jquery-ui-1.8.17.custom.min'),
       jpicker: path.join(__dirname, 'public/js/lib/svgeditor/jgraduate/jpicker'),
       canvg: path.join(__dirname, 'public/js/lib/svgeditor/canvg/canvg'),
@@ -116,8 +112,10 @@ module.exports = {
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
+        { from: path.resolve(__dirname, 'public/js/lib/svg-nest'), to: path.resolve(__dirname, 'dist/js/lib/svg-nest') },
         { from: path.resolve(__dirname, 'public/js/lib/dxf2svg.js'), to: path.resolve(__dirname, 'dist') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/imagetracer.js'), to: path.resolve(__dirname, 'dist') },
+
       ],
     }),
     new MiniCssExtractPlugin({
