@@ -10,6 +10,7 @@ import './hotkeys';
 
 import storage from 'implementations/storage';
 import router from 'app/router';
+import { getInfo } from 'helpers/api/flux-id';
 
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line no-console
@@ -19,6 +20,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 const { hash } = window.location;
 const onFinished = (data) => {
+  window.addEventListener('hashchange', async () => {
+    if (window.location.hash.startsWith('#/studio')) {
+      const resp = await getInfo();
+      if (resp?.status !== 'ok') window.location.hash = '#/initialize/connect/flux-id-login';
+    }
+  });
   const isReady = data;
   if (isReady === true && (hash === '' || hash.startsWith('#initialize'))) {
     window.location.hash = '#studio/beambox';
