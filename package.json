@@ -19,6 +19,7 @@
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
     "cropperjs": "^1.5.12",
+    "cypress-real-events": "^1.5.1",
     "eventemitter3": "^4.0.7",
     "file-saver": "^2.0.5",
     "fontkit": "^1.8.1",
