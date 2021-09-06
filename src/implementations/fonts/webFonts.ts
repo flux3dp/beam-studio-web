@@ -1,7 +1,6 @@
 import { WebFont } from 'core-interfaces/IFont';
 
 const fonts: WebFont[] = [
-
   // Passengers Script
   {
     family: 'Passengers Script',
@@ -12,7 +11,6 @@ const fonts: WebFont[] = [
     fileName: 'PassengersScript.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Carlito
   {
     family: 'Carlito',
@@ -50,7 +48,6 @@ const fonts: WebFont[] = [
     fileName: 'Carlito-BoldItalic.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Arrow
   {
     family: 'Arrow',
@@ -61,7 +58,6 @@ const fonts: WebFont[] = [
     fileName: 'Almo_Andrea_FontlabARROW.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Chanticleer Roman NF
   {
     family: 'Chanticleer Roman NF',
@@ -81,7 +77,6 @@ const fonts: WebFont[] = [
     fileName: 'ChanticleerRomanNF-Bold.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Alegreya
   {
     family: 'Alegreya',
@@ -119,7 +114,6 @@ const fonts: WebFont[] = [
     fileName: 'Alegreya-BoldItalic.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // AlegreyaSC
   {
     family: 'AlegreyaSC',
@@ -157,7 +151,6 @@ const fonts: WebFont[] = [
     fileName: 'AlegreyaSC-BoldItalic.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Amethysta
   {
     family: 'Amethysta',
@@ -168,7 +161,6 @@ const fonts: WebFont[] = [
     fileName: 'Amethysta-Regular.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Old Standard TT
   {
     family: 'Old Standard TT',
@@ -197,7 +189,6 @@ const fonts: WebFont[] = [
     fileName: 'OldStandard-Bold.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Lavigne
   {
     family: 'Lavigne',
@@ -208,7 +199,6 @@ const fonts: WebFont[] = [
     fileName: 'Lavigne.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // FatCow
   {
     family: 'FatCow',
@@ -228,7 +218,6 @@ const fonts: WebFont[] = [
     fileName: 'FatCow-Italic.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Modern Sans
   {
     family: 'Modern Sans',
@@ -239,7 +228,6 @@ const fonts: WebFont[] = [
     fileName: 'ModernSans-Light.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Phantomonia
   {
     family: 'Phantomonia',
@@ -250,7 +238,6 @@ const fonts: WebFont[] = [
     fileName: 'Phantomonia.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Kong Quest
   {
     family: 'Kong Quest',
@@ -261,7 +248,6 @@ const fonts: WebFont[] = [
     fileName: 'KongQuest-Regular.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Plexifont BV
   {
     family: 'Plexifont BV',
@@ -272,7 +258,6 @@ const fonts: WebFont[] = [
     fileName: 'plexifont.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Oldies Cartoon
   {
     family: 'Oldies Cartoon',
@@ -283,7 +268,6 @@ const fonts: WebFont[] = [
     fileName: 'oldies cartoon.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Don Graffiti
   {
     family: 'Don Graffiti',
@@ -294,7 +278,6 @@ const fonts: WebFont[] = [
     fileName: 'DonGraffiti.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Eddie
   {
     family: 'Eddie',
@@ -305,7 +288,6 @@ const fonts: WebFont[] = [
     fileName: 'eddie.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Shagadelic
   {
     family: 'Shagadelic',
@@ -316,7 +298,6 @@ const fonts: WebFont[] = [
     fileName: 'shagade.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Fanzine
   {
     family: 'Fanzine',
@@ -327,7 +308,6 @@ const fonts: WebFont[] = [
     fileName: 'fanzine.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Impact Label
   {
     family: 'Impact Label',
@@ -338,7 +318,6 @@ const fonts: WebFont[] = [
     fileName: 'Impact_Label.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Impact Label Reversed
   {
     family: 'Impact Label Reversed',
@@ -349,7 +328,6 @@ const fonts: WebFont[] = [
     fileName: 'Impact_Label_Reversed.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Mr Bedfort
   {
     family: 'Mr Bedfort',
@@ -360,9 +338,8 @@ const fonts: WebFont[] = [
     fileName: 'MrBedfort-Regular.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
-   // Allura
-   {
+  // Allura
+  {
     family: 'Allura',
     italic: false,
     postscriptName: 'Allura-Regular',
@@ -371,7 +348,6 @@ const fonts: WebFont[] = [
     fileName: 'Allura-Regular.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Robert
   {
     family: 'Robert',
@@ -382,7 +358,6 @@ const fonts: WebFont[] = [
     fileName: 'Robert.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Rhesmanisa
   {
     family: 'Rhesmanisa',
@@ -393,7 +368,6 @@ const fonts: WebFont[] = [
     fileName: 'Rhesmanisa.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Flanella
   {
     family: 'Flanella',
@@ -404,7 +378,6 @@ const fonts: WebFont[] = [
     fileName: 'Flanella.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Radicalis
   {
     family: 'Radicalis',
@@ -415,7 +388,6 @@ const fonts: WebFont[] = [
     fileName: 'Radicalis.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Raustila
   {
     family: 'Raustila',
@@ -426,18 +398,16 @@ const fonts: WebFont[] = [
     fileName: 'raustila-Regular.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Lemon Tuesday
   {
     family: 'Lemon Tuesday',
     italic: false,
-    postscriptName: 'Lemon Tuesday-Regular',
+    postscriptName: 'LemonTuesday-Regular',
     style: 'Regular',
     weight: 400,
-    fileName: 'Lemon Tuesday.otf',
+    fileName: 'LemonTuesday.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Nickainley
   {
     family: 'Nickainley',
@@ -448,7 +418,6 @@ const fonts: WebFont[] = [
     fileName: 'Nickainley-Normal.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Volaroid Sans
   {
     family: 'Volaroid Sans',
@@ -459,9 +428,8 @@ const fonts: WebFont[] = [
     fileName: 'Volaroid sans.otf',
     supportLangs: ['en', 'es', 'de'],
   },
-
-   // Volaroid Script
-   {
+  // Volaroid Script
+  {
     family: 'Volaroid Script',
     italic: false,
     postscriptName: 'Volaroid Script-Regular',
@@ -470,7 +438,6 @@ const fonts: WebFont[] = [
     fileName: 'Volaroid Script.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Grenadier NF
   {
     family: 'Grenadier NF',
@@ -481,7 +448,6 @@ const fonts: WebFont[] = [
     fileName: 'GrenadierNF.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Airstream NF
   {
     family: 'Airstream NF',
@@ -492,12 +458,11 @@ const fonts: WebFont[] = [
     fileName: 'AirstreamNF.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Life Savers
   {
     family: 'Life Savers',
     italic: false,
-    postscriptName: 'Life Savers-Regular',
+    postscriptName: 'LifeSavers-Regular',
     style: 'Regular',
     weight: 400,
     fileName: 'LifeSavers-Regular.ttf',
@@ -506,24 +471,22 @@ const fonts: WebFont[] = [
   {
     family: 'Life Savers',
     italic: false,
-    postscriptName: 'Life Savers-Bold',
+    postscriptName: 'LifeSavers-Bold',
     style: 'Bold',
     weight: 700,
     fileName: 'LifeSavers-Bold.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Dymaxion Script
   {
     family: 'DymaxionScript',
     italic: false,
-    postscriptName: 'Dymaxion Script-Regular',
+    postscriptName: 'DymaxionScript-Regular',
     style: 'Regular',
     weight: 400,
     fileName: 'DymaxionScript.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Riesling
   {
     family: 'Riesling',
@@ -534,18 +497,16 @@ const fonts: WebFont[] = [
     fileName: 'riesling.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Carnivalee Freakshow
   {
-    family: 'Carnivalee Freakshow',
+    family: 'CarnivaleeFreakshow',
     italic: false,
-    postscriptName: 'Carnivalee Freakshow-Regular',
+    postscriptName: 'CarnivaleeFreakshow-Regular',
     style: 'Regular',
     weight: 400,
-    fileName: 'Carnevalee Freakshow.ttf',
+    fileName: 'CarnevaleeFreakshow.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // Park Lane NF
   {
     family: 'Park Lane NF',
@@ -556,7 +517,6 @@ const fonts: WebFont[] = [
     fileName: 'ParkLaneNF.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // True Crimes
   {
     family: 'True Crimes',
@@ -567,7 +527,6 @@ const fonts: WebFont[] = [
     fileName: 'true-crimes.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
-
   // 楷書
   {
     family: 'TW-MOE-Std-Kai',
@@ -578,7 +537,6 @@ const fonts: WebFont[] = [
     fileName: 'edukai-4.0.ttf',
     supportLangs: ['zh-tw'],
   },
-
   // GenYoGothic TW
   {
     family: 'GenYoGothic TW',
@@ -598,7 +556,6 @@ const fonts: WebFont[] = [
     fileName: 'GenYoGothic-B.ttc',
     supportLangs: ['zh-tw'],
   },
-
   // GenYoGothic JP
   {
     family: 'GenYoGothic JP',
@@ -618,7 +575,6 @@ const fonts: WebFont[] = [
     fileName: 'GenYoGothic-B.ttc',
     supportLangs: ['ja'],
   },
-
   // GenRyuMin TW
   {
     family: 'GenRyuMin TW',
@@ -638,7 +594,6 @@ const fonts: WebFont[] = [
     fileName: 'GenRyuMin-B.ttc',
     supportLangs: ['zh-tw'],
   },
-
   // GenRyuMin JP
   {
     family: 'GenRyuMin JP',
@@ -658,9 +613,8 @@ const fonts: WebFont[] = [
     fileName: 'GenRyuMin-B.ttc',
     supportLangs: ['ja'],
   },
-
-   // GenWanMin TW
-   {
+  // GenWanMin TW
+  {
     family: 'GenWanMin TW',
     italic: false,
     postscriptName: 'GenWanMin TW',
@@ -678,8 +632,7 @@ const fonts: WebFont[] = [
     fileName: 'GenWanMin-SB.ttc',
     supportLangs: ['zh-tw'],
   },
-
-  //GenWanMin JP
+  // GenWanMin JP
   {
     family: 'GenWanMin JP',
     italic: false,
@@ -698,8 +651,7 @@ const fonts: WebFont[] = [
     fileName: 'GenWanMin-SB.ttc',
     supportLangs: ['ja'],
   },
-
-  //GenSekiGothic TW
+  // GenSekiGothic TW
   {
     family: 'GenSekiGothic TW',
     italic: false,
@@ -718,8 +670,7 @@ const fonts: WebFont[] = [
     fileName: 'GenSekiGothic-B.ttc',
     supportLangs: ['zh-tw'],
   },
-
-  //GenSekiGothic JP
+  // GenSekiGothic JP
   {
     family: 'GenSekiGothic JP',
     italic: false,
@@ -738,8 +689,7 @@ const fonts: WebFont[] = [
     fileName: 'GenSekiGothic-B.ttc',
     supportLangs: ['ja'],
   },
-
-  //GenSenRounded TW
+  // GenSenRounded TW
   {
     family: 'GenSenRounded TW',
     italic: false,
@@ -758,8 +708,7 @@ const fonts: WebFont[] = [
     fileName: 'GenSenRounded-B.ttc',
     supportLangs: ['zh-tw'],
   },
-
-  //GenSenRounded JP
+  // GenSenRounded JP
   {
     family: 'GenSenRounded JP',
     italic: false,
@@ -778,8 +727,7 @@ const fonts: WebFont[] = [
     fileName: 'GenSenRounded-B.ttc',
     supportLangs: ['ja'],
   },
-
-  //Gen Shin Gothic
+  // Gen Shin Gothic
   {
     family: 'Gen Shin Gothic',
     italic: false,
@@ -798,8 +746,7 @@ const fonts: WebFont[] = [
     fileName: 'GenShinGothic-Bold.ttf',
     supportLangs: ['ja', 'zh-tw'],
   },
-
-  //Gen Shin Gothic P
+  // Gen Shin Gothic P
   {
     family: 'Gen Shin Gothic P',
     italic: false,
@@ -818,7 +765,6 @@ const fonts: WebFont[] = [
     fileName: 'GenShinGothic-P-Bold.ttf',
     supportLangs: ['ja', 'zh-tw'],
   },
-
   // Gen Shin Gothic Monospace
   {
     family: 'Gen Shin Gothic Monospace',
@@ -838,7 +784,6 @@ const fonts: WebFont[] = [
     fileName: 'GenShinGothic-Monospace-Bold.ttf',
     supportLangs: ['ja', 'zh-tw'],
   },
-
   // TaipeiSansTC
   {
     family: 'TaipeiSansTC',
@@ -858,7 +803,6 @@ const fonts: WebFont[] = [
     fileName: 'TaipeiSansTCBeta-Bold.ttf',
     supportLangs: ['zh-tw'],
   },
-
   // GenEi Gothic M
   {
     family: 'GenEi Gothic M',
@@ -878,7 +822,6 @@ const fonts: WebFont[] = [
     fileName: 'GenEiGothicM-Bold.ttf',
     supportLangs: ['ja', 'zh-tw'],
   },
-
   // Chiron Sans HK Pro
   {
     family: 'Chiron Sans HK Pro',
@@ -916,7 +859,6 @@ const fonts: WebFont[] = [
     fileName: 'ChironSansHKPro-BoldIt.otf',
     supportLangs: ['zh-tw'],
   },
-
   // Huayuan Gothic
   {
     family: 'Huayuan Gothic',
@@ -936,10 +878,9 @@ const fonts: WebFont[] = [
     fileName: 'HuayuanGothic-Bold.ttf',
     supportLangs: ['zh-tw'],
   },
-
   // GlowSans TC
   {
-    family: 'GlowSans TC',
+    family: 'Glow Sans TC',
     italic: false,
     postscriptName: 'GlowSans TC',
     style: 'Regular',
@@ -956,7 +897,6 @@ const fonts: WebFont[] = [
     fileName: 'GlowSansTC-Normal-Bold.otf',
     supportLangs: ['zh-tw'],
   },
-
   // GlowSans SC
   {
     family: 'GlowSans SC',
@@ -992,10 +932,9 @@ const fonts: WebFont[] = [
     postscriptName: 'Glow Sans J',
     style: 'Bold',
     weight: 700,
-    fileName: 'GlowSansSC-Normal-Bold.otf',
+    fileName: 'GlowSansJ-Normal-Bold.otf',
     supportLangs: ['ja'],
   },
-
   // 07TetsubinGothic
   {
     family: '07TetsubinGothic',
@@ -1004,9 +943,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: '07TetsubinGothic.otf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // M PLUS 1
   {
     family: 'M PLUS 1',
@@ -1015,7 +953,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Mplus1-Regular.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'M PLUS 1',
@@ -1024,9 +962,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'Mplus1-Bold.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // M PLUS 2
   {
     family: 'M PLUS 2',
@@ -1035,7 +972,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Mplus2-Regular.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'M PLUS 2',
@@ -1044,9 +981,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'Mplus2-Bold.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // M PLUS 1 Code
   {
     family: 'M PLUS 1 Code',
@@ -1055,7 +991,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Mplus1Code-Regular.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'M PLUS 1 Code',
@@ -1064,9 +1000,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'Mplus1Code-Bold.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // M PLUS Code Latin
   {
     family: 'M PLUS Code Latin',
@@ -1075,7 +1010,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'MplusCodeLatin50-Regular.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'M PLUS Code Latin',
@@ -1084,9 +1019,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'MplusCodeLatin50-Bold.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Togalite
   {
     family: 'Togalite',
@@ -1095,7 +1029,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Togalite-Regular.otf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'Togalite',
@@ -1104,9 +1038,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'Togalite-Bold.otf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Senobi Gothic
   {
     family: 'Senobi Gothic',
@@ -1115,7 +1048,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Senobi-Gothic-Regular.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'Senobi Gothic',
@@ -1124,9 +1057,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'Senobi-Gothic-Bold.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Genkaimincho
   {
     family: 'Genkaimincho',
@@ -1135,20 +1067,18 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'genkai-mincho.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
-   // SoukouMincho
-   {
+  // SoukouMincho
+  {
     family: 'SoukouMincho',
     italic: false,
     postscriptName: 'SoukouMincho',
     style: 'Regular',
     weight: 400,
     fileName: 'SoukouMincho.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Isego
   {
     family: 'Isego',
@@ -1157,9 +1087,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Isego.otf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Isemin
   {
     family: 'Isemin',
@@ -1168,9 +1097,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Isemin.otf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // HanaMinPlus
   {
     family: 'HanaMinPlus',
@@ -1179,9 +1107,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'HanaMinPlus.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // IPAexMicho
   {
     family: 'IPAexMicho',
@@ -1190,9 +1117,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'ipaexm.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // I.Ming
   {
     family: 'I.Ming',
@@ -1201,9 +1127,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'I.Ming-7.01.ttf',
-    supportLangs: ['ja','zh-tw', 'zh-cn'],
+    supportLangs: ['ja', 'zh-tw', 'zh-cn'],
   },
-
   // Koku Mincho Regular
   {
     family: 'Koku Mincho Regular',
@@ -1212,9 +1137,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'font_1_kokumr_1.00_rls.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Oradano-mincho-GSRR
   {
     family: 'Oradano-mincho-GSRR',
@@ -1223,9 +1147,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'OradanoGSRR.ttf',
-    supportLangs: ['ja','zh-tw'],
-  },  
-
+    supportLangs: ['ja', 'zh-tw'],
+  },
   // Huiwen-mincho
   {
     family: 'Huiwen-mincho',
@@ -1234,9 +1157,8 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'Huiwen-mincho.otf',
-    supportLangs: ['ja','zh-tw', 'zh-cn'],
-  },  
-
+    supportLangs: ['ja', 'zh-tw', 'zh-cn'],
+  },
   // Swei Gothic CJK TC
   {
     family: 'Swei Gothic CJK TC',
@@ -1256,7 +1178,6 @@ const fonts: WebFont[] = [
     fileName: 'SweiGothicCJKtc-Bold.ttf',
     supportLangs: ['zh-tw'],
   },
-
   // Swei Gothic CJK JP
   {
     family: 'Swei Gothic CJK JP',
@@ -1276,7 +1197,6 @@ const fonts: WebFont[] = [
     fileName: 'SweiGothicCJKjp-Bold.ttf',
     supportLangs: ['ja'],
   },
-
   // Swei Gothic CJK SC
   {
     family: 'Swei Gothic CJK SC',
@@ -1296,7 +1216,6 @@ const fonts: WebFont[] = [
     fileName: 'SweiGothicCJKsc-Bold.ttf',
     supportLangs: ['zh-cn'],
   },
-
   // Gen Jyuu Gothic
   {
     family: 'Gen Jyuu Gothic',
@@ -1305,7 +1224,7 @@ const fonts: WebFont[] = [
     style: 'Regular',
     weight: 400,
     fileName: 'GenJyuuGothic-Regular.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
   {
     family: 'Gen Jyuu Gothic',
@@ -1314,9 +1233,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'GenJyuuGothic-Bold.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // Corporate Logo Rounded ver2
   {
     family: 'Corporate Logo Rounded ver2',
@@ -1325,9 +1243,8 @@ const fonts: WebFont[] = [
     style: 'Bold',
     weight: 700,
     fileName: 'Corporate-Logo-Rounded.ttf',
-    supportLangs: ['ja','zh-tw'],
+    supportLangs: ['ja', 'zh-tw'],
   },
-
   // jf-openhuninn-1.1
   {
     family: 'jf-openhuninn-1.1',
@@ -1338,7 +1255,6 @@ const fonts: WebFont[] = [
     fileName: 'jf-openhuninn-1.1.ttf',
     supportLangs: ['zh-tw'],
   },
-
   // irohamaru
   {
     family: 'irohamaru',
@@ -1358,7 +1274,6 @@ const fonts: WebFont[] = [
     fileName: 'irohamaru-Medium.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // timemachine wa
   {
     family: 'timemachine wa',
@@ -1369,7 +1284,6 @@ const fonts: WebFont[] = [
     fileName: 'timemachine-wa.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // SetoFont
   {
     family: 'SetoFont',
@@ -1380,10 +1294,9 @@ const fonts: WebFont[] = [
     fileName: 'setofont.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // 內海字體
   {
-    family: '內海字體',
+    family: 'NaikaiFont',
     italic: false,
     postscriptName: '內海字體',
     style: 'Regular',
@@ -1392,7 +1305,7 @@ const fonts: WebFont[] = [
     supportLangs: ['zh-tw'],
   },
   {
-    family: '內海字體',
+    family: 'NaikaiFont',
     italic: false,
     postscriptName: '內海字體',
     style: 'Bold',
@@ -1400,10 +1313,9 @@ const fonts: WebFont[] = [
     fileName: 'NaikaiFont-Bold.ttf',
     supportLangs: ['zh-tw'],
   },
-
   // 內海字體 JP
   {
-    family: '內海字體',
+    family: '內海字體JP',
     italic: false,
     postscriptName: '內海字體',
     style: 'Regular',
@@ -1412,7 +1324,7 @@ const fonts: WebFont[] = [
     supportLangs: ['ja'],
   },
   {
-    family: '內海字體',
+    family: '內海字體JP',
     italic: false,
     postscriptName: '內海字體',
     style: 'Bold',
@@ -1420,7 +1332,6 @@ const fonts: WebFont[] = [
     fileName: 'NaikaiFontJP-Bold.ttf',
     supportLangs: ['ja'],
   },
-
   // Mamelon
   {
     family: 'Mamelon',
@@ -1431,7 +1342,6 @@ const fonts: WebFont[] = [
     fileName: 'Mamelon-4-Hi-Regular.otf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Ronde-B
   {
     family: 'Ronde-B',
@@ -1442,7 +1352,6 @@ const fonts: WebFont[] = [
     fileName: 'Ronde-B_square.otf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Nagurigaki Crayon
   {
     family: 'Nagurigaki Crayon',
@@ -1453,7 +1362,6 @@ const fonts: WebFont[] = [
     fileName: 'crayon_1-1.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Tanuki Permanent Marker
   {
     family: 'Tanuki Permanent Marker',
@@ -1464,7 +1372,6 @@ const fonts: WebFont[] = [
     fileName: 'TanukiMagic.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // AsobiMemogaki
   {
     family: 'AsobiMemogaki',
@@ -1475,9 +1382,8 @@ const fonts: WebFont[] = [
     fileName: 'AsobiMemogaki-Regular-1-01.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
-   // Mukasi Mukasi
-   {
+  // Mukasi Mukasi
+  {
     family: 'Mukasi Mukasi',
     italic: false,
     postscriptName: 'Mukasi Mukasi',
@@ -1486,7 +1392,6 @@ const fonts: WebFont[] = [
     fileName: 'gomarice_mukasi_mukasi.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // ShigotoMemogaki
   {
     family: 'ShigotoMemogaki',
@@ -1494,10 +1399,9 @@ const fonts: WebFont[] = [
     postscriptName: 'ShigotoMemogaki',
     style: 'Regular',
     weight: 400,
-    fileName: '001Shirokuma-Regular.otf',
+    fileName: 'ShigotoMemogaki-Regular-1-01.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // DartsFont
   {
     family: 'DartsFont',
@@ -1508,7 +1412,6 @@ const fonts: WebFont[] = [
     fileName: 'DartsFont.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Mushin
   {
     family: 'Mushin',
@@ -1519,7 +1422,6 @@ const fonts: WebFont[] = [
     fileName: 'mushin.otf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // おつとめフォント
   {
     family: 'おつとめフォント',
@@ -1530,8 +1432,7 @@ const fonts: WebFont[] = [
     fileName: 'OtsutomeFont_Ver3.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
-// 851MkPOP
+  // 851MkPOP
   {
     family: '851MkPOP',
     italic: false,
@@ -1541,7 +1442,6 @@ const fonts: WebFont[] = [
     fileName: '851MkPOP_100.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // 001Shirokuma
   {
     family: '001Shirokuma',
@@ -1552,7 +1452,6 @@ const fonts: WebFont[] = [
     fileName: '001Shirokuma-Regular.otf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // KAWAIITEGAKIMOJI
   {
     family: 'KAWAIITEGAKIMOJI',
@@ -1563,7 +1462,6 @@ const fonts: WebFont[] = [
     fileName: 'KTEGAKI.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // 851CHIKARA-DZUYOKU-KANA-B
   {
     family: '851CHIKARA-DZUYOKU-KANA-B',
@@ -1574,7 +1472,6 @@ const fonts: WebFont[] = [
     fileName: '851CHIKARA-DZUYOKU_kanaB_004.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // aoyagireisyosimo2
   {
     family: 'aoyagireisyosimo2',
@@ -1585,7 +1482,6 @@ const fonts: WebFont[] = [
     fileName: 'aoyagireisyosimo_ttf_2_01.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // AoyagiKouzanFontT
   {
     family: 'AoyagiKouzanFontT',
@@ -1596,7 +1492,6 @@ const fonts: WebFont[] = [
     fileName: '青柳衡山フォントT.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Bakudai
   {
     family: 'Bakudai',
@@ -1616,7 +1511,6 @@ const fonts: WebFont[] = [
     fileName: 'Bakudai-Bold.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Klee One
   {
     family: 'Klee One',
@@ -1636,7 +1530,6 @@ const fonts: WebFont[] = [
     fileName: 'KleeOne-Bold.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Kaisotai
   {
     family: 'Kaisotai',
@@ -1647,7 +1540,6 @@ const fonts: WebFont[] = [
     fileName: 'Kaisotai-Next-UP-B.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Makinas
   {
     family: 'Makinas',
@@ -1655,10 +1547,9 @@ const fonts: WebFont[] = [
     postscriptName: 'Makinas',
     style: 'Regular',
     weight: 400,
-    fileName: 'Makinas-Next-UP-B.ttf',
+    fileName: 'Makinas-4-Flat.otf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // 851Gkkt
   {
     family: '851Gkkt',
@@ -1669,7 +1560,6 @@ const fonts: WebFont[] = [
     fileName: '851Gkktt_005.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // Chogokuboso Gothic
   {
     family: 'Chogokuboso Gothic',
@@ -1680,7 +1570,6 @@ const fonts: WebFont[] = [
     fileName: 'chogokubosogothic_5.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-
   // BoutiqueBitmap7x7
   {
     family: 'BoutiqueBitmap7x7',
@@ -1704,7 +1593,7 @@ const applyStyle = (fontsInUse: WebFont[]): void => {
       font-style: ${font.italic ? 'italic' : 'normal'};
       font-weight: ${font.weight};
       font-display: swap;
-      src : url(https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${font.fileName});
+      src : url('https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${font.fileName}');
     }`;
   }
 
@@ -1713,10 +1602,13 @@ const applyStyle = (fontsInUse: WebFont[]): void => {
   head?.appendChild(style);
 };
 
-const getAvailableFonts = (lang: string): WebFont[] => fonts.filter((font) => {
-  if (!font.supportLangs) return true;
-  return font.supportLangs.includes(lang);
-});
+const getAvailableFonts = (lang?: string): WebFont[] => {
+  if (!lang) return fonts;
+  return fonts.filter((font) => {
+    if (!font.supportLangs) return true;
+    return font.supportLangs.includes(lang);
+  });
+};
 
 export default {
   getAvailableFonts,

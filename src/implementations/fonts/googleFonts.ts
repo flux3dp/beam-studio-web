@@ -296,7 +296,7 @@ const fonts: WebFont[] = [
     style: 'Bold Italic',
     weight: 700,
   },
-  
+
   // Arimo
   {
     family: 'Arimo',
@@ -654,9 +654,8 @@ const fonts: WebFont[] = [
     style: 'Bold Italic',
     weight: 700,
   },
-  
-   // Rubik
-   {
+  // Rubik
+  {
     family: 'Rubik',
     italic: false,
     postscriptName: 'Rubik-Regular',
@@ -798,7 +797,6 @@ const fonts: WebFont[] = [
     weight: 400,
     queryString: 'family=Pacifico',
   },
-  
   // Yomogi
   {
     family: 'Yomogi',
@@ -923,7 +921,7 @@ const fonts: WebFont[] = [
     postscriptName: 'MPLUS1p-Regular',
     style: 'Regular',
     weight: 400,
-    queryString: 'family=family=M+PLUS+1p:wght@400;700',
+    queryString: 'family=M+PLUS+1p:wght@400;700',
     supportLangs: ['ja'],
   },
   {
@@ -1039,8 +1037,8 @@ const fonts: WebFont[] = [
     supportLangs: ['ja'],
   },
 
-   // New Tegomin
-   {
+  // New Tegomin
+  {
     family: 'New Tegomin',
     italic: false,
     postscriptName: 'NewTegomin-Regular',
@@ -1048,9 +1046,9 @@ const fonts: WebFont[] = [
     weight: 400,
     queryString: 'family=New+Tegomin',
     supportLangs: ['ja', 'zh-tw'],
-  }, 
+  },
 
-// ZCOOL XiaoWei
+  // ZCOOL XiaoWei
   {
     family: 'ZCOOL XiaoWei',
     italic: false,
@@ -1093,7 +1091,7 @@ const fonts: WebFont[] = [
     queryString: 'family=ZCOOL+KuaiLe',
     supportLangs: ['zh-cn'],
   },
-  
+
   // Long Cang
   {
     family: 'Long Cang',

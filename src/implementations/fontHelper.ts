@@ -1,3 +1,4 @@
+import progressCaller from 'app/actions/progress-caller';
 import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
 import getUtilWS from 'helpers/api/utils-ws';
 import i18n from 'helpers/i18n';
@@ -98,14 +99,65 @@ export default {
     const utilWS = getUtilWS();
     const font = availableFonts.find((f) => f.postscriptName === postscriptName);
     const fileName = font?.fileName || `${postscriptName}.ttf`;
-    const isExisting = await utilWS.checkExist(`/usr/share/fonts/beam-studio/${fileName}`);
+    const isExisting = await utilWS.checkExist(`/usr/share/fonts/truetype/${fileName}`);
     if (!isExisting) {
+      let isCanceled = false;
+      await progressCaller.openSteppingProgress({
+        id: 'fetch-web-font',
+        message: 't取得線上字體中',
+        onCancel: () => {
+          isCanceled = true;
+        },
+      });
       const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
-      const resp = await fetch(url);
-      if (resp.status !== 200) return false;
+      let resp = await fetch(url) as Response;
+      const contentLength = resp.headers.get('content-length') as string;
+      const total = parseInt(contentLength, 10);
+      let loaded = 0;
+      resp = new Response(new ReadableStream({
+        async start(controller) {
+          const reader = resp.body?.getReader();
+          if (!reader) {
+            controller.close();
+            return;
+          }
+          let done = false;
+          while (!done) {
+            // eslint-disable-next-line no-await-in-loop
+            const result = await reader.read();
+            done = result.done;
+            if (done) break;
+            const { value } = result;
+            if (value) {
+              loaded += value.byteLength;
+              progressCaller.update('fetch-web-font', { percentage: (loaded / total) * 100 });
+            }
+            controller.enqueue(value);
+          }
+          controller.close();
+        },
+      }));
+      if (resp.status !== 200) {
+        progressCaller.popById('fetch-web-font');
+        return false;
+      }
+
       const blob = await resp.blob();
-      const res = await utilWS.uploadTo(blob, `/usr/share/fonts/beam-studio/${fileName}`);
-      if (!res) return false;
+      if (isCanceled) {
+        progressCaller.popById('fetch-web-font');
+        return false;
+      }
+      progressCaller.update('fetch-web-font', { message: 't上傳字體到機器中', percentage: 0 });
+      try {
+        const res = await utilWS.uploadTo(blob, `/usr/share/fonts/truetype/${fileName}`, (progress: number) => {
+          progressCaller.update('fetch-web-font', { percentage: 100 * progress });
+        });
+        progressCaller.popById('fetch-web-font');
+        if (!res || isCanceled) return false;
+      } catch (e) {
+        progressCaller.popById('fetch-web-font');
+        return false;
+      }
     }
     return true;
   },
