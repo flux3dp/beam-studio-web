@@ -5,6 +5,7 @@ import i18n from 'helpers/i18n';
 import { sender } from 'implementations/communicator';
 
 import fontNameMap from './fonts/fontNameMap';
+import previewSourceMap from './fonts/fontPreviewSrc';
 import googleFonts from './fonts/googleFonts';
 import webFonts from './fonts/webFonts';
 
@@ -114,6 +115,8 @@ export default {
       const contentLength = resp.headers.get('content-length') as string;
       const total = parseInt(contentLength, 10);
       let loaded = 0;
+
+      // getting progress of fetch
       resp = new Response(new ReadableStream({
         async start(controller) {
           const reader = resp.body?.getReader();
@@ -161,4 +164,5 @@ export default {
     }
     return true;
   },
+  getWebFontPreviewUrl: (fontFamily: string) => (previewSourceMap[fontFamily] || null),
 } as FontHelper;

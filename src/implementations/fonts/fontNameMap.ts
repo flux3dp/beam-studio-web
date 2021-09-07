@@ -1,4 +1,4 @@
-const googlefontNameMap: { [ family: string]: string } = {
+const fontNameMap: { [ family: string]: string } = {
   'Noto Sans TC': '思源黑體 TC',
   'Noto Sans HK': '思源黑體 HK',
   'Noto Sans SC': '思源黑体 SC',
@@ -48,6 +48,7 @@ const googlefontNameMap: { [ family: string]: string } = {
   TaipeiSansTC: '台北黑體',
   'GenEi Gothic M': '源暎ゴシックM',
   'Chiron Sans HK Pro': '昭源黑體',
+  'Huayuan Gothic': '樺源黑體',
   'Glow Sans TC': '未来熒黑',
   'Glow Sans SC': '未来荧黑',
   'Glow Sans J': 'ヒカリ角ゴ',
@@ -56,8 +57,8 @@ const googlefontNameMap: { [ family: string]: string } = {
   'Senobi Gothic': 'せのびゴシック',
   Genkaimincho: '源界明朝',
   SoukouMincho: '装甲明朝',
-  Isego: '異世明',
-  Isemin: '異世ゴ',
+  Isego: '異世ゴ',
+  Isemin: '異世明',
   HanaMinPlus: '花園明朝',
   IPAexMicho: 'IPA 明朝',
   'I.Ming': '一點明',
@@ -83,6 +84,7 @@ const googlefontNameMap: { [ family: string]: string } = {
   'Mukasi Mukasi': '昔々ふぉんと',
   ShigotoMemogaki: '仕事メモ書き',
   DartsFont: 'ダーツフォント',
+  Mushin: '無心',
   '851MkPOP': '851 マカポップ',
   '001Shirokuma': 'しろくまフォント',
   KAWAIITEGAKIMOJI: 'KAWAII 手書き文字',
@@ -93,12 +95,9 @@ const googlefontNameMap: { [ family: string]: string } = {
   Kaisotai: '廻想体',
   Makinas: 'マキナス',
   '851Gkkt': '851 ゴチカクット',
-  'Chogokuboso Gothic': '游ゴシック体',
+  '851CHIKARA-DZUYOKU-KANA-B': '851 チカラヅヨク',
+  'Chogokuboso Gothic': '超極細ゴシック',
   BoutiqueBitmap7x7: '精品點陣體7×7',
-};
-
-const fontNameMap: { [ family: string]: string } = {
-  ...googlefontNameMap,
 };
 
 export default fontNameMap;

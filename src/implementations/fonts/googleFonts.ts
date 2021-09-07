@@ -932,7 +932,16 @@ const fonts: WebFont[] = [
     weight: 700,
     supportLangs: ['ja'],
   },
-
+  // Sawarabi Mincho
+  {
+    family: 'Sawarabi Mincho',
+    italic: false,
+    postscriptName: 'SawarabiMincho-Regular',
+    style: 'Regular',
+    weight: 400,
+    queryString: 'family=Sawarabi+Mincho',
+    supportLangs: ['ja'],
+  },
   // Sawarabi Gothic
   {
     family: 'Sawarabi Gothic',

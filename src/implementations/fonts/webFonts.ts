@@ -348,6 +348,16 @@ const fonts: WebFont[] = [
     fileName: 'Allura-Regular.otf',
     supportLangs: ['en', 'es', 'de'],
   },
+  // Cedarville-Cursive
+  {
+    family: 'Cedarville-Cursive',
+    italic: false,
+    postscriptName: 'CedarvilleCursive-Regular',
+    style: 'Regular',
+    weight: 400,
+    fileName: 'Cedarville-Cursive.ttf',
+    supportLangs: ['en', 'es', 'de'],
+  },
   // Robert
   {
     family: 'Robert',
@@ -1317,7 +1327,7 @@ const fonts: WebFont[] = [
   {
     family: '內海字體JP',
     italic: false,
-    postscriptName: '內海字體',
+    postscriptName: '內海字體JP',
     style: 'Regular',
     weight: 400,
     fileName: 'NaikaiFontJP-Regular.ttf',
@@ -1326,7 +1336,7 @@ const fonts: WebFont[] = [
   {
     family: '內海字體JP',
     italic: false,
-    postscriptName: '內海字體',
+    postscriptName: '內海字體JP',
     style: 'Bold',
     weight: 700,
     fileName: 'NaikaiFontJP-Bold.ttf',
