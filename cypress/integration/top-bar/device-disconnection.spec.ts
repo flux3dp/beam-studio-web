@@ -14,4 +14,9 @@ describe('verify top bar behaviors under device disconnection', () => {
     cy.get('div.go-btn').click();
     cy.get('pre.message').contains('#801');
   });
+
+  it('path-preview button is disabled when no machine', () => {
+    cy.get('div.path-preview-button').should('exist');
+    cy.get('div.path-preview-button-container').should('have.class', 'disabled');
+  });
 });
