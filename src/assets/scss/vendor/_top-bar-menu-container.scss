@@ -306,7 +306,8 @@
   }
 
   .rc-menu__item--type-checkbox.rc-menu__item--checked::before {
-    content: "✔";
+    content: "✓";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
   }
 
   .rc-menu__submenu>.rc-menu__item {

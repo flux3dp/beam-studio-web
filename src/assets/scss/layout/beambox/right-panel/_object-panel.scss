@@ -258,6 +258,15 @@
 
           .react-select__option {
             font-size: 12px;
+            img {
+              height: 10px;
+            }
+          }
+
+          .react-select__option--is-selected {
+            img {
+              filter: brightness(0) invert(1);
+            }
           }
 
           &.no-triangle {

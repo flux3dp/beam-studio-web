@@ -179,6 +179,10 @@
     padding: 0 8px;
     margin: 0 3px 0 0;
     cursor: pointer;
+    &.disabled {
+      opacity: 0.2;
+      pointer-events: none;
+    }
     .path-preview-button {
       cursor: pointer;
       width: 24px;
