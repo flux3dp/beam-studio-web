@@ -30,7 +30,7 @@ const openFileDialog = (options: {
   input.setAttribute('type', 'file');
   if (filters) {
     let acceptAll = false;
-    const accept = [];
+    const accept = [] as string[];
     for (let i = 0; i < filters.length; i += 1) {
       const filter = filters[i];
       for (let j = 0; j < filter.extensions.length; j += 1) {
@@ -51,6 +51,7 @@ const openFileDialog = (options: {
     }
   }
   return new Promise((resolve) => {
+    input.value = '';
     lastPromiseResolve = resolve;
     input.onchange = () => {
       const { files, value } = input;
