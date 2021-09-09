@@ -98,9 +98,21 @@
     }
   }
 
+  .menu-btn-container {
+    height: 40px;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   .icon {
-    width: 30px;
-    margin: 5px;
+    height: 40px;
+  }
+
+  .icon-arrow {
+    height: 40px;
+    margin-left: -15px;
   }
 
   .rc-menu-container {
