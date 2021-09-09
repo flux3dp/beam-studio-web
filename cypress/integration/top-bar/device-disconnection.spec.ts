@@ -15,9 +15,8 @@ describe('verify top bar behaviors under device disconnection', () => {
     cy.get('pre.message').contains('#801');
   });
 
-  it('show #801 while clicking on path-preview button', () => {
+  it('path-preview button is disabled when no machine', () => {
     cy.get('div.path-preview-button').should('exist');
-    cy.get('div.path-preview-button').click();
-    cy.get('pre.message').contains('#801');
+    cy.get('div.path-preview-button-container').should('have.class', 'disabled');
   });
 });

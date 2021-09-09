@@ -15,6 +15,15 @@ describe('drawing', () => {
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Rectangle');
     cy.get('div#object-panel').should('exist');
 
+    cy.get('#selectorGrip_resize_ne').first().should(($grip) => {
+      expect(+$grip.attr("cx")).to.be.closeTo(301,1);
+      expect(+$grip.attr("cy")).to.be.closeTo(99.5,1);
+    });
+    cy.get('#selectorGrip_resize_sw').first().should(($grip) => {
+      expect(+$grip.attr("cx")).to.be.closeTo(100,1);
+      expect(+$grip.attr("cy")).to.be.closeTo(200,1);
+    });
+
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', '#000');
   });
@@ -30,6 +39,9 @@ describe('drawing', () => {
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'none');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Oval');
     cy.get('div#object-panel').should('exist');
+
+    cy.get('#selectorGrip_resize_ne').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(400,2);});
+    cy.get('#selectorGrip_resize_sw').first().should(($grip) => {expect(+$grip.attr("cy")).to.be.closeTo(400,2);});
 
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', '#000');
@@ -47,11 +59,12 @@ describe('drawing', () => {
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Polygon');
     cy.get('div#object-panel').should('exist');
 
+    cy.get('#selectorGrip_resize_ne').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(453,2);});
+    cy.get('#selectorGrip_resize_sw').first().should(($grip) => {expect(+$grip.attr("cy")).to.be.closeTo(453,2);});
     cy.wait(500);
 
     cy.get('div.option-input > input').clear().type('8').blur();
     cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
-
     cy.get('div.onoffswitch').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'black');
   });
@@ -64,9 +77,12 @@ describe('drawing', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
 
+    cy.get('#selectorGrip_resize_ne').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(301,1);});
+    cy.get('#selectorGrip_resize_nw').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(100,1);});
+
     cy.get('#svg_1').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Line');
-    cy.get('div#object-panel').should('exist')
+    cy.get('div#object-panel').should('exist');
   });
 
   it('pen', () => {
@@ -84,6 +100,11 @@ describe('drawing', () => {
 
     cy.get('#svg_1').should('exist');
     cy.get('div#pathedit-panel').should('exist');
+
+    cy.get('#pathpointgrip_0').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(100,1);});
+    cy.get('#pathpointgrip_1').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(300,1);});
+    cy.get('#pathpointgrip_2').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(301,1);});
+    cy.get('#pathpointgrip_3').first().should(($grip) => {expect(+$grip.attr("cx")).to.be.closeTo(100,1);});
   });
 
   it('text', () => {
