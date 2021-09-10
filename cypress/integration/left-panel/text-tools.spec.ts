@@ -46,16 +46,16 @@ it('letter spacing', () => {
 });
 
 it('line spacing', () => {
-  cy.realPress("Tab");
+  cy.realPress('Tab');
   cy.get('#svg_1').dblclick({ force: true });
-  cy.realPress(["Shift", "Enter"]);
+  cy.realPress(['Shift', 'Enter']);
   cy.realType('LINE SPACING TEST');
   cy.get('#svg_1').should('include.text', 'TEST TEXT FONTLINE SPACING TEST');
   cy.get(':nth-child(5) > div.option-input > input').clear().type('1.5').blur();
   cy.get('#svg_1').should('have.attr', 'data-line-spacing').and('eq', '1.5');
 
   cy.get('#svg_2').dblclick({ force: true });
-  cy.realPress(["Shift", "Enter"]);
+  cy.realPress(['Shift', 'Enter']);
   cy.realType('LINE SPACING TEST');
   cy.get('#svg_2').should('include.text', 'TEST TEXT STYLELINE SPACING TEST');
   cy.get(':nth-child(5) > div.option-input > input').clear().type('5').blur();
