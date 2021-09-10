@@ -7,6 +7,6 @@ it('rounded corner', () => {
   cy.get('#svg_1').should('exist');
 
   cy.get('.option-input > input').dblclick().clear().type('30').blur();
-  cy.get('.option-input > input').should('have.attr', 'value').and('eq' ,'30.00');
+  cy.get('.option-input > input').should('have.attr', 'value').and('eq', '30.00');
   cy.get('#svg_1').should('have.attr', 'rx').and('eq', '300');
 });

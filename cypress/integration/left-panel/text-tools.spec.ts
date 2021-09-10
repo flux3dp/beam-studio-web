@@ -81,15 +81,3 @@ it('infill', () => {
   cy.get(':nth-child(7) > .onoffswitch > .onoffswitch-label > .onoffswitch-switch').click();
   cy.get('#svg_2').should('have.attr', 'fill').and('eq', '#000000');
 });
-
-it('convert to path', () => {
-  cy.get('#svg_1').click({ force: true });
-  cy.get('#convert_to_path').click();
-  cy.get('#svg_3').should('exist');
-  cy.get('.actions-panel').should('exist');
-
-  cy.get('#svg_2').click({ force: true });
-  cy.get('#convert_to_path').click();
-  cy.get('#svg_4').should('exist');
-  cy.get('.actions-panel').should('exist');
-});
