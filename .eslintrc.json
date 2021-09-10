@@ -1,6 +1,7 @@
 {
   "root": true,
   "extends": [
+    "plugin:cypress/recommended",
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended"
@@ -11,7 +12,8 @@
     "es6": true,
     "node": true,
     "mocha": true,
-    "builtin": true
+    "builtin": true,
+    "cypress/globals": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -22,6 +24,7 @@
     "sourceType": "module"
   },
   "plugins": [
+    "cypress",
     "react",
     "@typescript-eslint"
   ],
@@ -35,6 +38,11 @@
     "_": false
   },
   "rules": {
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    "cypress/no-async-tests": "error",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/no-static-element-interactions": "off",

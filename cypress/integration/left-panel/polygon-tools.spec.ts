@@ -13,11 +13,10 @@ it('change sides by keyboard', () => {
 });
 
 it('lock rotate by shift', () => {
-  cy.get('#svg_1').trigger('keydown', { keyCode: 16 });
+  cy.get('#svg_1').click({ force: true });
   cy.get('#selectorGrip_rotate')
-    .trigger('keydown', { keyCode: 16, release: false })
-    .trigger('mousedown', { which: 1, pageX: 100, pageY: 100 })
-    .trigger('mousemove', { which: 1, pageX: 200, pageY: 200 })
+    .trigger('mousedown', { which: 1, pageX: 100, pageY: 100 , shiftKey: true })
+    .trigger('mousemove', { which: 1, pageX: 200, pageY: 200 , shiftKey: true })
     .trigger('mouseup')
-    .trigger('keydup', { keyCode: 16, release: true })
+  cy.get('#rotate').should('have.attr', 'value').and('eq', '-135');
 });
