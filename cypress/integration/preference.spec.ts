@@ -1,6 +1,6 @@
 describe('update the preference', () => {
   before(() => {
-    cy.landing();
+    cy.landingEditor();
   });
 
   it('go to the preference page', () => {

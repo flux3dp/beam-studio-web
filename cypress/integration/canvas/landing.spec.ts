@@ -32,16 +32,22 @@ describe('landing', () => {
   });
 
   it('land to canvas', () => {
+    window.localStorage.setItem('new-user', 'true');
     cy.url().should('contain', '#/studio/beambox');
+
+    // Sentry
     cy.get('div.modal-body').should('exist');
     cy.get('button[data-test-key="no"]').click();
 
+    // Camera Calibration
+    cy.get('div.modal-body').should('exist');
+    cy.get('button[data-test-key="no"]').click();
     cy.get('div.modal-body').should('exist');
     cy.get('button[data-test-key="ok"]').click();
 
+    // Tutorial
     cy.get('div.modal-body').should('exist');
     cy.get('button[data-test-key="no"]').click();
-
     cy.get('div.modal-body').should('exist');
     cy.get('button[data-test-key="ok"]').click();
 

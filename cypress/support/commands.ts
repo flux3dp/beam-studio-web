@@ -30,10 +30,14 @@ Cypress.Commands.add('landing', (opts = {}) => {
 Cypress.Commands.add('landingEditor', (opts = {}) => {
   window.localStorage.setItem('printer-is-ready', 'true');
   window.localStorage.setItem('keep-flux-id-login', 'true');
+  window.localStorage.setItem('enable-sentry', '0');
+  window.localStorage.setItem('alert-config', JSON.stringify({
+    'skip-interface-tutorial': true,
+  }));
+  window.localStorage.setItem('last-installed-version', 'web');
+  window.localStorage.setItem('questionnaire-version', '9999');
   cy.visit('/', opts);
-  cy.get('button[data-test-key="no"]').click();
-  cy.get('button.primary').click();
-  cy.get('button[data-test-key="no"]').click();
+  cy.wait(500);
 });
 //
 //

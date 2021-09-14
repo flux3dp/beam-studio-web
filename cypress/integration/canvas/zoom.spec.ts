@@ -1,5 +1,5 @@
 it('zoom in/out', () => {
-  cy.landing();
+  cy.landingEditor();
 
   cy.get('div.zoom-btn.zoom-out').should('exist');
   cy.get('div.zoom-ratio').should('exist');
