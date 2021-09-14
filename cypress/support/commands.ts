@@ -10,23 +10,6 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('landing', (opts = {}) => {
-  const username = Cypress.env('username');
-  const password = Cypress.env('password');
-  cy.visit('/', opts);
-  cy.get('select#select-lang').select('en');
-  cy.get('a.btn').click();
-  cy.get('input#email-input').type(username);
-  cy.get('input#password-input').type(password);
-  cy.get('div.remember-me').click();
-  cy.get('div.primary').click();
-  cy.get('div.btn-page').click();
-  cy.get('button[data-test-key="no"]').click();
-  cy.get('button[data-test-key="ok"]').click();
-  cy.get('button[data-test-key="no"]').click();
-  cy.get('button[data-test-key="ok"]').click();
-});
-
 Cypress.Commands.add('landingEditor', (opts = {}) => {
   const username = Cypress.env('username');
   const password = Cypress.env('password');
