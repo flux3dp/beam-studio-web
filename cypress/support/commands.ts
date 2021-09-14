@@ -28,6 +28,9 @@ Cypress.Commands.add('landing', (opts = {}) => {
 });
 
 Cypress.Commands.add('landingEditor', (opts = {}) => {
+  const username = Cypress.env('username');
+  const password = Cypress.env('password');
+
   window.localStorage.setItem('printer-is-ready', 'true');
   window.localStorage.setItem('keep-flux-id-login', 'true');
   window.localStorage.setItem('enable-sentry', '0');
@@ -36,7 +39,12 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   }));
   window.localStorage.setItem('last-installed-version', 'web');
   window.localStorage.setItem('questionnaire-version', '9999');
-  cy.visit('/', opts);
+  cy.visit('/#/initialize/connect/flux-id-login', opts);
+  cy.get('input#email-input').type(username);
+  cy.get('input#password-input').type(password);
+  cy.get('div.primary').click();
+  cy.get('button[data-test-key="ok"]').click();
+  // time for svgcanvas loading
   cy.wait(500);
 });
 //
