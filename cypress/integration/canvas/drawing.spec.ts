@@ -1,6 +1,6 @@
 describe('drawing', () => {
   beforeEach(() => {
-    cy.landing();
+    cy.landingEditor();
   });
 
   it('rectangle', () => {
