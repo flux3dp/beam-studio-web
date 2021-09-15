@@ -1,6 +1,6 @@
 describe('manipulate layers', () => {
   before(() => {
-    cy.landing();
+    cy.landingEditor();
   });
 
   it('the side panel and its components should exist', () => {

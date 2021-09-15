@@ -1,6 +1,6 @@
 describe('verify shortcuts', () => {
   before(() => {
-    cy.landing();
+    cy.landingEditor();
   });
 
   it('jump to the preference page', () => {
