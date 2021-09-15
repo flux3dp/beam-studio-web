@@ -1,5 +1,5 @@
 it('curve', () => {
-  cy.landing();
+  cy.landingEditor();
   cy.get('div#left-Pen>img').click();
 
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
