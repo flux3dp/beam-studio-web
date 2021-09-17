@@ -1,5 +1,5 @@
 it('top align', () => {
-  cy.landing();
+  cy.landingEditor();
   cy.get('div#left-Rectangle>img').click();
   cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });

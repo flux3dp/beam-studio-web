@@ -1,5 +1,5 @@
 it('text font', () => {
-  cy.landing();
+  cy.landingEditor();
   cy.get('div#left-Text>img').click();
   cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
 

@@ -1,5 +1,5 @@
 it('change sides by keyboard', () => {
-  cy.landing();
+  cy.landingEditor();
   cy.get('div#left-Polygon>img').click();
   cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
