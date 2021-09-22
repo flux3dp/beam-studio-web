@@ -30,5 +30,5 @@ describe('object change tools', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
     cy.wait(500);
-  }
+  };
 });
