@@ -44,7 +44,7 @@ Cypress.Commands.add('uploadFile', (fileName, fileType) => {
         return cy.wrap($input).first().trigger('change', { force: true });
       });
   });
-})
+});
 //
 //
 // -- This is a child command --
