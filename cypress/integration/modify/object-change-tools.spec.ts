@@ -18,7 +18,7 @@ describe('object change tools', () => {
 
   it('change object size by hand movement', () => {
     cy.get('#width').type('{selectall}{backspace}150').blur();
-    cy.get('#height').type('{selectall}{backspace}150');
+    cy.get('#height').type('{selectall}{backspace}150').blur();
     cy.get('#width').should('have.value', '150');
     cy.get('#height').should('have.value', '150');
   });
@@ -29,5 +29,6 @@ describe('object change tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
+    cy.wait(500);
   }
 });
