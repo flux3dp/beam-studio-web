@@ -1,7 +1,7 @@
 .settings-studio {
   background-color: #f8f8f8;
   overflow: scroll;
-  height: 100vh;
+  position: absolute;
 
   header {
     height: 47px;
@@ -152,9 +152,9 @@
         }
 
         span.unit {
-          margin-left: -30px;
+          margin-left: -35px;
           margin-right: 30px;
-          font-size: 10px;
+          font-size: 12px;
         }
       }
     }
