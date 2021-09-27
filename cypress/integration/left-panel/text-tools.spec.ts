@@ -28,21 +28,21 @@ describe('select tools', () => {
 
   it('text size', () => {
     cy.get('#svg_1').click();
-    cy.get(':nth-child(3) > div.option-input > input').clear().type('200').blur();
+    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('200').blur();
     cy.get('#svg_1').should('have.attr', 'font-size').and('eq', '200');
 
     cy.get('#svg_2').click();
-    cy.get(':nth-child(3) > div.option-input > input').clear().type('50').blur();
+    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('50').blur();
     cy.get('#svg_2').should('have.attr', 'font-size').and('eq', '50');
   });
 
   it('text letter spacing', () => {
     cy.get('#svg_1').click();
-    cy.get(':nth-child(4) > div.option-input > input').clear().type('0.5').blur();
+    cy.get(':nth-child(4) > div.option-input > input').clear({ force: true }).type('0.5').blur();
     cy.get('#svg_1').should('have.attr', 'letter-spacing').and('eq', '0.5em');
 
     cy.get('#svg_2').click();
-    cy.get(':nth-child(4) > div.option-input > input').clear().type('1.5').blur();
+    cy.get(':nth-child(4) > div.option-input > input').clear({ force: true }).type('1.5').blur();
     cy.get('#svg_2').should('have.attr', 'letter-spacing').and('eq', '1.5em');
   });
 
