@@ -103,9 +103,10 @@ export default {
     const isExisting = await utilWS.checkExist(`/usr/share/fonts/truetype/${fileName}`);
     if (!isExisting) {
       let isCanceled = false;
+      let message = i18n.lang.beambox.right_panel.object_panel.actions_panel.fetching_web_font;
       await progressCaller.openSteppingProgress({
         id: 'fetch-web-font',
-        message: 't取得線上字體中',
+        message,
         onCancel: () => {
           isCanceled = true;
         },
@@ -150,7 +151,8 @@ export default {
         progressCaller.popById('fetch-web-font');
         return false;
       }
-      progressCaller.update('fetch-web-font', { message: 't上傳字體到機器中', percentage: 0 });
+      message = i18n.lang.beambox.right_panel.object_panel.actions_panel.uploading_font_to_machine;
+      progressCaller.update('fetch-web-font', { message, percentage: 0 });
       try {
         const res = await utilWS.uploadTo(blob, `/usr/share/fonts/truetype/${fileName}`, (progress: number) => {
           progressCaller.update('fetch-web-font', { percentage: 100 * progress });
