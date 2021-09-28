@@ -4,7 +4,7 @@ it('rounded corner', () => {
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-  cy.get('div.option-input > input').dblclick();
-  cy.get('div.option-input > input').clear().type('40').blur();
+  cy.get('div.option-input > input').dblclick({ force: true });
+  cy.get('div.option-input > input').clear({ force: true }).type('40').blur();
   cy.get('#svg_1').should('have.attr', 'rx').and('eq', '400');
 });
