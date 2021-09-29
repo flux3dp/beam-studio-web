@@ -3,19 +3,17 @@ describe('array tools', () => {
     cy.landingEditor();
   });
 
-  afterEach(() => {
-    checkTitle();
-  });
-
   it('image', () => {
     cy.uploadFile('flux.png', 'image/png');
-    setValue();
+    doAllThing();
     cy.wait(500);
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '1');
       cy.get(el).should('id', 'svg_5');
     });
+    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+    checkAmount();
   });
 
   it('geometry', () => {
@@ -24,12 +22,14 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
-    setValue();
+    doAllThing();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '1');
       cy.get(el).should('id', 'svg_5');
     });
+    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+    checkAmount();
   });
 
   it('path', () => {
@@ -38,24 +38,28 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
-    setValue();
+    doAllThing();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '1');
       cy.get(el).should('id', 'svg_5');
     });
+    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+    checkAmount();
   });
 
   it('text', () => {
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 }).realType('Test Array');
     cy.wait(500);
-    setValue();
+    doAllThing();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '1');
       cy.get(el).should('id', 'svg_8');
     });
+    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+    checkAmount();
   });
 
   it('group', () => {
@@ -66,11 +70,17 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#group > img').click();
     cy.wait(500);
-    setValue();
+    doAllThing();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '1');
       cy.get(el).should('id', 'svg_17');
+    });
+    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+    cy.get('div#left-Cursor>img').click();
+    cy.window().then((win) => {
+      const amount = win.eval('svgCanvas.getVisibleElements()');
+      cy.get(amount).should('length', '8');
     });
   });
 
@@ -84,15 +94,21 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
-    setValue();
+    doAllThing();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '1');
       cy.get(el).should('id', 'svg_13');
     });
+    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+    cy.get('div#left-Cursor>img').click();
+    cy.window().then((win) => {
+      const amount = win.eval('svgCanvas.getVisibleElements()');
+      cy.get(amount).should('length', '8');
+    });
   });
 
-  function setValue() {
+  function doAllThing() {
     cy.get('div#left-Cursor>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
@@ -105,7 +121,11 @@ describe('array tools', () => {
     cy.get('.primary').click();
   };
 
-  function checkTitle() {
-    cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
+  function checkAmount() {
+    cy.get('div#left-Cursor>img').click();
+    cy.window().then((win) => {
+      const amount = win.eval('svgCanvas.getVisibleElements()');
+      cy.get(amount).should('length', '4');
+    });
   };
 });
