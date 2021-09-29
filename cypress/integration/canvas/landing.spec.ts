@@ -40,16 +40,23 @@ describe('landing', () => {
     cy.get('button[data-test-key="no"]').click();
 
     // Camera Calibration
-    cy.get('div.modal-body').should('exist');
-    cy.get('button[data-test-key="no"]').click();
-    cy.get('div.modal-body').should('exist');
-    cy.get('button[data-test-key="ok"]').click();
-
+    cy.get('body')
+      .then((body) => {
+        if (body.find('div.modal-body').length > 0) {
+          cy.get('button[data-test-key="no"]').click();
+          cy.get('div.modal-body').should('exist');
+          cy.get('button[data-test-key="ok"]').click();
+        }
+      });
     // Tutorial
-    cy.get('div.modal-body').should('exist');
-    cy.get('button[data-test-key="no"]').click();
-    cy.get('div.modal-body').should('exist');
-    cy.get('button[data-test-key="ok"]').click();
+    cy.get('body')
+      .then((body) => {
+        if (body.find('div.modal-body').length > 0) {
+          cy.get('button[data-test-key="no"]').click();
+          cy.get('div.modal-body').should('exist');
+          cy.get('button[data-test-key="ok"]').click();
+        }
+      });
 
     cy.get('#root')
       .find('div')
