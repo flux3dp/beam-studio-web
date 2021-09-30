@@ -19,6 +19,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   window.localStorage.setItem('enable-sentry', '0');
   window.localStorage.setItem('alert-config', JSON.stringify({
     'skip-interface-tutorial': true,
+    'done-first-cali': true,
   }));
   window.localStorage.setItem('last-installed-version', 'web');
   window.localStorage.setItem('questionnaire-version', '9999');

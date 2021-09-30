@@ -30,6 +30,10 @@ const openFileDialog = (options: {
   input.setAttribute('type', 'file');
   if (filters) {
     let acceptAll = false;
+    // Accept all file for pads
+    if ('ontouchstart' in window && ['MacOS', 'others'].includes(window.os)) {
+      acceptAll = true;
+    }
     const accept = [] as string[];
     for (let i = 0; i < filters.length; i += 1) {
       const filter = filters[i];
