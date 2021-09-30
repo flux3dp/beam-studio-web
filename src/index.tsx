@@ -10,7 +10,6 @@ import './hotkeys';
 
 import storage from 'implementations/storage';
 import router from 'app/router';
-import { getInfo } from 'helpers/api/flux-id';
 
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line no-console
@@ -18,14 +17,24 @@ if (process.env.NODE_ENV !== 'production') {
   window.FLUX.dev = true;
 }
 
-const { hash } = window.location;
+const checkScreenSize = () => {
+  const { hash } = window.location;
+  if (Math.max(window.screen.width, window.screen.height) < 1024
+  && hash !== '#/error/screen-size') {
+    window.location.hash = '#/error/screen-size';
+  }
+};
+
 const onFinished = (data) => {
+  const { hash } = window.location;
   const isReady = data;
   if (isReady === true && (hash === '' || hash.startsWith('#initialize'))) {
     window.location.hash = '#studio/beambox';
   } else if (isReady === false && !hash.startsWith('#initialize')) {
     window.location.hash = '#';
   }
+  checkScreenSize();
+  window.addEventListener('hashchange', checkScreenSize);
   router(document.getElementById('root'));
 };
 onFinished(storage.get('printer-is-ready'));
