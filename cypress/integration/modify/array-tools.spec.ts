@@ -113,6 +113,7 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.wait(500);
     cy.get('#array').click();
     cy.get('#columns').clear().type('2').blur();
     cy.get('#rows').clear().type('2').blur();

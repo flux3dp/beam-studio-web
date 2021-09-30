@@ -67,14 +67,14 @@ describe('group tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_3').should('exist');
-  }
+  };
 
   function selectAll() {
     cy.get('div#left-Cursor>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-  }
+  };
 
   function drawingObjInDiffLayer() {
     cy.get('div#left-Rectangle>img').click();
@@ -95,5 +95,5 @@ describe('group tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-  }
+  };
 });

@@ -18,7 +18,7 @@ describe('polygen tools', () => {
     cy.get('#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, pageX: 100, pageY: 100, shiftKey: true })
       .trigger('mousemove', { which: 1, pageX: 200, pageY: 200, shiftKey: true })
-      .trigger('mouseup')
+      .trigger('mouseup');
     cy.get('#rotate').should('have.attr', 'value').and('eq', '-135');
   });
 });

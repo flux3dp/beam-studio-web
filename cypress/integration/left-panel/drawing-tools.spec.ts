@@ -17,4 +17,4 @@ function checkActive(activeItem) {
     cy.get(`div#${item}`).should('exist');
     cy.get(`div#${item}`).should(item == activeItem ? 'have.class' : 'not.have.class', 'active');
   });
-}
+};
