@@ -38,11 +38,6 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 }).realType('Test Array');
     cy.wait(500);
     doAllThing();
-    cy.window().then((win) => {
-      const el = win.eval('svgCanvas.getSelectedElems()');
-      cy.get(el).should('length', '1');
-      cy.get(el).should('id', 'svg_8');
-    });
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
     cy.get('text').should('have.length', '4');
   });
