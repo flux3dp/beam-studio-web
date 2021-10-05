@@ -46,6 +46,12 @@ Cypress.Commands.add('uploadFile', (fileName, fileType) => {
       });
   });
 });
+
+Cypress.Commands.add("dragTo", { prevSubject: "element" }, (subject, targetEl) => {
+  cy.wrap(subject).trigger("dragstart");
+  cy.get(targetEl).trigger("drop");
+  cy.get(targetEl).trigger("dragend");
+});
 //
 //
 // -- This is a child command --
