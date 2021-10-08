@@ -55,6 +55,12 @@ describe('manipulate layers', () => {
     cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(51, 51, 51);');
   });
 
+  it('drag the layer ', () => {
+    cy.get('div.add-layer-btn').dblclick();
+    cy.get('div.layer[data-test-key="layer-2"]').dragTo('[data-index="0"]');
+    cy.get('div.layer div.layername').should('have.text', 'Layer 2Layer 1Layer 3');
+  });
+
   it('lock the layer ', () => {
     cy.get('div.layer:nth-child(1)').trigger('mousedown', { button: 2 });
     cy.get('#locklayer').click({ force: true });
