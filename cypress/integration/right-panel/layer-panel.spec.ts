@@ -58,7 +58,7 @@ describe('manipulate layers', () => {
   it('drag the layer ', () => {
     cy.get('div.add-layer-btn').dblclick();
     cy.get('div.layer[data-test-key="layer-2"]').dragTo('[data-index="0"]');
-    cy.get('div.layer div.layername').should('have.text', 'Layer 2Layer 1Layer 3');
+    cy.get('#layerlist').children().first().should('have.attr', 'data-test-key', 'layer-2');
   });
 
   it('lock the layer ', () => {
