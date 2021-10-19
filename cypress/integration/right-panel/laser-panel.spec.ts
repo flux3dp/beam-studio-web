@@ -185,6 +185,19 @@ describe('manipulate laser panel', () => {
     checkValue(100, 10, 1);
   });
 
+  it('export parameter file', () => {
+    const cypressDownloadPath = Cypress.env('cypressDownloadPath');
+    cy.get('#power').clear().type('100').blur();
+    cy.get('#speed').clear().type('70').blur();
+    cy.get('#repeat').clear().type('3').blur();
+    cy.get('div.add-preset-btn').click();
+    cy.get('.text-input').type('Hi Flux').blur();;
+    cy.get('.primary').click();
+    cy.get('[title="Export"]').click();
+    cy.wait(5000);
+    cy.readFile(cypressDownloadPath).its('customizedLaserConfigs').its('16').its('name').should('eq', 'Hi Flux');
+  });
+
   function checkValue(power, speed, repeat) {
     cy.get('#power').should('have.value', power);
     cy.get('#speed').should('have.value', speed);
