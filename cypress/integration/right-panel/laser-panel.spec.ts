@@ -198,6 +198,15 @@ describe('manipulate laser panel', () => {
     cy.readFile(cypressDownloadPath).its('customizedLaserConfigs').its('16').its('name').should('eq', 'Hi Flux');
   });
 
+  it('import parameter file', () => {
+    cy.get('[title="Import"] > img').click({ force: true });
+    cy.get('#file-input').attachFile('testfile.json');
+    cy.contains('Confirm').click();
+    cy.contains('testFile').should('exist');
+    cy.get('#laser-config-dropdown').select('testFile');
+    checkValue(100, 50, 10);
+  });
+
   function checkValue(power, speed, repeat) {
     cy.get('#power').should('have.value', power);
     cy.get('#speed').should('have.value', speed);
