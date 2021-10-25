@@ -15,6 +15,8 @@ const mimetypeMap: { [key: string]: string } = {
 };
 
 const input = document.createElement('input');
+input.setAttribute('id', 'file-input');
+document.body.append(input);
 let lastPromiseResolve: ((result: { canceled?: boolean }) => void) | null;
 
 const openFileDialog = (options: {
