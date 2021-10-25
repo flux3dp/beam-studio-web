@@ -47,10 +47,10 @@ Cypress.Commands.add('uploadFile', (fileName, fileType) => {
   });
 });
 
-Cypress.Commands.add("dragTo", { prevSubject: "element" }, (subject, targetEl) => {
-  cy.wrap(subject).trigger("dragstart");
-  cy.get(targetEl).trigger("drop");
-  cy.get(targetEl).trigger("dragend");
+Cypress.Commands.add('dragTo', { prevSubject: "element" }, (subject, targetEl) => {
+  cy.wrap(subject).trigger('dragstart', { force: true });
+  cy.get(targetEl).trigger('dragenter', { force: true });
+  cy.get(targetEl).trigger('dragend', { force: true });
 });
 //
 //
