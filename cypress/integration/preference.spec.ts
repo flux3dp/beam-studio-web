@@ -146,10 +146,7 @@ describe('update the preference', () => {
     go2Preference();
     cy.get('#set-anti-aliasing').select('On');
     cy.get('div.btn-done').click();
-    cy.get('div#left-Ellipse>img').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
-    cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
-    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    drawingEllipse();
     cy.get('svg#svgcontent').should(($shapeRendering) => {
       let str = $shapeRendering.attr('style');
       expect(str.substring(50)).equal('');
@@ -179,6 +176,23 @@ describe('update the preference', () => {
     cy.get('h1.headline').should('exist');
   });
 
+  it('remove speed limit and see if home page gets changed ', () => {
+    drawingEllipse();
+    cy.get('.layers > .tab-icon').click();
+    cy.get('#speed_value').realSwipe('toLeft');
+    cy.get('.warning-icon').should('exist');
+    cy.get('.warning-text').should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s.You can remove this limit at Preferences Settings.');
+    go2Preference();
+    cy.get(`[data-test-key="don't save"]`).click();
+    cy.get('#set-vector-speed-contraint').select('Off');
+    cy.get('div.btn-done').click();
+    drawingEllipse();
+    cy.get('.layers > .tab-icon').click();
+    cy.get('#speed_value').realSwipe('toLeft');
+    cy.get('.warning-icon').should('not.exist');
+    cy.get('.warning-text').should('not.exist');
+  });
+
   function go2Preference() {
     cy.get('div.top-bar-menu-container').click();
     cy.get('li.rc-menu__submenu').should('have.length', 5);
@@ -192,6 +206,13 @@ describe('update the preference', () => {
     cy.get('div.btn-done').click();
     cy.wait(1000);
     cy.get('.file-title').should('have.text', title);
+  };
+
+  function drawingEllipse() {
+    cy.get('div#left-Ellipse>img').click();
+    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
+    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   };
 
   function md5(inputString) {
