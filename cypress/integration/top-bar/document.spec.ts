@@ -18,24 +18,24 @@ describe('manipulate document setting', () => {
     openDocument();
     cy.get('#workarea_dropdown').select('fbm1');
     cy.get('.primary').click();
-    cy.get('#canvasBackground').should(($value) => { expect($value.attr('width')).to.be.closeTo(672, 2); });
-    cy.get('#canvasBackground').should(($value) => { expect($value.attr('height')).to.be.closeTo(470, 2); });
+    cy.get('#svgroot').should('have.attr', 'x', '3000');
+    cy.get('#svgroot').should('have.attr', 'y', '2100');
   });
 
   it('working area of beambox', () => {
     openDocument();
     cy.get('#workarea_dropdown').select('fbb1b');
     cy.get('.primary').click();
-    cy.get('#canvasBackground').should(($value) => { expect($value.attr('width')).to.be.closeTo(628, 2); });
-    cy.get('#canvasBackground').should(($value) => { expect($value.attr('height')).to.be.closeTo(589, 2); });
+    cy.get('#svgroot').should('have.attr', 'x', '4000');
+    cy.get('#svgroot').should('have.attr', 'y', '3750');
   });
 
   it('working area of beambox pro', () => {
     openDocument();
     cy.get('#workarea_dropdown').select('fbb1p');
     cy.get('.primary').click();
-    cy.get('#canvasBackground').should(($value) => { expect($value.attr('width')).to.be.closeTo(672, 2); });
-    cy.get('#canvasBackground').should(($value) => { expect($value.attr('height')).to.be.closeTo(420, 2); });
+    cy.get('#svgroot').should('have.attr', 'x', '6000');
+    cy.get('#svgroot').should('have.attr', 'y', '3750')
   });
 
   it('check default and adjust setting with working area of beamo', () => {
