@@ -115,12 +115,6 @@ describe('update the preference', () => {
     cy.get('div.btn-done').click();
     cy.get('#svgroot').should('have.attr', 'x', '6000');
     cy.get('#svgroot').should('have.attr', 'y', '3750');
-
-    go2Preference();
-    cy.get('#set-default-model').select('fbb2b');
-    cy.get('div.btn-done').click();
-    cy.get('#svgroot').should('have.attr', 'x', '7369');
-    cy.get('#svgroot').should('have.attr', 'y', '4140.5');
   });
 
   it('change guide setting and see if home page gets changed ', () => {
