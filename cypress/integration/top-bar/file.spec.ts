@@ -27,61 +27,71 @@ describe('manipulate file', () => {
   });
 
   it('save file', () => {
+    const cypressDownloadBeamPath = Cypress.env('cypressDownloadBeamPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(3)').click();
     cy.wait(5000);
-    cy.readFile("/Users/bx-m1/desktop/dev/beam-studio-web/cypress/downloads/untitled.beam").then((info) => {
+    cy.readFile(cypressDownloadBeamPath).then((info) => {
       expect(md5(info)).equal('b6403a0144502172f9a92672c7a39d7b');
     });
   });
 
   it('save as file', () => {
+    const cypressDownloadNewBeamPath = Cypress.env('cypressDownloadNewBeamPath');
+    cy.get('div#left-Rectangle>img').click();
+    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
+    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click();
     cy.wait(5000);
-    cy.readFile("/Users/bx-m1/desktop/dev/beam-studio-web/cypress/downloads/untitled.beam").then((info) => {
-      expect(md5(info)).equal('b6403a0144502172f9a92672c7a39d7b');
+    cy.readFile(cypressDownloadNewBeamPath).then((info) => {
+      expect(md5(info)).equal('014673ddffcc53595306b2bc18bd9ed3');
     });
   });
 
   it('export bvg file ', () => {
+    const cypressDownloadBvgPath = Cypress.env('cypressDownloadBvgPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu > :nth-child(1)').click();
-    cy.readFile("/Users/bx-m1/desktop/dev/beam-studio-web/cypress/downloads/untitled.bvg").then((info) => {
+    cy.readFile(cypressDownloadBvgPath).then((info) => {
       expect(md5(info)).equal('f3e871d07847f5ee0bfc7590274faf75');
     });
   });
 
   it('export svg file ', () => {
+    const cypressDownloadSvgPath = Cypress.env('cypressDownloadSvgPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu > :nth-child(2)').click();
-    cy.readFile("/Users/bx-m1/desktop/dev/beam-studio-web/cypress/downloads/untitled.svg").then((info) => {
+    cy.readFile(cypressDownloadSvgPath).then((info) => {
       expect(md5(info)).equal('ab7e70d8e831d4a810d7182a9d108ec0');
     });
   });
 
   it('export png file ', () => {
+    const cypressDownloadPngPath = Cypress.env('cypressDownloadPngPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu > :nth-child(3)').click();
-    cy.readFile("/Users/bx-m1/desktop/dev/beam-studio-web/cypress/downloads/untitled.png").then((info) => {
+    cy.readFile(cypressDownloadPngPath).then((info) => {
       expect(md5(info)).equal('b20a5f0d14f9b36425dca6e22ff2712c');
     });
   });
 
   it('export jpg file ', () => {
+    const cypressDownloadJpgPath = Cypress.env('cypressDownloadJpgPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu > :nth-child(4)').click();
-    cy.readFile("/Users/bx-m1/desktop/dev/beam-studio-web/cypress/downloads/untitled.jpeg").then((info) => {
+    cy.readFile(cypressDownloadJpgPath).then((info) => {
       expect(md5(info)).equal('4e8c0a4d941da85f10ad6226f45fd592');
     });
   });
