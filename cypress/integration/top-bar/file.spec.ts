@@ -95,4 +95,21 @@ describe('manipulate file', () => {
       expect(md5(info)).equal('4e8c0a4d941da85f10ad6226f45fd592');
     });
   });
+
+  it('upload file by drag and drop ', () => {
+    cy.fixture('flux.png', 'base64')
+      .then(Cypress.Blob.base64StringToBlob)
+      .then((blob) => {
+        const file = new File([blob], 'flux.png', {
+          type: 'image/png',
+        });
+        const dropEvent = {
+          dataTransfer: {
+            files: [file,],
+            types: ['Files'],
+          }
+        };
+        cy.get('#workarea').trigger('drop', dropEvent, { force: true });
+      });
+  });
 });
