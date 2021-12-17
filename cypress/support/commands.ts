@@ -33,7 +33,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
 });
 
 Cypress.Commands.add('uploadFile', (fileName, fileType) => {
-  cy.get("input[data-file-input='import_image").then($input => {
+  cy.get('input[data-file-input="import_image"').then($input => {
     cy.fixture(fileName, 'base64')
       .then(Cypress.Blob.base64StringToBlob)
       .then(blob => {
