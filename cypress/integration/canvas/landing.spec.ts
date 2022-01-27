@@ -27,7 +27,7 @@ describe('landing', () => {
   it('connection type selection page', () => {
     cy.url().should('contain', '#/initialize/connect/select-connection-type');
     cy.get('div.select-connection-type').should('exist');
-    cy.get('div.btn-container').should('have.length', 3);
+    cy.get('div.btn-container').should('have.length', 4);
     cy.get('div.btn-page').click();
   });
 
