@@ -42,11 +42,6 @@
     }
   }
 
-  .usb-disabled {
-    opacity: 0.6 !important;
-    cursor: normal !important;
-  }
-
   .connect-machine {
     .main-title {
       margin-bottom: 50px;
@@ -70,6 +65,10 @@
       color: #333333;
       font-weight: 700;
       text-align: start;
+
+      .sub {
+        font-size: 16px;
+      }
     }
 
     .btn-action:hover {
@@ -144,6 +143,7 @@
     .connection-wired,
     .connection-wifi,
     .connection-ethernet,
+    .connection-usb,
     .connection-machine-ip {
       margin-top: 150px;
       height: 480px;
@@ -184,9 +184,26 @@
           margin-top: -60px;
         }
 
+        &.usb {
+          width: 300px;
+          margin-top: -60px;
+          .c1 {
+            margin: 32px 0 0 82px;
+          }
+          .c2 {
+            margin: -133px 0px 0px 177px;
+          }
+        }
+
         .ethernet-icon {
           width: 138px;
           margin: -98px 0px 0 26px;
+          position: relative;
+        }
+
+        .usb-cable-icon {
+          width: 300px;
+          margin: -126px 0px 0 26px;
           position: relative;
         }
 
@@ -231,6 +248,10 @@
           letter-spacing: 0.5px;
           color: #333333;
           padding-bottom: 25px;
+
+          .sub {
+            font-size: 18px;
+          }
         }
 
         .contents {
@@ -293,7 +314,7 @@
 
           .test-infos {
             font-weight: 600;
-            height: 80px;
+            height: 100%;
 
             .test-info {
               padding: 5px 0;
@@ -314,6 +335,10 @@
           height: 50px;
           margin-bottom: 10px;
 
+          &.disabled {
+            pointer-events: none;
+          }
+
           &:focus {
             border-radius: 0px;
             border-width: 0px;
@@ -321,6 +346,12 @@
             outline: none;
           }
         }
+      }
+    }
+
+    .connection-machine-ip {
+      &.usb {
+        margin-top: 220px;
       }
     }
 
