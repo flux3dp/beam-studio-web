@@ -12,10 +12,6 @@ on:
 jobs:
   e2e-test:
     runs-on: macos-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - name: Checkout Beam Studio Core
