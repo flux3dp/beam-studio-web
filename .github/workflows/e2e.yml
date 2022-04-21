@@ -39,7 +39,6 @@ jobs:
           parallel: true
           group: 'Actions example'
           browser: chrome
-          start: |
-            yarn install
-            yarn start
+          build: yarn install
+          start: yarn start
           wait-on: 'http://localhost:8080'
