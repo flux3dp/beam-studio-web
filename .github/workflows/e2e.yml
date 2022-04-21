@@ -11,20 +11,22 @@ on:
 
 jobs:
   e2e-test:
-    runs-on: 'macos-10.15'
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
         containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup core
+      - name: Checkout Beam Studio Core
+        uses: actions/checkout@v2
+        with:
+          repository: flux3dp/beam-studio-core
+          ref: ${{ github.event.inputs.core_branch }}
+          path: .github/actions/beam-studio-core
+      - name: Copy Beam Studio Core
         run: |
-          cd ..
-          git clone https://github.com/flux3dp/beam-studio-core.git
-          cd beam-studio-core
-          git checkout ${{ github.event.inputs.core_branch }}
-          yarn install
+          cp -R .github/actions/beam-studio-core ../beam-studio-core
       - name: Setup web and run e2e tests
         uses: cypress-io/github-action@v2
         env:
