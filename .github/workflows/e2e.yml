@@ -36,9 +36,9 @@ jobs:
         with:
           config-file: cypress.json
           record: true
-          parallel: true
           group: 'Actions example'
           browser: chrome
           build: yarn install
           start: yarn start
           wait-on: 'http://localhost:8080'
+          wait-on-timeout: 120
