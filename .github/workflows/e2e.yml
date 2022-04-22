@@ -12,6 +12,11 @@ on:
 jobs:
   e2e-test:
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # run copies of the current job in parallel
+        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - name: Checkout Beam Studio Core
@@ -23,6 +28,12 @@ jobs:
       - name: Copy Beam Studio Core
         run: |
           cp -R .github/actions/beam-studio-core ../beam-studio-core
+      - name: Cypress install
+        uses: cypress-io/github-action@v2
+        with:
+          # Disable running of tests within install job
+          runTests: false
+          build: yarn install
       - name: Setup web and run e2e tests
         uses: cypress-io/github-action@v2
         env:
@@ -34,7 +45,8 @@ jobs:
           record: true
           group: 'Actions example'
           browser: chrome
-          build: yarn install
+          install: false
+          parallel: true
           start: yarn start
           wait-on: 'http://localhost:8080'
           wait-on-timeout: 120
