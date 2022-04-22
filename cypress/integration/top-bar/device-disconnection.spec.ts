@@ -1,6 +1,6 @@
 describe('verify top bar behaviors under device disconnection', () => {
   beforeEach(() => {
-    cy.landingEditor();
+    cy.loginAndLandingEditor();
   });
 
   it('show #801 while clicking on preview button', () => {
