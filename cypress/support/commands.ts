@@ -21,11 +21,11 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   window.localStorage.setItem('last-installed-version', 'web');
   window.localStorage.setItem('questionnaire-version', '9999');
   cy.visit('/#/initialize/connect/flux-id-login', opts);
-  cy.get('.skip').click();
-  // time for svgcanvas loading
-  cy.window().then((win) => {
+  cy.on('window:load', (win) => {
     win.onbeforeunload = null;
   });
+  cy.get('.skip').click();
+  // time for svgcanvas loading
   cy.wait(500);
 });
 
