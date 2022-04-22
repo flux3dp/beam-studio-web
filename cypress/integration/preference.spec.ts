@@ -137,8 +137,7 @@ describe('update the preference', () => {
     cy.get('#set-bitmap-quality').select('Normal');
     cy.get('div.btn-done').click();
     cy.uploadFile('flux.png', 'image/png');
-    cy.wait(1000);
-    console.log(md5);
+    cy.wait(3000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
     });
