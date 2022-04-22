@@ -84,6 +84,7 @@ describe('manipulate image function', () => {
     });
   });
 
+  // FIXME: take to much time, prone to timeout, consider change a file
   // it('check bevel with image', () => {
   //   cy.uploadFile('flux.png', 'image/png');
   //   cy.get('#bevel').click();

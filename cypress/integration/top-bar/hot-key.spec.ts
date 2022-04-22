@@ -1,6 +1,6 @@
 import { md5 } from '../../support/utils';
 
-// Real press seems not work on github CI
+// FIXME: Real press seems not work on github CI
 
 // describe('verify hotkey', () => {
 //   beforeEach(() => {
