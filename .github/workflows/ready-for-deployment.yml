@@ -12,12 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup core
+      - name: Checkout Beam Studio Core
+        uses: actions/checkout@v2
+        with:
+          repository: flux3dp/beam-studio-core
+          ref: ${{ github.event.inputs.core_branch }}
+          path: .github/actions/beam-studio-core
+      - name: Copy Beam Studio Core
         run: |
-          cd ..
-          git clone https://github.com/flux3dp/beam-studio-core.git
-          cd beam-studio-core
-          yarn install
+          cp -R .github/actions/beam-studio-core ../beam-studio-core
       - name: Setup web
         run: |
           yarn install
@@ -36,10 +39,6 @@ jobs:
   post-deployment-test:
     needs: deployment
     runs-on: macos-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - name: Run e2e test against the production environment
@@ -52,7 +51,5 @@ jobs:
           group: 'Group'
           config-file: cypress.prod.json
           record: true
-          parallel: true
           browser: chrome
-          start: |
-            yarn install
+          start: yarn start
