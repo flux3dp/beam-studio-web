@@ -14,8 +14,13 @@ describe('update the preference', () => {
     cy.get('#preview-input').should('have.attr', 'value', '100');
     cy.get('#diode-preview-input').should('have.attr', 'value', '60');
     cy.get('#set-default-units').find('option:selected').should('have.value', 'mm');
-    cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans TC');
-    cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSansTC-Regular');
+    if (window.navigator.language === 'zh-TW') {
+      cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans TC');
+      cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSansTC-Regular');
+    } else {
+      cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans');
+      cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSans-Regular');
+    }
     cy.get('#set-default-model').find('option:selected').should('have.value', 'fbb1b');
     cy.get('#set-guide').find('option:selected').should('have.value', 'FALSE');
     cy.get('#guide-x-input').should('have.attr', 'value', '0.00');
