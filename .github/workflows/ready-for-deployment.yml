@@ -39,6 +39,10 @@ jobs:
   post-deployment-test:
     needs: deployment
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - name: Run e2e test against the production environment
@@ -51,5 +55,7 @@ jobs:
           group: 'Group'
           config-file: cypress.prod.json
           record: true
+          parallel: true
           browser: chrome
-          start: yarn start
+          start: |
+            yarn install
