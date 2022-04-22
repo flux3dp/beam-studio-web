@@ -1,4 +1,7 @@
 {
   "projectId": "fc84dg",
-  "baseUrl": "http://localhost:8080"
+  "baseUrl": "http://localhost:8080",
+  "env": {
+    "cypressDownloadPath": "./cypress/downloads/download.json"
+  }
 }
