@@ -31,7 +31,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   });
   cy.get('.skip').click();
   // time for svgcanvas loading
-  cy.wait(700);
+  cy.wait(1000);
 });
 
 Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
@@ -47,7 +47,7 @@ Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
   cy.get('div.primary').click();
   cy.get('button[data-test-key="ok"]').click();
   // time for svgcanvas loading
-  cy.wait(700);
+  cy.wait(1000);
 });
 
 Cypress.Commands.add('uploadFile', (fileName, fileType) => {
