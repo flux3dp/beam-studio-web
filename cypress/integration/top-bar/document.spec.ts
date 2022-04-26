@@ -8,8 +8,6 @@ describe('manipulate document setting', () => {
     cy.get('div.value').should('have.text', 'Medium (250 DPI)');
     cy.get('input.slider').realSwipe('toLeft', { length: 100 });
     cy.get('div.value').should('have.text', 'Low (100 DPI)');
-    cy.get('input.slider').realSwipe('toRight');
-    cy.get('div.value').should('have.text', 'High (500 DPI)');
     cy.get('input.slider').realSwipe('toRight', { length: 100 });
     cy.get('div.value').should('have.text', 'Ultra High (1000 DPI)');
   });

@@ -14,8 +14,13 @@ describe('update the preference', () => {
     cy.get('#preview-input').should('have.attr', 'value', '100');
     cy.get('#diode-preview-input').should('have.attr', 'value', '60');
     cy.get('#set-default-units').find('option:selected').should('have.value', 'mm');
-    cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans TC');
-    cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSansTC-Regular');
+    if (window.navigator.language === 'zh-TW') {
+      cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans TC');
+      cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSansTC-Regular');
+    } else {
+      cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans');
+      cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSans-Regular');
+    }
     cy.get('#set-default-model').find('option:selected').should('have.value', 'fbb1b');
     cy.get('#set-guide').find('option:selected').should('have.value', 'FALSE');
     cy.get('#guide-x-input').should('have.attr', 'value', '0.00');
@@ -132,8 +137,7 @@ describe('update the preference', () => {
     cy.get('#set-bitmap-quality').select('Normal');
     cy.get('div.btn-done').click();
     cy.uploadFile('flux.png', 'image/png');
-    cy.wait(1000);
-    console.log(md5);
+    cy.wait(3000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
     });

@@ -12,12 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup core
+      - name: Checkout Beam Studio Core
+        uses: actions/checkout@v2
+        with:
+          repository: flux3dp/beam-studio-core
+          ref: ${{ github.event.inputs.core_branch }}
+          path: .github/actions/beam-studio-core
+      - name: Copy Beam Studio Core
         run: |
-          cd ..
-          git clone https://github.com/flux3dp/beam-studio-core.git
-          cd beam-studio-core
-          yarn install
+          cp -R .github/actions/beam-studio-core ../beam-studio-core
       - name: Setup web
         run: |
           yarn install
