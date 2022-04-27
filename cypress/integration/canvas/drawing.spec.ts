@@ -25,7 +25,7 @@ describe('drawing', () => {
     });
 
     cy.get('div.onoffswitch').click();
-    cy.get('#svg_1').should('have.attr', 'fill').and('eq', '#000');
+    cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
 
   it('ellipse', () => {
@@ -44,7 +44,7 @@ describe('drawing', () => {
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(400, 2); });
 
     cy.get('div.onoffswitch').click();
-    cy.get('#svg_1').should('have.attr', 'fill').and('eq', '#000');
+    cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
 
   it('polygon', () => {
@@ -67,7 +67,7 @@ describe('drawing', () => {
     cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
 
     cy.get('div.onoffswitch').click();
-    cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'black');
+    cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
 
   it('line', () => {
