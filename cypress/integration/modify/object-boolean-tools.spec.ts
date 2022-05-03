@@ -36,7 +36,7 @@ describe('object boolean tools', () => {
     cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(0, 2); });
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(0, 2); });
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(150, 2); });
-    cy.get('#svg_4').should('have.attr', 'fill').and('eq', '#000');
+    cy.get('#svg_4').should('have.attr', 'fill').and('not.eq', 'none');
   });
 
   function drawingEllipse() {

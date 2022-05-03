@@ -109,7 +109,7 @@ describe('verify undo/redo behaviors', () => {
     cy.get('#svg_1').should('have.attr', 'fill', 'none');
     cy.get('[src="img/top-bar/icon-redo.svg"]').click();
     cy.get('#svg_1').click({ force: true });
-    cy.get('#svg_1').should('have.attr', 'fill', '#000000');
+    cy.get('#svg_1').should('not.have.attr', 'fill', 'none');
   });
 
   function checkBehaviors() {

@@ -141,7 +141,6 @@ describe('manipulate layers', () => {
   });
 
   it('create object on different layer and check the color', () => {
-    useLayerColor();
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
@@ -157,7 +156,6 @@ describe('manipulate layers', () => {
   });
 
   it('move object to different layer', () => {
-    useLayerColor();
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
@@ -181,10 +179,4 @@ describe('manipulate layers', () => {
     cy.get('#speed').should('have.value', '20');
     cy.get('#repeat').should('have.value', '1');
   });
-
-  function useLayerColor() {
-    cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(3) > .rc-menu__item').click();
-    cy.get('.rc-menu > :nth-child(8)').click();
-  };
 });
