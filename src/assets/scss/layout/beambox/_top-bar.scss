@@ -7,6 +7,11 @@
   background-color: #333;
   -webkit-app-region: drag;
 
+  .right {
+    float: right;
+    display: flex;
+  }
+
   &.white {
     background-color: #f8f8f8;
     border: 1px solid #e0e0e0;
@@ -45,12 +50,6 @@
       }
     }
 
-    .path-preview-button-container {
-      position: relative;
-      float: right;
-      right: 55px;
-    }
-
     .element-title {
       position: relative;
       float: left;
@@ -69,8 +68,6 @@
     }
 
     .go-button-container {
-      position: relative;
-      float: right;
 
       .go-btn {
         border-color: transparent transparent transparent #333333;
@@ -171,10 +168,8 @@
 
   .path-preview-button-container {
     display: inline-flex;
-    position: absolute;
     align-items: center;
     width: 40px;
-    right: 40px;
     height: $topBarHeight;
     padding: 0 8px;
     margin: 0 3px 0 0;
@@ -209,11 +204,10 @@
 
   .go-button-container {
     display: inline-flex;
-    position: absolute;
-    right: 0;
     height: $topBarHeight;
-    margin: 0 13px 0 0;
+    margin: 0 13px;
     opacity: 0.85;
+    z-index: 1;
     cursor: pointer;
 
     .go-btn {
