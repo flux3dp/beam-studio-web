@@ -5,7 +5,7 @@ describe('manipulate laser panel', () => {
   });
 
   it('set customized List', () => {
-    cy.get('div.right').click();
+    cy.get('.layer-param-buttons > div.right').click();
     cy.get('#wood_5mm_cutting').click({ force: true });
     cy.get('#removeselect').click();
     cy.get('#custom-config-list').children().should('have.length', '15');
@@ -15,14 +15,14 @@ describe('manipulate laser panel', () => {
   });
 
   it('reset the parameter', () => {
-    cy.get('div.right').click();
+    cy.get('.layer-param-buttons > div.right').click();
     cy.get('#wood_3mm_cutting').click({ force: true });
     for (let n = 0; n < 9; n++) {
       cy.get('#laser_delete').click();
     };
     cy.get('#laser_save_and_exit').click();
     cy.get('#laser-config-dropdown').children().should('have.length', '10');
-    cy.get('div.right').click();
+    cy.get('.layer-param-buttons > div.right').click();
     cy.get('#laser_reset').click();
     cy.get('.button-group > .primary').click();
     cy.get('#laser_save_and_exit').click();
@@ -36,7 +36,7 @@ describe('manipulate laser panel', () => {
     cy.get('div.add-preset-btn').click();
     cy.get('.text-input').type('Hello Flux').blur();;
     cy.get('.primary').click();
-    cy.get('div.right').click();
+    cy.get('.layer-param-buttons > div.right').click();
     cy.contains('Hello Flux').should('exist');
     cy.get('#custom-config-list > .no-border').click({ force: true });
     cy.get('#laser_power').should('have.value', '100');
@@ -46,7 +46,7 @@ describe('manipulate laser panel', () => {
   });
 
   it('add new parameter at laser panel', () => {
-    cy.get('div.right').click();
+    cy.get('.layer-param-buttons > div.right').click();
     cy.get('#add_btn').click({ force: true });
     cy.get('.text-input').type('Flux Laser').blur();;
     cy.get('[data-test-key="ok"]').click();
