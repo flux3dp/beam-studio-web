@@ -2,7 +2,6 @@ import progressCaller from 'app/actions/progress-caller';
 import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
 import getUtilWS from 'helpers/api/utils-ws';
 import i18n from 'helpers/i18n';
-import { sender } from 'implementations/communicator';
 
 import fontNameMap from './fonts/fontNameMap';
 import previewSourceMap from './fonts/fontPreviewSrc';
@@ -67,18 +66,6 @@ const findFonts = (fontDescriptor: FontDescriptor): FontDescriptor[] => {
   });
   return match;
 };
-
-sender.on('GET_AVAILABLE_FONTS', (res) => {
-  res.returnValue = availableFonts;
-});
-
-sender.on('FIND_FONT', (res, fontDescriptor: FontDescriptor) => {
-  res.returnValue = findFont(fontDescriptor);
-});
-
-sender.on('FIND_FONTS', (res, fontDescriptor: FontDescriptor) => {
-  res.returnValue = findFonts(fontDescriptor);
-});
 
 export default {
   findFont,
@@ -145,7 +132,6 @@ export default {
         progressCaller.popById('fetch-web-font');
         return false;
       }
-
       const blob = await resp.blob();
       if (isCanceled) {
         progressCaller.popById('fetch-web-font');
