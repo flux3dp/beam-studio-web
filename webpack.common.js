@@ -94,7 +94,26 @@ module.exports = {
         ],
       },
       {
+        test: /\.module\.s[ac]ss$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[path][name]__[local]--[hash:base64:5]",
+              },
+            }
+          },
+          {
+            loader: 'sass-loader',
+          }
+        ]
+      },
+      {
         test: /\.scss$/i,
+        exclude: /\.module\.s[ac]ss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
