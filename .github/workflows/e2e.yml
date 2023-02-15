@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       core_branch:
-        description: 'Core Branch'
+        description: "Core Branch"
         required: false
-        default: 'master'
+        default: "master"
 
 jobs:
   e2e-test:
@@ -35,7 +35,7 @@ jobs:
           runTests: false
           build: yarn install
       - name: Setup web and run e2e tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         env:
           CYPRESS_username: ${{ secrets.CYPRESS_USERNAME }}
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
@@ -43,10 +43,10 @@ jobs:
         with:
           config-file: cypress.json
           record: true
-          group: 'Actions example'
+          group: "Actions example"
           browser: chrome
           install: false
           parallel: true
           start: yarn start
-          wait-on: 'http://localhost:8080'
+          wait-on: "http://localhost:8080"
           wait-on-timeout: 120
