@@ -3810,10 +3810,10 @@ cypress-file-upload@^5.0.8:
   resolved "https://registry.yarnpkg.com/cypress-file-upload/-/cypress-file-upload-5.0.8.tgz#d8824cbeaab798e44be8009769f9a6c9daa1b4a1"
   integrity sha512-+8VzNabRk3zG6x8f8BWArF/xA/W0VK4IZNx3MV0jFWrJS/qKn8eHfa5nU73P9fOQAgwHFJx7zjg4lwOnljMO8g==
 
-cypress-real-events@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.5.1.tgz#5eeb86d2a7aad9aa6d5271e288a23e46373915cd"
-  integrity sha512-Jwi/IJePcZrKyhdtVddaf+mqJrj3y1vpREMDgtWwz+oxvj5FbBpeU0ASu9zpB3bMbsMo7g//buopZIe4jx3iSA==
+cypress-real-events@^1.7.6:
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.7.6.tgz#6f17e0b2ceea1d6dc60f6737d8f84cc517bbbb4c"
+  integrity sha512-yP6GnRrbm6HK5q4DH6Nnupz37nOfZu/xn1xFYqsE2o4G73giPWQOdu6375QYpwfU1cvHNCgyD2bQ2hPH9D7NMw==
 
 cypress-xpath@^1.6.2:
   version "1.6.2"
