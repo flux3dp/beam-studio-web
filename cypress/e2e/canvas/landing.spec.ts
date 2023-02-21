@@ -24,42 +24,42 @@ describe('landing', () => {
     cy.get('button[class^="ant-btn"]').contains('Login').click();
   });
 
-  // it('connection type selection page', () => {
-  //   cy.url().should('contain', '#/initialize/connect/select-connection-type');
-  //   cy.get('div.select-connection-type').should('exist');
-  //   cy.get('div.btn-container').should('have.length', 4);
-  //   cy.get('div.btn-page').click();
-  // });
+  it('connection type selection page', () => {
+    cy.url({ timeout: 7000 }).should('contain', '#/initialize/connect/select-connection-type');
+    cy.get('div.select-connection-type').should('exist');
+    cy.get('div.btn-container').should('have.length', 4);
+    cy.get('div.btn-page').click();
+  });
 
-  // it('land to canvas', () => {
-  //   window.localStorage.setItem('new-user', 'true');
-  //   cy.url().should('contain', '#/studio/beambox');
+  it('land to canvas', () => {
+    window.localStorage.setItem('new-user', 'true');
+    cy.url({ timeout: 7000 }).should('contain', '#/studio/beambox');
 
-  //   // Sentry
-  //   cy.get('div.ant-modal-body').should('exist');
-  //   cy.get('button[class^="ant-btn"]').contains('No').click();
+    // Sentry
+    cy.get('div.ant-modal-body').should('exist');
+    cy.get('button[class^="ant-btn"]').contains('No').click();
 
-  //   // Camera Calibration
-  //   cy.get('body')
-  //     .then((body) => {
-  //       if (body.find('div.ant-modal-body').length > 0) {
-  //         cy.get('button[class^="ant-btn"]').contains('No').click();
-  //         cy.get('div.ant-modal-body').should('exist');
-  //         cy.get('button[class^="ant-btn"]').contains('ok').click();
-  //       }
-  //     });
-  //   // Tutorial
-  //   cy.get('body')
-  //     .then((body) => {
-  //       if (body.find('div.ant-modal-body').length > 0) {
-  //         cy.get('button[class^="ant-btn"]').contains('No').click();
-  //         cy.get('div.ant-modal-body').should('exist');
-  //         cy.get('button[class^="ant-btn"]').contains('ok').click();
-  //       }
-  //     });
+    // Camera Calibration
+    cy.get('body')
+      .then((body) => {
+        if (body.find('div.ant-modal-body').length > 0) {
+          cy.get('button[class^="ant-btn"]').contains('No').click();
+          cy.get('div.ant-modal-body').should('exist');
+          cy.get('button[class^="ant-btn"]').contains('ok').click();
+        }
+      });
+    // Tutorial
+    cy.get('body')
+      .then((body) => {
+        if (body.find('div.ant-modal-body').length > 0) {
+          cy.get('button[class^="ant-btn"]').contains('No').click();
+          cy.get('div.ant-modal-body').should('exist');
+          cy.get('button[class^="ant-btn"]').contains('ok').click();
+        }
+      });
 
-  //   cy.get('#root')
-  //     .find('div')
-  //     .should('have.class', 'studio-container beambox-studio en');
-  // });
+    cy.get('#root')
+      .find('div')
+      .should('have.class', 'studio-container beambox-studio en');
+  });
 });
