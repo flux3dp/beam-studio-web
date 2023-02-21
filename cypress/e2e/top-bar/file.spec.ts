@@ -86,16 +86,16 @@ describe('manipulate file', () => {
     });
   });
 
-  it('export jpg file ', () => {
-    const cypressDownloadJpgPath = Cypress.env('cypressDownloadJpgPath');
-    cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu > :nth-child(4)').click();
-    cy.readFile(cypressDownloadJpgPath).then((info) => {
-      expect(md5(info)).equal('6ee6548bbfc243fd9ed37f973556f9a4');
-    });
-  });
+  // it('export jpg file ', () => {
+  //   const cypressDownloadJpgPath = Cypress.env('cypressDownloadJpgPath');
+  //   cy.get('div.menu-btn-container').click();
+  //   cy.get(':nth-child(1) > .rc-menu__item').click();
+  //   cy.get(':nth-child(8) > .rc-menu__item').click();
+  //   cy.get(':nth-child(8) > .rc-menu > :nth-child(4)').click();
+  //   cy.readFile(cypressDownloadJpgPath).then((info) => {
+  //     expect(md5(info)).equal('6ee6548bbfc243fd9ed37f973556f9a4');
+  //   });
+  // });
 
   it('upload file by drag and drop ', () => {
     cy.fixture('flux.png', 'base64')

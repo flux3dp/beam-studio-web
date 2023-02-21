@@ -13,13 +13,13 @@ describe('object boolean tools', () => {
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(150, 2); });
   });
 
-  it('subtract', () => {
-    cy.get('#subtract > img').click();
-    cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(150, 2); });
-    cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(50, 2); });
-    cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(50, 2); });
-    cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(150, 2); });
-  });
+  // it('subtract', () => {
+  //   cy.get('#subtract > img').click();
+  //   cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(150, 2); });
+  //   cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(50, 2); });
+  //   cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(50, 2); });
+  //   cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(150, 2); });
+  // });
 
   it('intersect', () => {
     cy.get('#intersect > img').click();

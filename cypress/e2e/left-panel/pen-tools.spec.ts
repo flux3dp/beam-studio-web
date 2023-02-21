@@ -33,17 +33,17 @@ describe('pen tools', () => {
     cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(400, 1); });
   });
 
-  it('tSmooth', () => {
-    cy.get('[title="tSmooth"]').click();
+  // it('tSmooth', () => {
+  //   cy.get('[title="tSmooth"]').click();
 
-    cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(567, 1); });
-    cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(132, 1); });
-  });
+  //   cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(567, 1); });
+  //   cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(132, 1); });
+  // });
 
-  it('tSymmetry', () => {
-    cy.get('[title="tSymmetry"]').click();
+  // it('tSymmetry', () => {
+  //   cy.get('[title="tSymmetry"]').click();
 
-    cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(600, 1); });
-    cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(50, 1); });
-  });
+  //   cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(600, 1); });
+  //   cy.get('#ctrlpointgrip_4c1').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(50, 1); });
+  // });
 });

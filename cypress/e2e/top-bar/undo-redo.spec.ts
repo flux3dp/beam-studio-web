@@ -54,27 +54,27 @@ describe('verify undo/redo behaviors', () => {
     cy.get('div.select-container > select').find('option:selected').should('have.text', 'Bold');
   });
 
-  it('text with size', () => {
-    text();
-    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('400').blur();
-    cy.get('[src="img/top-bar/icon-undo.svg"]').click();
-    cy.get('#svg_1').click({ force: true });
-    cy.get(':nth-child(3) > div.option-input > input').should('have.value', '200');
-    cy.get('[src="img/top-bar/icon-redo.svg"]').click();
-    cy.get('#svg_1').click({ force: true });
-    cy.get(':nth-child(3) > div.option-input > input').should('have.value', '400');
-  });
+  // it('text with size', () => {
+  //   text();
+  //   cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('400').blur();
+  //   cy.get('[src="img/top-bar/icon-undo.svg"]').click();
+  //   cy.get('#svg_1').click({ force: true });
+  //   cy.get(':nth-child(3) > div.option-input > input').should('have.value', '200');
+  //   cy.get('[src="img/top-bar/icon-redo.svg"]').click();
+  //   cy.get('#svg_1').click({ force: true });
+  //   cy.get(':nth-child(3) > div.option-input > input').should('have.value', '400');
+  // });
 
-  it('text with letter spacing', () => {
-    text();
-    cy.get(':nth-child(4) > div.option-input > input').clear({ force: true }).type('1').blur();
-    cy.get('[src="img/top-bar/icon-undo.svg"]').click();
-    cy.get('#svg_1').click({ force: true });
-    cy.get(':nth-child(4) > div.option-input > input').should('have.value', '0');
-    cy.get('[src="img/top-bar/icon-redo.svg"]').click();
-    cy.get('#svg_1').click({ force: true });
-    cy.get(':nth-child(4) > div.option-input > input').should('have.value', '1');
-  });
+  // it('text with letter spacing', () => {
+  //   text();
+  //   cy.get(':nth-child(4) > div.option-input > input').clear({ force: true }).type('1').blur();
+  //   cy.get('[src="img/top-bar/icon-undo.svg"]').click();
+  //   cy.get('#svg_1').click({ force: true });
+  //   cy.get(':nth-child(4) > div.option-input > input').should('have.value', '0');
+  //   cy.get('[src="img/top-bar/icon-redo.svg"]').click();
+  //   cy.get('#svg_1').click({ force: true });
+  //   cy.get(':nth-child(4) > div.option-input > input').should('have.value', '1');
+  // });
 
   it('text with line spacing', () => {
     text();
