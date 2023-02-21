@@ -10,6 +10,8 @@ export default defineConfig({
     cypressDownloadSvgPath: './cypress/downloads/untitled.svg',
     cypressDownloadPngPath: './cypress/downloads/untitled.png',
     cypressDownloadJpgPath: './cypress/downloads/untitled.jpeg',
+    username: 'beam-studio-web@flux3dp.com',
+    password: 'Flux42642569',
   },
   e2e: {
     // We've imported your old cypress plugins here.

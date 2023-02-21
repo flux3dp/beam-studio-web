@@ -29,7 +29,7 @@ jobs:
         run: |
           cp -R .github/actions/beam-studio-core ../beam-studio-core
       - name: Cypress install
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           # Disable running of tests within install job
           runTests: false
