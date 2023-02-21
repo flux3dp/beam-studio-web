@@ -22,11 +22,13 @@ describe('landing', () => {
     cy.get('input#password-input').type(password);
     cy.get('div.remember-me').click();
     cy.get('button[class^="ant-btn"]').contains('Login').click();
+    cy.visit('#/initialize/connect/select-connection-type');
     cy.url({ timeout: 15000 }).should('contain', '#/initialize/connect/select-connection-type');
     cy.get('div.select-connection-type').should('exist');
     cy.get('div.btn-container').should('have.length', 4);
     cy.get('div.btn-page').click();
     window.localStorage.setItem('new-user', 'true');
+    cy.visit('#/studio/beambox');
     cy.url({ timeout: 15000 }).should('contain', '#/studio/beambox');
 
     // Sentry
