@@ -13,7 +13,7 @@ describe('landing', () => {
     cy.get('a.btn').click();
   });
 
-  it('flux login page', () => {
+  it('flux login page/connection type selection page/land to canvas', () => {
     const username = Cypress.env('username');
     const password = Cypress.env('password');
     cy.url().should('contain', '#/initialize/connect/flux-id-login');
@@ -22,16 +22,10 @@ describe('landing', () => {
     cy.get('input#password-input').type(password);
     cy.get('div.remember-me').click();
     cy.get('button[class^="ant-btn"]').contains('Login').click();
-  });
-
-  it('connection type selection page', () => {
     cy.url({ timeout: 7000 }).should('contain', '#/initialize/connect/select-connection-type');
     cy.get('div.select-connection-type').should('exist');
     cy.get('div.btn-container').should('have.length', 4);
     cy.get('div.btn-page').click();
-  });
-
-  it('land to canvas', () => {
     window.localStorage.setItem('new-user', 'true');
     cy.url({ timeout: 7000 }).should('contain', '#/studio/beambox');
 
