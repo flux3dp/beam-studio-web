@@ -17,7 +17,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.ts')(on, config)
     },
-    baseUrl: 'http://localhost:8080',
+    baseUrl: 'http://studio.flux3dp.com',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
 })
