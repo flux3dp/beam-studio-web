@@ -5,7 +5,6 @@ on:
 
 jobs:
   prod-e2e-test:
-    needs: deployment
     runs-on: macos-latest
     strategy:
       fail-fast: false
