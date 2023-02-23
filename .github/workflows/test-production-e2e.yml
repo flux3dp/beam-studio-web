@@ -2,11 +2,6 @@ name: e2e
 
 on:
   pull_request:
-    inputs:
-      core_branch:
-        description: "Core Branch"
-        required: false
-        default: "master"
 
 jobs:
   prod-e2e-test:
