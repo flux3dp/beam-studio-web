@@ -1,0 +1,34 @@
+name: e2e
+
+on:
+  pull_request:
+    inputs:
+      core_branch:
+        description: "Core Branch"
+        required: false
+        default: "master"
+
+jobs:
+  prod-e2e-test:
+    needs: deployment
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run e2e test against the production environment
+        uses: cypress-io/github-action@v5
+        env:
+          CYPRESS_username: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          group: 'Group'
+          config-file: cypress.config.prod.ts
+          record: true
+          parallel: true
+          browser: chrome
+          start: |
+            yarn install
