@@ -132,6 +132,7 @@ describe('update the preference', () => {
     cy.get('#vertical_guide').should('exist').should('have.attr', 'x1', '100').should('have.attr', 'y1', '0');
   });
 
+  // Fix Later
   // it('change bitmap preview quality setting and see if home page gets changed ', () => {
   //   go2Preference();
   //   cy.get('#set-bitmap-quality').select('Normal');
