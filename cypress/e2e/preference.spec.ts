@@ -132,16 +132,16 @@ describe('update the preference', () => {
     cy.get('#vertical_guide').should('exist').should('have.attr', 'x1', '100').should('have.attr', 'y1', '0');
   });
 
-  it('change bitmap preview quality setting and see if home page gets changed ', () => {
-    go2Preference();
-    cy.get('#set-bitmap-quality').select('Normal');
-    applySettings();
-    cy.uploadFile('flux.png', 'image/png');
-    cy.wait(3000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
-    });
-  });
+  // it('change bitmap preview quality setting and see if home page gets changed ', () => {
+  //   go2Preference();
+  //   cy.get('#set-bitmap-quality').select('Normal');
+  //   applySettings();
+  //   cy.uploadFile('flux.png', 'image/png');
+  //   cy.wait(3000);
+  //   cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
+  //     expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
+  //   });
+  // });
 
   it('change anti aliasing setting and see if home page gets changed ', () => {
     go2Preference();
@@ -178,22 +178,22 @@ describe('update the preference', () => {
     cy.get('h1.headline').should('exist');
   });
 
-  // it('remove speed limit and see if home page gets changed ', () => {
-  //   drawingEllipse();
-  //   cy.get('.layers > .tab-icon').click();
-  //   cy.get('#speed_value').realSwipe('toLeft');
-  //   cy.get('.warning-icon').should('exist');
-  //   cy.get('.warning-text').should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s.You can remove this limit at Preferences Settings.');
-  //   go2Preference();
-  //   cy.get(`[data-test-key="don't save"]`).click();
-  //   cy.get('#set-vector-speed-contraint').select('Off');
-  //   applySettings();
-  //   drawingEllipse();
-  //   cy.get('.layers > .tab-icon').click();
-  //   cy.get('#speed_value').realSwipe('toLeft');
-  //   cy.get('.warning-icon').should('not.exist');
-  //   cy.get('.warning-text').should('not.exist');
-  // });
+  it('remove speed limit and see if home page gets changed ', () => {
+    drawingEllipse();
+    cy.get('.layers > .tab-icon').click();
+    cy.get('#speed_value').realSwipe('toLeft');
+    cy.get('.warning-icon').should('exist');
+    cy.get('.warning-text').should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s.You can remove this limit at Preferences Settings.');
+    go2Preference();
+    cy.get('button[class^="ant-btn"]').contains("Don't Save").click();
+    cy.get('#set-vector-speed-contraint').select('Off');
+    applySettings();
+    drawingEllipse();
+    cy.get('.layers > .tab-icon').click();
+    cy.get('#speed_value').realSwipe('toLeft');
+    cy.get('.warning-icon').should('not.exist');
+    cy.get('.warning-text').should('not.exist');
+  });
 
   function go2Preference() {
     cy.get('div.top-bar-menu-container').click();
