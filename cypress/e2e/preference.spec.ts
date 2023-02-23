@@ -132,17 +132,16 @@ describe('update the preference', () => {
     cy.get('#vertical_guide').should('exist').should('have.attr', 'x1', '100').should('have.attr', 'y1', '0');
   });
 
-  // Fix Later
-  // it('change bitmap preview quality setting and see if home page gets changed ', () => {
-  //   go2Preference();
-  //   cy.get('#set-bitmap-quality').select('Normal');
-  //   applySettings();
-  //   cy.uploadFile('flux.png', 'image/png');
-  //   cy.wait(3000);
-  //   cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-  //     expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
-  //   });
-  // });
+  it('change bitmap preview quality setting and see if home page gets changed ', () => {
+    go2Preference();
+    cy.get('#set-bitmap-quality').select('Normal');
+    applySettings();
+    cy.uploadFile('flux.png', 'image/png');
+    cy.wait(3000);
+    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
+      expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
+    });
+  });
 
   it('change anti aliasing setting and see if home page gets changed ', () => {
     go2Preference();
@@ -174,8 +173,7 @@ describe('update the preference', () => {
   it('click reset button and see if home page gets changed ', () => {
     go2Preference();
     cy.get('b').click();
-    // FIXME: Failed on production test
-    // cy.url().should('eq', 'http://localhost:8080/#/');
+    cy.url().should('contain', 'http://localhost:8080/#/');
     cy.get('h1.headline').should('exist');
   });
 
