@@ -171,7 +171,7 @@ describe('update the preference', () => {
     cy.get('#svg_2').should('exist');
   });
 
-  it.only('click reset button and see if home page gets changed ', () => {
+  it('click reset button and see if home page gets changed ', () => {
     go2Preference();
     cy.get('b').click();
     cy.url().should('contain',`${baseUrl}/#/`);
