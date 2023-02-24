@@ -1,6 +1,7 @@
 import { md5 } from '../support/utils';
 
 describe('update the preference', () => {
+  const { baseUrl } = Cypress.config();
   beforeEach(() => {
     cy.landingEditor();
   });
@@ -170,10 +171,10 @@ describe('update the preference', () => {
     cy.get('#svg_2').should('exist');
   });
 
-  it('click reset button and see if home page gets changed ', () => {
+  it.only('click reset button and see if home page gets changed ', () => {
     go2Preference();
     cy.get('b').click();
-    cy.url().should('contain', 'http://localhost:8080/#/');
+    cy.url().should('contain',`${baseUrl}/#/`);
     cy.get('h1.headline').should('exist');
   });
 

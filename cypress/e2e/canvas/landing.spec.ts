@@ -16,9 +16,9 @@ describe('landing', () => {
   it('connection type selection page', () => {
     cy.visit('#/initialize/connect/select-connection-type');
     cy.url({ timeout: 15000 }).should('contain', '#/initialize/connect/select-connection-type');
-    cy.get('div.select-connection-type').should('exist');
-    cy.get('div.btn-container').should('have.length', 4);
-    cy.get('div.btn-page').click();
+    cy.get('div[class^="src-web-app-pages-SelectConnectionType"]').should('exist');
+    cy.get('div[class^="src-web-app-pages-SelectConnectionType-module__btn-container"]').should('have.length', 4);
+    cy.contains('Skip' || 'Cancel').click();
     window.localStorage.setItem('new-user', 'true');
   });
 
