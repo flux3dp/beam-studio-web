@@ -19,23 +19,23 @@ describe('manipulate laser panel', () => {
   it('set customized List', () => {
     cy.get('.layer-param-buttons > div.right').click();
     cy.get('#wood_5mm_cutting').click({ force: true });
-    cy.get('button[class*="ant-btn css-dev-only-do-not-override-ixblex"]').eq(1).click();
+    cy.get('button[class*="ant-btn"]').eq(1).click();
     cy.get('#custom-config-list').children().should('have.length', '15');
     cy.get('#default-config-list > :nth-child(2)').click({ force: true });
-    cy.get('button[class*="ant-btn css-dev-only-do-not-override-ixblex"]').eq(0).click();
+    cy.get('button[class*="ant-btn"]').eq(0).click();
     cy.get('#custom-config-list').children().should('have.length', '16');
   });
 
   it('reset the parameter', () => {
     cy.get('.layer-param-buttons > div.right').click();
     cy.get('#wood_3mm_cutting').click({ force: true });
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Delete').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save and Exit').click();
+    cy.get('button[class^="ant-btn"]').contains('Delete').click();
+    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.get('#laser-config-dropdown').children().should('have.length', '18');
     cy.get('.layer-param-buttons > div.right').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Reset').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Yes').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save and Exit').click();
+    cy.get('button[class^="ant-btn"]').contains('Reset').click();
+    cy.get('button[class^="ant-btn"]').contains('Yes').click();
+    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.get('#laser-config-dropdown').children().should('have.length', '19');
   });
 
@@ -45,7 +45,7 @@ describe('manipulate laser panel', () => {
     cy.get('#repeat').clear().type('3').blur();
     cy.get('div.add-preset-btn').click();
     cy.get('.text-input').type('Hello Flux').blur();;
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('OK').click();
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get('.layer-param-buttons > div.right').click();
     cy.contains('Hello Flux').should('exist');
     cy.get('#custom-config-list > .no-border').click({ force: true });
@@ -59,13 +59,13 @@ describe('manipulate laser panel', () => {
     cy.get('.layer-param-buttons > div.right').click();
     cy.get('span[class="anticon anticon-plus-circle"]').click();
     cy.get('.text-input').type('Flux Laser').blur();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('OK').click();
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.contains('Flux Laser').should('exist');
     cy.get('#laser_power').clear().type('40').blur();
     cy.get('#laser_speed').clear().type('20').blur();
     cy.get('#laser_repeat').clear().type('10').blur();
     cy.get('#laser_zStep').clear().type('5').blur();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save and Exit').click();
+    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.get('#laser-config-dropdown').select('Flux Laser');
     checkValue(40, 20, 10);
   });
@@ -74,7 +74,7 @@ describe('manipulate laser panel', () => {
     openDocumentSettings();
     cy.get('[class^="ant-select-selection-item"]').click();
     cy.get('[class^="ant-select-item-option-content"]').contains('beamo').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save').click();
+    cy.get('button[class^="ant-btn"]').contains('Save').click();
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(45, 5, 1);
@@ -157,7 +157,7 @@ describe('manipulate laser panel', () => {
     openDocumentSettings();
     cy.get('[class^="ant-select-selection-item"]').click();
     cy.get('[class^="ant-select-item-option-content"]').contains('Beambox Pro').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save').click();
+    cy.get('button[class^="ant-btn"]').contains('Save').click();
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(55, 7, 1);
@@ -201,7 +201,7 @@ describe('manipulate laser panel', () => {
     openDocumentSettings();
     cy.get('[class^="ant-select-selection-item"]').click();
     cy.get('[class^="ant-select-item-option-content"]').contains('HEXA').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save').click();
+    cy.get('button[class^="ant-btn"]').contains('Save').click();
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(40, 6, 1);
@@ -246,7 +246,7 @@ describe('manipulate laser panel', () => {
     cy.get('#repeat').clear().type('3').blur();
     cy.get('div.add-preset-btn').click();
     cy.get('.text-input').type('Hi Flux').blur();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('OK').click();
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get('[title="Export"]').click();
     cy.wait(5000);
     cy.readFile(cypressDownloadPath).its('customizedLaserConfigs').its('16').its('name').should('eq', 'Hi Flux');
