@@ -57,7 +57,7 @@ describe('manipulate laser panel', () => {
 
   it('add new parameter at laser panel', () => {
     cy.get('.layer-param-buttons > div.right').click();
-    cy.get('span[aria-label="plus-circle"]').click();
+    cy.get('span[class="anticon anticon-plus-circle"]').click();
     cy.get('.text-input').type('Flux Laser').blur();
     cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('OK').click();
     cy.contains('Flux Laser').should('exist');
@@ -195,6 +195,48 @@ describe('manipulate laser panel', () => {
     checkValue(50, 140, 1);
     cy.get('#laser-config-dropdown').select('Metal - Engraving (Diode Laser)');
     checkValue(100, 10, 1);
+  });
+
+  it('check all parameter value with HEXA canvas', () => {
+    openDocumentSettings();
+    cy.get('[class^="ant-select-selection-item"]').click();
+    cy.get('[class^="ant-select-item-option-content"]').contains('HEXA').click();
+    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Save').click();
+
+    cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
+    checkValue(40, 6, 1);
+    cy.get('#laser-config-dropdown').select('Wood - 5mm Cutting');
+    checkValue(65, 3, 1);
+    cy.get('#laser-config-dropdown').select('Wood - Engraving');
+    checkValue(20, 300, 1);
+
+    cy.get('#laser-config-dropdown').select('Acrylic - 3mm Cutting');
+    checkValue(40, 6, 1);
+    cy.get('#laser-config-dropdown').select('Acrylic - 5mm Cutting');
+    checkValue(55, 3, 1);
+    cy.get('#laser-config-dropdown').select('Acrylic - Engraving');
+    checkValue(15, 300, 1);
+
+    cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
+    checkValue(40, 6, 1);
+    cy.get('#laser-config-dropdown').select('Leather - 5mm Cutting');
+    checkValue(55, 3, 1);
+    cy.get('#laser-config-dropdown').select('Leather - Engraving');
+    checkValue(20, 300, 1);
+
+    cy.get('#laser-config-dropdown').select('Fabric - 3mm Cutting');
+    checkValue(15, 25, 1);
+    cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
+    checkValue(20, 20, 1);
+    cy.get('#laser-config-dropdown').select('Fabric - Engraving');
+    checkValue(15, 250, 1);
+
+    cy.get('#laser-config-dropdown').select('Rubber - Engraving');
+    checkValue(45, 300, 1);
+    cy.get('#laser-config-dropdown').select('Glass - Engraving');
+    checkValue(35, 150, 1);
+    cy.get('#laser-config-dropdown').select('Metal - Engraving');
+    checkValue(20, 150, 1);
   });
 
   it('export parameter file', () => {
