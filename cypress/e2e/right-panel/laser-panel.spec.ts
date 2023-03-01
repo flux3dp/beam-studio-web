@@ -9,7 +9,6 @@ describe('manipulate laser panel', () => {
     cy.get('#speed').should('have.value', speed);
     cy.get('#repeat').should('have.value', repeat);
   };
-
   function openDocumentSettings() {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(2) > .rc-menu__item').click();
