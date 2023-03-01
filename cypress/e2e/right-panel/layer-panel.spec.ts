@@ -31,7 +31,7 @@ describe('manipulate layers', () => {
   it('rename the new layer', () => {
     cy.get('div.layer:nth-child(1)').dblclick();
     cy.get('input.text-input').clear().type('Hello Flux');
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('OK').click();
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get('div#laser-panel div.layername').should('have.text', 'Parameter Settings (Hello Flux)');
   });
 
@@ -170,7 +170,7 @@ describe('manipulate layers', () => {
     cy.get('#svg_1').click({ force: true });
     cy.get('div.tab.layers').click();
     cy.get('#selLayerNames').select('Layer 2');
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('Yes').click();
+    cy.get('button[class^="ant-btn"]').contains('Yes').click();
     cy.get('#svg_1').should('have.attr', 'stroke', '#3F51B5');
     cy.get('div#left-Cursor>img').click();
     cy.get('#svg_1').click({ force: true });
