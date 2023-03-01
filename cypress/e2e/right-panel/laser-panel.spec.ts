@@ -57,7 +57,7 @@ describe('manipulate laser panel', () => {
 
   it('add new parameter at laser panel', () => {
     cy.get('.layer-param-buttons > div.right').click();
-    cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex ant-btn-text"]').click();
+    cy.get('span[aria-label="plus-circle"]').click();
     cy.get('.text-input').type('Flux Laser').blur();
     cy.get('button[class^="ant-btn css-dev-only-do-not-override-ixblex"]').contains('OK').click();
     cy.contains('Flux Laser').should('exist');
