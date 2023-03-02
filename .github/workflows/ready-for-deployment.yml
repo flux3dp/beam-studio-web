@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.19"
       - name: Checkout Beam Studio Core
         uses: actions/checkout@v3
         with:
@@ -46,14 +49,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run e2e test against the production environment
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         env:
           CYPRESS_username: ${{ secrets.CYPRESS_USERNAME }}
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
           group: 'Group'
-          config-file: cypress.prod.json
+          config-file: cypress.config.prod.ts
           record: true
           parallel: true
           browser: chrome
