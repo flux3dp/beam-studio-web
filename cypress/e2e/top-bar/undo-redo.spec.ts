@@ -39,6 +39,9 @@ describe('verify undo/redo behaviors', () => {
     cy.get('[src="img/top-bar/icon-undo.svg"]').click();
     cy.get('#svg_1').click({ force: true });
     cy.get('div.react-select__value-container').should('have.text', 'Noto Sans');
+    cy.get('[src="img/top-bar/icon-redo.svg"]').click();
+    cy.get('#svg_1').click({ force: true });
+    cy.get('div.react-select__value-container').should('have.text', '思源黑体 SC');
   });
 
   it('text with style', () => {
