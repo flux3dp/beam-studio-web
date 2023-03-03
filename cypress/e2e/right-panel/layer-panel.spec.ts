@@ -28,12 +28,12 @@ describe('manipulate layers', () => {
     cy.get('div#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
   });
 
-  // it('rename the new layer', () => {
-  //   cy.get('div.layer:nth-child(1)').dblclick();
-  //   cy.get('input.text-input').clear().type('Hello Flux');
-  //   cy.get('button[data-test-key="ok"]').click();
-  //   cy.get('div#laser-panel div.layername').should('have.text', 'Parameter Settings (Hello Flux)');
-  // });
+  it('rename the new layer', () => {
+    cy.get('div.layer:nth-child(1)').dblclick();
+    cy.get('input.text-input').clear().type('Hello Flux');
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
+    cy.get('div#laser-panel div.layername').should('have.text', 'Parameter Settings (Hello Flux)');
+  });
 
   it('delete the layer', () => {
     cy.get('div.layer').trigger('mousedown', { button: 2 });
@@ -155,28 +155,28 @@ describe('manipulate layers', () => {
     cy.get('#svg_2').should('have.attr', 'stroke', '#3F51B5');
   });
 
-  // it('move object to different layer', () => {
-  //   cy.get('div#left-Rectangle>img').click();
-  //   cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
-  //   cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
-  //   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-  //   cy.get('div.tab.layers').click();
-  //   cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
-  //   cy.get('#power').should('have.value', '65');
-  //   cy.get('#speed').should('have.value', '3');
-  //   cy.get('#repeat').should('have.value', '1');
-  //   cy.get('div.add-layer-btn').click();
-  //   cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
-  //   cy.get('#svg_1').click({ force: true });
-  //   cy.get('div.tab.layers').click();
-  //   cy.get('#selLayerNames').select('Layer 2');
-  //   cy.get('button[data-test-key="yes"]').click();
-  //   cy.get('#svg_1').should('have.attr', 'stroke', '#3F51B5');
-  //   cy.get('div#left-Cursor>img').click();
-  //   cy.get('#svg_1').click({ force: true });
-  //   cy.get('div.tab.layers').click();
-  //   cy.get('#power').should('have.value', '60');
-  //   cy.get('#speed').should('have.value', '20');
-  //   cy.get('#repeat').should('have.value', '1');
-  // });
+  it('move object to different layer', () => {
+    cy.get('div#left-Rectangle>img').click();
+    cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
+    cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
+    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.get('div.tab.layers').click();
+    cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
+    cy.get('#power').should('have.value', '65');
+    cy.get('#speed').should('have.value', '3');
+    cy.get('#repeat').should('have.value', '1');
+    cy.get('div.add-layer-btn').click();
+    cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
+    cy.get('#svg_1').click({ force: true });
+    cy.get('div.tab.layers').click();
+    cy.get('#selLayerNames').select('Layer 2');
+    cy.get('button[class^="ant-btn"]').contains('Yes').click();
+    cy.get('#svg_1').should('have.attr', 'stroke', '#3F51B5');
+    cy.get('div#left-Cursor>img').click();
+    cy.get('#svg_1').click({ force: true });
+    cy.get('div.tab.layers').click();
+    cy.get('#power').should('have.value', '60');
+    cy.get('#speed').should('have.value', '20');
+    cy.get('#repeat').should('have.value', '1');
+  });
 });
