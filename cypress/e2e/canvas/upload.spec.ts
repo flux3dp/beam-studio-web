@@ -15,7 +15,7 @@ describe('upload tools', () => {
     cy.get('#height').should('have.value', '387.9');
   });
 
-  it.only('upload dxf', () => {
+  it('upload dxf', () => {
     cy.landingEditor();
     cy.fixture('basket.dxf').then(fileContent => {
       cy.get("input[data-file-input='import_image").attachFile({
