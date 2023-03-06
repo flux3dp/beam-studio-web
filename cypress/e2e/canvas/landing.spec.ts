@@ -54,15 +54,4 @@ describe('landing', () => {
       .find('div')
       .should('have.class', 'studio-container beambox-studio en');
   });
-
-  // it('flux login page', () => {
-  //   const username = Cypress.env('username');
-  //   const password = Cypress.env('password');
-  //   cy.url().should('contain', '#/initialize/connect/flux-id-login');
-  //   cy.get('div.flux-login').should('exist');
-  //   cy.get('input#email-input').type(username);
-  //   cy.get('input#password-input').type(password);
-  //   cy.get('div.remember-me').click();
-  //   cy.get('button[class^="ant-btn"]').contains('Login').click();
-  // });
 });
