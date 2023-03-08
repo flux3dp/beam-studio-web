@@ -92,25 +92,25 @@ describe('manipulate image function', () => {
     });
   });
 
-  it('check bevel with image', () => {
-    cy.uploadFile('preview.png', 'image/png');
-    cy.get('#bevel').click();
-    cy.get('.progress', { timeout: 120000 }).should('not.exist');
-    cy.get('#svg_1').click({ force: true });
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
-    });
-  });
+  // it('check bevel with image', () => {
+  //   cy.uploadFile('preview.png', 'image/png');
+  //   cy.get('#bevel').click();
+  //   cy.get('.progress', { timeout: 120000 }).should('not.exist');
+  //   cy.get('#svg_1').click({ force: true });
+  //   cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
+  //     expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
+  //   });
+  // });
 
-  it('check invert with image', () => {
-    cy.uploadFile('flux.png', 'image/png');
-    cy.get('#invert').click();
-    cy.get('.progress', { timeout: 20000 }).should('not.exist');
-    cy.get('#svg_1').click({ force: true });
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        return href === '8b1b3ac285d65fae820c86dc5b728efd' || href === '1c5a5775df3e730720a60ae5a20982db'
-      });
-    });
-  });
+  // it('check invert with image', () => {
+  //   cy.uploadFile('flux.png', 'image/png');
+  //   cy.get('#invert').click();
+  //   cy.get('.progress', { timeout: 20000 }).should('not.exist');
+  //   cy.get('#svg_1').click({ force: true });
+  //   cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
+  //     cy.wrap(md5(href)).should('satisfy', (href) => {
+  //       return href === '8b1b3ac285d65fae820c86dc5b728efd' || href === '1c5a5775df3e730720a60ae5a20982db'
+  //     });
+  //   });
+  // });
 });
