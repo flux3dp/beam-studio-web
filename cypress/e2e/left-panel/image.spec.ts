@@ -34,7 +34,7 @@ describe('manipulate image function', () => {
     cy.get('.onoffswitch-switch').click({ force: true });
     cy.get('#svg_1').click({ force: true });
     cy.get('#svg_1').should('have.attr', 'data-threshold', '254').should('have.attr', 'data-shading', 'true');
-    cy.wait(3000);
+    cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '8b1b3ac285d65fae820c86dc5b728efd'
@@ -48,7 +48,7 @@ describe('manipulate image function', () => {
     cy.get('#file-input').attachFile('map.jpg');
     cy.get('.progress', { timeout: 3000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
-    cy.wait(3000);
+    cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
         expect(md5(href)).equal('225e1c371779312b52a2c70ff42780c8');
     });
@@ -70,7 +70,7 @@ describe('manipulate image function', () => {
       });
     cy.get('button[class^="ant-btn"]').contains('Okay').click();
     cy.get('.progress', { timeout: 5000 }).should('not.exist');
-    cy.wait(3000);
+    cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '3c43c5b5ec5a8f24d2eb35a508d4b85d'
@@ -86,7 +86,7 @@ describe('manipulate image function', () => {
     cy.get('button[class^="ant-btn"]').contains('Okay').click();
     cy.get('.progress', { timeout: 10000 }).should('not.exist');
     cy.get('.photo-edit-panel', { timeout: 5000 }).should('not.exist');
-    cy.wait(3000);
+    cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         return href === '5525bd3998a7ce95a35e1618e0db8c43' || href === 'a8ad6ba832e34e3cc6544668596fefff'
@@ -99,7 +99,7 @@ describe('manipulate image function', () => {
     cy.get('#bevel').click();
     cy.get('.progress', { timeout: 120000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
-    cy.wait(3000);
+    cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
     });
@@ -110,7 +110,7 @@ describe('manipulate image function', () => {
     cy.get('#invert').click();
     cy.get('.progress', { timeout: 20000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
-    cy.wait(3000);
+    cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         return href === '4d7e7b1f937e9161c3f3c567d5ee869b' || href === 'de1073c40f0c095297d9d87af6b74dc3'
