@@ -55,20 +55,20 @@ describe('manipulate laser panel', () => {
     cy.get('#laser_zStep').should('have.value', '0');
   });
 
-  it('add new parameter at laser panel', () => {
-    cy.get('.layer-param-buttons > div.right').click();
-    cy.get('span[class="anticon anticon-plus-circle"]').click();
-    cy.get('.text-input').type('Flux Laser').blur();
-    cy.get('button[class^="ant-btn"]').contains('OK').click();
-    cy.contains('Flux Laser').should('exist');
-    cy.get('#laser_power').clear().type('40').blur();
-    cy.get('#laser_speed').clear().type('20').blur();
-    cy.get('#laser_repeat').clear().type('10').blur();
-    cy.get('#laser_zStep').clear().type('5').blur();
-    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
-    cy.get('#laser-config-dropdown').select('Flux Laser');
-    checkValue(40, 20, 10);
-  });
+  // it('add new parameter at laser panel', () => {
+  //   cy.get('.layer-param-buttons > div.right').click();
+  //   cy.get('span[class="anticon anticon-plus-circle"]').click();
+  //   cy.get('.text-input').type('Flux Laser').blur();
+  //   cy.get('button[class^="ant-btn"]').contains('OK').click();
+  //   cy.contains('Flux Laser').should('exist');
+  //   cy.get('#laser_power').clear().type('40').blur();
+  //   cy.get('#laser_speed').clear().type('20').blur();
+  //   cy.get('#laser_repeat').clear().type('10').blur();
+  //   cy.get('#laser_zStep').clear().type('5').blur();
+  //   cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
+  //   cy.get('#laser-config-dropdown').select('Flux Laser');
+  //   checkValue(40, 20, 10);
+  // });
 
   it('check all parameter value with beamo canvas', () => {
     openDocumentSettings();

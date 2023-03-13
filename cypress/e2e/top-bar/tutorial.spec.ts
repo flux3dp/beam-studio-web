@@ -21,14 +21,14 @@ describe('show tutorial', () => {
     checkInterfaceStep('14/14\nObject ActionsNEXT');
   });
 
-  // it('show gesture introduction', () => {
-  //   openTutorial(4);
-  //   checkGestureStep('.media-container > img', 'Scroll the canvas with two fingers.', '1/5', 'next');
-  //   checkGestureStep('.media-container > img', 'Pinch with two fingers to zoom in/out the canvas.', '2/5', 'next');
-  //   checkGestureStep('video', 'Tap to select the object.', '3/5', 'next');
-  //   checkGestureStep('video', 'Drag to select the multiple objects.', '4/5', 'next');
-  //   checkGestureStep('video', 'Press and hold to open the context menu.', '5/5', 'done');
-  // });
+  it('show gesture introduction', () => {
+    openTutorial(4);
+    checkGestureStep('.media-container > img', 'Scroll the canvas with two fingers.', '1/5', 'NEXT');
+    checkGestureStep('.media-container > img', 'Pinch with two fingers to zoom in/out the canvas.', '2/5', 'NEXT');
+    checkGestureStep('video', 'Tap to select the object.', '3/5', 'NEXT');
+    checkGestureStep('video', 'Drag to select the multiple objects.', '4/5', 'NEXT');
+    checkGestureStep('video', 'Press and hold to open the context menu.', '5/5', 'DONE');
+  });
 
   function openTutorial(sequence) {
     cy.get('div.menu-btn-container').click();
@@ -45,6 +45,6 @@ describe('show tutorial', () => {
     cy.get(media).should('exist');
     cy.get('.description').should('have.text', description);
     cy.get('.step').should('have.text', step);
-    cy.get(`[data-test-key="${text}"]`).click();
+    cy.get('button[class^="ant-btn"]').contains(`${text}`).click();
   };
 });
