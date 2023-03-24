@@ -44,8 +44,9 @@ Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
   const password = Cypress.env('password');
   cy.get('input#email-input').type(username);
   cy.get('input#password-input').type(password);
-  cy.get('div.primary').click();
-  cy.get('button[data-test-key="ok"]').click();
+  cy.get('button[class^="ant-btn"]').contains('Login').click({ force: true });
+  cy.get('.ant-modal-content').should('exist').and('have.text', 'Successfully logged in.OK');
+  cy.contains('button span', 'OK').click()
   // time for svgcanvas loading
   cy.wait(1000);
 });
