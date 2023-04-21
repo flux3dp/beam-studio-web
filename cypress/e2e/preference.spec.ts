@@ -1,12 +1,41 @@
 import { md5 } from '../support/utils';
 
+const laserPanelBlockPrefix = 'src-web-app-views-beambox-Right-Panels-LaserPanel-Block-module__';
+
+function go2Preference() {
+  cy.get('div.top-bar-menu-container').click();
+  cy.get('li.rc-menu__submenu').should('have.length', 5);
+  cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
+  cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click({ force: true });
+}
+
+function checkLang(lang, text, title) {
+  cy.get('select#select-lang').select(lang);
+  cy.get('.form > :nth-child(2) > .span3 > .font2').should('have.text', text);
+  cy.get('div.btn-done').click();
+  cy.wait(1000);
+  cy.get('.file-title').should('have.text', title);
+}
+
+function drawingEllipse() {
+  cy.get('div#left-Ellipse>img').click();
+  cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+  cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
+  cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+}
+
+function applySettings() {
+  cy.get('div.btn-done').click();
+  cy.wait(1000);
+}
+
 describe('update the preference', () => {
   const { baseUrl } = Cypress.config();
   beforeEach(() => {
     cy.landingEditor();
   });
 
-  it('check default value with preference page', () => {
+  it.only('check default value with preference page', () => {
     go2Preference();
     cy.get('#select-lang').find('option:selected').should('have.text', 'English');
     cy.get('#ip-input').should('have.attr', 'value', '192.168.1.1');
@@ -178,12 +207,12 @@ describe('update the preference', () => {
     cy.get('h1.headline').should('exist');
   });
 
-  it('remove speed limit and see if home page gets changed ', () => {
+  it.only('remove speed limit and see if home page gets changed ', () => {
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
     cy.get('#speed_value').realSwipe('toLeft');
-    cy.get('.warning-icon').should('exist');
-    cy.get('.warning-text').should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s.You can remove this limit at Preferences Settings.');
+    cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('exist');
+    cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s.You can remove this limit at Preferences Settings.');
     go2Preference();
     cy.get('button[class^="ant-btn"]').contains("Don't Save").click();
     cy.get('#set-vector-speed-contraint').select('Off');
@@ -191,34 +220,7 @@ describe('update the preference', () => {
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
     cy.get('#speed_value').realSwipe('toLeft');
-    cy.get('.warning-icon').should('not.exist');
-    cy.get('.warning-text').should('not.exist');
+    cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('not.exist');
+    cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('not.exist');
   });
-
-  function go2Preference() {
-    cy.get('div.top-bar-menu-container').click();
-    cy.get('li.rc-menu__submenu').should('have.length', 5);
-    cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
-    cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click({ force: true });
-  };
-
-  function checkLang(lang, text, title) {
-    cy.get('select#select-lang').select(lang);
-    cy.get('.form > :nth-child(2) > .span3 > .font2').should('have.text', text);
-    cy.get('div.btn-done').click();
-    cy.wait(1000);
-    cy.get('.file-title').should('have.text', title);
-  };
-
-  function drawingEllipse() {
-    cy.get('div#left-Ellipse>img').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
-    cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
-    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-  };
-
-  function applySettings() {
-    cy.get('div.btn-done').click();
-    cy.wait(1000);
-  }
 });
