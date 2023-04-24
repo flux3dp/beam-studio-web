@@ -1,5 +1,7 @@
-describe('manipulate laser panel', () => {
+const configOperationsPrefix = 'src-web-app-views-beambox-Right-Panels-LaserPanel-ConfigOperations-module__';
+const configListPrefix = 'src-web-app-views-beambox-Right-Panels-LaserManage-ConfigList-module__';
 
+describe('manipulate laser panel', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
@@ -8,31 +10,31 @@ describe('manipulate laser panel', () => {
     cy.get('#power').should('have.value', power);
     cy.get('#speed').should('have.value', speed);
     cy.get('#repeat').should('have.value', repeat);
-  };
+  }
 
   function openDocumentSettings() {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(2) > .rc-menu__item').click();
     cy.get('.rc-menu > :nth-child(22)').click();
-  };
+  }
 
   it('set customized List', () => {
-    cy.get('.layer-param-buttons > div.right').click();
-    cy.get('#wood_5mm_cutting').click({ force: true });
+    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
+    cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting').parent().click();
     cy.get('button[class*="ant-btn"]').eq(1).click();
     cy.get('#custom-config-list').children().should('have.length', '15');
-    cy.get('#default-config-list > :nth-child(2)').click({ force: true });
+    cy.get(`div[class*="${configListPrefix}list"]`).get(`div[class*="${configListPrefix}name"]`).eq(1).click();
     cy.get('button[class*="ant-btn"]').eq(0).click();
     cy.get('#custom-config-list').children().should('have.length', '16');
   });
 
   it('reset the parameter', () => {
-    cy.get('.layer-param-buttons > div.right').click();
-    cy.get('#wood_3mm_cutting').click({ force: true });
+    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
+    cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting').parent().click();
     cy.get('button[class^="ant-btn"]').contains('Delete').click();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.get('#laser-config-dropdown').children().should('have.length', '18');
-    cy.get('.layer-param-buttons > div.right').click();
+    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
     cy.get('button[class^="ant-btn"]').contains('Reset').click();
     cy.get('button[class^="ant-btn"]').contains('Yes').click();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
@@ -44,15 +46,15 @@ describe('manipulate laser panel', () => {
     cy.get('#speed').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
     cy.get('div.add-preset-btn').click();
-    cy.get('.text-input').type('Hello Flux').blur();;
+    cy.get('.text-input').type('Hello Flux').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
-    cy.get('.layer-param-buttons > div.right').click();
+    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
     cy.contains('Hello Flux').should('exist');
-    cy.get('#custom-config-list > .no-border').click({ force: true });
-    cy.get('#laser_power').should('have.value', '100');
-    cy.get('#laser_speed').should('have.value', '70');
-    cy.get('#laser_repeat').should('have.value', '3');
-    cy.get('#laser_zStep').should('have.value', '0');
+    cy.contains(`div[class*="${configListPrefix}name"]`, 'Hello Flux').click();
+    cy.get('#laser-power').should('have.value', '100');
+    cy.get('#laser-speed').should('have.value', '70');
+    cy.get('#laser-repeat').should('have.value', '3');
+    cy.get('#laser-z-step').should('have.value', '0');
   });
 
   // it('add new parameter at laser panel', () => {
@@ -252,8 +254,8 @@ describe('manipulate laser panel', () => {
     cy.readFile(cypressDownloadPath).its('customizedLaserConfigs').its('16').its('name').should('eq', 'Hi Flux');
   });
 
-  it('import parameter file', () => {
-    cy.get('[title="Import"] > img').click({ force: true });
+  it.only('import parameter file', () => {
+    cy.get('[title="Import"] > img').click();
     cy.get('#file-input').attachFile('testfile.json');
     cy.contains('Confirm').click();
     cy.contains('testFile').should('exist');

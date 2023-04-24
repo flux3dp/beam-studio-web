@@ -21,6 +21,7 @@ const setStorage = () => {
   }));
   window.localStorage.setItem('last-installed-version', 'web');
   window.localStorage.setItem('questionnaire-version', '9999');
+  window.localStorage.setItem('did-gesture-tutorial', '1');
 }
 
 Cypress.Commands.add('landingEditor', (opts = {}) => {

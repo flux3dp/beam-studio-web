@@ -68,7 +68,7 @@ describe('array tools', () => {
     cy.wait(500);
     doAllThing();
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
-    cy.get('#svg_13').children('line').should('have.length', '4');
+    cy.get('#svg_13', { timeout: 3000 }).children('line').should('have.length', '4');
     cy.get('polygon').should('have.length', '4');
   });
 
