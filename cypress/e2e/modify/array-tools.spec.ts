@@ -56,7 +56,7 @@ describe('array tools', () => {
     cy.get('ellipse').should('have.length', '4');
   });
 
-  it.only('mutilselect', () => {
+  it('mutilselect', () => {
     cy.get('div#left-Line>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
