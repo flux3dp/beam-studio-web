@@ -1,3 +1,11 @@
+@media only screen and (max-device-width : 600px) {
+  #right-panel { display: none; }
+}
+
+@media only screen and (max-device-width : 600px) {
+  .hidden-mobile { display: none !important; }
+}
+
 #right-panel {
   font-size: 10pt;
 
