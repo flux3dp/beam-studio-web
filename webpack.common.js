@@ -117,6 +117,11 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
+        test: /\.css$/i,
+        exclude: /\.module\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
         test: /\.(woff(2)?|ttf|eot|svg|png)$/,
         use: ['file-loader'],
       },
