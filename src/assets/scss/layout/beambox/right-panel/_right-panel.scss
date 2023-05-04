@@ -118,3 +118,8 @@
     }
   }
 }
+
+.adm-tab-bar-item[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
