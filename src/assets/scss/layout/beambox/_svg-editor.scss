@@ -156,16 +156,6 @@
   @include force-hide();
 }
 
-@media only screen and (max-device-width : 600px) {
-  #svg_editor {
-    left: 0px;
-    width: calc(100%);
-    &.mac {
-      width: calc(100%);
-    }
-  }
-}
-
 * {
   touch-action: manipulation;
 }
