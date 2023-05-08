@@ -14,12 +14,12 @@
 
   #mobile-tab-bar {
     display: block;
-    position: 'fixed';
-    width: '100%';
-    border-top: 'solid 1px #CCC';
-    background: '#FFFFFF';
+    position: fixed;
+    width: 100%;
+    border-top: solid 1px #CCC;
+    background: #FFFFFF;
     z-index: 998;
-    overflow-x: 'scroll';
+    overflow-x: scroll;
     bottom: 0;
   }
 
@@ -31,6 +31,14 @@
   .adm-tab-bar-item[aria-disabled="true"] {
     opacity: 0.5;
     pointer-events: none;
+  }
+
+  .beambox-studio #svg_editor {
+    left: 0px;
+    width: calc(100%);
+    &.mac {
+      width: calc(100%);
+    }
   }
 
   .beambox-studio #right-panel {
