@@ -45,16 +45,58 @@
     width: 100vw;
     overflow-x: hidden;
     #sidepanels {
-      overflow-x: hidden;
-      top: 50vh;
+      top: auto;
+      bottom: 49px;
       left: 0;
       width: 100vw !important;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      height: fit-content;
       .right-panel-tabs {
         display: none;
       }
+
+      #object-panel {
+        min-height: 0;
+        width: 1200px;
+        display: flex;
+        .tool-btns-container {
+          min-width: 100vw;
+        }
+        .dimension-panel {
+          display: flex;
+          min-width: 100vw;
+          .dimension-container input {
+            font-size: 16px;
+            width: 80px;
+          }
+        }
+        .options-panel {
+          display: flex;
+          min-width: fit-content;
+          .title {
+            display: none;
+          }
+          .text-options {
+            display: flex;
+          }
+          .option-block {
+            .label {
+              word-break: keep-all;
+              margin: 0 5px;
+              font-size: 13px;
+            }
+          }
+        }
+        .actions-panel {
+          display: flex;
+          width: auto;
+        }
+      }
+
       #layerpanel {
         width: 100vw;
+        border: none;
+
         #layerlist{
           padding-bottom: 200px;
         }
