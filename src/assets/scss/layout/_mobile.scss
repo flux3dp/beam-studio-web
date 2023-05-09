@@ -72,24 +72,47 @@
         }
         .options-panel {
           display: flex;
+          max-width: 100vw;
+          flex-wrap: wrap;
           min-width: fit-content;
           .title {
             display: none;
           }
           .text-options {
             display: flex;
-          }
-          .option-block {
-            .label {
-              word-break: keep-all;
-              margin: 0 5px;
-              font-size: 13px;
+            flex-wrap: wrap;
+            width: 100vw;
+            .option-block {
+              .label {
+                word-break: keep-all;
+                margin: 0 5px;
+                font-size: 13px;
+                line-height: 32px;
+                height: 32px;
+              }
+              .option-input {
+                font-size: 16px;
+                width: 60px;
+                input {
+                  font-size: 16px;
+                  width: 40px;
+                  padding: 0;
+                }
+                .unit {
+                  margin-left: auto;
+                }
+              }
+              width: 45vw;
+              margin-right: 10px;
             }
           }
         }
         .actions-panel {
           display: flex;
           width: auto;
+          .title {
+            display: none;
+          }
         }
       }
 
