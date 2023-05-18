@@ -184,24 +184,6 @@
         }
       }
 
-
-      .add-layer-btn {
-        position: fixed;
-        top: 100%;
-        margin-top: -100px;
-        right: 15px;
-        z-index: 999;
-        background: white;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-        border-radius: 100%;
-        width: 30px;
-        height: 30px;
-        padding: 9px;
-        &:active, &:hover {
-          opacity: 0.5;
-        }
-      }
-
       #layerpanel {
         width: 100vw;
         border: none;
@@ -211,33 +193,6 @@
         width: 100vw;
         overflow-y: scroll;
         height: fit-content;
-
-        #layerlist {
-          padding-bottom: 80px;
-        }
-
-        .layer-row {
-          display: flex;
-          &:active, &:hover {
-            .layername {
-              color: white;
-            }
-          }
-          .layername {
-            font-size: 15px;
-            font-weight: bold;
-            text-align: left;
-            flex-grow: 2;
-          }
-          .layercolor {
-            margin-right: 10px;
-          }
-
-          .layervis {
-            margin-right: 5px;
-
-          }
-        }
       }
     }
   }
