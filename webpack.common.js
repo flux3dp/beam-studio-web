@@ -22,6 +22,7 @@ module.exports = {
       app: path.resolve(__dirname, 'src/web/app/'),
       helpers: path.resolve(__dirname, 'src/web/helpers/'),
       "core-interfaces": path.resolve(__dirname, 'src/web/interfaces/'),
+      styles: path.resolve(__dirname, 'src/web/styles/'),
       implementations: path.resolve(__dirname, 'src/implementations/'),
       /* from beam-studio */
       jquery: path.join(__dirname, 'public/js/lib/svgeditor/jquery'),
@@ -122,8 +123,12 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg|png)$/,
+        test: /\.(woff(2)?|ttf|eot|png)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },
