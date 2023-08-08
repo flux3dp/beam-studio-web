@@ -65,30 +65,6 @@
         display: none;
       }
 
-      #object-panel {
-        min-height: 0;
-        width: fit-content;
-        display: flex;
-        padding: 8px 32px;
-        color: #7C7C7C;
-        .common-action-panel,
-        .dimension-panel,
-        .options-panel,
-        .tool-btns-container,
-        .actions-panel {
-          display: flex;
-          width: auto;
-          height: auto;
-          column-gap: 10px;
-          flex-wrap: nowrap;
-          border: none;
-          padding: 0;
-        }
-        .options-panel > div:only-child {
-          display: none;
-        }
-      }
-
       #layerpanel {
         width: 100vw;
         border: none;
