@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].bundle.js',
     clean: true,
+    hashFunction: 'xxhash64',
   },
   mode: 'development',
   resolve: {
