@@ -68,10 +68,6 @@
           display: none;
         }
 
-        .task {
-          height: 100%;
-        }
-
         .camera {
           height: 100%;
         }
@@ -559,23 +555,4 @@
       background-color: #1890ff;
     }
   }
-}
-
-
-.monitor-left-text {
-  line-height: 32px;
-}
-
-.monitor-right-text {
-  line-height: 32px;
-  text-align: right;
-}
-
-.monitor-task-info-bar {
-  position: absolute;
-  bottom: 6px;
-  width: 100%;
-  background: rgba(0,0,0,0.5);
-  color: white;
-  padding: 0 8px;
 }
