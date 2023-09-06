@@ -1130,7 +1130,7 @@ const fonts: WebFont[] = [
     postscriptName: 'ZhiMangXing-Regular',
     style: 'Regular',
     weight: 400,
-    queryString: 'family=Zhi+Mang+Xing',
+    queryString: 'family=Zhi+Mang+Xing',
     supportLangs: ['zh-cn'],
   },
 ];

@@ -17,6 +17,7 @@
     "@szhsin/react-menu": "^1.10.1",
     "animate.css": "^4.1.1",
     "antd": "^5.1.1",
+    "antd-mobile": "^5.32.2",
     "axios": "^0.21.1",
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
