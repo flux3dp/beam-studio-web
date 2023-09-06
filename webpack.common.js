@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].bundle.js',
     clean: true,
+    hashFunction: 'xxhash64',
   },
   mode: 'development',
   resolve: {
@@ -22,6 +23,7 @@ module.exports = {
       app: path.resolve(__dirname, 'src/web/app/'),
       helpers: path.resolve(__dirname, 'src/web/helpers/'),
       "core-interfaces": path.resolve(__dirname, 'src/web/interfaces/'),
+      styles: path.resolve(__dirname, 'src/web/styles/'),
       implementations: path.resolve(__dirname, 'src/implementations/'),
       /* from beam-studio */
       jquery: path.join(__dirname, 'public/js/lib/svgeditor/jquery'),
@@ -117,8 +119,39 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg|png)$/,
+        test: /\.css$/i,
+        exclude: /\.module\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|png)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        removeViewBox: false,
+                        convertPathData: {
+                          makeArcs: undefined,
+                          curveSmoothShorthands: false,
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
       },
     ],
   },
@@ -129,6 +162,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
+        { from: path.resolve(__dirname, 'src/assets/styles'), to: path.resolve(__dirname, 'dist/styles') },
         { from: path.resolve(__dirname, 'src/assets/video'), to: path.resolve(__dirname, 'dist/video') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
@@ -139,7 +173,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: '[name].css',
     }),
   ],
 };
