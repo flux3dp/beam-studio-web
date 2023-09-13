@@ -173,7 +173,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].[chunkhash].css',
     }),
   ],
 };
