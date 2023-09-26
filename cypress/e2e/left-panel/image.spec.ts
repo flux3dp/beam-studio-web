@@ -12,29 +12,29 @@ describe('manipulate image function', () => {
     cy.get('.message').should('have.text', 'Gradient images takes more time to trace and are prone to noise. Please kindly turn off the image gradient before executing.')
     cy.contains('button span', 'OK').click()
     cy.get('.options-panel > :nth-child(2) > :nth-child(2)').should('not.exist');
-    cy.get('.onoffswitch-switch').click({ force: true });
+    cy.get('.adm-switch-checkbox').click({ force: true });
     cy.get('.options-panel > :nth-child(2) > :nth-child(2)').should('exist');
     cy.get('#trace').click({ force: true });
     cy.wait(1500);
     cy.get('#svg_3').click({ force: true });
     cy.get('div.element-title').contains('Layer 1 > Path');
     cy.get('#svg_3').invoke('attr', 'd').then((d) => {
-      expect(md5(d)).equal('64f69f6c2ea8f7d36376b20e3de02547');
+      expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
     });
   });
 
   it('check gradient with image', () => {
     cy.uploadFile('flux.png', 'image/png');
-    cy.get('.onoffswitch-switch').click({ force: true });
+    cy.get('.adm-switch-checkbox').click({ force: true });
     cy.get('#svg_1').should('have.attr', 'data-threshold', '128').should('have.attr', 'data-shading', 'false');
     cy.get('#svg_1').click({ force: true });
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       expect(md5(href)).equal('8794655cf390c5f867ed5eff13f3bce4');
     });
-    cy.get('.onoffswitch-switch').click({ force: true });
+    cy.get('.adm-switch-checkbox').click({ force: true });
     cy.get('#svg_1').click({ force: true });
     cy.get('#svg_1').should('have.attr', 'data-threshold', '254').should('have.attr', 'data-shading', 'true');
-    cy.wait(10000);
+    cy.wait(5000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         return href === '1c5a5775df3e730720a60ae5a20982db' || href === '8b1b3ac285d65fae820c86dc5b728efd'
@@ -50,13 +50,12 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').click({ force: true });
     cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        return href === '225e1c371779312b52a2c70ff42780c8' || href === 'bb928cb5c30ef7f85c2b53f81fc4072e'
-      });
+      expect(md5(href)).equal('80161b302c514e5ddeaef3fb7ec371e9');
     });
   });
 
   it('check grading with image', () => {
+    cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').click({ force: true });
     cy.wait(2000);
@@ -81,6 +80,7 @@ describe('manipulate image function', () => {
   });
 
   it('check crop with image', () => {
+    cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#crop').click();
     cy.wait(3000);
@@ -97,6 +97,7 @@ describe('manipulate image function', () => {
   });
 
   it('check bevel with image', () => {
+    cy.disableImageDownSampling();
     cy.uploadFile('preview.png', 'image/png');
     cy.get('#bevel').click();
     cy.get('.progress', { timeout: 120000 }).should('not.exist');
@@ -108,6 +109,7 @@ describe('manipulate image function', () => {
   });
 
   it('check invert with image', () => {
+    cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#invert').click();
     cy.get('.progress', { timeout: 20000 }).should('not.exist');
