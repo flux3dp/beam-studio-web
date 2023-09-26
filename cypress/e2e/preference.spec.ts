@@ -1,6 +1,6 @@
 import { md5 } from '../support/utils';
 
-const laserPanelBlockPrefix = 'src-web-app-views-beambox-Right-Panels-LaserPanel-Block-module__';
+const laserPanelBlockPrefix = 'src-web-app-views-beambox-Right-Panels-ConfigPanel-Block-module__';
 
 function go2Preference() {
   cy.get('div.top-bar-menu-container').click();
