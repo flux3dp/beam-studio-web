@@ -37,6 +37,7 @@ jobs:
       - name: Setup web and run e2e tests
         uses: cypress-io/github-action@v5
         env:
+          NODE_OPTIONS: --openssl-legacy-provider
           CYPRESS_username: ${{ secrets.CYPRESS_USERNAME }}
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
