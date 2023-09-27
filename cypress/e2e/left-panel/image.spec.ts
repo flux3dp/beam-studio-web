@@ -12,6 +12,7 @@ describe('manipulate image function', () => {
     cy.get('.message').should('have.text', 'Gradient images takes more time to trace and are prone to noise. Please kindly turn off the image gradient before executing.')
     cy.contains('button span', 'OK').click()
     cy.get('.ant-switch').click({ force: true });
+    cy.wait(1500);
     cy.get('.options-panel > :nth-child(2) > :nth-child(2)').should('exist');
     cy.get('#trace').click({ force: true });
     cy.wait(1500);
