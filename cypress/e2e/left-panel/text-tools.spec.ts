@@ -65,10 +65,10 @@ describe('select tools', () => {
 
   it('vertical', () => {
     cy.get('#svg_1').click({ force: true });
-    cy.get(':nth-child(6) > .onoffswitch > .onoffswitch-label > .onoffswitch-switch').click();
+    cy.get(':nth-child(6) .adm-switch-checkbox').click();
     cy.get('#svg_1').should('have.attr', 'data-verti').and('eq', 'true');
     cy.get('#svg_2').click({ force: true });
-    cy.get(':nth-child(6) > .onoffswitch > .onoffswitch-label > .onoffswitch-switch').click();
+    cy.get(':nth-child(6) > .adm-switch-checkbox').click();
     cy.get('#svg_2').should('have.attr', 'data-verti').and('eq', 'true');
   });
 
