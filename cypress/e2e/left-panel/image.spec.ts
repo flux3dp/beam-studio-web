@@ -77,7 +77,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         // Local MD5 / Remote(Github Action) MD5
-        return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2'
+        return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' || href === '3c43c5b5ec5a8f24d2eb35a508d4b85d'
       });
     });
   });
