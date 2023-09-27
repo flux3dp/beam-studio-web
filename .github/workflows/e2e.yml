@@ -32,6 +32,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.19
+      - uses: browser-actions/setup-chrome@latest
+      - run: |
+          echo "BROWSER_PATH=$(which chrome)" >> $GITHUB_ENV
       - name: Cypress install
         uses: cypress-io/github-action@v6
         with:
@@ -47,7 +50,7 @@ jobs:
         with:
           record: true
           group: "Actions example"
-          browser: chrome
+          browser: "${{ env.BROWSER_PATH }}"
           install: false
           parallel: true
           start: yarn start
