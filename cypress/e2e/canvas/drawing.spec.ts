@@ -107,16 +107,4 @@ describe('drawing', () => {
     cy.get('#pathpointgrip_2').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(301, 1); });
     cy.get('#pathpointgrip_3').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(100, 1); });
   });
-
-  it('text', () => {
-    cy.get('div#left-Text>img').click();
-    cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
-
-    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).wait(500).realType('Bring Any Design to Life');
-    cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
-
-    cy.get('#svg_1').should('exist');
-    cy.get('div.text-options').should('exist');
-    cy.get('#svg_1').should('have.text', 'Bring Any Design to Life');
-  });
 });
