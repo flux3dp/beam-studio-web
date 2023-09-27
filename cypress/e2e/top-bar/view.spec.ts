@@ -1,3 +1,5 @@
+const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__btn';
+
 describe('manipulate view', () => {
   beforeEach(() => {
     cy.landingEditor();
@@ -67,7 +69,7 @@ describe('manipulate view', () => {
   });
 
   it('use layer color', () => {
-    cy.get('div.add-layer-btn').click();
+    cy.get(`div[class*="${addLayerBtnPrefix}"]`).click();
     cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
