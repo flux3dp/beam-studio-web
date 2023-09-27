@@ -16,15 +16,15 @@ describe('verify undo/redo behaviors', () => {
     text();
     cy.get('.options-panel .text-options .ant-select').click();
     cy.wait(1000);
-    cy.get('.rc-virtual-list-holder .ant-select-item[label="思源黑体 SC"]').click();
+    cy.get('.rc-virtual-list-holder .ant-select-item[label="Lobster"]').click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', '思源黑体 SC');
+    fontDisplay().should('have.attr', 'alt').and('eq', 'Lobster');
     undoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', '思源黑體 TC');
+    fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
     redoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', '思源黑体 SC');
+    fontDisplay().should('have.attr', 'alt').and('eq', 'Lobster');
   });
 
   // it('text with style', () => {
