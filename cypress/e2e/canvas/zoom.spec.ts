@@ -1,4 +1,5 @@
-const zoomBlockPrefix = 'src-web-app-components-beambox-ZoomBlock-module_'
+const zoomBlockPrefix = 'src-web-app-components-beambox-ZoomBlock-module_';
+const zoomRatio = () => cy.get(`[class*="${zoomBlockPrefix}_ratio"]`);
 
 it('zoom in/out', () => {
   cy.landingEditor();
@@ -7,18 +8,18 @@ it('zoom in/out', () => {
   cy.get(`[class*="${zoomBlockPrefix}_container"] img[src="img/icon-plus.svg"]`).parent().should('exist');
 
   let zoomRatio;
-  cy.get(`[class*="${zoomBlockPrefix}_ratio"]`).should(($div) => {
+  zoomRatio().should(($div) => {
     zoomRatio = parseInt($div.text().replace('%', ''));
   });
 
   cy.get(`[class*="${zoomBlockPrefix}_container"] img[src="img/icon-plus.svg"]`).parent().click();
-  cy.get(`[class*="${zoomBlockPrefix}_ratio"]`).should(($div) => {
+  zoomRatio().should(($div) => {
     expect(parseInt($div.text().replace('%', '')) > zoomRatio).to.be.true;
     zoomRatio = parseInt($div.text().replace('%', ''));
   });
 
   cy.get(`[class*="${zoomBlockPrefix}_container"] img[src="img/icon-minus.svg"]`).parent().click();
-  cy.get(`[class*="${zoomBlockPrefix}_ratio"]`).should(($div) => {
+  zoomRatio().should(($div) => {
     expect(parseInt($div.text().replace('%', '')) < zoomRatio).to.be.true;
   });
 });
