@@ -1,6 +1,7 @@
 describe('upload tools', () => {
   it('upload png', () => {
     cy.landingEditor();
+    cy.wait(500);
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').should('exist');
     cy.get('#width').should('have.value', '300');
@@ -33,6 +34,7 @@ describe('upload tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.wait(500);
     cy.get('#width').should('have.attr', 'value').and('eq', '522.17');
     cy.get('#height').should('have.attr', 'value').and('eq', '465.52');
   });
