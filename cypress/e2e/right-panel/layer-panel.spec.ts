@@ -85,6 +85,7 @@ describe('manipulate layers', () => {
 
   it('hide the layer ', () => {
     cy.get('div#left-Rectangle>img').click();
+    cy.wait(1000);
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
