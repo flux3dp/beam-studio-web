@@ -69,7 +69,7 @@ describe('manipulate view', () => {
   });
 
   it('use layer color', () => {
-    cy.get(`div[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
     cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
