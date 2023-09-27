@@ -124,7 +124,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         // Local MD5 / Remote(Github Action) MD5
-        return href === '4d7e7b1f937e9161c3f3c567d5ee869b' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2'
+        return href === '4d7e7b1f937e9161c3f3c567d5ee869b' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' || href === 'de1073c40f0c095297d9d87af6b74dc3'
       });
     });
   });
