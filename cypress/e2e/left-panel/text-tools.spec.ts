@@ -72,10 +72,10 @@ describe('select tools', () => {
 
   it('vertical', () => {
     cy.get('#svg_1').click({ force: true });
-    cy.get('.options-panel .text-options .adm-switch-checkbox').eq(0).click();
+    cy.get('.options-panel .text-options .ant-switch').eq(0).click();
     cy.get('#svg_1').should('have.attr', 'data-verti').and('eq', 'true');
     cy.get('#svg_2').click({ force: true });
-    cy.get('.options-panel .text-options .adm-switch-checkbox').eq(0).click();
+    cy.get('.options-panel .text-options .ant-switch').eq(0).click();
     cy.get('#svg_2').should('have.attr', 'data-verti').and('eq', 'true');
   });
 

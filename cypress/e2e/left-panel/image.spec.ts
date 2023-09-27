@@ -11,7 +11,7 @@ describe('manipulate image function', () => {
     cy.get('.ant-modal-content').should('exist');
     cy.get('.message').should('have.text', 'Gradient images takes more time to trace and are prone to noise. Please kindly turn off the image gradient before executing.')
     cy.contains('button span', 'OK').click()
-    cy.get('.adm-switch-checkbox').click({ force: true });
+    cy.get('.ant-switch').click({ force: true });
     cy.get('.options-panel > :nth-child(2) > :nth-child(2)').should('exist');
     cy.get('#trace').click({ force: true });
     cy.wait(1500);
@@ -24,13 +24,13 @@ describe('manipulate image function', () => {
 
   it('check gradient with image', () => {
     cy.uploadFile('flux.png', 'image/png');
-    cy.get('.adm-switch-checkbox').click({ force: true });
+    cy.get('.ant-switch').click({ force: true });
     cy.get('#svg_1').should('have.attr', 'data-threshold', '128').should('have.attr', 'data-shading', 'false');
     cy.get('#svg_1').click({ force: true });
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       expect(md5(href)).equal('8794655cf390c5f867ed5eff13f3bce4');
     });
-    cy.get('.adm-switch-checkbox').click({ force: true });
+    cy.get('.ant-switch').click({ force: true });
     cy.get('#svg_1').click({ force: true });
     cy.get('#svg_1').should('have.attr', 'data-threshold', '254').should('have.attr', 'data-shading', 'true');
     cy.wait(5000);
