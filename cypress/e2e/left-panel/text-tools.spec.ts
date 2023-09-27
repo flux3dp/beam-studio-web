@@ -1,24 +1,29 @@
 describe('select tools', () => {
   it('text font', () => {
     cy.landingEditor();
+    cy.wait(500);
     cy.get('div#left-Text>img').click();
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
-
-    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('TEST TEXT FONT');
+    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
+    cy.wait(1000);
+    cy.realType('TEST TEXT FONT');
     cy.get('#svg_1').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('div#object-panel').should('exist');
     cy.get('.options-panel .text-options .ant-select').click();
-    cy.get('.options-panel .text-options .ant-select-item').click();
-    cy.get('.react-select__value-container').should('have.text', 'Noto Sans');
+    cy.wait(1000);
+    cy.get('.rc-virtual-list-holder .ant-select-item[label="Noto Sans"]').click();
+    cy.get('.options-panel .text-options .ant-select').should('have.text', 'Noto Sans');
     cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Noto Sans'");
   });
 
   it('text style', () => {
     cy.get('div#left-Text>img').click();
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
+    cy.get('svg#svgcontent').realClick({ x: 150, y: 150 });
 
-    cy.get('svg#svgcontent').realClick({ x: 150, y: 150 }).realType('TEST TEXT STYLE');
+    cy.wait(1000);
+    cy.realType('TEST TEXT STYLE');
     cy.get('#svg_2').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('div#object-panel').should('exist');
@@ -28,11 +33,15 @@ describe('select tools', () => {
 
   it('text size', () => {
     cy.get('#svg_1').click();
-    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('200' , {force: true}).blur();
+    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true });
+    cy.wait(500);
+    cy.type('200' , {force: true}).blur();
     cy.get('#svg_1').should('have.attr', 'font-size').and('eq', '200');
 
     cy.get('#svg_2').click();
-    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('50' , {force: true}).blur();
+    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true });
+    cy.wait(500);
+    cy.type('50' , {force: true}).blur();
     cy.get('#svg_2').should('have.attr', 'font-size').and('eq', '50');
   });
 
@@ -68,7 +77,7 @@ describe('select tools', () => {
     cy.get(':nth-child(6) .adm-switch-checkbox').click();
     cy.get('#svg_1').should('have.attr', 'data-verti').and('eq', 'true');
     cy.get('#svg_2').click({ force: true });
-    cy.get(':nth-child(6) > .adm-switch-checkbox').click();
+    cy.get(':nth-child(6) .adm-switch-checkbox').click();
     cy.get('#svg_2').should('have.attr', 'data-verti').and('eq', 'true');
   });
 
