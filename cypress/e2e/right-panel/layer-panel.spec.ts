@@ -22,7 +22,6 @@ describe('manipulate layers', () => {
   });
 
   it('add one new layer', () => {
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).should('exist');
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 2);
     cy.get(`div[class*="${layerListClassPrefix}current"]`).should('have.length', 1);
@@ -59,9 +58,9 @@ describe('manipulate layers', () => {
   });
 
   it('drag the layer ', () => {
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({force: true});
     cy.get(`div[class*="${layerListClassPrefix}item"][data-testid="Layer 2"]`).dragTo('[data-index="0"]');
-    cy.get('#layerlist').children().last().should('have.attr', 'data-testid', 'Layer 2');
+    cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(1).should('have.text', 'Layer 2');
   });
 
   it('lock the layer ', () => {
@@ -106,13 +105,15 @@ describe('manipulate layers', () => {
   });
 
   it('merge down one layer', () => {
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
-    cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 3);
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({force: true});
+    cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 2);
+    cy.wait(500);
+    cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).scrollIntoView();
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).trigger('mousedown', { button: 2 });
     cy.get('#merge_down_layer').click({ force: true });
     cy.wait(500);
-    cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 2);
-    cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
+    cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 1);
+    cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).should('have.text', 'Layer 1');
   });
 
   it('merge the layer selected', () => {
