@@ -8,10 +8,10 @@ describe('select tools', () => {
     cy.get('#svg_1').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('div#object-panel').should('exist');
-    cy.get('.react-select__value-container').click();
-    cy.get('#react-select-2-option-1').click();
-    cy.get('.react-select__value-container').should('have.text', 'Alegreya');
-    cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Alegreya'");
+    cy.get('.options-panel .text-options .ant-select').click();
+    cy.get('.options-panel .text-options .ant-select-item').click();
+    cy.get('.react-select__value-container').should('have.text', 'Noto Sans');
+    cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Noto Sans'");
   });
 
   it('text style', () => {
@@ -22,7 +22,7 @@ describe('select tools', () => {
     cy.get('#svg_2').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('div#object-panel').should('exist');
-    cy.get('div.select-container > select').select('Bold Italic');
+    cy.get('div.select-container > select').select('Italic');
     cy.get('#svg_2').should('have.attr', 'font-style').and('eq', 'italic');
   });
 
