@@ -51,7 +51,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
         // Local MD5 / Remote(Github Action) MD5
-        return href === '80161b302c514e5ddeaef3fb7ec371e9' || href === '8b79e9a445262e8412a863d5ec06d16b'
+        return href === '80161b302c514e5ddeaef3fb7ec371e9' || href === 'bb928cb5c30ef7f85c2b53f81fc4072e'
       });
     });
   });
@@ -76,7 +76,8 @@ describe('manipulate image function', () => {
     cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
-        return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '3c43c5b5ec5a8f24d2eb35a508d4b85d'
+        // Local MD5 / Remote(Github Action) MD5
+        return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2'
       });
     });
   });
@@ -93,6 +94,7 @@ describe('manipulate image function', () => {
     cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
+        // Local MD5 / Remote(Github Action) MD5
         return href === '5525bd3998a7ce95a35e1618e0db8c43' || href === 'a8ad6ba832e34e3cc6544668596fefff'
       });
     });
@@ -106,6 +108,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').click({ force: true });
     cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
+      // Local MD5 / Remote(Github Action) MD5
       expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
     });
   });
@@ -119,7 +122,8 @@ describe('manipulate image function', () => {
     cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
-        return href === '4d7e7b1f937e9161c3f3c567d5ee869b' || href === 'de1073c40f0c095297d9d87af6b74dc3'
+        // Local MD5 / Remote(Github Action) MD5
+        return href === '4d7e7b1f937e9161c3f3c567d5ee869b' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2'
       });
     });
   });
