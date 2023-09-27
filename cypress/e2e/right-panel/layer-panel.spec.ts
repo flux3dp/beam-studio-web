@@ -182,6 +182,7 @@ describe('manipulate layers', () => {
     cy.get('div#left-Cursor>img').click({ force: true});
     cy.get('#svg_1').click({ force: true });
     cy.get('div.tab.layers').click();
+    cy.wait(500);
     cy.get('#power').should('have.value', '60');
     cy.get('#speed').should('have.value', '20');
     cy.get('#repeat').should('have.value', '1');
