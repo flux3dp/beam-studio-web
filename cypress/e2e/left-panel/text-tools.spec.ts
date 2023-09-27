@@ -16,7 +16,7 @@ describe('select tools', () => {
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder .ant-select-item[label="Noto Sans"]').click();
     fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
-    cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Noto Sans'");
+    cy.get('#svg_1').should('have.attr', 'font-family').and('eq', 'Noto Sans');
   });
 
   it('text style', () => {
@@ -35,15 +35,11 @@ describe('select tools', () => {
 
   it('text size', () => {
     cy.get('#svg_1').click();
-    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true });
-    cy.wait(500);
-    cy.type('200' , {force: true}).blur();
+    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('200' , {force: true}).blur();
     cy.get('#svg_1').should('have.attr', 'font-size').and('eq', '200');
 
     cy.get('#svg_2').click();
-    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true });
-    cy.wait(500);
-    cy.type('50' , {force: true}).blur();
+    cy.get(':nth-child(3) > div.option-input > input').clear({ force: true }).type('50' , {force: true}).blur();
     cy.get('#svg_2').should('have.attr', 'font-size').and('eq', '50');
   });
 
@@ -76,10 +72,10 @@ describe('select tools', () => {
 
   it('vertical', () => {
     cy.get('#svg_1').click({ force: true });
-    cy.get(':nth-child(6) .adm-switch-checkbox').click();
+    cy.get('.options-panel .text-options .adm-switch-checkbox').eq(0).click();
     cy.get('#svg_1').should('have.attr', 'data-verti').and('eq', 'true');
     cy.get('#svg_2').click({ force: true });
-    cy.get(':nth-child(6) .adm-switch-checkbox').click();
+    cy.get('.options-panel .text-options .adm-switch-checkbox').eq(0).click();
     cy.get('#svg_2').should('have.attr', 'data-verti').and('eq', 'true');
   });
 
