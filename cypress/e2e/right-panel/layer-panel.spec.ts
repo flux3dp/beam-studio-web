@@ -174,11 +174,11 @@ describe('manipulate layers', () => {
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true});
     cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
     cy.get('#svg_1').click({ force: true });
-    cy.get('div.tab.layers').click({ force: true}));
+    cy.get('div.tab.layers').click({ force: true});
     cy.get('#selLayerNames').select('Layer 2');
     cy.get('button[class^="ant-btn"]').contains('Yes').click();
     cy.get('#svg_1').should('have.attr', 'stroke', '#3F51B5');
-    cy.get('div#left-Cursor>img').click({ force: true}));
+    cy.get('div#left-Cursor>img').click({ force: true});
     cy.get('#svg_1').click({ force: true });
     cy.get('div.tab.layers').click();
     cy.get('#power').should('have.value', '60');
