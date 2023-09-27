@@ -1,3 +1,5 @@
+const fontDisplay = () => cy.get('.options-panel .text-options .ant-select .ant-select-selector .ant-select-selection-item img');
+
 describe('select tools', () => {
   it('text font', () => {
     cy.landingEditor();
@@ -13,7 +15,7 @@ describe('select tools', () => {
     cy.get('.options-panel .text-options .ant-select').click();
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder .ant-select-item[label="Noto Sans"]').click();
-    cy.get('.options-panel .text-options .ant-select').should('have.text', 'Noto Sans');
+    fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
     cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Noto Sans'");
   });
 
