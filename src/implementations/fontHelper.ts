@@ -98,8 +98,11 @@ export default {
           isCanceled = true;
         },
       });
-      const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
-      let resp = await fetch(url) as Response;
+      // fix CORS issue for safari ref: https://stackoverflow.com/questions/63141448/
+      const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}/`;
+      let resp = await fetch(url, {
+        mode: 'cors',
+      }) as Response;
       const contentLength = resp.headers.get('content-length') as string;
       const total = parseInt(contentLength, 10);
       let loaded = 0;

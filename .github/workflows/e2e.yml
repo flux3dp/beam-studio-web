@@ -28,6 +28,10 @@ jobs:
       - name: Copy Beam Studio Core
         run: |
           cp -R .github/actions/beam-studio-core ../beam-studio-core
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19
       - name: Cypress install
         uses: cypress-io/github-action@v5
         with:
