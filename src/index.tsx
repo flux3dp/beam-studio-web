@@ -18,11 +18,11 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const checkScreenSize = () => {
-  const { hash } = window.location;
-  if (Math.max(window.screen.width, window.screen.height) < 1024
-  && hash !== '#/error/screen-size') {
-    window.location.hash = '#/error/screen-size';
-  }
+  // const { hash } = window.location;
+  // if (Math.max(window.screen.width, window.screen.height) < 1024
+  // && hash !== '#/error/screen-size') {
+  //   window.location.hash = '#/error/screen-size';
+  // }
 };
 
 const onFinished = (data) => {
