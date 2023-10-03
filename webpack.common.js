@@ -140,10 +140,7 @@ module.exports = {
                     params: {
                       overrides: {
                         removeViewBox: false,
-                        convertPathData: {
-                          makeArcs: undefined,
-                          curveSmoothShorthands: false,
-                        },
+                        convertPathData: false,
                       },
                     },
                   },
