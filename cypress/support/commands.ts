@@ -72,6 +72,13 @@ Cypress.Commands.add('dragTo', { prevSubject: "element" }, (subject, targetEl) =
   cy.get(targetEl).trigger('dragenter', { force: true });
   cy.get(targetEl).trigger('dragend', { force: true });
 });
+
+Cypress.Commands.add('disableImageDownSampling', () => {
+  const bbPref = JSON.parse(window.localStorage.getItem('beambox-preference'));
+  bbPref['image_downsampling'] = false;
+  window.localStorage.setItem('beambox-preference', JSON.stringify(bbPref));
+});
+
 //
 //
 // -- This is a child command --

@@ -34,7 +34,7 @@ describe('manipulate file', () => {
     cy.wait(1000);
     cy.readFile(cypressDownloadBeamPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === '917032669987e291a375417a7701c15c' || info === '05306ee6546f831bc1e90dd8891364ce'
+        return info === 'f2ac03b0bb118666656ca2a164ab3609' || info === '41b785564628fd76f814c83ce670e471'
       });
     });
   });
@@ -51,7 +51,8 @@ describe('manipulate file', () => {
     cy.wait(1000);
     cy.readFile(cypressDownloadNewBeamPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === '39a9ac327155af2e54f8f4e2d47188e3' || info === '6f55b26fe235d9ee4edb0ed1343006de'
+        // CLI MD5 / Cypress GUI MD5 / Remote(Github Action) MD5
+        return info === 'fe7e2f088f387c0bf225db80a75c85c4' || info === 'f2ac03b0bb118666656ca2a164ab360' || info === 'd67fbeae90a992a20708cdef57b37440'
       });
     });
   });
@@ -64,7 +65,7 @@ describe('manipulate file', () => {
     cy.get(':nth-child(8) > .rc-menu > :nth-child(1)').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === '594c05a5900bc9d162bb06042f0f3500' || info === 'bc940d355184270cf39bc7ca9c6d6df2'
+        return info === '857db785d4256f4871918d758c54108f' || info === 'a6ab2992e9f1998a4dbe8afb7d03f653'
       });
     });
   });
@@ -77,7 +78,7 @@ describe('manipulate file', () => {
     cy.get(':nth-child(8) > .rc-menu > :nth-child(2)').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === 'eeec89beb519e13603b102de8be43ec9' || info === '1607e404a7da571a5e6388949fb73cf2'
+        return info === 'b919bee615ef8dfa6f394c79e5537d51' || info === '461fc4b01b27924df91422e9b87f52d2'
       });
     });
   });
