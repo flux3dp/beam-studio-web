@@ -1,5 +1,7 @@
 import { md5 } from '../../support/utils';
 
+// TODO: expect image result with one specific md5 value
+// ImageData generate different results on different browser currently
 describe('manipulate image function', () => {
   beforeEach(() => {
     cy.landingEditor();
