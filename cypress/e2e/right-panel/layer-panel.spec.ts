@@ -22,7 +22,7 @@ describe('manipulate layers', () => {
   });
 
   it('add one new layer', () => {
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 2);
     cy.get(`div[class*="${layerListClassPrefix}current"]`).should('have.length', 1);
     cy.get(`div[class*="${layerListClassPrefix}current"]`).should('have.attr', 'data-layer').should('eq', 'Layer 2');
@@ -41,7 +41,7 @@ describe('manipulate layers', () => {
     cy.get(`div[class*="${layerListClassPrefix}item"]`).trigger('mousedown', { button: 2 });
     cy.get('#deletelayer').click({ force: true });
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 1);
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 2);
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(1).click({ force: true }).trigger('mousedown', { button: 2 });
     cy.get('#deletelayer').click({ force: true });
@@ -96,7 +96,7 @@ describe('manipulate layers', () => {
 
   it('merge all layer', () => {
     for (let n = 0; n < 9; n++) {
-      cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+      cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     };
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 10);
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).trigger('mousedown', { button: 2 });
@@ -119,7 +119,7 @@ describe('manipulate layers', () => {
 
   it('merge the layer selected', () => {
     for (let n = 0; n < 3; n++) {
-      cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+      cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     };
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', 4);
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).should('have.text', 'Layer 4');
@@ -134,7 +134,7 @@ describe('manipulate layers', () => {
 
   it('switch the layer and check the parameter ', () => {
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('#laser-config-dropdown').select('Acrylic - 3mm Cutting');
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(1).click();
     cy.get('#power').should('have.value', '60');
@@ -153,7 +153,7 @@ describe('manipulate layers', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('have.attr', 'stroke', '#333333');
     cy.get('div.tab.layers').click();
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });

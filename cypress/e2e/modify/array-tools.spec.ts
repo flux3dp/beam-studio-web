@@ -39,7 +39,7 @@ describe('array tools', () => {
     cy.wait(500);
     doAllThing();
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
-    cy.get('text').should('have.length', '4');
+    cy.get('#svg_8').children('text').should('have.length', '4');
   });
 
   it('group', () => {

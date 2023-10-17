@@ -15,7 +15,7 @@ describe('manipulate view', () => {
     zoomRatio().should('have.text', '46%');
   });
 
-  it('top menu - zoom outn', () => {
+  it('top menu - zoom out', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
     cy.get(':nth-child(2) > .action').click();
@@ -54,7 +54,7 @@ describe('manipulate view', () => {
   });
 
   it('use layer color', () => {
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });

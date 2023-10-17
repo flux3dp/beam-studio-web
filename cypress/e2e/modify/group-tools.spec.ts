@@ -6,7 +6,7 @@ describe('group tools', () => {
     drawingObject();
     selectAll();
     cy.wait(500);
-    cy.get('#group > img').click();
+    cy.get('button#group').click();
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Group');
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
@@ -16,7 +16,7 @@ describe('group tools', () => {
   });
 
   it('ungroup', () => {
-    cy.get('#ungroup > img').click();
+    cy.get('button#ungroup').click();
     cy.get('div#left-Cursor>img').click();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
@@ -32,7 +32,7 @@ describe('group tools', () => {
     drawingObjInDiffLayer();
     selectAll();
     cy.wait(500);
-    cy.get('#group > img').click();
+    cy.get('button#group').click();
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 3 > Group');
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
@@ -42,7 +42,7 @@ describe('group tools', () => {
   });
 
   it('ungroup other layer', () => {
-    cy.get('#ungroup > img').click();
+    cy.get('button#ungroup').click();
     cy.get('div#left-Cursor>img').click();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
@@ -85,14 +85,14 @@ describe('group tools', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
     cy.get('div.layers > .tab-icon').click();
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('div#left-Ellipse>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
     cy.get('div.layers > .tab-icon').click();
-    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('div#left-Polygon>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });

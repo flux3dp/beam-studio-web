@@ -7,13 +7,10 @@ describe('manipulate image function', () => {
   it('remove gradient see if trace function gets changed', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').click({ force: true });
-    cy.get('#trace').click({ force: true });
-    cy.get('.ant-modal-content').should('exist');
-    cy.get('.message').should('have.text', 'Gradient images takes more time to trace and are prone to noise. Please kindly turn off the image gradient before executing.')
-    cy.contains('button span', 'OK').click()
+    cy.get('#trace').should('have.attr', 'disabled');
     cy.get('.ant-switch').click({ force: true });
     cy.wait(1500);
-    cy.get('.options-panel > :nth-child(2) > :nth-child(2)').should('exist');
+    cy.contains('Threshold brightness').should('exist');
     cy.get('#trace').click({ force: true });
     cy.wait(1500);
     cy.get('#svg_3').click({ force: true });

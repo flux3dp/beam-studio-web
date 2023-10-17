@@ -28,9 +28,9 @@ describe('verify undo/redo behaviors', () => {
 
   function checkBehaviors() {
     cy.wait(500);
-    cy.get('[src="img/top-bar/icon-undo.svg"]').click();
+    cy.get('div[title="Undo"]').click();
     cy.get('#svg_1').should('not.exist');
-    cy.get('[src="img/top-bar/icon-redo.svg"]').click();
+    cy.get('div[title="Redo"]').click();
     cy.get('#svg_1').should('exist');
   };
 });

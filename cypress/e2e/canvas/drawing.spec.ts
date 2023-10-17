@@ -24,7 +24,7 @@ describe('drawing', () => {
       expect($grip.attr('cy')).to.be.closeTo(200, 2);
     });
 
-    cy.get('div.onoffswitch').click();
+    cy.get('button#infill').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
 
@@ -43,7 +43,7 @@ describe('drawing', () => {
     cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(400, 2); });
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(400, 2); });
 
-    cy.get('div.onoffswitch').click();
+    cy.get('button#infill').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
 
@@ -66,7 +66,7 @@ describe('drawing', () => {
     cy.get('div.option-input > input').clear().type('8').blur();
     cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
 
-    cy.get('div.onoffswitch').click();
+    cy.get('button#infill').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
 

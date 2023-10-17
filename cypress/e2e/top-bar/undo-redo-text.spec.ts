@@ -1,6 +1,6 @@
-const undoBtn = () => cy.get('[src="img/top-bar/icon-undo.svg"]');
-const redoBtn = () => cy.get('[src="img/top-bar/icon-redo.svg"]');
-const fontDisplay = () => cy.get('.options-panel .text-options .ant-select .ant-select-selector .ant-select-selection-item img');
+const undoBtn = () => cy.get('div[title="Undo"]');
+const redoBtn = () => cy.get('div[title="Redo"]');
+const fontDisplay = () => cy.get('.ant-select[title="Font"] .ant-select-selector .ant-select-selection-item img');
 
 describe('verify undo/redo behaviors', () => {
   beforeEach(() => {
@@ -14,9 +14,9 @@ describe('verify undo/redo behaviors', () => {
 
   it('text with font', () => {
     text();
-    cy.get('.options-panel .text-options .ant-select').click();
+    cy.get('.ant-select[title="Font"]').click();
     cy.wait(1000);
-    cy.get('.rc-virtual-list-holder .ant-select-item[label="Lobster"]').click();
+    cy.get('.rc-virtual-list-holder img[alt="Lobster"]').click();
     cy.get('#svg_1').click({ force: true });
     fontDisplay().should('have.attr', 'alt').and('eq', 'Lobster');
     undoBtn().click();
