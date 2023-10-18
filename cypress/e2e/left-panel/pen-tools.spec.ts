@@ -1,8 +1,9 @@
 describe('pen tools', () => {
-  it('curve', () => {
+  it('path curve', () => {
     cy.landingEditor();
+    cy.wait(500);
     cy.get('div#left-Pen>img').click();
-
+    cy.wait(500);
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });
@@ -13,6 +14,7 @@ describe('pen tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', 400, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 500, -50, { force: true });
     cy.get('svg#svgcontent').dblclick({ force: true });
+    cy.wait(500);
     cy.get('#svg_1', { timeout: 7000 }).should('exist');
     cy.get('#drawingCtrlPoint_0c2').should('exist');
 
@@ -22,7 +24,7 @@ describe('pen tools', () => {
     cy.get('#pathpointgrip_0').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(100, 1); });
   });
 
-  it('tCorner', () => {
+  it('path corner', () => {
     cy.get('#pathpointgrip_3', { timeout: 7000 }).dblclick();
     cy.get('#pathedit-panel').should('exist');
     cy.get('#ctrlpointgrip_4c1')

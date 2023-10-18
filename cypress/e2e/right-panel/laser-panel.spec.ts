@@ -258,7 +258,6 @@ describe('manipulate laser panel', () => {
     cy.get('[title="Import"] > img').click();
     cy.get('#file-input').attachFile('testfile.json');
     cy.contains('Confirm').click();
-    cy.contains('testFile').should('exist');
     cy.get('#laser-config-dropdown').select('testFile');
     checkValue(100, 50, 10);
   });

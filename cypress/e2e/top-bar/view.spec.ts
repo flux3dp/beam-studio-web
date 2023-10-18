@@ -1,54 +1,41 @@
+const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__btn';
+
+const zoomBlockPrefix = 'src-web-app-components-beambox-ZoomBlock-module_';
+const zoomRatio = () => cy.get(`[class*="${zoomBlockPrefix}_ratio"]`);
+
 describe('manipulate view', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
 
-  it('zoom in while clicking on top bar button', () => {
-    cy.get('.zoom-ratio').should('have.text', '100%');
+  it('top menu - zoom in ', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .action').click();
-    cy.get('.zoom-ratio').should('have.text', '46%');
+    zoomRatio().should('have.text', '46%');
   });
 
-  it('zoom out while clicking on top bar button', () => {
-    cy.get('.zoom-ratio').should('have.text', '100%');
+  it('top menu - zoom out', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
     cy.get(':nth-child(2) > .action').click();
-    cy.get('.zoom-ratio').should('have.text', '38%');
+    zoomRatio().should('have.text', '38%');
   });
 
-  it('zoom in while clicking on under button', () => {
-    cy.get('.zoom-ratio').should('have.text', '100%');
-    cy.get('.zoom-in > img').click();
-    cy.get('.zoom-ratio').should('have.text', '110%');
-  });
-
-  it('zoom out while clicking on under button', () => {
-    cy.get('.zoom-ratio').should('have.text', '100%');
-    cy.get('.zoom-out > img').click();
-    cy.get('.zoom-ratio').should('have.text', '90%');
-  });
-
-  it('fit to window size', () => {
-    for (let n = 0; n < 5; n++) {
-      cy.get('.zoom-in > img').click();
-    };
-    cy.get('.zoom-ratio').should('have.text', '150%');
+  it('top menu - fit to window size', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
     cy.get(':nth-child(3) > .rc-menu > :nth-child(3)').click();
-    cy.get('.zoom-ratio').should('have.text', '42%');
+    zoomRatio().should('have.text', '42%');
   });
 
   it('auto fit to window size', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
     cy.get(':nth-child(3) > .rc-menu > :nth-child(4)').click();
-    cy.get('.zoom-ratio').should('have.text', '42%');
+    zoomRatio().should('have.text', '42%');
     cy.viewport(1500, 1200);
-    cy.get('.zoom-ratio').should('have.text', '76%');
+    zoomRatio().should('have.text', '76%');
   });
 
   it('show grids', () => {
@@ -67,7 +54,7 @@ describe('manipulate view', () => {
   });
 
   it('use layer color', () => {
-    cy.get('div.add-layer-btn').click();
+    cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });

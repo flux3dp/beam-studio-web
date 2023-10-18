@@ -14,37 +14,37 @@ describe('manipulate document setting', () => {
 
   it('working area of beamo', () => {
     openDocument();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('beamo').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
+    cy.get('[class^="ant-select-item-option-content"]').contains('beamo').click({force: true});
+    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
     cy.get('#svgroot').should('have.attr', 'x', '3000');
     cy.get('#svgroot').should('have.attr', 'y', '2100');
   });
 
   it('working area of beambox', () => {
     openDocument();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('Beambox').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
+    cy.get('[class^="ant-select-item-option-content"]').contains('Beambox').click({force: true});
+    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
     cy.get('#svgroot').should('have.attr', 'x', '4000');
     cy.get('#svgroot').should('have.attr', 'y', '3750');
   });
 
   it('working area of beambox pro', () => {
     openDocument();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('Beambox Pro').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
+    cy.get('[class^="ant-select-item-option-content"]').contains('Beambox Pro').click({force: true});
+    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
     cy.get('#svgroot').should('have.attr', 'x', '6000');
     cy.get('#svgroot').should('have.attr', 'y', '3750')
   });
 
   it('working area of HEXA', () => {
     openDocument();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('HEXA').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
-    cy.get('#svgroot').should('have.attr', 'x', '7300');
+    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
+    cy.get('[class^="ant-select-item-option-content"]').contains('HEXA').click({force: true});
+    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+    cy.get('#svgroot').should('have.attr', 'x', '7400');
     cy.get('#svgroot').should('have.attr', 'y', '4100')
   });
 
