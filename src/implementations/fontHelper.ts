@@ -1,7 +1,7 @@
 import progressCaller from 'app/actions/progress-caller';
-import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
 import getUtilWS from 'helpers/api/utils-ws';
 import i18n from 'helpers/i18n';
+import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
 
 import fontNameMap from './fonts/fontNameMap';
 import previewSourceMap from './fonts/fontPreviewSrc';
@@ -100,7 +100,8 @@ export default {
           isCanceled = true;
         },
       });
-      const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
+      const { protocol } = window.location;
+      const url = `${protocol}//beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
       let resp = await fetch(url, {
         mode: 'cors',
       }) as Response;
