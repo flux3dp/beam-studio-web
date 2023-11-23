@@ -67,6 +67,8 @@ const findFonts = (fontDescriptor: FontDescriptor): FontDescriptor[] => {
   return match;
 };
 
+const fontDirectory = '/usr/share/fonts/truetype/beam-studio/';
+
 export default {
   findFont,
   findFonts,
@@ -87,7 +89,7 @@ export default {
     const utilWS = getUtilWS();
     const font = availableFonts.find((f) => f.postscriptName === postscriptName);
     const fileName = font?.fileName || `${postscriptName}.ttf`;
-    const isExisting = await utilWS.checkExist(`/usr/share/fonts/truetype/${fileName}`);
+    const isExisting = await utilWS.checkExist(`${fontDirectory}${fileName}`);
     if (!isExisting) {
       let isCanceled = false;
       let message = i18n.lang.beambox.right_panel.object_panel.actions_panel.fetching_web_font;
@@ -98,8 +100,7 @@ export default {
           isCanceled = true;
         },
       });
-      // fix CORS issue for safari ref: https://stackoverflow.com/questions/63141448/
-      const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}/`;
+      const url = `https://beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
       let resp = await fetch(url, {
         mode: 'cors',
       }) as Response;
@@ -143,7 +144,7 @@ export default {
       message = i18n.lang.beambox.right_panel.object_panel.actions_panel.uploading_font_to_machine;
       progressCaller.update('fetch-web-font', { message, percentage: 0 });
       try {
-        const res = await utilWS.uploadTo(blob, `/usr/share/fonts/truetype/${fileName}`, (progress: number) => {
+        const res = await utilWS.uploadTo(blob, `${fontDirectory}${fileName}`, (progress: number) => {
           progressCaller.update('fetch-web-font', { percentage: 100 * progress });
         });
         progressCaller.popById('fetch-web-font');
