@@ -60,16 +60,16 @@ const fonts: WebFont[] = [
   },
   // Chanticleer Roman NF
   {
-    family: 'Chanticleer Roman NF',
+    family: 'ChanticleerRomanNF',
     italic: false,
-    postscriptName: 'ChanticleerRomanNF-Bold-Regular',
+    postscriptName: 'ChanticleerRomanNF-Regular',
     style: 'Regular',
     weight: 400,
     fileName: 'ChanticleerRomanNF.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'Chanticleer Roman NF',
+    family: 'ChanticleerRomanNF',
     italic: false,
     postscriptName: 'ChanticleerRomanNF-Bold',
     style: 'Bold',
@@ -116,7 +116,7 @@ const fonts: WebFont[] = [
   },
   // AlegreyaSC
   {
-    family: 'AlegreyaSC',
+    family: 'Alegreya SC',
     italic: false,
     postscriptName: 'AlegreyaSC-Regular',
     style: 'Regular',
@@ -125,7 +125,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'AlegreyaSC',
+    family: 'Alegreya SC',
     italic: true,
     postscriptName: 'AlegreyaSC-Italic',
     style: 'Italic',
@@ -134,7 +134,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'AlegreyaSC',
+    family: 'Alegreya SC',
     italic: false,
     postscriptName: 'AlegreyaSC-Bold',
     style: 'Bold',
@@ -143,7 +143,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'AlegreyaSC',
+    family: 'Alegreya SC',
     italic: true,
     postscriptName: 'AlegreyaSC-BoldItalic',
     style: 'Bold Italic',
@@ -350,7 +350,7 @@ const fonts: WebFont[] = [
   },
   // Cedarville-Cursive
   {
-    family: 'Cedarville-Cursive',
+    family: 'Cedarville Cursive',
     italic: false,
     postscriptName: 'CedarvilleCursive-Regular',
     style: 'Regular',
@@ -460,7 +460,7 @@ const fonts: WebFont[] = [
   },
   // Airstream NF
   {
-    family: 'Airstream NF',
+    family: 'AirstreamNF',
     italic: false,
     postscriptName: 'Airstream NF-Regular',
     style: 'Regular',
@@ -509,7 +509,7 @@ const fonts: WebFont[] = [
   },
   // Carnivalee Freakshow
   {
-    family: 'CarnivaleeFreakshow',
+    family: 'Carnivalee Freakshow',
     italic: false,
     postscriptName: 'CarnivaleeFreakshow-Regular',
     style: 'Regular',
