@@ -21,8 +21,9 @@ export default defineConfig({
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
   retries: {
-    runMode: 3,
+    runMode: 1,
     openMode: 1
   },
   defaultCommandTimeout: 7000,
+  video: false,
 })
