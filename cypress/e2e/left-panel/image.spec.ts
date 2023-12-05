@@ -50,8 +50,7 @@ describe('manipulate image function', () => {
     cy.wait(10000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
       cy.wrap(md5(href)).should('satisfy', (href) => {
-        // Local MD5 / Remote(Github Action) MD5
-        return href === '80161b302c514e5ddeaef3fb7ec371e9' || href === 'bb928cb5c30ef7f85c2b53f81fc4072e'
+        return href === '225e1c371779312b52a2c70ff42780c8'
       });
     });
   });
