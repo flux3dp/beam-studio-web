@@ -7,8 +7,8 @@ describe('manipulate laser panel', () => {
   });
 
   function checkValue(power, speed, repeat) {
-    cy.get('#power').should('have.value', power);
-    cy.get('#speed').should('have.value', speed);
+    cy.get('#power-input').should('have.value', power);
+    cy.get('#speed-input').should('have.value', speed);
     cy.get('#repeat').should('have.value', repeat);
   }
 
@@ -42,8 +42,8 @@ describe('manipulate laser panel', () => {
   });
 
   it('add new parameter at initial panel', () => {
-    cy.get('#power').clear().type('100').blur();
-    cy.get('#speed').clear().type('70').blur();
+    cy.get('#power-input').clear().type('100').blur();
+    cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
     cy.get('div.add-preset-btn').click();
     cy.get('.text-input').type('Hello Flux').blur();
@@ -243,8 +243,8 @@ describe('manipulate laser panel', () => {
 
   it('export parameter file', () => {
     const cypressDownloadPath = Cypress.env('cypressDownloadPath');
-    cy.get('#power').clear().type('100').blur();
-    cy.get('#speed').clear().type('70').blur();
+    cy.get('#power-input').clear().type('100').blur();
+    cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
     cy.get('div.add-preset-btn').click();
     cy.get('.text-input').type('Hi Flux').blur();

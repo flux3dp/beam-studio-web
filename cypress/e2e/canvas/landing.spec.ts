@@ -13,12 +13,12 @@ describe('landing', () => {
     cy.get('a.btn').click();
   });
 
-  it('connection type selection page', () => {
-    cy.visit('#/initialize/connect/select-connection-type');
-    cy.url({ timeout: 15000 }).should('contain', '#/initialize/connect/select-connection-type');
-    cy.get('div[class^="src-web-app-pages-SelectConnectionType"]').should('exist');
-    cy.get('div[class^="src-web-app-pages-SelectConnectionType-module__btn-container"]').should('have.length', 4);
-    cy.contains('Skip' || 'Cancel').click();
+  it('machine model selection page', () => {
+    cy.visit('#/initialize/connect/select-machine-model');
+    cy.url({ timeout: 15000 }).should('contain', '#/initialize/connect/select-machine-model');
+    cy.get('div[class^="src-web-app-pages-SelectMachineModel"]').should('exist');
+    cy.get('div[class^="src-web-app-pages-SelectMachineModel-module__main"] div[class^="src-web-app-pages-SelectMachineModel-module__btn--"]').should('have.length', 4);
+    cy.contains('Skip' || 'Back').click();
     window.localStorage.setItem('new-user', 'true');
   });
 
@@ -72,14 +72,14 @@ describe('landing', () => {
     cy.contains('Hand Gesture').click();
 
     cy.get('img[src="img/touch-drag.svg"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('NEXT').click();
+    cy.get('button[class^="ant-btn"]').contains('Next').click();
     cy.get('img[src="img/touch-zoom.svg"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('NEXT').click();
+    cy.get('button[class^="ant-btn"]').contains('Next').click();
     cy.get('source[src="video/touch-select.webm"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('NEXT').click();
+    cy.get('button[class^="ant-btn"]').contains('Next').click();
     cy.get('source[src="video/touch-multiselect.webm"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('NEXT').click();
+    cy.get('button[class^="ant-btn"]').contains('Next').click();
     cy.get('source[src="video/touch-contextmenu.webm"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('DONE').click();
+    cy.get('button[class^="ant-btn"]').contains('Done').click();
   });
 });

@@ -55,7 +55,7 @@ describe('manipulate view', () => {
 
   it('use layer color', () => {
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
-    cy.get('#layerbackgroundColor-1').should('have.attr', 'style', 'background-color: rgb(63, 81, 181);');
+    cy.get('div[class*="src-web-app-widgets-ColorPicker-module__color"]').should('have.attr', 'style', 'background: rgb(63, 81, 181);');
     cy.get('div#left-Rectangle>img').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
