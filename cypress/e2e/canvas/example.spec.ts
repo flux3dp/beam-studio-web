@@ -1,7 +1,10 @@
 describe('Example', () => {
+  beforeEach(() => {
+    cy.landingEditor();
+  });
+
     it('Exampl-Ador Laser', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -11,7 +14,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -36,8 +39,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Ador Printing Singlr Color', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -47,7 +49,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -80,8 +82,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Ador Printing Full Color', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -91,7 +92,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -120,8 +121,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Beamo', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -131,7 +131,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -164,8 +164,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Beambox', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -175,7 +174,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -223,8 +222,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Material Engraving Test', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -234,7 +232,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -292,8 +290,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Material Engraving Test-Classic', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();{
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -303,7 +300,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -350,9 +347,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Material Cutting Test', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();
-       {
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -362,7 +357,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -409,9 +404,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Material Cutting Test - Simple', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();
-       {
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -421,7 +414,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -468,8 +461,6 @@ describe('Example', () => {
       });
 
     it('Exampl-Material Line Test', () => {
-       //開啟畫布Beambox
-       cy.landingEditor();
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -520,9 +511,7 @@ describe('Example', () => {
       });
 
     it('Exampl-Material Printing Test', () => {
-       //開啟並切換至Ador
-       cy.landingEditor();
-       {
+       //切換至Ador
        cy.get('div.menu-btn-container').click();
        cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
        cy.contains('Document Settings').click();
@@ -532,7 +521,7 @@ describe('Example', () => {
        cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
        cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
        cy.wait(500);
-       }
+
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
@@ -579,8 +568,6 @@ describe('Example', () => {
       });
 
     it('Exampl-Acrylic Focus Probe - 3mm', () => {
-       //開啟畫布Beambox
-       cy.landingEditor();
        cy.get('div.menu-btn-container').click();
        cy.get(':nth-child(1) > .rc-menu__item').click();
        cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
