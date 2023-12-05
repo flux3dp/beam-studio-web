@@ -30,5 +30,4 @@ export default defineConfig({
     openMode: 1
   },
   defaultCommandTimeout: 7000,
-  video: false,
 })
