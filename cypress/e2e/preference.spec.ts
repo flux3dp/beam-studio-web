@@ -210,16 +210,20 @@ describe('update the preference', () => {
   it.only('remove speed limit and see if home page gets changed ', () => {
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
-    cy.get('#speed_value').realSwipe('toLeft');
+    cy.get('#speed div.ant-slider-handle').trigger('mousedown');
+    cy.get('#speed div.ant-slider-handle').trigger('mousemove', 200, 0, { force: true });
+    cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('exist');
-    cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s.You can remove this limit at Preferences Settings.');
+    cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s (0.79in/s).You can remove this limit at Preferences Settings.');
     go2Preference();
     cy.get('button[class^="ant-btn"]').contains("Don't Save").click();
     cy.get('#set-vector-speed-contraint').select('Off');
     applySettings();
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
-    cy.get('#speed_value').realSwipe('toLeft');
+    cy.get('#speed div.ant-slider-handle').trigger('mousedown');
+    cy.get('#speed div.ant-slider-handle').trigger('mousemove', 200, 0, { force: true });
+    cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('not.exist');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('not.exist');
   });

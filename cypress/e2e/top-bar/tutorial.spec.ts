@@ -27,11 +27,11 @@ describe('show tutorial', () => {
 
   it('show gesture introduction', () => {
     openTutorial(4);
-    checkGestureStep('.media-container > img', 'Scroll the canvas with two fingers.', '1/5', 'NEXT');
-    checkGestureStep('.media-container > img', 'Pinch with two fingers to zoom in/out the canvas.', '2/5', 'NEXT');
-    checkGestureStep('video', 'Tap to select the object.', '3/5', 'NEXT');
-    checkGestureStep('video', 'Drag to select the multiple objects.', '4/5', 'NEXT');
-    checkGestureStep('video', 'Press and hold to open the context menu.', '5/5', 'DONE');
+    checkGestureStep('.media-container > img', 'Scroll the canvas with two fingers.', '1/5', 'Next');
+    checkGestureStep('.media-container > img', 'Pinch with two fingers to zoom in/out the canvas.', '2/5', 'Next');
+    checkGestureStep('video', 'Tap to select the object.', '3/5', 'Next');
+    checkGestureStep('video', 'Drag to select the multiple objects.', '4/5', 'Next');
+    checkGestureStep('video', 'Press and hold to open the context menu.', '5/5', 'Done');
   });
 
   function openTutorial(sequence) {

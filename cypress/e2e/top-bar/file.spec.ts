@@ -34,7 +34,8 @@ describe('manipulate file', () => {
     cy.wait(1000);
     cy.readFile(cypressDownloadBeamPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === 'f2ac03b0bb118666656ca2a164ab3609' || info === '41b785564628fd76f814c83ce670e471'
+        // Local MD5 / Github Action MD5
+        return info === '414766663145bf9d8e93c75559869945' || info === '82421109cd5c6857a535df58278f485c'
       });
     });
   });
@@ -51,8 +52,8 @@ describe('manipulate file', () => {
     cy.wait(1000);
     cy.readFile(cypressDownloadNewBeamPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        // CLI MD5 / Cypress GUI MD5 / Remote(Github Action) MD5
-        return info === 'fe7e2f088f387c0bf225db80a75c85c4' || info === 'f2ac03b0bb118666656ca2a164ab360' || info === 'd67fbeae90a992a20708cdef57b37440'
+        // CLI MD5 / Cypress GUI MD5 / Github Action MD5
+        return info === '55e664c0f54af7e7f2e2f7e2c059ba8d' || info === '414766663145bf9d8e93c75559869945' || info === 'eab71c06f20a40a3a55ed12726800e2d'
       });
     });
   });
@@ -65,7 +66,8 @@ describe('manipulate file', () => {
     cy.get(':nth-child(8) > .rc-menu > :nth-child(1)').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === '857db785d4256f4871918d758c54108f' || info === 'a6ab2992e9f1998a4dbe8afb7d03f653'
+        // Local MD5 / Github Action MD5
+        return info === 'ce5583507d6b99d919b6d73129c8dcbc' || info === 'd7c445484ba6604dc64de17b690c4c06'
       });
     });
   });
@@ -78,7 +80,8 @@ describe('manipulate file', () => {
     cy.get(':nth-child(8) > .rc-menu > :nth-child(2)').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
       cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === 'b919bee615ef8dfa6f394c79e5537d51' || info === '461fc4b01b27924df91422e9b87f52d2'
+        // Local MD5 / Github Action MD5
+        return info === '7049478e91f18670719ddbbcaa5807d0' || info === 'a16cd6aaab5fdf4f1f180011e1ffd12b'
       });
     });
   });

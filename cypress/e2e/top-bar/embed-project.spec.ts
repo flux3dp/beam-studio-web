@@ -23,7 +23,7 @@ describe('embed project', () => {
   });
 
   it('example of beamo', () => {
-    openExampleFile(1);
+    openExampleFile(5);
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', '2');
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).should('have.text', 'Engraving');
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(1).should('have.text', 'Cutting');
@@ -33,7 +33,7 @@ describe('embed project', () => {
   });
 
   it('example of beambox', () => {
-    openExampleFile(2);
+    openExampleFile(6);
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', '2');
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).should('have.text', 'Engraving');
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(1).should('have.text', 'Cutting');
@@ -44,7 +44,7 @@ describe('embed project', () => {
   });
 
   it('example of material engraving test', () => {
-    openExampleFile(3);
+    openExampleFile(7);
     cy.wait(1000);
     cy.get('#layerlist').children().should('have.length', '112');
     checkElementTitle(2, '#000000 > Imported Object');
@@ -56,7 +56,7 @@ describe('embed project', () => {
   });
 
   it('example of material engraving test classic', () => {
-    openExampleFile(4);
+    openExampleFile(8);
     cy.wait(1000);
     cy.get('#layerlist').children().should('have.length', '26');
     checkElementTitle(2, '#FE00FE > Imported Object');
@@ -64,7 +64,7 @@ describe('embed project', () => {
   });
 
   it('example of material cutting', () => {
-    openExampleFile(5);
+    openExampleFile(9);
     cy.wait(1000);
     cy.get('#layerlist').children().should('have.length', '112');
     checkElementTitle(112, '#000000 > Imported Object');
@@ -72,7 +72,7 @@ describe('embed project', () => {
   });
 
   it('example of material cutting simple', () => {
-    openExampleFile(6);
+    openExampleFile(10);
     cy.wait(1000);
     cy.get('#layerlist').children().should('have.length', '62');
     checkElementTitle(62, '#000000 > Imported Object');
@@ -84,7 +84,7 @@ describe('embed project', () => {
   });
 
   it('example of material line', () => {
-    openExampleFile(7);
+    openExampleFile(11);
     cy.wait(1000);
     cy.get('#layerlist').children().should('have.length', '101');
     checkElementTitle(101, '#000000 > Imported Object');
@@ -92,7 +92,7 @@ describe('embed project', () => {
   });
 
   it.only('example of acrylic focus probe', () => {
-    openExampleFile(8);
+    openExampleFile(12);
     cy.wait(1000);
     cy.get(`div[class*="${layerListClassPrefix}item"]`).should('have.length', '1');
     cy.get(`div[class*="${layerListClassPrefix}item"]`).eq(0).should('have.text', 'Cut');

@@ -6,9 +6,9 @@ describe('manipulate document setting', () => {
   it('resolution', () => {
     openDocument();
     cy.get('input.ant-input').should('have.value', 'Medium (250 DPI)');
-    cy.get('div.ant-slider-handle').click().realSwipe('toLeft', { length: 100 });
+    cy.get('.ant-modal-body div.ant-slider-handle').click().realSwipe('toLeft', { length: 100 });
     cy.get('input.ant-input').should('have.value', 'Low (100 DPI)');
-    cy.get('div.ant-slider-handle').click().realSwipe('toRight', { length: 150 });
+    cy.get('.ant-modal-body div.ant-slider-handle').click().realSwipe('toRight', { length: 150 });
     cy.get('input.ant-input').should('have.value', 'Ultra High (1000 DPI)');
   });
 

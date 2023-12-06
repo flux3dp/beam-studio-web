@@ -5,11 +5,11 @@ describe('polygen tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.get('#svg_1').trigger('keydown', { keyCode: 189 });
-    cy.get('#svg_1').trigger('keyup', { keyCode: 189 });
+    cy.get('#svg_1').trigger('keydown', { keyCode: 189 , force: true});
+    cy.get('#svg_1').trigger('keyup', { keyCode: 189 , force: true});
     cy.get('.option-input > input').should('have.attr', 'value').and('eq', '4');
-    cy.get('#svg_1').trigger('keydown', { keyCode: 187 });
-    cy.get('#svg_1').trigger('keyup', { keyCode: 187 });
+    cy.get('#svg_1').trigger('keydown', { keyCode: 187, force: true });
+    cy.get('#svg_1').trigger('keyup', { keyCode: 187, force: true });
     cy.get('.option-input > input').should('have.attr', 'value').and('eq', '5');
   });
 
