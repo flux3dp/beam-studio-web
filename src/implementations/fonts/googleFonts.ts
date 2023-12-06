@@ -299,7 +299,7 @@ const fonts: WebFont[] = [
 
   // Arimo
   {
-    family: 'Arimo',
+    family: 'arimo',
     italic: false,
     postscriptName: 'Arimo-Regular',
     style: 'Regular',
@@ -307,21 +307,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Arimo:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Arimo',
+    family: 'arimo',
     italic: true,
     postscriptName: 'Arimo-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Arimo',
+    family: 'arimo',
     italic: false,
     postscriptName: 'Arimo-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Arimo',
+    family: 'arimo',
     italic: true,
     postscriptName: 'Arimo-BoldItalic',
     style: 'Bold Italic',
@@ -361,7 +361,7 @@ const fonts: WebFont[] = [
 
   // Fira Sans
   {
-    family: 'Fira Sans',
+    family: 'fira sans',
     italic: false,
     postscriptName: 'FiraSans-Regular',
     style: 'Regular',
@@ -369,21 +369,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Fira Sans',
+    family: 'fira sans',
     italic: true,
     postscriptName: 'FiraSans-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Fira Sans',
+    family: 'fira sans',
     italic: false,
     postscriptName: 'FiraSans-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Fira Sans',
+    family: 'fira sans',
     italic: true,
     postscriptName: 'FiraSans-BoldItalic',
     style: 'Bold Italic',
@@ -392,7 +392,7 @@ const fonts: WebFont[] = [
 
   // Courier Prime
   {
-    family: 'Courier Prime',
+    family: 'courier prime',
     italic: false,
     postscriptName: 'CourierPrime-Regular',
     style: 'Regular',
@@ -400,21 +400,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Courier Prime',
+    family: 'courier prime',
     italic: true,
     postscriptName: 'CourierPrime-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Courier Prime',
+    family: 'courier prime',
     italic: false,
     postscriptName: 'CourierPrime-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Courier Prime',
+    family: 'courier prime',
     italic: true,
     postscriptName: 'CourierPrime-BoldItalic',
     style: 'Bold Italic',
@@ -502,7 +502,7 @@ const fonts: WebFont[] = [
 
   // Roboto
   {
-    family: 'Roboto',
+    family: 'roboto',
     italic: false,
     postscriptName: 'Roboto-Regular',
     style: 'Regular',
@@ -510,21 +510,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Roboto:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Roboto',
+    family: 'roboto',
     italic: true,
     postscriptName: 'Roboto-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Roboto',
+    family: 'roboto',
     italic: false,
     postscriptName: 'Roboto-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Roboto',
+    family: 'roboto',
     italic: true,
     postscriptName: 'Roboto-BoldItalic',
     style: 'Bold Italic',
@@ -595,7 +595,7 @@ const fonts: WebFont[] = [
 
   // Zilla Slab
   {
-    family: 'Zilla Slab',
+    family: 'zilla Slab',
     italic: false,
     postscriptName: 'ZillaSlab-Regular',
     style: 'Regular',
@@ -603,21 +603,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Zilla Slab',
+    family: 'zilla Slab',
     italic: true,
     postscriptName: 'ZillaSlab-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Zilla Slab',
+    family: 'zilla Slab',
     italic: false,
     postscriptName: 'ZillaSlab-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Zilla Slab',
+    family: 'zilla Slab',
     italic: true,
     postscriptName: 'ZillaSlab-BoldItalic',
     style: 'Bold Italic',
@@ -626,7 +626,7 @@ const fonts: WebFont[] = [
 
   // Arsenal
   {
-    family: 'Arsenal',
+    family: 'arsenal',
     italic: false,
     postscriptName: 'Arsenal-Regular',
     style: 'Regular',
@@ -634,21 +634,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Arsenal:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Arsenal',
+    family: 'arsenal',
     italic: true,
     postscriptName: 'Arsenal-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Arsenal',
+    family: 'arsenal',
     italic: false,
     postscriptName: 'Arsenal-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Arsenal',
+    family: 'arsenal',
     italic: true,
     postscriptName: 'Arsenal-BoldItalic',
     style: 'Bold Italic',
@@ -656,7 +656,7 @@ const fonts: WebFont[] = [
   },
   // Rubik
   {
-    family: 'Rubik',
+    family: 'rubik',
     italic: false,
     postscriptName: 'Rubik-Regular',
     style: 'Regular',
@@ -687,7 +687,7 @@ const fonts: WebFont[] = [
 
   // Libre Franklin
   {
-    family: 'Libre Franklin',
+    family: 'libre franklin',
     italic: false,
     postscriptName: 'LibreFranklin-Regular',
     style: 'Regular',
@@ -695,21 +695,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Libre+Franklin:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Libre Franklin',
+    family: 'libre franklin',
     italic: true,
     postscriptName: 'LibreFranklin-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Libre Franklin',
+    family: 'libre franklin',
     italic: false,
     postscriptName: 'LibreFranklin-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Libre Franklin',
+    family: 'libre franklin',
     italic: true,
     postscriptName: 'LibreFranklin-BoldItalic',
     style: 'Bold Italic',
@@ -718,7 +718,7 @@ const fonts: WebFont[] = [
 
   // Josefin Sans
   {
-    family: 'Josefin Sans',
+    family: 'josefin sans',
     italic: false,
     postscriptName: 'JosefinSans-Regular',
     style: 'Regular',
@@ -726,21 +726,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Josefin+Sans:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Josefin Sans',
+    family: 'josefin sans',
     italic: true,
     postscriptName: 'JosefinSans-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Josefin Sans',
+    family: 'josefin sans',
     italic: false,
     postscriptName: 'JosefinSans-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Josefin Sans',
+    family: 'josefin sans',
     italic: true,
     postscriptName: 'JosefinSans-BoldItalic',
     style: 'Bold Italic',
@@ -749,7 +749,7 @@ const fonts: WebFont[] = [
 
   // Poppins
   {
-    family: 'Poppins',
+    family: 'poppins',
     italic: false,
     postscriptName: 'Poppins-Regular',
     style: 'Regular',
@@ -757,21 +757,21 @@ const fonts: WebFont[] = [
     queryString: 'family=Poppins:ital,wght@0,400;0,700;1,400;1,700',
   },
   {
-    family: 'Poppins',
+    family: 'poppins',
     italic: true,
     postscriptName: 'Poppins-Italic',
     style: 'Italic',
     weight: 400,
   },
   {
-    family: 'Poppins',
+    family: 'poppins',
     italic: false,
     postscriptName: 'Poppins-Bold',
     style: 'Bold',
     weight: 700,
   },
   {
-    family: 'Poppins',
+    family: 'poppins',
     italic: true,
     postscriptName: 'Poppins-BoldItalic',
     style: 'Bold Italic',
@@ -780,7 +780,7 @@ const fonts: WebFont[] = [
 
   // Lobster
   {
-    family: 'Lobster',
+    family: 'lobster',
     italic: false,
     postscriptName: 'Lobster-Regular',
     style: 'Regular',
@@ -790,7 +790,7 @@ const fonts: WebFont[] = [
 
   // Pacifico
   {
-    family: 'Pacifico',
+    family: 'pacifico',
     italic: false,
     postscriptName: 'Pacifico-Regular',
     style: 'Regular',
@@ -799,7 +799,7 @@ const fonts: WebFont[] = [
   },
   // Yomogi
   {
-    family: 'Yomogi',
+    family: 'yomogi',
     italic: false,
     postscriptName: 'Yomogi-Regular',
     style: 'Regular',
@@ -820,7 +820,7 @@ const fonts: WebFont[] = [
   },
   // Potta_One
   {
-    family: 'Potta One',
+    family: 'potta One',
     italic: false,
     postscriptName: 'PottaOne-Regular',
     style: 'Regular',
@@ -831,7 +831,7 @@ const fonts: WebFont[] = [
 
   // Train_One
   {
-    family: 'Train One',
+    family: 'train One',
     italic: false,
     postscriptName: 'TrainOne-Regular',
     style: 'Regular',
@@ -842,7 +842,7 @@ const fonts: WebFont[] = [
 
   // Stick
   {
-    family: 'Stick',
+    family: 'STICK',
     italic: false,
     postscriptName: 'Stick-Regular',
     style: 'Regular',
@@ -853,7 +853,7 @@ const fonts: WebFont[] = [
 
   // Reggae_One
   {
-    family: 'Reggae One',
+    family: 'reggae One',
     italic: false,
     postscriptName: 'ReggaeOne-Regular',
     style: 'Regular',
@@ -864,7 +864,7 @@ const fonts: WebFont[] = [
 
   // RocknRoll_One
   {
-    family: 'RocknRoll One',
+    family: 'rocknRoll One',
     italic: false,
     postscriptName: 'RocknRollOne-Regular',
     style: 'Regular',
@@ -886,7 +886,7 @@ const fonts: WebFont[] = [
 
   // Palette Mosaic
   {
-    family: 'Palette Mosaic',
+    family: 'palette Mosaic',
     italic: false,
     postscriptName: 'PaletteMosaic-Regular',
     style: 'Regular',
@@ -916,7 +916,7 @@ const fonts: WebFont[] = [
 
   // M PLUS 1p
   {
-    family: 'M PLUS 1p',
+    family: 'm plus 1p',
     italic: false,
     postscriptName: 'MPLUS1p-Regular',
     style: 'Regular',
@@ -925,7 +925,7 @@ const fonts: WebFont[] = [
     supportLangs: ['ja'],
   },
   {
-    family: 'M PLUS 1p',
+    family: 'm plus 1p',
     italic: false,
     postscriptName: 'MPLUS1p-Bold',
     style: 'Bold',
@@ -934,7 +934,7 @@ const fonts: WebFont[] = [
   },
   // Sawarabi Mincho
   {
-    family: 'Sawarabi Mincho',
+    family: 'Sawarabi mincho',
     italic: false,
     postscriptName: 'SawarabiMincho-Regular',
     style: 'Regular',
@@ -944,7 +944,7 @@ const fonts: WebFont[] = [
   },
   // Sawarabi Gothic
   {
-    family: 'Sawarabi Gothic',
+    family: 'sawarabi Gothic',
     italic: false,
     postscriptName: 'SawarabiGothic-Regular',
     style: 'Regular',
@@ -1015,7 +1015,7 @@ const fonts: WebFont[] = [
 
   // Hachi Maru Pop
   {
-    family: 'Hachi Maru Pop',
+    family: 'hachi maru pop',
     italic: false,
     postscriptName: 'HachiMaruPop-Regular',
     style: 'Regular',
@@ -1059,7 +1059,7 @@ const fonts: WebFont[] = [
 
   // ZCOOL XiaoWei
   {
-    family: 'ZCOOL XiaoWei',
+    family: 'ZCOOL xiaowei',
     italic: false,
     postscriptName: 'ZCOOLXiaoWei-Regular',
     style: 'Regular',
@@ -1092,7 +1092,7 @@ const fonts: WebFont[] = [
 
   // ZCOOL KuaiLe
   {
-    family: 'ZCOOL KuaiLe',
+    family: 'ZCOOL kuaile',
     italic: false,
     postscriptName: 'ZCOOLKuaiLe-Regular',
     style: 'Regular',
@@ -1101,9 +1101,9 @@ const fonts: WebFont[] = [
     supportLangs: ['zh-cn'],
   },
 
-  // Long Cang
+  // long cang
   {
-    family: 'Long Cang',
+    family: 'long cang',
     italic: false,
     postscriptName: 'LongCang-Regular',
     style: 'Regular',

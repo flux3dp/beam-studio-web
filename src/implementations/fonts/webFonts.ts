@@ -3,7 +3,7 @@ import { WebFont } from 'core-interfaces/IFont';
 const fonts: WebFont[] = [
   // Passengers Script
   {
-    family: 'Passengers Script',
+    family: 'passengers script',
     italic: false,
     postscriptName: 'PassengersScript-Regular',
     style: 'Regular',
@@ -13,7 +13,7 @@ const fonts: WebFont[] = [
   },
   // Carlito
   {
-    family: 'Carlito',
+    family: 'carlito',
     italic: false,
     postscriptName: 'Carlito-Regular',
     style: 'Regular',
@@ -50,7 +50,7 @@ const fonts: WebFont[] = [
   },
   // Arrow
   {
-    family: 'Arrow',
+    family: 'arrow',
     italic: false,
     postscriptName: 'ArrowSerif',
     style: 'Regular',
@@ -153,7 +153,7 @@ const fonts: WebFont[] = [
   },
   // Amethysta
   {
-    family: 'Amethysta',
+    family: 'amethysta',
     italic: false,
     postscriptName: 'Amethysta-Regular',
     style: 'Regular',
@@ -163,7 +163,7 @@ const fonts: WebFont[] = [
   },
   // Old Standard TT
   {
-    family: 'Old Standard TT',
+    family: 'old standard TT',
     italic: false,
     postscriptName: 'OldStandard-Regular',
     style: 'Regular',
@@ -172,7 +172,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'Old Standard TT',
+    family: 'old standard TT',
     italic: true,
     postscriptName: 'OldStandard-Italic',
     style: 'Italic',
@@ -181,7 +181,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'Old Standard TT',
+    family: 'old standard TT',
     italic: false,
     postscriptName: 'OldStandard-Bold',
     style: 'Bold',
@@ -191,7 +191,7 @@ const fonts: WebFont[] = [
   },
   // Lavigne
   {
-    family: 'Lavigne',
+    family: 'lavigne',
     italic: false,
     postscriptName: 'Lavigne-Regular',
     style: 'Regular',
@@ -201,7 +201,7 @@ const fonts: WebFont[] = [
   },
   // FatCow
   {
-    family: 'FatCow',
+    family: 'fatcow',
     italic: false,
     postscriptName: 'FatCow-Regular',
     style: 'Regular',
@@ -210,7 +210,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'FatCow',
+    family: 'fatcow',
     italic: true,
     postscriptName: 'FatCow-Italic',
     style: 'Italic',
@@ -230,7 +230,7 @@ const fonts: WebFont[] = [
   },
   // Phantomonia
   {
-    family: 'Phantomonia',
+    family: 'phantomonia',
     italic: false,
     postscriptName: 'Phantomonia-Regular',
     style: 'Regular',
@@ -240,7 +240,7 @@ const fonts: WebFont[] = [
   },
   // Kong Quest
   {
-    family: 'Kong Quest',
+    family: 'kong quest',
     italic: false,
     postscriptName: 'Kong Quest-Regular',
     style: 'Regular',
@@ -250,7 +250,7 @@ const fonts: WebFont[] = [
   },
   // Plexifont BV
   {
-    family: 'Plexifont BV',
+    family: 'plexifont bv',
     italic: false,
     postscriptName: 'Plexifont BV-Regular',
     style: 'Regular',
@@ -290,7 +290,7 @@ const fonts: WebFont[] = [
   },
   // Shagadelic
   {
-    family: 'Shagadelic',
+    family: 'shagadelic',
     italic: false,
     postscriptName: 'Shagadelic-Bold',
     style: 'Bold',
@@ -300,7 +300,7 @@ const fonts: WebFont[] = [
   },
   // Fanzine
   {
-    family: 'Fanzine',
+    family: 'fanzine',
     italic: false,
     postscriptName: 'Fanzine-Regular',
     style: 'Regular',
@@ -310,7 +310,7 @@ const fonts: WebFont[] = [
   },
   // Impact Label
   {
-    family: 'Impact Label',
+    family: 'ImpactLabel',
     italic: false,
     postscriptName: 'Impact Label-Regular',
     style: 'Regular',
@@ -340,7 +340,7 @@ const fonts: WebFont[] = [
   },
   // Allura
   {
-    family: 'Allura',
+    family: 'allura',
     italic: false,
     postscriptName: 'Allura-Regular',
     style: 'Regular',
@@ -350,7 +350,7 @@ const fonts: WebFont[] = [
   },
   // Cedarville-Cursive
   {
-    family: 'Cedarville Cursive',
+    family: 'CedarvilleCursive',
     italic: false,
     postscriptName: 'CedarvilleCursive-Regular',
     style: 'Regular',
@@ -360,7 +360,7 @@ const fonts: WebFont[] = [
   },
   // Robert
   {
-    family: 'Robert',
+    family: 'robert',
     italic: false,
     postscriptName: 'Robert-Regular',
     style: 'Regular',
@@ -400,7 +400,7 @@ const fonts: WebFont[] = [
   },
   // Raustila
   {
-    family: 'Raustila',
+    family: 'raustila',
     italic: false,
     postscriptName: 'Raustila-Regular',
     style: 'Regular',
@@ -410,7 +410,7 @@ const fonts: WebFont[] = [
   },
   // Lemon Tuesday
   {
-    family: 'Lemon Tuesday',
+    family: 'lemon tuesday',
     italic: false,
     postscriptName: 'LemonTuesday-Regular',
     style: 'Regular',
@@ -420,7 +420,7 @@ const fonts: WebFont[] = [
   },
   // Nickainley
   {
-    family: 'Nickainley',
+    family: 'nickainley',
     italic: false,
     postscriptName: 'Nickainley-Regular',
     style: 'Regular',
@@ -430,22 +430,22 @@ const fonts: WebFont[] = [
   },
   // Volaroid Sans
   {
-    family: 'Volaroid Sans',
+    family: 'volaroid Sans',
     italic: false,
     postscriptName: 'Volaroid Sans-Regular',
     style: 'Regular',
     weight: 400,
-    fileName: 'Volaroid sans.otf',
+    fileName: 'Volaroid-sans.otf',
     supportLangs: ['en', 'es', 'de'],
   },
   // Volaroid Script
   {
-    family: 'Volaroid Script',
+    family: 'VolaroidScript',
     italic: false,
     postscriptName: 'Volaroid Script-Regular',
     style: 'Regular',
     weight: 400,
-    fileName: 'Volaroid Script.ttf',
+    fileName: 'Volaroid-Script.ttf',
     supportLangs: ['en', 'es', 'de'],
   },
   // Grenadier NF
@@ -470,7 +470,7 @@ const fonts: WebFont[] = [
   },
   // Life Savers
   {
-    family: 'Life Savers',
+    family: 'life savers',
     italic: false,
     postscriptName: 'LifeSavers-Regular',
     style: 'Regular',
@@ -479,7 +479,7 @@ const fonts: WebFont[] = [
     supportLangs: ['en', 'es', 'de'],
   },
   {
-    family: 'Life Savers',
+    family: 'life savers',
     italic: false,
     postscriptName: 'LifeSavers-Bold',
     style: 'Bold',
@@ -489,7 +489,7 @@ const fonts: WebFont[] = [
   },
   // Dymaxion Script
   {
-    family: 'DymaxionScript',
+    family: 'dymaxionscript',
     italic: false,
     postscriptName: 'DymaxionScript-Regular',
     style: 'Regular',
@@ -796,18 +796,18 @@ const fonts: WebFont[] = [
   },
   // TaipeiSansTC
   {
-    family: 'TaipeiSansTC',
+    family: 'Taipei Sans TC Beta',
     italic: false,
-    postscriptName: 'TaipeiSansTC',
+    postscriptName: 'TaipeiSansTC-Regular',
     style: 'Regular',
     weight: 400,
     fileName: 'TaipeiSansTCBeta-Regular.ttf',
     supportLangs: ['zh-tw'],
   },
   {
-    family: 'TaipeiSansTC',
+    family: 'Taipei Sans TC Beta',
     italic: false,
-    postscriptName: 'TaipeiSansTC',
+    postscriptName: 'TaipeiSansTC-Bold',
     style: 'Bold',
     weight: 700,
     fileName: 'TaipeiSansTCBeta-Bold.ttf',
@@ -845,7 +845,7 @@ const fonts: WebFont[] = [
   {
     family: 'Chiron Sans HK Pro',
     italic: false,
-    postscriptName: 'Chiron Sans HK Pro',
+    postscriptName: 'Chiron Sans HK Pro-Bold',
     style: 'Bold',
     weight: 700,
     fileName: 'ChironSansHKPro-Bold.otf',
@@ -854,7 +854,7 @@ const fonts: WebFont[] = [
   {
     family: 'Chiron Sans HK Pro',
     italic: true,
-    postscriptName: 'Chiron Sans HK Pro',
+    postscriptName: 'Chiron Sans HK Pro-Italic',
     style: 'Italic',
     weight: 400,
     fileName: 'ChironSansHKPro-Italic.otf',
@@ -863,7 +863,7 @@ const fonts: WebFont[] = [
   {
     family: 'Chiron Sans HK Pro',
     italic: true,
-    postscriptName: 'Chiron Sans HK Pro',
+    postscriptName: 'Chiron Sans HK Pro-BoldIt',
     style: 'Bold Italic',
     weight: 700,
     fileName: 'ChironSansHKPro-BoldIt.otf',
@@ -1101,7 +1101,7 @@ const fonts: WebFont[] = [
   },
   // Isemin
   {
-    family: 'Isemin',
+    family: 'isemin',
     italic: false,
     postscriptName: 'Isemin',
     style: 'Regular',
@@ -1119,11 +1119,11 @@ const fonts: WebFont[] = [
     fileName: 'HanaMinPlus.ttf',
     supportLangs: ['ja', 'zh-tw'],
   },
-  // IPAexMicho
+  // IPAexMincho
   {
-    family: 'IPAexMicho',
+    family: 'IPAexMincho',
     italic: false,
-    postscriptName: 'IPAexMicho',
+    postscriptName: 'IPAexMincho',
     style: 'Regular',
     weight: 400,
     fileName: 'ipaexm.ttf',
@@ -1344,7 +1344,7 @@ const fonts: WebFont[] = [
   },
   // Mamelon
   {
-    family: 'Mamelon',
+    family: 'mamelon',
     italic: false,
     postscriptName: 'Mamelon',
     style: 'Regular',
@@ -1354,7 +1354,7 @@ const fonts: WebFont[] = [
   },
   // Ronde-B
   {
-    family: 'Ronde-B',
+    family: 'ronde-B',
     italic: false,
     postscriptName: 'Ronde-B',
     style: 'Regular',
@@ -1394,7 +1394,7 @@ const fonts: WebFont[] = [
   },
   // Mukasi Mukasi
   {
-    family: 'Mukasi Mukasi',
+    family: 'mukasi mukasi',
     italic: false,
     postscriptName: 'Mukasi Mukasi',
     style: 'Regular',
@@ -1464,7 +1464,7 @@ const fonts: WebFont[] = [
   },
   // KAWAIITEGAKIMOJI
   {
-    family: 'KAWAIITEGAKIMOJI',
+    family: 'kawaiitegakimoji',
     italic: false,
     postscriptName: 'KAWAIITEGAKIMOJI',
     style: 'Regular',
@@ -1482,9 +1482,9 @@ const fonts: WebFont[] = [
     fileName: '851CHIKARA-DZUYOKU_kanaB_004.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
-  // aoyagireisyosimo2
+  // Aoyagireisyosimo2
   {
-    family: 'aoyagireisyosimo2',
+    family: 'Aoyagireisyosimo2',
     italic: false,
     postscriptName: 'aoyagireisyosimo2',
     style: 'Regular',
@@ -1552,7 +1552,7 @@ const fonts: WebFont[] = [
   },
   // Makinas
   {
-    family: 'Makinas',
+    family: 'makinas',
     italic: false,
     postscriptName: 'Makinas',
     style: 'Regular',
@@ -1560,11 +1560,11 @@ const fonts: WebFont[] = [
     fileName: 'Makinas-4-Flat.otf',
     supportLangs: ['zh-tw', 'ja'],
   },
-  // 851Gkkt
+  // 851Gkktt
   {
-    family: '851Gkkt',
+    family: '851Gkktt',
     italic: false,
-    postscriptName: '851Gkkt',
+    postscriptName: '851Gkktt',
     style: 'Regular',
     weight: 400,
     fileName: '851Gkktt_005.ttf',
