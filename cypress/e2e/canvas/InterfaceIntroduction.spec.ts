@@ -1,4 +1,4 @@
-describe('Example', () => {
+describe('Interface Introduction', () => {
   it('Show Interface Introduction', () => {
    cy.landingEditor();
    //確認x是否有用及x後能否使用

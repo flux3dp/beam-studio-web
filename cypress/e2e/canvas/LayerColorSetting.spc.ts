@@ -1,5 +1,5 @@
-describe('Example', () => {
- it('Exampl-Ador Laser', () => {
+describe('Layer Color Setting', () => {
+ it('Layer Color Setting', () => {
  cy.landingEditor();
 
  cy.get('div.menu-btn-container').click();
