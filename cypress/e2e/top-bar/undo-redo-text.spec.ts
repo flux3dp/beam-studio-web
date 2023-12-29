@@ -16,15 +16,15 @@ describe('verify undo/redo behaviors', () => {
     text();
     cy.get('.ant-select[title="Font"]').click();
     cy.wait(1000);
-    cy.get('.rc-virtual-list-holder img[alt="Lobster"]').click();
+    cy.get('.rc-virtual-list-holder img[alt="lobster"]').click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', 'Lobster');
+    fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');
     undoBtn().click();
     cy.get('#svg_1').click({ force: true });
     fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
     redoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', 'Lobster');
+    fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');
   });
 
   // it('text with style', () => {
@@ -103,12 +103,12 @@ describe('verify undo/redo behaviors', () => {
     cy.get('#svg_1').should('not.exist');
     redoBtn().click();
     cy.get('#svg_1').should('exist');
-  };
+  }
 
   function text() {
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(500);
     cy.realType('Test Undo/Redo');
-  };
+  }
 });
