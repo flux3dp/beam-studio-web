@@ -36,6 +36,7 @@ describe('manipulate file', () => {
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, 'binary').then((binary) => {
+      expect(binary).to.equal('1');
       cy.log(binary);
     });
 
