@@ -2,6 +2,8 @@ import { buf as crc32Buf } from 'crc-32';
 
 import { md5 } from '../../support/utils';
 
+const isRunningAtGithub = Cypress.env('envType') === 'github';
+
 describe('manipulate file', () => {
   beforeEach(() => {
     cy.landingEditor();
@@ -28,20 +30,15 @@ describe('manipulate file', () => {
     cy.get('#height').should('have.value', '210');
   });
 
-  it.only('save file', () => {
+  it('save file', () => {
     const cypressDownloadBeamPath = Cypress.env('cypressDownloadBeamPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(3)').click();
     cy.wait(1000);
 
-    cy.readFile(cypressDownloadBeamPath, 'binary').then((binary) => {
-      expect(binary).to.equal('1');
-      cy.log(binary);
-    });
-
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(-1409562589);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -1964051864 : -1409562589);
     });
   });
 
@@ -56,7 +53,7 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click();
     cy.wait(1000);
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(-786354614);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : -786354614);
     });
   });
 

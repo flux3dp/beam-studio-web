@@ -50,10 +50,10 @@ jobs:
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
+          config-file: cypress.config.ci.ts
           record: true
           group: "Actions"
           browser: chrome
-          headed: true
           install: false
           parallel: true
           start: yarn start
