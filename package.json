@@ -21,6 +21,7 @@
     "axios": "^0.21.1",
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
+    "crc-32": "^1.2.2",
     "cropperjs": "^1.5.12",
     "eventemitter3": "^4.0.7",
     "exifr": "^7.1.3",
