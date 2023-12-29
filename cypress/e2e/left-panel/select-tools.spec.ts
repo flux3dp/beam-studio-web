@@ -2,7 +2,9 @@ describe('select tools', () => {
   it('select', () => {
     cy.landingEditor();
     cy.get('div#left-Text>img').click();
-    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('TEST SELECT');
+    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
+    cy.focused({ timeout: 1000 }).should('have.id', 'text');
+    cy.realType('TEST SELECT');
     cy.get('#svg_1').should('exist');
     cy.get('#left-Cursor').click();
     cy.get('#svg_1').realClick();
@@ -25,7 +27,7 @@ describe('select tools', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getTempGroup()');
-      const childNodes = Array.from(el.childNodes);
+      const childNodes = Array(el.childNodes);
       cy.get(childNodes).should('have.length', '2');
       cy.get(childNodes[0]).should('have.id', 'svg_1');
       cy.get(childNodes[1]).should('have.id', 'svg_2');

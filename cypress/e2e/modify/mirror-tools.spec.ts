@@ -6,7 +6,7 @@ describe('mirror tools', () => {
   it('horizontal flip ', () => {
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
-    cy.get('#selectorGroup_svg_1', { timeout: 1000 }).should('exist');
+    cy.focused({ timeout: 1000 }).should('have.id', 'text');
     cy.realType('TEST TEXT HORIZONTAL');
     cy.get('#horizontal_flip').click();
     cy.get('#svg_1').should(($value) => {
@@ -18,7 +18,7 @@ describe('mirror tools', () => {
   it('vertical flip', () => {
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
-    cy.get('#selectorGroup_svg_1', { timeout: 1000 }).should('exist');
+    cy.focused({ timeout: 1000 }).should('have.id', 'text');
     cy.realType('TEST TEXT VERTICAL');
     cy.get('#vertical_flip').click();
     cy.get('#svg_1').should(($value) => {

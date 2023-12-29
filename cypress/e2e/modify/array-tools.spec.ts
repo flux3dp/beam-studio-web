@@ -50,7 +50,7 @@ describe('array tools', () => {
   it('text', () => {
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
-    cy.get('#selectorGroup_svg_1', { timeout: 1000 }).should('exist');
+    cy.focused({ timeout: 1000 }).should('have.id', 'text');
     cy.realType('Test Array');
     doAllThing();
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
