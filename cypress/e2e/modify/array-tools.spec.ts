@@ -33,7 +33,7 @@ describe('array tools', () => {
     cy.wait(500);
     doAllThing();
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
-    cy.get('g[data-tempgroup="true"]').should('have.length', '4');
+    cy.get('g[data-tempgroup="true"]').children('polygon').should('have.length', '4');
   });
 
   it('path', () => {
