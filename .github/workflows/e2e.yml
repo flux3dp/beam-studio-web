@@ -53,6 +53,7 @@ jobs:
           record: true
           group: "Actions"
           browser: chrome
+          headed: true
           install: false
           parallel: true
           start: yarn start
