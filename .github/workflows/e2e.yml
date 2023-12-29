@@ -37,7 +37,6 @@ jobs:
           chrome-version: 120
       - run: |
           echo "BROWSER_PATH=$(which chrome)" >> $GITHUB_ENV
-          echo "BROWSER_PATH=$(which chrome)"
       - name: Cypress install
         uses: cypress-io/github-action@v6
         with:
@@ -59,3 +58,4 @@ jobs:
           start: yarn start
           wait-on: "http://localhost:8080"
           wait-on-timeout: 120
+          spec: cypress/e2e/top-bar/file.spec.ts

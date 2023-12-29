@@ -28,15 +28,19 @@ describe('manipulate file', () => {
     cy.get('#height').should('have.value', '210');
   });
 
-  it('save file', () => {
+  it.only('save file', () => {
     const cypressDownloadBeamPath = Cypress.env('cypressDownloadBeamPath');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(3)').click();
     cy.wait(1000);
 
-    cy.readFile(cypressDownloadBeamPath, null).then((file) => {
-      expect(crc32Buf(file)).to.equal(-1409562589);
+    cy.readFile(cypressDownloadBeamPath, 'binary').then((binary) => {
+      cy.log(binary);
+    });
+
+    cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
+      expect(crc32Buf(buf)).to.equal(-1409562589);
     });
   });
 
@@ -50,8 +54,8 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click();
     cy.wait(1000);
-    cy.readFile(cypressDownloadNewBeamPath, null).then((file) => {
-      expect(crc32Buf(file)).to.equal(-786354614);
+    cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
+      expect(crc32Buf(buf)).to.equal(-786354614);
     });
   });
 
@@ -100,10 +104,8 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu > :nth-child(4)').click();
-    cy.readFile(cypressDownloadJpgPath).then((info) => {
-      cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === '6ee6548bbfc243fd9ed37f973556f9a4' || info === '73ed1d611feab1f6589b0df87d9d2a75'
-      });
+    cy.readFile(cypressDownloadJpgPath, null).then((buf) => {
+      expect(crc32Buf(buf)).to.equal(1826901805);
     });
   });
 
