@@ -1,4 +1,8 @@
+import { buf as crc32Buf } from 'crc-32';
+
 import { md5 } from '../../support/utils';
+
+const isRunningAtGithub = Cypress.env('envType') === 'github';
 
 describe('manipulate file', () => {
   beforeEach(() => {
@@ -32,11 +36,9 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(3)').click();
     cy.wait(1000);
-    cy.readFile(cypressDownloadBeamPath).then((info) => {
-      cy.wrap(md5(info)).should('satisfy', (info) => {
-        // Local MD5 / Github Action MD5
-        return info === '414766663145bf9d8e93c75559869945' || info === '82421109cd5c6857a535df58278f485c'
-      });
+
+    cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -1964051864 : -1409562589);
     });
   });
 
@@ -50,11 +52,8 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click();
     cy.wait(1000);
-    cy.readFile(cypressDownloadNewBeamPath).then((info) => {
-      cy.wrap(md5(info)).should('satisfy', (info) => {
-        // CLI MD5 / Cypress GUI MD5 / Github Action MD5
-        return info === '55e664c0f54af7e7f2e2f7e2c059ba8d' || info === '414766663145bf9d8e93c75559869945' || info === 'eab71c06f20a40a3a55ed12726800e2d'
-      });
+    cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : -786354614);
     });
   });
 
@@ -103,10 +102,8 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu__item').click();
     cy.get(':nth-child(8) > .rc-menu > :nth-child(4)').click();
-    cy.readFile(cypressDownloadJpgPath).then((info) => {
-      cy.wrap(md5(info)).should('satisfy', (info) => {
-        return info === '6ee6548bbfc243fd9ed37f973556f9a4' || info === '73ed1d611feab1f6589b0df87d9d2a75'
-      });
+    cy.readFile(cypressDownloadJpgPath, null).then((buf) => {
+      expect(crc32Buf(buf)).to.equal(1826901805);
     });
   });
 

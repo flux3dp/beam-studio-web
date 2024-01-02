@@ -12,6 +12,7 @@ export default defineConfig({
     cypressDownloadJpgPath: './cypress/downloads/untitled.jpeg',
     username: 'beam-studio-web@flux3dp.com',
     password: 'Flux42642569',
+    envType: 'github',
   },
   e2e: {
     setupNodeEvents(on, config) {

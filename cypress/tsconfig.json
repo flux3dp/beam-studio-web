@@ -3,7 +3,8 @@
     "target": "es5",
     "lib": [
       "es5",
-      "dom"
+      "dom",
+      "ES2015"
     ],
     "types": [
       "cypress",

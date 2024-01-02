@@ -1,18 +1,21 @@
 import { defineConfig } from 'cypress'
 
+export const envVariables = {
+  cypressDownloadPath: './cypress/downloads/download.json',
+  cypressDownloadBeamPath: './cypress/downloads/untitled.beam',
+  cypressDownloadNewBeamPath: './cypress/downloads/untitled.beam',
+  cypressDownloadBvgPath: './cypress/downloads/untitled.bvg',
+  cypressDownloadSvgPath: './cypress/downloads/untitled.svg',
+  cypressDownloadPngPath: './cypress/downloads/untitled.png',
+  cypressDownloadJpgPath: './cypress/downloads/untitled.jpeg',
+  username: 'beam-studio-web@flux3dp.com',
+  password: 'Flux42642569',
+  envType: 'local',
+};
+
 export default defineConfig({
   projectId: 'fc84dg',
-  env: {
-    cypressDownloadPath: './cypress/downloads/download.json',
-    cypressDownloadBeamPath: './cypress/downloads/untitled.beam',
-    cypressDownloadNewBeamPath: './cypress/downloads/untitled.beam',
-    cypressDownloadBvgPath: './cypress/downloads/untitled.bvg',
-    cypressDownloadSvgPath: './cypress/downloads/untitled.svg',
-    cypressDownloadPngPath: './cypress/downloads/untitled.png',
-    cypressDownloadJpgPath: './cypress/downloads/untitled.jpeg',
-    username: 'beam-studio-web@flux3dp.com',
-    password: 'Flux42642569',
-  },
+  env: envVariables,
   e2e: {
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.ts')(on, config)

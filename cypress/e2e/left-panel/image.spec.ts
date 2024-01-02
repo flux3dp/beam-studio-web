@@ -1,11 +1,14 @@
 import { md5 } from '../../support/utils';
 
+const isRunningAtGithub = Cypress.env('envType') === 'github';
+
 // TODO: expect image result with one specific md5 value
 // ImageData generate different results on different browser currently
 describe('manipulate image function', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
+
   it('remove gradient see if trace function gets changed', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').click({ force: true });
@@ -17,28 +20,38 @@ describe('manipulate image function', () => {
     cy.wait(1500);
     cy.get('#svg_3').click({ force: true });
     cy.get('div.element-title').contains('Layer 1 > Path');
-    cy.get('#svg_3').invoke('attr', 'd').then((d) => {
-      expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
-    });
+    cy.get('#svg_3')
+      .invoke('attr', 'd')
+      .then((d) => {
+        expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
+      });
   });
 
   it('check gradient with image', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.get('.ant-switch').click({ force: true });
-    cy.get('#svg_1').should('have.attr', 'data-threshold', '128').should('have.attr', 'data-shading', 'false');
+    cy.get('#svg_1')
+      .should('have.attr', 'data-threshold', '128')
+      .should('have.attr', 'data-shading', 'false');
     cy.get('#svg_1').click({ force: true });
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      expect(md5(href)).equal('8794655cf390c5f867ed5eff13f3bce4');
-    });
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        if (isRunningAtGithub) expect(md5(href)).equal('8794655cf390c5f867ed5eff13f3bce4');
+        else expect(md5(href)).equal('0a52a26dec2bac9490b838b039756347');
+      });
     cy.get('.ant-switch').click({ force: true });
     cy.get('#svg_1').click({ force: true });
-    cy.get('#svg_1').should('have.attr', 'data-threshold', '254').should('have.attr', 'data-shading', 'true');
+    cy.get('#svg_1')
+      .should('have.attr', 'data-threshold', '254')
+      .should('have.attr', 'data-shading', 'true');
     cy.wait(5000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        return href === '1c5a5775df3e730720a60ae5a20982db' || href === '8b1b3ac285d65fae820c86dc5b728efd'
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        if (isRunningAtGithub) expect(md5(href)).equal('52bc0921c0dee83bf4905d694c8e7b90');
+        else expect(md5(href)).equal('03405fae4019b9d85f9e9e9a6fac08a5');
       });
-    });
   });
 
   it('check replace with image', () => {
@@ -48,12 +61,12 @@ describe('manipulate image function', () => {
     cy.get('.progress', { timeout: 3000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
     cy.wait(10000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        // Local MD5 / Github Action MD5
-        return href === '225e1c371779312b52a2c70ff42780c8' || href === 'bb928cb5c30ef7f85c2b53f81fc4072e'
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        if (isRunningAtGithub) expect(md5(href)).equal('8b79e9a445262e8412a863d5ec06d16b');
+        else expect(md5(href)).equal('819ff9e7463b66e739da0bf948390faf');
       });
-    });
   });
 
   it('check grading with image', () => {
@@ -69,17 +82,23 @@ describe('manipulate image function', () => {
       .trigger('mousedown', { which: 1, clientX: 922, clientY: 125, force: true })
       .trigger('mousemove', { which: 1, clientX: 922, clientY: 325, force: true })
       .then(() => {
-        cy.get('rect#1').trigger('mouseup')
+        cy.get('rect#1').trigger('mouseup');
       });
     cy.get('button[class^="ant-btn"]').contains('Okay').click();
     cy.get('.progress', { timeout: 5000 }).should('not.exist');
     cy.wait(10000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        // Local MD5 / Remote(Github Action) MD5
-        return href === '4d696e44b940d87e89ecccca671fd9c9' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' || href === '3c43c5b5ec5a8f24d2eb35a508d4b85d'
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        cy.wrap(md5(href)).should('satisfy', (href) => {
+          // Local MD5 / Remote(Github Action) MD5
+          return (
+            href === '4d696e44b940d87e89ecccca671fd9c9' ||
+            href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' ||
+            href === '3c43c5b5ec5a8f24d2eb35a508d4b85d'
+          );
+        });
       });
-    });
   });
 
   it('check crop with image', () => {
@@ -92,12 +111,12 @@ describe('manipulate image function', () => {
     cy.get('.progress', { timeout: 10000 }).should('not.exist');
     cy.get('.photo-edit-panel', { timeout: 5000 }).should('not.exist');
     cy.wait(10000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        // Local MD5 / Remote(Github Action) MD5
-        return href === '5525bd3998a7ce95a35e1618e0db8c43' || href === 'a8ad6ba832e34e3cc6544668596fefff'
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        if (isRunningAtGithub) expect(md5(href)).equal('82c48181e33cdd9b8127e40f52703a2f');
+        else expect(md5(href)).equal('613da6c7223d4a2d47859de0a28cdb08');
       });
-    });
   });
 
   it('check bevel with image', () => {
@@ -107,10 +126,12 @@ describe('manipulate image function', () => {
     cy.get('.progress', { timeout: 120000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
     cy.wait(10000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      // Local MD5 / Remote(Github Action) MD5
-      expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
-    });
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        // Local MD5 / Remote(Github Action) MD5
+        expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
+      });
   });
 
   it('check invert with image', () => {
@@ -120,11 +141,17 @@ describe('manipulate image function', () => {
     cy.get('.progress', { timeout: 20000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
     cy.wait(10000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      cy.wrap(md5(href)).should('satisfy', (href) => {
-        // Local MD5 / Remote(Github Action) MD5
-        return href === '4d7e7b1f937e9161c3f3c567d5ee869b' || href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' || href === 'de1073c40f0c095297d9d87af6b74dc3'
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        cy.wrap(md5(href)).should('satisfy', (href) => {
+          // Local MD5 / Remote(Github Action) MD5
+          return (
+            href === '4d7e7b1f937e9161c3f3c567d5ee869b' ||
+            href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' ||
+            href === 'de1073c40f0c095297d9d87af6b74dc3'
+          );
+        });
       });
-    });
   });
 });

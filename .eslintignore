@@ -2,3 +2,6 @@ node_modules
 dist
 src/web
 src/interfaces/core-interfaces
+cypress.config.ts
+cypress.config.*.ts
+
