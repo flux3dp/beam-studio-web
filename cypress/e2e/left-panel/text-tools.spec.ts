@@ -35,21 +35,25 @@ describe('select tools', () => {
   });
 
   it('text size', () => {
-    cy.get('#svg_1').click({force: true});
-    cy.get('div[title="Size"] > div.option-input > input').clear({ force: true }).type('200' , {force: true}).blur();
+    cy.get('#svg_1').click({ force: true });
+    cy.wait(500);
+    cy.get('div[title="Size"] > div.option-input > input').clear({ force: true }).type('200', { force: true }).blur();
     cy.get('#svg_1').should('have.attr', 'font-size').and('eq', '200');
 
-    cy.get('#svg_2').click({force: true});
-    cy.get('div[title="Size"] > div.option-input > input').clear({ force: true }).type('50' , {force: true}).blur();
+    cy.get('#svg_2').click({ force: true });
+    cy.wait(500);
+    cy.get('div[title="Size"] > div.option-input > input').clear({ force: true }).type('50', { force: true }).blur();
     cy.get('#svg_2').should('have.attr', 'font-size').and('eq', '50');
   });
 
   it('text letter spacing', () => {
-    cy.get('#svg_1').click({force: true});
+    cy.get('#svg_1').click({ force: true });
+    cy.wait(500);
     cy.get('div[title="Letter spacing"] + div.option-input > input').clear({ force: true }).type('0.5' , {force: true}).blur();
     cy.get('#svg_1').should('have.attr', 'letter-spacing').and('eq', '0.5em');
 
-    cy.get('#svg_2').click({force: true});
+    cy.get('#svg_2').click({ force: true });
+    cy.wait(500);
     cy.get('div[title="Letter spacing"] + div.option-input > input').clear({ force: true }).type('1.5' , {force: true}).blur();
     cy.get('#svg_2').should('have.attr', 'letter-spacing').and('eq', '1.5em');
   });
@@ -73,20 +77,24 @@ describe('select tools', () => {
 
   it('vertical', () => {
     cy.get('#svg_1').click({ force: true });
+    cy.wait(500);
     cy.get('button[title="Vertical text"]').eq(0).click();
     cy.get('#svg_1').should('have.attr', 'data-verti').and('eq', 'true');
     cy.get('#svg_2').click({ force: true });
+    cy.wait(500);
     cy.get('button[title="Vertical text"]').eq(0).click();
     cy.get('#svg_2').should('have.attr', 'data-verti').and('eq', 'true');
   });
 
   it('infill', () => {
     cy.get('#svg_1').click({ force: true });
+    cy.wait(500);
     cy.get('#svg_1').should('have.attr', 'fill').and('eq', 'none');
     cy.get('button[title="Infill"]').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
 
     cy.get('#svg_2').click({ force: true });
+    cy.wait(500);
     cy.get('#svg_2').should('have.attr', 'fill').and('eq', 'none');
     cy.get('button[title="Infill"]').click();
     cy.get('#svg_2').should('have.attr', 'fill').and('not.eq', 'none');
