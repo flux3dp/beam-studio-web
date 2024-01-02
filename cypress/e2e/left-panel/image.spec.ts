@@ -14,10 +14,10 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').click({ force: true });
     cy.get('#trace').should('have.attr', 'disabled');
     cy.get('.ant-switch').click({ force: true });
-    cy.wait(3000);
+    cy.wait(1500);
     cy.contains('Threshold brightness').should('exist');
     cy.get('#trace').click({ force: true });
-    cy.wait(3000);
+    cy.wait(1500);
     cy.get('#svg_3').click({ force: true });
     cy.get('div.element-title').contains('Layer 1 > Path');
     cy.get('#svg_3')
