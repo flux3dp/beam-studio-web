@@ -42,4 +42,45 @@ describe('select tools', () => {
       expect(childNodes[1]).to.have.id('svg_2');
     });
   });
+  it('select rotate', () => {
+    cy.landingEditor();
+    cy.get('div#left-Element').click();
+    cy.get('[class="ant-modal-header"]').contains('Element').should('exist');
+    cy.get('[class="ant-modal-body"]').should('exist');
+    cy.get('[class="adm-capsule-tabs-tab adm-capsule-tabs-tab-active"]').should('exist');
+    cy.get('[class="anticon src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN"]')
+      .eq(1).click();
+    cy.get('#svg_1').click();
+    cy.get('circle#selectorGrip_rotate')
+      .trigger('mousedown', { which: 1,force: true })
+      .trigger('mousemove', { which: 1, pageX: 150, pageY: 50, shiftKey: true, force: true })
+      .trigger('mouseup', { force: true })
+    cy.get('#svg_1')
+      .should('exist')
+      .should('have.attr', 'transform', 'rotate(45 250.00000000000003,216.50650024414062) ');
+    cy.get('#svg_1').click();
+    cy.get('circle#selectorGrip_rotate')
+      .trigger('mousedown', { which: 1,force: true })
+      .trigger('mousemove', { which: 1, pageX: 200, pageY: 100, shiftKey: true, force: true })
+      .trigger('mouseup', { force: true })
+    cy.get('#svg_1')
+      .should('exist')
+      .should('have.attr', 'transform', 'rotate(90 250,216.50650024414065) ');
+    cy.get('#svg_1').click();
+    cy.get('circle#selectorGrip_rotate')
+      .trigger('mousedown', { which: 1,force: true })
+      .trigger('mousemove', { which: 1, pageX: 200, pageY: 200, shiftKey: true, force: true })
+      .trigger('mouseup', { force: true })
+    cy.get('#svg_1')
+      .should('exist')
+      .should('have.attr', 'transform', 'rotate(135 249.99999999999997,216.50650024414062) ');
+    cy.get('#svg_1').click();
+    cy.get('circle#selectorGrip_rotate')
+      .trigger('mousedown', { which: 1,force: true })
+      .trigger('mousemove', { which: 1, pageX: 200, pageY: 300, shiftKey: true, force: true })
+      .trigger('mouseup', { force: true })
+    cy.get('#svg_1')
+      .should('exist')
+      .should('have.attr', 'transform', 'rotate(-180 250,216.5065002441406) ');
+    });
 });
