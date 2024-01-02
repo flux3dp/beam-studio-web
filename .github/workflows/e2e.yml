@@ -59,4 +59,4 @@ jobs:
           start: yarn start
           wait-on: "http://localhost:8080"
           wait-on-timeout: 120
-          spec: cypress/e2e/top-bar/file.spec.ts
+          spec: cypress/e2e/left-panel/image.spec.ts
