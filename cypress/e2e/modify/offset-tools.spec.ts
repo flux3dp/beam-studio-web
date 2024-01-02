@@ -12,6 +12,7 @@ it('offset', () => {
   cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+  cy.wait(500);
   cy.get('#offset').click();
   cy.get('#select-offset-corner').select('Round');
   cy.get('.control > .ui > input').type('{selectall}{backspace}10');
