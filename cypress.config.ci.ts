@@ -5,5 +5,6 @@ export default {
   env: {
     ...envVariables,
     envType: 'github',
+    connectMachineIP: undefined,
   }
 }

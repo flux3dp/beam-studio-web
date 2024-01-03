@@ -81,6 +81,18 @@ Cypress.Commands.add('disableImageDownSampling', () => {
   window.localStorage.setItem('beambox-preference', JSON.stringify(bbPref));
 });
 
+Cypress.Commands.add('setUpBackend', (ip: string) => {
+  window.localStorage.setItem('host', ip);
+});
+
+Cypress.Commands.add('connectMachine', (machineName: string) => {
+  cy.findAllByTestId('select-machine').should('exist');
+  cy.findAllByTestId('select-machine').click();
+  cy.findAllByText(machineName).should('exist');
+  cy.findAllByText(machineName).click();
+  cy.get('.ant-modal-footer').get('.ant-btn-primary').contains('Yes').click();
+});
+
 //
 //
 // -- This is a child command --

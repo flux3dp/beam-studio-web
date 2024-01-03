@@ -10,6 +10,7 @@
       "cypress",
       "cypress-real-events",
       "@4tw/cypress-drag-drop",
+      "@testing-library/cypress"
     ]
   },
   "include": [
