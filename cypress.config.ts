@@ -11,6 +11,8 @@ export const envVariables = {
   username: 'beam-studio-web@flux3dp.com',
   password: 'Flux42642569',
   envType: 'local',
+  backendIP: '192.168.1.114',
+  machineName: 'beamo (Adam)',
 };
 
 export default defineConfig({

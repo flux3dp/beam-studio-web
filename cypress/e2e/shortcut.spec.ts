@@ -1,5 +1,5 @@
 describe('verify shortcuts', () => {
-  before(() => {
+  beforeEach(() => {
     cy.landingEditor();
   });
 

@@ -9,6 +9,8 @@ declare global {
       ): Chainable<JQuery<HTMLElement>>;
       dragTo(targetEl: string): Chainable<JQuery<HTMLElement>>;
       disableImageDownSampling(): Chainable<void>;
+      setUpBackend: (ip: string) => Chainable<void>;
+      connectMachine: (ip: string) => Chainable<void>;
     }
   }
 }

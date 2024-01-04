@@ -14,10 +14,12 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+/* eslint-disable import/no-extraneous-dependencies */
 import './commands';
 import 'cypress-real-events/support';
 import 'cypress-file-upload';
-import '@4tw/cypress-drag-drop'
+import '@4tw/cypress-drag-drop';
+import '@testing-library/cypress/add-commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
