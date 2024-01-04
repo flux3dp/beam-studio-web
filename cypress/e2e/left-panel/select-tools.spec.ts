@@ -1,7 +1,10 @@
 describe('select tools', () => {
-  it('select', () => {
+  beforeEach(() => {
     cy.landingEditor();
-    cy.get('div#left-Text>img').click();
+  });
+
+  it('select', () => {
+    cy.get('div#left-Text').click();
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(500);
     cy.realType('TEST SELECT');
@@ -15,16 +18,22 @@ describe('select tools', () => {
     });
   });
 
-  it('mutil select', () => {
-    cy.get('div#left-Rectangle>img').click();
+  it.only('mutil select', () => {
+    cy.get('div#left-Rectangle').click();
+    cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
+    cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
+    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.get('#svg_1').should('exist');
+    cy.get('div#left-Ellipse').click();
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
-    cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
+    cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
-    cy.get('#left-Cursor').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
+    cy.get('div#left-Cursor').click();
+    cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.findAllByText('Multiple Objects').should('exist');
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getTempGroup()');
       const childNodes = Array.from(el.childNodes);
