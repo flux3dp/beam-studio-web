@@ -31,7 +31,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
     // eslint-disable-next-line no-param-reassign
     win.onbeforeunload = null;
   });
-  cy.get('.skip').click();
+  cy.contains('Work Offline').click();
   // time for svgcanvas loading
   cy.wait(1000);
 });
