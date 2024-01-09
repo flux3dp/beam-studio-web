@@ -1,34 +1,48 @@
 import progressCaller from 'app/actions/progress-caller';
 import getUtilWS from 'helpers/api/utils-ws';
 import i18n from 'helpers/i18n';
-import { FontDescriptor, FontDescriptorKeys, FontHelper } from 'core-interfaces/IFont';
+import {
+  FontDescriptor,
+  FontDescriptorKeys,
+  FontHelper,
+  WebFont,
+} from 'core-interfaces/IFont';
 
 import fontNameMap from './fonts/fontNameMap';
-import previewSourceMap from './fonts/fontPreviewSrc';
+import previewSrcMap from './fonts/fontPreviewSrc';
 import googleFonts from './fonts/googleFonts';
+import monotypeFonts from './fonts/monotypeFonts';
 import webFonts from './fonts/webFonts';
 
-const getFonts = () => {
+let previewSourceMap = previewSrcMap;
+let availableFonts: WebFont[] | null = null;
+
+const getFonts = async () => {
   const activeLang = i18n.getActiveLang();
   const googleLangFonts = googleFonts.getAvailableFonts(activeLang);
   googleFonts.applyStyle(googleLangFonts);
   const webLangFonts = webFonts.getAvailableFonts(activeLang);
   webFonts.applyStyle(webLangFonts);
-  return [
-    ...googleLangFonts,
-    ...webLangFonts,
-  ];
+  const { monotypeLangFonts, monotypePreviewSrcMap } =
+    await monotypeFonts.getAvailableFonts(activeLang);
+  previewSourceMap = { ...previewSrcMap, ...monotypePreviewSrcMap };
+  availableFonts = [...googleLangFonts, ...webLangFonts, ...monotypeLangFonts];
+  return availableFonts;
 };
 
-export const availableFonts = getFonts();
+const getAvailableFonts = async () => availableFonts || (await getFonts());
 
-const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
+const findFont = async (
+  fontDescriptor: FontDescriptor
+): Promise<FontDescriptor> => {
   // eslint-disable-next-line no-param-reassign
   fontDescriptor.style = fontDescriptor.style || 'Regular';
-  let match = availableFonts;
-  let font = availableFonts[0];
+  let match = await getAvailableFonts();
+  let font = match[0];
   if (fontDescriptor.postscriptName) {
-    match = match.filter((f) => f.postscriptName === fontDescriptor.postscriptName);
+    match = match.filter(
+      (f) => f.postscriptName === fontDescriptor.postscriptName
+    );
     font = match[0] || font;
   }
   if (fontDescriptor.family) {
@@ -50,10 +64,13 @@ const findFont = (fontDescriptor: FontDescriptor): FontDescriptor => {
   return font;
 };
 
-const findFonts = (fontDescriptor: FontDescriptor): FontDescriptor[] => {
+const findFonts = async (
+  fontDescriptor: FontDescriptor
+): Promise<FontDescriptor[]> => {
+  const fonts = await getAvailableFonts();
   const matchFamily = fontDescriptor.family
-    ? availableFonts.filter((font) => font.family === fontDescriptor.family)
-    : availableFonts;
+    ? fonts.filter((font) => font.family === fontDescriptor.family)
+    : fonts;
   const match = matchFamily.filter((font) => {
     const keys = Object.keys(fontDescriptor);
     for (let i = 0; i < keys.length; i += 1) {
@@ -67,16 +84,18 @@ const findFonts = (fontDescriptor: FontDescriptor): FontDescriptor[] => {
   return match;
 };
 
+const applyMonotypeStyle = monotypeFonts.applyStyle;
+
 const fontDirectory = '/usr/share/fonts/truetype/beam-studio/';
 
 export default {
   findFont,
   findFonts,
-  getAvailableFonts(): FontDescriptor[] {
-    return availableFonts;
-  },
-  substituteFont(postscriptName: string) {
-    const font = availableFonts.filter((f) => f.postscriptName === postscriptName);
+  getAvailableFonts,
+  async substituteFont(postscriptName: string) {
+    const font = (await getAvailableFonts()).filter(
+      (f) => f.postscriptName === postscriptName
+    );
     return font[0] as FontDescriptor;
   },
   getFontName(font: FontDescriptor): string {
@@ -87,9 +106,15 @@ export default {
   },
   async getWebFontAndUpload(postscriptName: string) {
     const utilWS = getUtilWS();
-    const font = availableFonts.find((f) => f.postscriptName === postscriptName);
+    const font = (await getAvailableFonts()).find(
+      (f) => f.postscriptName === postscriptName
+    );
     const fileName = font?.fileName || `${postscriptName}.ttf`;
-    const isExisting = await utilWS.checkExist(`${fontDirectory}${fileName}`);
+    const isMonotype = font && 'hasLoaded' in font;
+    const fontPath = isMonotype
+      ? `${fontDirectory}monotype/${fileName}`
+      : `${fontDirectory}${fileName}`;
+    const isExisting = await utilWS.checkExist(fontPath);
     if (!isExisting) {
       let isCanceled = false;
       let message = i18n.lang.beambox.right_panel.object_panel.actions_panel.fetching_web_font;
@@ -101,10 +126,21 @@ export default {
         },
       });
       const { protocol } = window.location;
-      const url = `${protocol}//beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
-      let resp = await fetch(url, {
+      let url = `${protocol}//beam-studio-web.s3.ap-northeast-1.amazonaws.com/fonts/${fileName}`;
+      // TODO: move to cloud service or delete monotype file
+      if (isMonotype) {
+        const monotypeUrl = await monotypeFonts.getUrlWithToken(postscriptName);
+        if (monotypeUrl) url = monotypeUrl;
+      }
+      let resp = (await fetch(url, {
         mode: 'cors',
-      }) as Response;
+      })) as Response;
+      const contentType = resp.headers.get('content-type') as string;
+      if (contentType === 'application/json') {
+        console.error(await resp.json());
+        progressCaller.popById('fetch-web-font');
+        return false;
+      }
       const contentLength = resp.headers.get('content-length') as string;
       const total = parseInt(contentLength, 10);
       let loaded = 0;
@@ -145,7 +181,7 @@ export default {
       message = i18n.lang.beambox.right_panel.object_panel.actions_panel.uploading_font_to_machine;
       progressCaller.update('fetch-web-font', { message, percentage: 0 });
       try {
-        const res = await utilWS.uploadTo(blob, `${fontDirectory}${fileName}`, (progress: number) => {
+        const res = await utilWS.uploadTo(blob, fontPath, (progress: number) => {
           progressCaller.update('fetch-web-font', { percentage: 100 * progress });
         });
         progressCaller.popById('fetch-web-font');
@@ -158,4 +194,5 @@ export default {
     return true;
   },
   getWebFontPreviewUrl: (fontFamily: string) => (previewSourceMap[fontFamily] || null),
+  applyMonotypeStyle,
 } as FontHelper;
