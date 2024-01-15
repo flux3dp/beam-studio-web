@@ -46,7 +46,9 @@ describe('SVG On Ador', () => {
     cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
 
     cy.get('#svg_2',{timeout:50000}).should('exist');
-    cy.get('div.element-title').contains('Layer 1 > SVG Object');
+    cy.get('div.element-title').contains('Layer 1 > SVG Object').should('exist');
+    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
+      .should('have.attr', 'data-layer', 'Layer 1');
     cy.get('symbol#svg_1>g>g')
       .invoke('prop', 'innerHTML')
       .then((html) => {
@@ -89,6 +91,8 @@ describe('SVG On Ador', () => {
     cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
 
     cy.get('#svg_2',{timeout:50000}).should('exist');
+    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
+      .should('have.attr', 'data-layer', '#3F51B5');
     cy.get('#layerdoubleclick-1').should('have.text', '#3F51B5');
     cy.get('#svg_8').should('have.attr', 'data-xform', 'x=122.34765625 y=105.8125 width=200 height=200 ');
     cy.get('symbol#svg_6_image>image')
@@ -135,7 +139,7 @@ describe('SVG On Ador', () => {
     cy.get('#svg_2',{timeout:50000}).should('exist');
   });*/
 
-  it('SVG On Printing > Layer', () => {
+  it('SVG On Printing > Layer & Change Color', () => {
     cy.connectMachine(beamSeriersName);
     cy.findAllByTestId('select-machine').contains(beamSeriersName);
 
@@ -167,6 +171,8 @@ describe('SVG On Ador', () => {
 
     cy.get('#svg_2',{timeout:50000}).should('exist');
     cy.get('div.element-title').contains('Printing > SVG Object');
+    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
+      .should('have.attr', 'data-layer', 'Printing');
     cy.get('symbol#svg_1>g>g')
       .invoke('prop', 'innerHTML')
       .then((html) => {
@@ -183,6 +189,17 @@ describe('SVG On Ador', () => {
       .invoke('attr', 'style')
       .should('eq', 'background: rgb(51, 51, 51);');
     });
+    cy.get('.src-web-app-widgets-ColorPicker-module__color--Q6lUp').eq(0).click();
+    cy.get('.src-web-app-widgets-ColorPicker-module__preset-block--f1R8T')
+      .get('.src-web-app-widgets-ColorPicker-module__inner---5lat').eq(0)
+      .click();
+    cy.get('.src-web-app-widgets-ColorPicker-module__footer--SxFtL')
+      .get('.ant-btn').contains('OK').click();
+    cy.get('symbol#svg_1>g>g')
+      .invoke('prop', 'innerHTML')
+      .then((html) => {
+        expect(md5(html)).equal('57b2c7998a22f7c14d2617c844263aeb');
+      });
   });
 
     /*it('SVG On Printing > Single Layer', () => {
@@ -225,5 +242,44 @@ describe('SVG On Ador', () => {
 
   });*/
 
+  it('Gradient SVG', () => {
+    cy.connectMachine(beamSeriersName);
+    cy.findAllByTestId('select-machine').contains(beamSeriersName);
+    cy.fixture('gradient.svg').then(fileContent => {
+      cy.get("input[data-file-input='import_image").attachFile({
+        fileContent: fileContent.toString(),
+        fileName: 'gradient.svg',
+        mimeType: 'image/svg+xml',
+      });
+    cy.get('.ant-space-item').contains('Layer').click();
+    cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
+    cy.get('#svg_1',{timeout:50000}).should('exist');
+    cy.get('image#svg_1')
+      .should('have.attr', 'xlink:href')
+      .then((html) => {
+        expect(md5(html)).equal('b73f32e8725c86f654a8375e199e6a99');
+      });
+    });
+  });
 
+  it('Bitmap SVG', () => {
+    cy.connectMachine(beamSeriersName);
+    cy.findAllByTestId('select-machine').contains(beamSeriersName);
+    cy.fixture('bitmap.svg').then(fileContent => {
+      cy.get("input[data-file-input='import_image").attachFile({
+        fileContent: fileContent.toString(),
+        fileName: 'bitmap.svg',
+        mimeType: 'image/svg+xml',
+      });
+    cy.get('.ant-space-item').contains('Layer').click();
+    cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
+    cy.get('#svg_1',{timeout:50000}).should('exist');
+    cy.get('div.element-title').contains('Bitmap > Image');
+    cy.get('image#svg_1')
+      .should('have.attr', 'xlink:href')
+      .then((html) => {
+        expect(md5(html)).equal('2338842539207490c618b487d23cd549');
+      });
+    });
+  });
 });
