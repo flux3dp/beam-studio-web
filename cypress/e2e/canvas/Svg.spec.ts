@@ -2,7 +2,7 @@ import { md5 } from '../../support/utils';
 const isRunningAtGithub = Cypress.env('envType') === 'github';
 const beamSeriersName = Cypress.env('beamSeriersName');
 const adorName = Cypress.env('AdorName');
-describe('SVG On Ador', () => {
+describe('SVG', () => {
   if (isRunningAtGithub) {
     it('skip test on github', () => {
       cy.log('skip test on github');
