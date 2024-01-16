@@ -39,4 +39,58 @@ describe('upload tools', () => {
     cy.get('#height').should('have.attr', 'value').and('eq', '465.52');
   });
 
+  it('upload Printing Beam to laser layer', () => {
+    cy.landingEditor();
+    cy.get('div.menu-btn-container').click();
+    cy.get('.rc-menu__submenu').contains("Edit").click();
+    cy.contains('Document Settings').click();
+    cy.wait(500);
+    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
+    cy.wait(700);
+    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
+    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+    cy.wait(500);
+    cy.uploadFile('printing.beam');
+    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
+      .should('have.attr', 'data-layer', '預設圖層');
+    cy.get('.ant-select-selection-item').should('have.attr', 'title', 'Printing');
+  });
+
+  it('upload Laser Beam to printing layer', () => {
+    cy.landingEditor();
+    cy.get('div.menu-btn-container').click();
+    cy.get('.rc-menu__submenu').contains("Edit").click();
+    cy.contains('Document Settings').click();
+    cy.wait(500);
+    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
+    cy.wait(700);
+    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
+    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+    cy.wait(500);
+    cy.get('[class="ant-select-selector"]')
+      .click();
+    cy.get('[class="ant-select-item-option-content"]')
+      .contains('Printing')
+      .click();
+    cy.get('[class="ant-modal-title"]')
+      .should('have.text', 'Do you want to convert the Laser module into Printing module?');
+    cy.get('button[class^="ant-btn"]').contains('Confirm')
+      .should('exist').click({force: true});
+    cy.uploadFile('laser.beam');
+    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
+      .should('have.attr', 'data-layer', '預設圖層');
+    cy.get('.ant-select-selection-item').should('have.attr', 'title', '20W Diode Laser');
+  });
+
+  it('upload Printing Beam to Beamseries', () => {
+    cy.landingEditor();
+    cy.uploadFile('printing.beam');
+    cy.get('.ant-modal-content').contains('The document contains printing layer, would you like to change workarea to Ador?')
+      .should('exist');
+    cy.get('.ant-btn').contains('Yes').click();
+    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
+      .should('have.attr', 'data-layer', '預設圖層');
+    cy.get('.ant-select-selection-item').should('have.attr', 'title', 'Printing');
+  });
+
 });
