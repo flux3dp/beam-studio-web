@@ -2,7 +2,7 @@ import { md5 } from '../../support/utils';
 const isRunningAtGithub = Cypress.env('envType') === 'github';
 const beamSeriersName = Cypress.env('beamSeriersName');
 const adorName = Cypress.env('AdorName');
-describe('SVG', () => {
+describe('SVG & PDF', () => {
   if (isRunningAtGithub) {
     it('skip test on github', () => {
       cy.log('skip test on github');
@@ -282,4 +282,27 @@ describe('SVG', () => {
       });
     });
   });
+
+  it('upload pdf>color', () => {
+    cy.landingEditor();
+    cy.uploadFile('PDF.pdf');
+    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-space-item').contains('Color').click();
+    cy.get('.ant-btn').contains('OK').click();
+    cy.get('#svg_3', {timeout:(10000)}).should('exist');
+    cy.get('#width').should('have.value', '20');
+    cy.get('#height').should('have.value', '20');
+  });
+
+  it('upload pdf>single layer', () => {
+    cy.landingEditor();
+    cy.uploadFile('PDF.pdf');
+    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-space-item').contains('Single Layer').click();
+    cy.get('.ant-btn').contains('OK').click();
+    cy.get('#svg_1', {timeout:(10000)}).should('exist');
+    cy.get('#width').should('have.value', '20');
+    cy.get('#height').should('have.value', '20');
+  });
+
 });
