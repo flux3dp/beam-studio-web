@@ -284,7 +284,6 @@ describe('SVG & PDF', () => {
   });
 
   it('upload pdf>color', () => {
-    cy.landingEditor();
     cy.uploadFile('PDF.pdf');
     cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
     cy.get('.ant-space-item').contains('Color').click();
@@ -295,7 +294,6 @@ describe('SVG & PDF', () => {
   });
 
   it('upload pdf>single layer', () => {
-    cy.landingEditor();
     cy.uploadFile('PDF.pdf');
     cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
     cy.get('.ant-space-item').contains('Single Layer').click();
@@ -304,5 +302,28 @@ describe('SVG & PDF', () => {
     cy.get('#width').should('have.value', '20');
     cy.get('#height').should('have.value', '20');
   });
+
+  it('upload ai>Color', () => {
+    cy.uploadFile('ai.ai');
+    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-space-item').contains('Color').click();
+    cy.get('.ant-btn').contains('OK').click();
+    cy.get('#svg_4', {timeout:(10000)}).should('exist');
+    cy.get('#width').should('have.value', '20');
+    cy.get('#height').should('have.value', '20');
+  });
+
+  it('upload ai>single layer', () => {
+    cy.uploadFile('ai.ai');
+    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-space-item').contains('Single Layer').click();
+    cy.get('.ant-btn').contains('OK').click();
+    cy.get('#svg_4', {timeout:(10000)}).should('exist');
+    cy.get('#width').should('have.value', '20');
+    cy.get('#height').should('have.value', '20');
+  });
+
+
+
 
 });
