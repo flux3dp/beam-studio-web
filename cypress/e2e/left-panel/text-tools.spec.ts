@@ -16,6 +16,7 @@ describe('select tools', () => {
     cy.wait(1000);
     cy.realType('TEST TEXT FONT');
     cy.get('#svg_1').should('exist');
+    cy.wait(500);
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
   };
 
