@@ -100,8 +100,7 @@ export default {
     }
     return font.family as string;
   },
-  getWebFontPreviewUrl: (fontFamily: string) =>
-    previewSourceMap[fontFamily] || null,
+  getWebFontPreviewUrl: (fontFamily: string) => previewSourceMap[fontFamily] || null,
   applyMonotypeStyle,
   getMonotypeUrl: monotypeFonts.getUrlWithToken,
   getLocalFont: () => undefined,
