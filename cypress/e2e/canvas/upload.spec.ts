@@ -38,4 +38,5 @@ describe('upload tools', () => {
     cy.get('#width').should('have.attr', 'value').and('eq', '522.17');
     cy.get('#height').should('have.attr', 'value').and('eq', '465.52');
   });
+
 });
