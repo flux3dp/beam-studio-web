@@ -12,7 +12,8 @@ export const envVariables = {
   password: 'Flux42642569',
   envType: 'local',
   backendIP: '192.168.1.114',
-  machineName: 'beamo (Adam)',
+  beamSeriersName: 'beamo (Adam)',
+  AdorName: 'Ador (Cruz)'
 };
 
 export default defineConfig({
