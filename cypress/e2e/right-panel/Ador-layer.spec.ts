@@ -74,4 +74,42 @@ describe('Ador Layer', () => {
     cy.get('button[class^="ant-btn"]').contains('Confirm')
       .should('exist').click({force: true});
   });
+
+  it('Move to Printing or Laser', () => {
+    cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
+      .click({force: true});
+    cy.get('[class="ant-select-selector"]')
+      .click();
+    cy.get('[class="ant-select-item-option-content"]')
+      .contains('Printing')
+      .click();
+    cy.get('[class="ant-modal-title"]')
+      .should('have.text', 'Do you want to convert the Laser module into Printing module?');
+    cy.get('button[class^="ant-btn"]').contains('Confirm')
+      .should('exist').click({force: true});
+    cy.get('#left-Element.tool-btn').click();
+    cy.get('.anticon.src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN')
+      .eq(0)
+      .click();
+    cy.get('#svg_1').click();
+    cy.get('[class="tab layers"]').click();
+    cy.get('[class="src-web-app-components-beambox-right-panel-SelLayerBlock-module__select--dYlA+"]')
+      .select('Layer 1');
+    cy.get('[class="ant-modal-title"]')
+      .should('have.text', 'Move selected element to Layer 1 and convert it into laser element?');
+    cy.get('button[class^="ant-btn"]').contains('Cancel')
+      .should('exist');
+    cy.get('button[class^="ant-btn"]').contains('Confirm')
+      .should('exist').click({force: true});
+
+    cy.get('#svg_1').click();
+    cy.get('[class="src-web-app-components-beambox-right-panel-SelLayerBlock-module__select--dYlA+"]')
+      .select('Layer 2');
+    cy.get('[class="ant-modal-title"]')
+      .should('have.text', 'Move selected element to Layer 2 and convert it into printing element?');
+    cy.get('button[class^="ant-btn"]').contains('Cancel')
+      .should('exist');
+    cy.get('button[class^="ant-btn"]').contains('Confirm')
+      .should('exist').click({force: true});
+  });
 });
