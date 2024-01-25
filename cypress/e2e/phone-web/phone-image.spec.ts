@@ -16,6 +16,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#gradient').should('exist');
     cy.get('#gradient').click({ force: true });
     cy.wait(1000);
@@ -37,6 +38,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#gradient').click({ force: true });
     cy.wait(500);
     cy.get('#svg_1').should('have.attr', 'data-threshold', '128').should('have.attr', 'data-shading', 'false');
@@ -61,6 +63,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#replace_with').click({ force: true });
     cy.get('#file-input').attachFile('map.jpg');
     cy.get('.progress', { timeout: 3000 }).should('not.exist');
@@ -80,6 +83,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#grading').click();
     cy.get('[class="ant-modal-content"]').should('exist');
     cy.wait(1000);
@@ -105,6 +109,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#crop').click();
     cy.wait(3000);
     cy.get('.point-se').move({ deltaX: 0, deltaY: -100 });
@@ -126,6 +131,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#bevel').click();
     cy.get('.progress', { timeout: 12000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
@@ -144,6 +150,7 @@ describe('manipulate image function', () => {
     cy.wait(500);
     cy.get('#svg_1').click({ force: true });
     cy.wait(500);
+    cy.get('#svg_1').click({ force: true });
     cy.get('#invert').click();
     cy.get('.progress', { timeout: 3000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
