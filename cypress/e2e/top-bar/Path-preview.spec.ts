@@ -17,7 +17,7 @@ describe('Path Preview', () => {
     cy.connectMachine(beamSeriersName);
     cy.findAllByTestId('select-machine').contains(beamSeriersName);
     cy.uploadFile('flux.png', 'image/png');
-    cy.get('#width').clear().type('45{enter}');
+    cy.get('#w_size').clear().type('20{enter}');
     cy.fixture('svg.svg').then(fileContent => {
       cy.get("input[data-file-input='import_image").attachFile({
         fileContent: fileContent.toString(),
@@ -28,6 +28,17 @@ describe('Path Preview', () => {
     cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
     cy.get('#svg_3', {timeout:50000}).should('exist');
     cy.get('div#left-Line>img').click();
+    cy.get('svg#svgcontent')
+     .trigger('mousedown', { pageX: 100, pageY: 200 }) 
+     .trigger('mousemove', { pageX: 150, pageY: 250 }) 
+     .trigger('mouseup');
+    cy.get('div#left-Text>img').click();
+    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
+    cy.wait(1000);
+    cy.realType('TEXT');
+    cy.get('#svg_1').should('exist');
+    cy.wait(500);
+    cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('svg#svgcontent')
       .trigger('mousedown', { which: 1, pageX: 100, pageY: 100, force: true })
       .trigger('mousemove', { which: 1, pageX: 200, pageY: 200, shiftKey: true, force: true })
@@ -45,8 +56,8 @@ describe('Path Preview', () => {
     cy.get('[title="Redo"]').should('exist');
     cy.get('[title="Delete"]').should('exist');
     cy.get('#svg_1').should('exist')
-      .should('have.attr', 'width', '450')
-      .should('have.attr', 'height', '315');
+      .should('have.attr', 'width', '200')
+      .should('have.attr', 'height', '140');
     cy.get('symbol#svg_2>g>g')
       .invoke('prop', 'innerHTML')
       .then((html) => {
