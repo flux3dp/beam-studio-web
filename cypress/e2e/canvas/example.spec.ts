@@ -6,7 +6,7 @@ describe('Example', () => {
     it('Exampl-Ador Laser', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -16,9 +16,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Example of Ador Laser")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Example of Ador Laser").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 確保元素存在
@@ -41,7 +41,7 @@ describe('Example', () => {
     it('Exampl-Ador Printing Singlr Color', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -51,9 +51,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Example of Ador Printing - Single Color")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Example of Ador Printing - Single Color").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 確保元素存在
@@ -84,7 +84,7 @@ describe('Example', () => {
     it('Exampl-Ador Printing Full Color', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -94,9 +94,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Example of Ador Printing - Full Color")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Example of Ador Printing - Full Color").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 确保元素存在
@@ -123,7 +123,7 @@ describe('Example', () => {
     it('Exampl-Beamo', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -133,9 +133,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Example of beamo")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Example of beamo").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 确保元素存在
@@ -166,7 +166,7 @@ describe('Example', () => {
     it('Exampl-Beambox', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -176,9 +176,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Example of beambox")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Example of beambox").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 对 <rect> 元素的验证
@@ -224,7 +224,7 @@ describe('Example', () => {
     it('Exampl-Material Engraving Test', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -234,9 +234,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Material Engraving Test")').eq(0).click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Material Engraving Test").eq(0).click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 对 <rect> 元素的验证
@@ -292,7 +292,7 @@ describe('Example', () => {
     it('Exampl-Material Engraving Test-Classic', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -302,9 +302,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Material Engraving Test - Classic")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Material Engraving Test - Classic").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 对第一个 <use> 元素的验证
@@ -349,7 +349,7 @@ describe('Example', () => {
     it('Exampl-Material Cutting Test', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -359,11 +359,11 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Material Cutting Test")').eq(0).click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Material Cutting Test").eq(0).click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
-       cy.wait(500)
+       cy.wait(1000)
        // 对第一个 <use> 元素的验证
        cy.get('#svg_112').should('exist');
        // 验证特定的 data 属性值
@@ -406,7 +406,7 @@ describe('Example', () => {
     it('Exampl-Material Cutting Test - Simple', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -416,11 +416,11 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Material Cutting Test - Simple")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Material Cutting Test - Simple").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
-       cy.wait(500)
+       cy.wait(1000)
        // 对第一个 <use> 元素的验证
        cy.get('#svg_62').should('exist');
        // 验证特定的 data 属性值
@@ -462,10 +462,10 @@ describe('Example', () => {
 
     it('Exampl-Material Line Test', () => {
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Material Line Test")').click();
-       cy.wait(500)
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Material Line Test").click();
+       cy.wait(1000)
        // 对第一个 <use> 元素的验证
        cy.get('#svg_101').should('exist');
        // 验证特定的 data 属性值
@@ -513,7 +513,7 @@ describe('Example', () => {
     it('Exampl-Material Printing Test', () => {
        //切換至Ador
        cy.get('div.menu-btn-container').click();
-       cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
+       cy.get('.rc-menu__submenu').contains("Edit").click();
        cy.contains('Document Settings').click();
        cy.wait(500);
        cy.get('[class^="ant-select-selection-item"]').eq(0).click();
@@ -523,9 +523,9 @@ describe('Example', () => {
        cy.wait(500);
 
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Material Printing Test")').eq(0).click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Material Printing Test").click();
        cy.get('button[class^="ant-btn"]').eq(1).click({force: true});
        cy.wait(500)
        // 对第一个 <path> 元素的验证
@@ -569,9 +569,9 @@ describe('Example', () => {
 
     it('Exampl-Acrylic Focus Probe - 3mm', () => {
        cy.get('div.menu-btn-container').click();
-       cy.get(':nth-child(1) > .rc-menu__item').click();
-       cy.get(':nth-child(2) > .rc-menu__submenu:contains("Examples")').click();
-       cy.get('.rc-menu__submenu:contains("Examples") .rc-menu__item:contains("Acrylic Focus Probe - 3mm")').click();
+       cy.get('.rc-menu__submenu').contains("File").click();
+       cy.get('.rc-menu__submenu').contains("Examples").click();
+       cy.get('.rc-menu__item').contains("Acrylic Focus Probe - 3mm").click();
        cy.wait(500)
        // 对 <use> 元素的验证
        cy.get('#svg_9').should('exist');
