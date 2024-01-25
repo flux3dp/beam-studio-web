@@ -129,4 +129,22 @@ describe('select tools', () => {
     cy.get('button[title="Infill"]').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
+
+  it('Weld Text', () => {
+    cy.get('#svg_1').click({ force: true });
+    cy.get('div[title="Letter spacing"] + div.option-input > input').clear({ force: true }).type('-0.5{enter}');
+    cy.get('.ant-btn').contains('Weld Text').click();
+    cy.get('.ant-modal-content').should('exist');
+    cy.get('[class*="src-web-app-views-dialogs-Alert-module__message--"]')
+      .contains('#801 We can\'t find your machine on the network')
+      .should('exist');
+    cy.get('a[target="_blank"][href="https://support.flux3dp.com/hc/en-us/articles/360001683556"]')
+      .should('exist');
+    cy.get('.ant-btn').contains('Machine Setup').should('exist');
+
+
+
+
+  });
+
 });
