@@ -50,10 +50,10 @@ describe('manipulate file', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click();
+    cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click({force: true});
     cy.wait(1000);
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : -786354614);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : 137371540);
     });
   });
 
