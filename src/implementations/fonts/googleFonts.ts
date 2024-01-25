@@ -656,7 +656,7 @@ const fonts: WebFont[] = [
   },
   // Rubik
   {
-    family: 'rubik',
+    family: 'Rubik',
     italic: false,
     postscriptName: 'Rubik-Regular',
     style: 'Regular',
