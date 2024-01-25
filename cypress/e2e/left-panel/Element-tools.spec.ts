@@ -13,6 +13,7 @@ describe('Element', () => {
    cy.get(`#svg_1`).should('have.attr', 'cx', '250');
    cy.get(`#svg_1`).should('have.attr', 'cy', '250');
    cy.get(`#svg_1`).should('have.attr', 'fill', '#333333');
+
  });
 
  it('Element-svg-Tools', () => {
@@ -25,7 +26,8 @@ describe('Element', () => {
      .should('exist')
      .should('have.attr', 'fill', '#333333')
      .should('have.attr', 'd', 'M250.0001615,-1e-7 L327.5630628,156.1086281 L500.0000311,181.6358068 L375.4995411,303.6434539 L404.5082297,475.5284043 L250.0001615,394.8242581 L95.4920932,475.5284043 L124.5007819,303.6434539 L-2e-7,181.6358068 L172.4372602,156.1086281 L250.0001615,-1e-7 z');
- });
+
+  });
 
  it('Element-line-Tools', () => {
    cy.get('div#left-Element').click();
@@ -41,5 +43,6 @@ describe('Element', () => {
      .should('have.attr', 'data-ratiofixed', 'true')
      .should('have.attr', 'style', 'pointer-events:none')
      .should('have.attr', 'vector-effect', 'non-scaling-stroke');
- });
+
+  });
 });
