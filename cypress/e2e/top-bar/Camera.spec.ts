@@ -83,4 +83,19 @@ describe('Camera', () => {
     cy.get('#background_image').should('not.exist');
 
   });
+/*
+  it('Camera-Beam', () => {
+    cy.setUpBackend(Cypress.env('backendIP'));
+    cy.landingEditor();
+    cy.connectMachine(beamSeriersName);
+    cy.findAllByTestId('select-machine').contains(beamSeriersName);
+    cy.get('.src-web-app-components-beambox-top-bar-SelectMachineButton-module__button--MeIgr')
+      .click();
+    cy.get('.src-web-app-views-dialogs-DeviceSelector-module__name--g-K6l')
+      .contains('HEXA (Braxton)').click();
+    cy.get('.src-web-app-components-beambox-top-bar-PreviewButton-module__button--wgUSF')
+      .click();
+
+  });
+*/
 });
