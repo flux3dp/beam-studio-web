@@ -29,9 +29,8 @@ describe('set operations', () => {
       .should('have.attr', 'startOffset', '0%')
       .should('have.attr', 'href', '#svg_2')
       .should('have.text', '123456789');
-  });
 
-  it('Aligment', () => {
+  //'Aligment'
     cy.get('[class="ant-select-selection-item"]').contains("Bottom Align").click();
     cy.get('[class="ant-select-item-option-content"]').contains("Middle Align").click();
     cy.get('textPath')
@@ -50,9 +49,8 @@ describe('set operations', () => {
       .should('have.attr', 'alignment-baseline', 'top')
       .should('have.attr', 'href', '#svg_2')
       .should('have.text', '123456789');
-  });
 
-  it('Offset', () => {
+  //'Offset'
     cy.get('[class="src-web-app-views-beambox-Right-Panels-OptionsPanel-module__option-input--ycNhZ ui ui-control-unit-input-v2"]')
       .clear()
       .type('10{enter}');
@@ -63,9 +61,8 @@ describe('set operations', () => {
       .should('have.attr', 'alignment-baseline', 'top')
       .should('have.attr', 'href', '#svg_2')
       .should('have.text', '123456789');
-  });
 
-  it('Decompose Text on Path', () => {
+  //'Decompose Text on Path'
     cy.get('button#detach_path').click();
     cy.get('textPath')
       .should('not.exist')

@@ -46,6 +46,8 @@ describe('select tools', () => {
     drawText1();
     drawText2();
     cy.get('div#object-panel').should('exist');
+    cy.get('.ant-select-selection-item[title="Font"]').click();
+    cy.get('[alt="Noto Sans"]').click();
     cy.get('.ant-select[title="Style"]').click();
     cy.contains('Italic').click();
     cy.get('#svg_2').should('have.attr', 'font-style').and('eq', 'italic');

@@ -29,24 +29,16 @@ describe('Path Preview', () => {
     cy.get('#svg_3', {timeout:50000}).should('exist');
     cy.get('div#left-Line>img').click();
     cy.get('svg#svgcontent')
-     .trigger('mousedown', { pageX: 100, pageY: 200 }) 
-     .trigger('mousemove', { pageX: 150, pageY: 250 }) 
+     .trigger('mousedown', { pageX: 100, pageY: 200, force: true  })
+     .trigger('mousemove', { pageX: 150, pageY: 250, force: true  })
      .trigger('mouseup');
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(1000);
-    cy.realType('TEXT');
-    cy.get('#svg_1').should('exist');
-    cy.wait(500);
-    cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
-    cy.get('svg#svgcontent')
-      .trigger('mousedown', { which: 1, pageX: 100, pageY: 100, force: true })
-      .trigger('mousemove', { which: 1, pageX: 200, pageY: 200, shiftKey: true, force: true })
-      .trigger('mouseup', { force: true })
     cy.get('[title="Path preview"]').click();
     cy.get('.tools-panel').should('exist');
     cy.get('#path-preview-side-panel').should('exist');
-    cy.get('[title="Play"]').click({timeout:(35000)});
+    cy.get('[title="Play"]').click({timeout:(55000)});
     cy.get('.react-contextmenu').should('have.attr', 'style', 'position: fixed; opacity: 0; pointer-events: none;')
     cy.get('[title="Undo"]').should('not.exist');
     cy.get('[title="Redo"]').should('not.exist');

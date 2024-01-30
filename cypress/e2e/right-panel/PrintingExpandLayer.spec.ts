@@ -1,7 +1,6 @@
 describe('Printing Expand Layer', () => {
   it('Expand Layer/Choose Color', () => {
   cy.landingEditor();
-  //切換至Ador
   cy.get('div.menu-btn-container').click();
   cy.get('.rc-menu__submenu').contains("Edit").click();
   cy.contains('Document Settings').click();
@@ -26,7 +25,6 @@ describe('Printing Expand Layer', () => {
   cy.get('.ant-btn')
     .contains('Confirm')
     .click();
-  //驗證預噴區
   cy.get('#presprayArea').should('be.visible');
   cy.get('#left-Element.tool-btn').click();
   cy.get('.anticon.src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN')
@@ -69,9 +67,10 @@ describe('Printing Expand Layer', () => {
   // 驗證向下合併Y可見
   cy.get('#svg_4').should('be.visible')
     .invoke('attr', 'filter').should('eq', 'url(#filter#FFED00)');
-  });
+/*  });
 
   it('Expand Layer change CMYK', () => {
+*/
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]').click({force: true});
     cy.get('[style="background-color: rgb(230, 0, 126);"]')
       .click();
@@ -93,9 +92,10 @@ describe('Printing Expand Layer', () => {
       .contains('OK').click();
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]')
       .should('have.attr', 'style', 'background: rgb(29, 29, 27);')
-  });
+/*  });
 
   it('Add in Expand Layer', () => {
+*/
     cy.get('#presprayArea').should('be.visible');
     cy.get('#left-Element.tool-btn').click();
     cy.get('.anticon.src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN')
@@ -136,9 +136,10 @@ describe('Printing Expand Layer', () => {
     cy.get('.react-contextmenu-item').contains('Switch to single color layer').click();
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]')
       .should('have.attr', 'style', 'background: rgb(0, 159, 227);')
-  });
+/*  });
 
   it('Single Color change CMYK', () => {
+*/
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]').click({force: true});
     cy.get('[style="background-color: rgb(230, 0, 126);"]')
       .click();

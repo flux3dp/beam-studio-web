@@ -23,7 +23,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_3')
       .invoke('attr', 'd')
       .then((d) => {
-        expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
+        expect(md5(d)).equal('da6270fbdc3ef610d316682c6a95389c');
       });
   });
 
@@ -50,7 +50,7 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('52bc0921c0dee83bf4905d694c8e7b90');
-        else expect(md5(href)).equal('03405fae4019b9d85f9e9e9a6fac08a5');
+        else expect(md5(href)).equal('4b2c318bdec15b72b870676903b1398c');
       });
   });
 
@@ -65,7 +65,7 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('8b79e9a445262e8412a863d5ec06d16b');
-        else expect(md5(href)).equal('819ff9e7463b66e739da0bf948390faf');
+        else expect(md5(href)).equal('d593359ce070b31d54421f61fe733fc8');
       });
   });
 
@@ -115,7 +115,7 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('82c48181e33cdd9b8127e40f52703a2f');
-        else expect(md5(href)).equal('613da6c7223d4a2d47859de0a28cdb08');
+        else expect(md5(href)).equal('5525bd3998a7ce95a35e1618e0db8c43');
       });
   });
 

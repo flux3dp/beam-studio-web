@@ -289,8 +289,8 @@ describe('SVG & PDF', () => {
     cy.get('.ant-space-item').contains('Color').click();
     cy.get('.ant-btn').contains('OK').click();
     cy.get('#svg_3', {timeout:(10000)}).should('exist');
-    cy.get('#width').should('have.value', '20');
-    cy.get('#height').should('have.value', '20');
+    cy.get('#w_size').should('have.value', '20.00');
+    cy.get('#h_size').should('have.value', '20.00');
   });
 
   it('upload pdf>single layer', () => {
@@ -299,8 +299,8 @@ describe('SVG & PDF', () => {
     cy.get('.ant-space-item').contains('Single Layer').click();
     cy.get('.ant-btn').contains('OK').click();
     cy.get('#svg_1', {timeout:(10000)}).should('exist');
-    cy.get('#width').should('have.value', '20');
-    cy.get('#height').should('have.value', '20');
+    cy.get('#w_size').should('have.value', '20.00');
+    cy.get('#h_size').should('have.value', '20.00');
   });
 
   it('upload ai>Color', () => {
@@ -309,8 +309,8 @@ describe('SVG & PDF', () => {
     cy.get('.ant-space-item').contains('Color').click();
     cy.get('.ant-btn').contains('OK').click();
     cy.get('#svg_4', {timeout:(10000)}).should('exist');
-    cy.get('#width').should('have.value', '20');
-    cy.get('#height').should('have.value', '20');
+    cy.get('#w_size').should('have.value', '20.00');
+    cy.get('#h_size').should('have.value', '20.00');
   });
 
   it('upload ai>single layer', () => {
@@ -319,8 +319,8 @@ describe('SVG & PDF', () => {
     cy.get('.ant-space-item').contains('Single Layer').click();
     cy.get('.ant-btn').contains('OK').click();
     cy.get('#svg_4', {timeout:(10000)}).should('exist');
-    cy.get('#width').should('have.value', '20');
-    cy.get('#height').should('have.value', '20');
+    cy.get('#w_size').should('have.value', '20.00');
+    cy.get('#h_size').should('have.value', '20.00');
   });
 
 

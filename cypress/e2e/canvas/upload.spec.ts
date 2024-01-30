@@ -4,16 +4,16 @@ describe('upload tools', () => {
     cy.wait(500);
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').should('exist');
-    cy.get('#width').should('have.value', '300');
-    cy.get('#height').should('have.value', '210');
+    cy.get('#w_size').should('have.value', '300.00');
+    cy.get('#h_size').should('have.value', '210.00');
   });
 
   it('upload jpg', () => {
     cy.landingEditor();
     cy.uploadFile('map.jpg', 'image/jpg');
     cy.get('#svg_1').should('exist');
-    cy.get('#width').should('have.value', '553');
-    cy.get('#height').should('have.value', '387.9');
+    cy.get('#w_size').should('have.value', '553.00');
+    cy.get('#h_size').should('have.value', '387.90');
   });
 
   it('upload dxf', () => {
@@ -35,8 +35,8 @@ describe('upload tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
-    cy.get('#width').should('have.attr', 'value').and('eq', '522.17');
-    cy.get('#height').should('have.attr', 'value').and('eq', '465.52');
+    cy.get('#w_size').should('have.attr', 'value').and('eq', '522.17');
+    cy.get('#h_size').should('have.attr', 'value').and('eq', '465.52');
   });
 
   it('upload Printing Beam to laser layer', () => {

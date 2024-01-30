@@ -63,7 +63,7 @@ describe('manipulate view', () => {
     cy.get('#svg_1').should('have.attr', 'stroke', '#3F51B5');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
-    cy.get('.rc-menu > :nth-child(8)').click();
+    cy.get('.rc-menu > :nth-child(8)').click({force: true});
     cy.get('#svg_1').should('have.attr', 'stroke', '#000');
   });
 

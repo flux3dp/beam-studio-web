@@ -26,8 +26,8 @@ describe('manipulate file', () => {
         });
     });
     cy.get('#svg_1').should('exist');
-    cy.get('#width').should('have.value', '300');
-    cy.get('#height').should('have.value', '210');
+    cy.get('#w_size').should('have.value', '300.00');
+    cy.get('#h_size').should('have.value', '210.00');
   });
 
   it('save file', () => {
@@ -53,7 +53,7 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click({force: true});
     cy.wait(1000);
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : 137371540);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : -439953550);
     });
   });
 

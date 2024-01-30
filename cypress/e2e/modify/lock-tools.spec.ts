@@ -11,6 +11,6 @@ it('lock', () => {
     .trigger('mousedown', { which: 1, pageX: 0, pageY: 0 })
     .trigger('mousemove', { which: 1, pageX: 200, pageY: 0 })
     .trigger('mouseup')
-  cy.get('#width').should('have.value', '195');
-  cy.get('#height').should('have.value', '195');
+  cy.get('#w_size').should('have.value', '195');
+  cy.get('#h_size').should('have.value', '195');
 });

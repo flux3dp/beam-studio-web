@@ -9,11 +9,11 @@ describe('Layer Color Setting', () => {
  cy.get('.ant-modal').should('be.visible');
  cy.get('.ant-btn').contains("Add Color").click();
  cy.get('input[type="text"][value="#FFFFFF"]')
-   .clear()
+   .clear().wait(50)
    .type('#AA0000')
    .should('have.value', '#AA0000');
  cy.get('input[type="text"][step="1"][value="50.0"]')
-   .clear()
+   .clear().wait(50)
    .type('25.0')
    .should('have.value', '25.0');
  cy.contains('.ant-btn-primary', /^Add$/).click();
