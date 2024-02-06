@@ -551,7 +551,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenYoGothic TW',
     italic: false,
-    postscriptName: 'GenYoGothic TW',
+    postscriptName: 'GenYoGothicTW-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenYoGothic-R.ttc',
@@ -560,7 +560,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenYoGothic TW',
     italic: false,
-    postscriptName: 'GenYoGothic TW Bold',
+    postscriptName: 'GenYoGothicTW-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenYoGothic-B.ttc',
@@ -570,7 +570,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenYoGothic JP',
     italic: false,
-    postscriptName: 'GenYoGothic JP',
+    postscriptName: 'GenYoGothicJP-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenYoGothic-R.ttc',
@@ -579,7 +579,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenYoGothic JP',
     italic: false,
-    postscriptName: 'GenYoGothic JP Bold',
+    postscriptName: 'GenYoGothicJP-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenYoGothic-B.ttc',
@@ -589,7 +589,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenRyuMin TW',
     italic: false,
-    postscriptName: 'GenRyuMin TW',
+    postscriptName: 'GenRyuMinTW-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenRyuMin-R.ttc',
@@ -598,7 +598,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenRyuMin TW',
     italic: false,
-    postscriptName: 'GenRyuMin TW Bold',
+    postscriptName: 'GenRyuMinTW-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenRyuMin-B.ttc',
@@ -608,7 +608,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenRyuMin JP',
     italic: false,
-    postscriptName: 'GenRyuMin JP',
+    postscriptName: 'GenRyuMinJP-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenRyuMin-R.ttc',
@@ -617,7 +617,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenRyuMin JP',
     italic: false,
-    postscriptName: 'GenRyuMin JP Bold',
+    postscriptName: 'GenRyuMinJP-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenRyuMin-B.ttc',
@@ -627,7 +627,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenWanMin TW',
     italic: false,
-    postscriptName: 'GenWanMin TW',
+    postscriptName: 'GenWanMinTW-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenWanMin-R.ttc',
@@ -636,7 +636,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenWanMin TW',
     italic: false,
-    postscriptName: 'GenWanMin TW Bold',
+    postscriptName: 'GenWanMinTW-SB',
     style: 'Bold',
     weight: 700,
     fileName: 'GenWanMin-SB.ttc',
@@ -646,7 +646,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenWanMin JP',
     italic: false,
-    postscriptName: 'GenWanMin JP',
+    postscriptName: 'GenWanMinJP-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenWanMin-R.ttc',
@@ -655,7 +655,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenWanMin JP',
     italic: false,
-    postscriptName: 'GenWanMin JP Bold',
+    postscriptName: 'GenWanMinJP-SB',
     style: 'Bold',
     weight: 700,
     fileName: 'GenWanMin-SB.ttc',
@@ -665,7 +665,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSekiGothic TW',
     italic: false,
-    postscriptName: 'GenSekiGothic TW',
+    postscriptName: 'GenSekiGothicTW-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenSekiGothic-R.ttc',
@@ -674,7 +674,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSekiGothic TW',
     italic: false,
-    postscriptName: 'GenSekiGothic TW Bold',
+    postscriptName: 'GenSekiGothicTW-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenSekiGothic-B.ttc',
@@ -684,7 +684,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSekiGothic JP',
     italic: false,
-    postscriptName: 'GenSekiGothic JP',
+    postscriptName: 'GenSekiGothicJP-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenSekiGothic-R.ttc',
@@ -693,7 +693,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSekiGothic JP',
     italic: false,
-    postscriptName: 'GenSekiGothic JP Bold',
+    postscriptName: 'GenSekiGothicJP-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenSekiGothic-B.ttc',
@@ -703,7 +703,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSenRounded TW',
     italic: false,
-    postscriptName: 'GenSenRounded TW',
+    postscriptName: 'GenSenRoundedTW-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenSenRounded-R.ttc',
@@ -712,7 +712,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSenRounded TW',
     italic: false,
-    postscriptName: 'GenSenRounded TW Bold',
+    postscriptName: 'GenSenRoundedTW-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenSenRounded-B.ttc',
@@ -722,7 +722,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSenRounded JP',
     italic: false,
-    postscriptName: 'GenSenRounded JP',
+    postscriptName: 'GenSenRoundedJP-R',
     style: 'Regular',
     weight: 400,
     fileName: 'GenSenRounded-R.ttc',
@@ -731,7 +731,7 @@ const fonts: WebFont[] = [
   {
     family: 'GenSenRounded JP',
     italic: false,
-    postscriptName: 'GenSenRounded JP Bold',
+    postscriptName: 'GenSenRoundedJP-B',
     style: 'Bold',
     weight: 700,
     fileName: 'GenSenRounded-B.ttc',
@@ -1537,7 +1537,7 @@ const fonts: WebFont[] = [
     postscriptName: 'Klee One Bold',
     style: 'Bold',
     weight: 700,
-    fileName: 'KleeOne-Bold.ttf',
+    fileName: 'KleeOne-SemiBold.ttf',
     supportLangs: ['zh-tw', 'ja'],
   },
   // Kaisotai
