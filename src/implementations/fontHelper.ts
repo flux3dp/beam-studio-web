@@ -1,3 +1,5 @@
+// TODO: Move to core
+// TODO: Add getWebFontAndUpload back
 import i18n from 'helpers/i18n';
 import {
   FontDescriptor,
