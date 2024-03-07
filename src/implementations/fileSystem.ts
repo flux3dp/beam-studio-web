@@ -33,4 +33,8 @@ export default {
   getPath(path: Path): string {
     return '';
   },
+  readdirSync(path: string): string[] {
+    return [];
+  },
+  delete(path: string): void {},
 } as IFileSystem;
