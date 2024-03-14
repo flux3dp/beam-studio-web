@@ -93,6 +93,28 @@ Cypress.Commands.add('connectMachine', (machineName: string) => {
   cy.get('.ant-modal-footer').get('.ant-btn-primary', { timeout: 10000 }).contains('Yes').click();
 });
 
+Cypress.Commands.add('go2Preference', () => {
+  cy.get('div.top-bar-menu-container').click();
+  cy.get('li.rc-menu__submenu').should('have.length', 6);
+  cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
+  cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click({
+    force: true,
+  });
+});
+
+Cypress.Commands.add('checkToolBtnActive', (id: string, active = true) => {
+  cy.get(`div#left-${id}`).should('exist');
+  cy.get(
+    `div#left-${id}[class*='src-web-app-components-beambox-left-panel-LeftPanelButton-module__active--']`
+  ).should(active ? 'exist' : 'not.exist');
+});
+
+Cypress.Commands.add('clickToolBtn', (id: string) => {
+  cy.get(`div#left-${id}`).should('exist');
+  cy.get(`div#left-${id}`).click();
+  cy.checkToolBtnActive(id);
+});
+
 //
 //
 // -- This is a child command --

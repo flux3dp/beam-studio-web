@@ -11,6 +11,9 @@ declare global {
       disableImageDownSampling(): Chainable<void>;
       setUpBackend: (ip: string) => Chainable<void>;
       connectMachine: (ip: string) => Chainable<void>;
+      go2Preference: () => Chainable<void>;
+      checkToolBtnActive: (id: string, active?: boolean) => Chainable<void>;
+      clickToolBtn: (id: string) => Chainable<void>;
     }
   }
 }
