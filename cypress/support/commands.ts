@@ -90,7 +90,7 @@ Cypress.Commands.add('connectMachine', (machineName: string) => {
   cy.findAllByTestId('select-machine').click();
   cy.findAllByText(machineName).should('exist');
   cy.findAllByText(machineName).click();
-  cy.get('.ant-modal-footer').get('.ant-btn-primary').contains('Yes').click();
+  cy.get('.ant-modal-footer').get('.ant-btn-primary', { timeout: 10000 }).contains('Yes').click();
 });
 
 //

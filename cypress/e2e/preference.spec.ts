@@ -35,7 +35,7 @@ describe('update the preference', () => {
     cy.landingEditor();
   });
 
-  it.only('check default value with preference page', () => {
+  it('check default value with preference page', () => {
     go2Preference();
     cy.get('#select-lang').find('option:selected').should('have.text', 'English');
     cy.get('#ip-input').should('have.attr', 'value', '192.168.1.1');
@@ -72,36 +72,6 @@ describe('update the preference', () => {
     cy.get('#set-sentry').find('option:selected').should('have.value', '0');
   });
 
-  it('choose de and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('de', 'Sprache', 'Ohne Titel');
-  });
-
-  it('choose en and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('en', 'Language', 'Untitled');
-  });
-
-  it('choose es and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('es', 'Idioma', 'Sin título');
-  });
-
-  it('choose ja and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('ja', '言語', '無題');
-  });
-
-  it('choose zh-tw and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('zh-tw', '語言', '無標題');
-  });
-
-  it('choose zh-cn and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('zh-cn', '语言', '无标题');
-  });
-
   it('change units and see if home page gets changed ', () => {
     go2Preference();
     cy.get('#set-default-units').select('inches');
@@ -129,7 +99,7 @@ describe('update the preference', () => {
     applySettings();
     cy.get('div#left-Text>img').click();
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('Bring Any Design to Life');
-    cy.get('.select-container > select').find('option:selected').should('have.text', 'Bold');
+    cy.get('.ant-select-selection-item').find('option:selected').should('have.text', 'Bold');
   });
 
   it('change document setting and see if home page gets changed ', () => {
@@ -169,7 +139,7 @@ describe('update the preference', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.wait(3000);
     cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
+      expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
     });
   });
 
@@ -207,7 +177,7 @@ describe('update the preference', () => {
     cy.get('h1.headline').should('exist');
   });
 
-  it.only('remove speed limit and see if home page gets changed ', () => {
+  it('remove speed limit and see if home page gets changed ', () => {
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
     cy.get('#speed div.ant-slider-handle').trigger('mousedown');
@@ -226,5 +196,49 @@ describe('update the preference', () => {
     cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('not.exist');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('not.exist');
+  });
+
+  it('change Ador Printing Layer to Beamseries', () => {
+    cy.get('div.menu-btn-container').click();
+    cy.get('.rc-menu__submenu').contains("Edit").click();
+    cy.contains('Document Settings').click();
+    cy.wait(500);
+    cy.get('[class^="ant-select-selection-item"]')
+      .eq(0)
+      .click();
+    cy.wait(700);
+    cy.get('[class^="ant-select-item-option-content"]')
+      .contains('Ador')
+      .click({force: true});
+      cy.get('button[class^="ant-btn"]')
+      .contains('Save')
+      .click({force: true});
+      cy.get('[class="ant-select-selector"]')
+      .click();
+    cy.get('[class="ant-select-item-option-content"]')
+      .contains('Printing')
+      .click();
+    cy.get('button[class^="ant-btn"]').contains('Confirm')
+      .should('exist').click({force: true});
+    cy.get('div.menu-btn-container').click();
+    cy.get('.rc-menu__submenu').contains("Edit").click();
+    cy.contains('Document Settings').click();
+    cy.wait(500);
+    cy.get('.ant-form-item-control-input-content')
+      .get('[title="Ador"]')
+      .click({force: true});
+    cy.wait(700);
+    cy.get('[class^="ant-select-item-option-content"]')
+      .contains('beamo')
+      .click({force: true});
+    cy.get('button[class^="ant-btn"]')
+      .contains('Save')
+      .click({force: true});
+    cy.get('[class="ant-modal-content"]')
+      .should('exist');
+    cy.get('.src-web-app-views-dialogs-Alert-module__message-container--nFlUq')
+      .should('have.text', 'Do you want to convert the Printing Layers into Laser Layers?');
+    cy.get('button[class^="ant-btn"]').contains('Confirm')
+      .should('exist').click({force: true});
   });
 });

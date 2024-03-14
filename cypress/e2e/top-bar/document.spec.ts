@@ -172,7 +172,7 @@ describe('manipulate document setting', () => {
     cy.get('#height').should('have.value', '3.00');
   });
 
-  it.only('check diode laser', () => {
+  it('check diode laser', () => {
     openDocument();
     selectModal('beamo');
     clickAndCheck('diode_module', true);

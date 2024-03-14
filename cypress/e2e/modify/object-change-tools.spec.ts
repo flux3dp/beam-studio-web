@@ -17,10 +17,10 @@ describe('object change tools', () => {
   });
 
   it('change object size by hand movement', () => {
-    cy.get('#width').type('{selectall}{backspace}150').blur();
-    cy.get('#height').type('{selectall}{backspace}150').blur();
-    cy.get('#width').should('have.value', '150');
-    cy.get('#height').should('have.value', '150');
+    cy.get('#w_size').type('{selectall}{backspace}150').blur();
+    cy.get('#h_size').type('{selectall}{backspace}150').blur();
+    cy.get('#w_size').should('have.value', '150');
+    cy.get('#h_size').should('have.value', '150');
   });
 
   function drawingPolygon() {

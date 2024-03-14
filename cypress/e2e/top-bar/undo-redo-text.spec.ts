@@ -14,6 +14,8 @@ describe('verify undo/redo behaviors', () => {
 
   it('text with font', () => {
     text();
+    cy.get('.ant-select-selection-item[title="Font"]').click();
+    cy.get('[alt="Noto Sans"]').click();
     cy.get('.ant-select[title="Font"]').click();
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder img[alt="lobster"]').click();
