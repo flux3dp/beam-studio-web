@@ -1,7 +1,7 @@
 describe('pen tools', () => {
   beforeEach(() => {
     cy.landingEditor();
-    cy.get('div#left-Pen>img').click();
+    cy.clickToolBtn('Pen');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });

@@ -3,16 +3,15 @@ const isRunningAtGithub = Cypress.env('envType') === 'github';
 const beamSeriersName = Cypress.env('beamSeriersName');
 const adorName = Cypress.env('AdorName');
 
-function savetoador()
-{
+function savetoador() {
   cy.get('div.menu-btn-container').click();
   cy.get('.rc-menu__submenu').contains("Edit").click();
   cy.contains('Document Settings').click();
   cy.wait(500);
   cy.get('[class^="ant-select-selection-item"]').eq(0).click();
   cy.wait(700);
-  cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
-  cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+  cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
+  cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
   cy.wait(500);
 }
 
@@ -43,7 +42,7 @@ describe('SVG & PDF', () => {
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
       cy.get('.ant-space-item').contains('Layer').click();
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
-      cy.get('#svg_2',{timeout:50000}).should('exist');
+      cy.get('#svg_2', { timeout: 50000 }).should('exist');
       cy.get('div.element-title').contains('Layer 1 > SVG Object').should('exist');
       cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
         .should('have.attr', 'data-layer', 'Layer 1');
@@ -69,7 +68,7 @@ describe('SVG & PDF', () => {
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
       cy.get('.ant-space-item').contains('Color').click();
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
-      cy.get('#svg_2',{timeout:50000}).should('exist');
+      cy.get('#svg_2', { timeout: 50000 }).should('exist');
       cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
         .should('have.attr', 'data-layer', '#3F51B5');
       cy.get('#layerdoubleclick-1').should('have.text', '#3F51B5');
@@ -113,7 +112,7 @@ describe('SVG & PDF', () => {
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
       cy.get('.ant-space-item').contains('Layer').click();
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
-      cy.get('#svg_2',{timeout:50000}).should('exist');
+      cy.get('#svg_2', { timeout: 50000 }).should('exist');
       cy.get('div.element-title').contains('Printing > SVG Object');
       cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
         .should('have.attr', 'data-layer', 'Printing');
@@ -144,30 +143,30 @@ describe('SVG & PDF', () => {
       });
   });
 
-    /*it('SVG On Printing > Single Layer', () => {
-    cy.connectMachine(beamSeriersName);
-    cy.findAllByTestId('select-machine').contains(beamSeriersName);
-    savetoaador();
-    cy.fixture('svg.svg').then(fileContent => {
-      cy.get("input[data-file-input='import_image").attachFile({
-        fileContent: fileContent.toString(),
-        fileName: 'svg.svg',
-        mimeType: 'image/svg+xml',
-      });
-    cy.get('.ant-space-item').contains('Printing').click();
-    cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
-    cy.get('.ant-space-item').contains('Single Layer').click();
-    cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
+  /*it('SVG On Printing > Single Layer', () => {
+  cy.connectMachine(beamSeriersName);
+  cy.findAllByTestId('select-machine').contains(beamSeriersName);
+  savetoaador();
+  cy.fixture('svg.svg').then(fileContent => {
+    cy.get("input[data-file-input='import_image").attachFile({
+      fileContent: fileContent.toString(),
+      fileName: 'svg.svg',
+      mimeType: 'image/svg+xml',
+    });
+  cy.get('.ant-space-item').contains('Printing').click();
+  cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
+  cy.get('.ant-space-item').contains('Single Layer').click();
+  cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
 
-    cy.get('#svg_2',{timeout:50000}).should('exist');
-    cy.get('div.element-title').contains('Printing > SVG Object');
-    cy.get('symbol#svg_1>g>g')
-      .invoke('prop', 'innerHTML')
-      .then((html) => {
-        expect(md5(html)).equal('00205b6848f32edfda5855c1f2fab5e3');
-      });
+  cy.get('#svg_2',{timeout:50000}).should('exist');
+  cy.get('div.element-title').contains('Printing > SVG Object');
+  cy.get('symbol#svg_1>g>g')
+    .invoke('prop', 'innerHTML')
+    .then((html) => {
+      expect(md5(html)).equal('00205b6848f32edfda5855c1f2fab5e3');
+    });
 
-  });*/
+});*/
 
   it('Gradient SVG', () => {
     cy.connectMachine(beamSeriersName);
@@ -180,7 +179,7 @@ describe('SVG & PDF', () => {
       });
       cy.get('.ant-space-item').contains('Layer').click();
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
-      cy.get('#svg_1', {timeout:50000}).should('exist');
+      cy.get('#svg_1', { timeout: 50000 }).should('exist');
       cy.get('image#svg_1')
         .should('have.attr', 'xlink:href')
         .then((html) => {
@@ -200,7 +199,7 @@ describe('SVG & PDF', () => {
       });
       cy.get('.ant-space-item').contains('Layer').click();
       cy.get('.ant-modal-footer .ant-btn').contains('OK').click();
-      cy.get('#svg_1',{timeout:50000}).should('exist');
+      cy.get('#svg_1', { timeout: 50000 }).should('exist');
       cy.get('div.element-title').contains('Bitmap > Image');
       cy.get('image#svg_1')
         .should('have.attr', 'xlink:href')
@@ -212,40 +211,40 @@ describe('SVG & PDF', () => {
 
   it('upload pdf>color', () => {
     cy.uploadFile('PDF.pdf');
-    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-modal-content', { timeout: (10000) }).should('exist');
     cy.get('.ant-space-item').contains('Color').click();
     cy.get('.ant-btn').contains('OK').click();
-    cy.get('#svg_3', {timeout:(10000)}).should('exist');
+    cy.get('#svg_3', { timeout: (10000) }).should('exist');
     cy.get('#w_size').should('have.value', '20.00');
     cy.get('#h_size').should('have.value', '20.00');
   });
 
   it('upload pdf>single layer', () => {
     cy.uploadFile('PDF.pdf');
-    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-modal-content', { timeout: (10000) }).should('exist');
     cy.get('.ant-space-item').contains('Single Layer').click();
     cy.get('.ant-btn').contains('OK').click();
-    cy.get('#svg_1', {timeout:(10000)}).should('exist');
+    cy.get('#svg_1', { timeout: (10000) }).should('exist');
     cy.get('#w_size').should('have.value', '20.00');
     cy.get('#h_size').should('have.value', '20.00');
   });
 
   it('upload ai>Color', () => {
     cy.uploadFile('ai.ai');
-    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-modal-content', { timeout: (10000) }).should('exist');
     cy.get('.ant-space-item').contains('Color').click();
     cy.get('.ant-btn').contains('OK').click();
-    cy.get('#svg_4', {timeout:(10000)}).should('exist');
+    cy.get('#svg_4', { timeout: (10000) }).should('exist');
     cy.get('#w_size').should('have.value', '20.00');
     cy.get('#h_size').should('have.value', '20.00');
   });
 
   it('upload ai>single layer', () => {
     cy.uploadFile('ai.ai');
-    cy.get('.ant-modal-content', {timeout:(10000)}).should('exist');
+    cy.get('.ant-modal-content', { timeout: (10000) }).should('exist');
     cy.get('.ant-space-item').contains('Single Layer').click();
     cy.get('.ant-btn').contains('OK').click();
-    cy.get('#svg_4', {timeout:(10000)}).should('exist');
+    cy.get('#svg_4', { timeout: (10000) }).should('exist');
     cy.get('#w_size').should('have.value', '20.00');
     cy.get('#h_size').should('have.value', '20.00');
   });

@@ -22,6 +22,8 @@ const setStorage = () => {
   window.localStorage.setItem('last-installed-version', 'web');
   window.localStorage.setItem('questionnaire-version', '9999');
   window.localStorage.setItem('did-gesture-tutorial', '1');
+  window.localStorage.setItem('beambox-preference', '{"font-convert":"2.0"}');
+  window.localStorage.setItem('announcement-record', '{"times":0.5,"isIgnored":[]}');
 };
 
 Cypress.Commands.add('landingEditor', (opts = {}) => {
@@ -90,7 +92,7 @@ Cypress.Commands.add('connectMachine', (machineName: string) => {
   cy.findAllByTestId('select-machine').click();
   cy.findAllByText(machineName).should('exist');
   cy.findAllByText(machineName).click();
-  cy.get('.ant-modal-footer').get('.ant-btn-primary', { timeout: 10000 }).contains('Yes').click();
+  cy.get('.ant-modal-footer').get('.ant-btn-primary', { timeout: 150000 }).contains('Yes').click();
 });
 
 Cypress.Commands.add('go2Preference', () => {

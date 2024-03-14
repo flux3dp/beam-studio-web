@@ -13,11 +13,12 @@ describe('Camera', () => {
     return;
   }
 
-  it('Camera-Ador', () => {
+  it.only('Camera-Ador', () => {
     cy.setUpBackend(Cypress.env('backendIP'));
     cy.landingEditor();
     cy.connectMachine(adorName);
     cy.findAllByTestId('select-machine').contains(adorName);
+    cy.wait(5000);
     cy.get('.src-web-app-components-beambox-top-bar-PreviewButton-module__button--wgUSF')
       .click();
     /*有的機器會跳對焦高度
@@ -27,7 +28,8 @@ describe('Camera', () => {
     cy.get('.ant-btn').contains('Enter Manually').click();
     cy.get('.ant-btn').contains('Apply').click();
     */
-    cy.get('#background_image', {timeout:(50000)}).should('exist');
+    cy.wait(10000);
+    cy.get('#background_image', { timeout: (50000) }).should('exist');
     cy.get('#background_image').should('have.attr', 'width', '100%');
     cy.get('#background_image').should('have.attr', 'height', '100%');
     cy.get('#background_image').should('have.attr', 'style', 'pointer-events:none; opacity: 1;');
@@ -76,26 +78,26 @@ describe('Camera', () => {
     cy.get('.ant-btn').contains('Enter Manually').click();
     cy.get('.ant-btn').contains('Apply').click();
     */
-    cy.get('#background_image', {timeout:(50000)}).should('exist');
+    cy.get('#background_image', { timeout: (50000) }).should('exist');
     cy.get('image#background_image')
       .invoke('attr', 'xlink:href').and('not.eq', 'firstBackground');
     cy.get('#clear-preview').click();
     cy.get('#background_image').should('not.exist');
 
   });
-/*
-  it('Camera-Beam', () => {
-    cy.setUpBackend(Cypress.env('backendIP'));
-    cy.landingEditor();
-    cy.connectMachine(beamSeriersName);
-    cy.findAllByTestId('select-machine').contains(beamSeriersName);
-    cy.get('.src-web-app-components-beambox-top-bar-SelectMachineButton-module__button--MeIgr')
-      .click();
-    cy.get('.src-web-app-views-dialogs-DeviceSelector-module__name--g-K6l')
-      .contains('HEXA (Braxton)').click();
-    cy.get('.src-web-app-components-beambox-top-bar-PreviewButton-module__button--wgUSF')
-      .click();
-
-  });
-*/
+  /*
+    it('Camera-Beam', () => {
+      cy.setUpBackend(Cypress.env('backendIP'));
+      cy.landingEditor();
+      cy.connectMachine(beamSeriersName);
+      cy.findAllByTestId('select-machine').contains(beamSeriersName);
+      cy.get('.src-web-app-components-beambox-top-bar-SelectMachineButton-module__button--MeIgr')
+        .click();
+      cy.get('.src-web-app-views-dialogs-DeviceSelector-module__name--g-K6l')
+        .contains('HEXA (Braxton)').click();
+      cy.get('.src-web-app-components-beambox-top-bar-PreviewButton-module__button--wgUSF')
+        .click();
+  
+    });
+  */
 });

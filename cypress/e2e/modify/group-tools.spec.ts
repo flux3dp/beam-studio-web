@@ -70,7 +70,7 @@ describe('group tools', () => {
     cy.get('button#group').click();
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Group');
     cy.get('button#ungroup').click();
-    cy.get('div#left-Cursor>img').click();
+    cy.get('div#left-Cursor').click();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '0');
@@ -98,7 +98,7 @@ describe('group tools', () => {
     cy.get('button#group').click();
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 3 > Group');
     cy.get('button#ungroup').click();
-    cy.get('div#left-Cursor>img').click();
+    cy.get('div#left-Cursor').click();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '0');

@@ -3,20 +3,20 @@ describe('rectangle tools', () => {
     cy.get('div.menu-btn-container').click();
     cy.get('.rc-menu--open > :nth-child(2) > :nth-child(1)').click();
     cy.contains('Document Settings').click();
-  };
+  }
 
   function setAdorWorkarea() {
     openDocument();
     cy.wait(500);
     cy.get('[class^="ant-select-selection-item"]').eq(0).click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
-    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
+    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
     cy.wait(500);
   }
 
   it('rounded corner', () => {
     cy.landingEditor();
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -29,7 +29,7 @@ describe('rectangle tools', () => {
     cy.landingEditor();
     cy.wait(500);
     setAdorWorkarea();
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

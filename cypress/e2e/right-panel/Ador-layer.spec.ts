@@ -1,22 +1,22 @@
 describe('Ador Layer', () => {
   beforeEach(() => {
-  cy.landingEditor();
-  //切換至Ador
-  cy.get('div.menu-btn-container').click();
-  cy.get('.rc-menu__submenu').contains("Edit").click();
-  cy.contains('Document Settings').click();
-  cy.wait(500);
-  cy.get('[class^="ant-select-selection-item"]')
-    .eq(0)
-    .click();
-  cy.wait(700);
-  cy.get('[class^="ant-select-item-option-content"]')
-    .contains('Ador')
-    .click({force: true});
+    cy.landingEditor();
+    //切換至Ador
+    cy.get('div.menu-btn-container').click();
+    cy.get('.rc-menu__submenu').contains("Edit").click();
+    cy.contains('Document Settings').click();
+    cy.wait(500);
+    cy.get('[class^="ant-select-selection-item"]')
+      .eq(0)
+      .click();
+    cy.wait(700);
+    cy.get('[class^="ant-select-item-option-content"]')
+      .contains('Ador')
+      .click({ force: true });
     cy.get('button[class^="ant-btn"]')
-    .contains('Save')
-    .click({force: true});
-  cy.wait(500);
+      .contains('Save')
+      .click({ force: true });
+    cy.wait(500);
   });
 
   it('Default Laser Module', () => {
@@ -36,17 +36,17 @@ describe('Ador Layer', () => {
     cy.wait(700);
     cy.get('[class^="ant-select-item-option-content"]')
       .contains('Ador')
-      .click({force: true});
-      cy.get('button[class^="ant-btn"]')
+      .click({ force: true });
+    cy.get('button[class^="ant-btn"]')
       .contains('Save')
-      .click({force: true});
+      .click({ force: true });
     cy.wait(500);
     cy.get('[class="ant-select-selector"]')
       .should('have.text', '10W Diode Laser');
   });
   it('Merge Printing & Laser Layer', () => {
     cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
-      .click({force: true});
+      .click({ force: true });
     cy.get('[class="ant-select-selector"]')
       .click();
     cy.get('[class="ant-select-item-option-content"]')
@@ -55,9 +55,9 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to convert the Laser module into Printing module?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
     cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
-      .click({force: true});
+      .click({ force: true });
     cy.get('[class="src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF"]')
       .contains('Layer 3')
       .rightclick();
@@ -65,7 +65,7 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to merge these layers into one Printing layer?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
     cy.get('[class="src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF"]')
       .contains('Layer 2')
       .rightclick();
@@ -73,12 +73,12 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to merge these layers into one Laser layer?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
   });
 
   it('Move to Printing or Laser', () => {
     cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
-      .click({force: true});
+      .click({ force: true });
     cy.get('[class="ant-select-selector"]')
       .click();
     cy.get('[class="ant-select-item-option-content"]')
@@ -87,8 +87,8 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to convert the Laser module into Printing module?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
-    cy.get('#left-Element.tool-btn').click();
+      .should('exist').click({ force: true });
+    cy.get('#left-Element').click();
     cy.get('.anticon.src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN')
       .eq(0)
       .click();
@@ -101,7 +101,7 @@ describe('Ador Layer', () => {
     cy.get('button[class^="ant-btn"]').contains('Cancel')
       .should('exist');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
 
     cy.get('#svg_1').click();
     cy.get('[class="src-web-app-components-beambox-right-panel-SelLayerBlock-module__select--dYlA+"]')
@@ -111,7 +111,7 @@ describe('Ador Layer', () => {
     cy.get('button[class^="ant-btn"]').contains('Cancel')
       .should('exist');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
   });
 
   it('Printing Parameter Settings Advanced Off', () => {
@@ -131,10 +131,10 @@ describe('Ador Layer', () => {
     cy.wait(700);
     cy.get('[class^="ant-select-item-option-content"]')
       .contains('Ador')
-      .click({force: true});
-      cy.get('button[class^="ant-btn"]')
+      .click({ force: true });
+    cy.get('button[class^="ant-btn"]')
       .contains('Save')
-      .click({force: true});
+      .click({ force: true });
     cy.get('[class="ant-select-selector"]')
       .click();
     cy.get('[class="ant-select-item-option-content"]')
@@ -143,7 +143,7 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to convert the Laser module into Printing module?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
     cy.get('[class="src-web-app-views-beambox-Right-Panels-ConfigPanel-InkBlock-module__panel--vp9bJ"]>[class="src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigValueDisplay-module__value--Ximwq"]')
       .should('exist').should('have.text', 'Regular');
     cy.get('#saturation div.ant-slider-handle').trigger('mousedown');
@@ -225,10 +225,10 @@ describe('Ador Layer', () => {
     cy.wait(700);
     cy.get('[class^="ant-select-item-option-content"]')
       .contains('Ador')
-      .click({force: true});
-      cy.get('button[class^="ant-btn"]')
+      .click({ force: true });
+    cy.get('button[class^="ant-btn"]')
       .contains('Save')
-      .click({force: true});
+      .click({ force: true });
     cy.get('[class="ant-select-selector"]')
       .click();
     cy.get('[class="ant-select-item-option-content"]')
@@ -237,52 +237,52 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to convert the Laser module into Printing module?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
 
     cy.get('#saturation-input')
-      .should('exist').should('have.attr' ,'value' ,'3');
+      .should('exist').should('have.attr', 'value', '3');
     cy.get('#saturation div.ant-slider-handle').trigger('mousedown');
     cy.get('#saturation div.ant-slider-handle').trigger('mousemove', -200, 0, { force: true });
     cy.get('#saturation div.ant-slider-handle').trigger('mouseup');
     cy.get('#saturation-input')
-      .should('exist').should('have.attr' ,'value' ,'1');
+      .should('exist').should('have.attr', 'value', '1');
     cy.get('#saturation div.ant-slider-handle').trigger('mousedown');
     cy.get('#saturation div.ant-slider-handle').trigger('mousemove', 500, 0, { force: true });
     cy.get('#saturation div.ant-slider-handle').trigger('mouseup');
     cy.get('#saturation-input')
-      .should('exist').should('have.attr' ,'value' ,'15');
+      .should('exist').should('have.attr', 'value', '15');
     cy.get('#saturation-input').clear().type('5');
-    cy.get('#saturation-input').should('exist').should('have.attr' ,'value' ,'5');
+    cy.get('#saturation-input').should('exist').should('have.attr', 'value', '5');
 
     cy.get('#speed-input')
-      .should('exist').should('have.attr' ,'value' ,'60');
+      .should('exist').should('have.attr', 'value', '60');
     cy.get('#speed div.ant-slider-handle').trigger('mousedown');
     cy.get('#speed div.ant-slider-handle').trigger('mousemove', -200, 0, { force: true });
     cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get('#speed-input')
-      .should('exist').should('have.attr' ,'value' ,'0.5');
+      .should('exist').should('have.attr', 'value', '0.5');
     cy.get('#speed div.ant-slider-handle').trigger('mousedown');
     cy.get('#speed div.ant-slider-handle').trigger('mousemove', 500, 0, { force: true });
     cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get('#speed-input')
-      .should('exist').should('have.attr' ,'value' ,'400');
+      .should('exist').should('have.attr', 'value', '400');
     cy.get('#speed-input').clear().type('100');
-    cy.get('#speed-input').should('exist').should('have.attr' ,'value' ,'100');
+    cy.get('#speed-input').should('exist').should('have.attr', 'value', '100');
 
     cy.get('#multipass-input')
-      .should('exist').should('have.attr' ,'value' ,'3');
+      .should('exist').should('have.attr', 'value', '3');
     cy.get('#multipass div.ant-slider-handle').trigger('mousedown');
     cy.get('#multipass div.ant-slider-handle').trigger('mousemove', -200, 0, { force: true });
     cy.get('#multipass div.ant-slider-handle').trigger('mouseup');
     cy.get('#multipass-input')
-      .should('exist').should('have.attr' ,'value' ,'1');
+      .should('exist').should('have.attr', 'value', '1');
     cy.get('#multipass div.ant-slider-handle').trigger('mousedown');
     cy.get('#multipass div.ant-slider-handle').trigger('mousemove', 500, 0, { force: true });
     cy.get('#multipass div.ant-slider-handle').trigger('mouseup');
     cy.get('#multipass-input')
-      .should('exist').should('have.attr' ,'value' ,'10');
+      .should('exist').should('have.attr', 'value', '10');
     cy.get('#multipass-input').clear().type('5');
-    cy.get('#multipass-input').should('exist').should('have.attr' ,'value' ,'5');
+    cy.get('#multipass-input').should('exist').should('have.attr', 'value', '5');
 
 
   });

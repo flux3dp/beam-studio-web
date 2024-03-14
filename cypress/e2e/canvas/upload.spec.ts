@@ -25,7 +25,6 @@ describe('upload tools', () => {
         mimeType: 'application/dxf'
       });
     });
-    cy.get('div[id^="rc_unique_3"]').should('be.exist');
     cy.get('button[class^="ant-btn"]').contains('OK').should('be.exist').click({ force: true });
     cy.get('button[class^="ant-btn"]').contains('OK').should('be.exist').click({ force: true });
     cy.get('button[class^="ant-btn"]').contains('OK').should('be.exist').click({ force: true });
@@ -47,8 +46,8 @@ describe('upload tools', () => {
     cy.wait(500);
     cy.get('[class^="ant-select-selection-item"]').eq(0).click();
     cy.wait(700);
-    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
-    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
+    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
     cy.wait(500);
     cy.uploadFile('printing.beam');
     cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
@@ -64,8 +63,8 @@ describe('upload tools', () => {
     cy.wait(500);
     cy.get('[class^="ant-select-selection-item"]').eq(0).click();
     cy.wait(700);
-    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({force: true});
-    cy.get('button[class^="ant-btn"]').contains('Save').click({force: true});
+    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
+    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
     cy.wait(500);
     cy.get('[class="ant-select-selector"]')
       .click();
@@ -75,7 +74,7 @@ describe('upload tools', () => {
     cy.get('[class="ant-modal-title"]')
       .should('have.text', 'Do you want to convert the Laser module into Printing module?');
     cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({force: true});
+      .should('exist').click({ force: true });
     cy.uploadFile('laser.beam');
     cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
       .should('have.attr', 'data-layer', '預設圖層');

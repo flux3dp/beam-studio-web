@@ -11,8 +11,8 @@ export const envVariables = {
   username: 'beam-studio-web@flux3dp.com',
   password: 'Flux42642569',
   envType: 'local',
-  backendIP: '192.168.1.114',
-  beamSeriersName: 'beamo (Adam)',
+  backendIP: '192.168.1.39',
+  beamSeriersName: 'HEXA (Hayden)',
   AdorName: 'Ador (Cruz)'
 };
 
