@@ -23,7 +23,7 @@ const setStorage = () => {
   window.localStorage.setItem('questionnaire-version', '9999');
   window.localStorage.setItem('did-gesture-tutorial', '1');
   window.localStorage.setItem('beambox-preference', '{"font-convert":"2.0"}');
-  window.localStorage.setItem('announcement-record', '{"times":0.5,"isIgnored":[]}');
+  window.localStorage.setItem('announcement-record', '{"times":1,"isIgnored":[], "skip":true}');
 };
 
 Cypress.Commands.add('landingEditor', (opts = {}) => {
