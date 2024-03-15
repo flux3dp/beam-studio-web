@@ -1,4 +1,5 @@
 describe('Printing Expand Layer', () => {
+
   it('Expand Layer/Choose Color', () => {
     cy.landingEditor();
     cy.get('div.menu-btn-container').click();
@@ -68,7 +69,7 @@ describe('Printing Expand Layer', () => {
     cy.get('#svg_4').should('be.visible')
       .invoke('attr', 'filter').should('eq', 'url(#filter#FFED00)');
     /*  });
-    
+
       it('Expand Layer change CMYK', () => {
     */
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]').click({ force: true });
@@ -93,7 +94,7 @@ describe('Printing Expand Layer', () => {
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]')
       .should('have.attr', 'style', 'background: rgb(29, 29, 27);')
     /*  });
-    
+
       it('Add in Expand Layer', () => {
     */
     cy.get('#presprayArea').should('be.visible');
@@ -137,7 +138,7 @@ describe('Printing Expand Layer', () => {
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]')
       .should('have.attr', 'style', 'background: rgb(0, 159, 227);')
     /*  });
-    
+
       it('Single Color change CMYK', () => {
     */
     cy.get('[class="src-web-app-widgets-ColorPicker-module__color--Q6lUp"]').click({ force: true });

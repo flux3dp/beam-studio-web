@@ -4,7 +4,7 @@ describe('array tools', () => {
   });
 
   const doAllThing = () => {
-    cy.get('div#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -26,7 +26,7 @@ describe('array tools', () => {
   });
 
   it('geometry', () => {
-    cy.get('div#left-Polygon').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -37,7 +37,7 @@ describe('array tools', () => {
   });
 
   it('path', () => {
-    cy.get('div#left-Line').click();
+    cy.clickToolBtn('Line');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -48,7 +48,7 @@ describe('array tools', () => {
   });
 
   it('text', () => {
-    cy.get('div#left-Text').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(1500);
     cy.realType('Test Array');
@@ -60,8 +60,7 @@ describe('array tools', () => {
   it('group', () => {
     cy.uploadFile('flux.png', 'image/png');
     // Create ellipse
-    cy.get('div#left-Ellipse').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
+    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
@@ -79,11 +78,11 @@ describe('array tools', () => {
   });
 
   it('mutilselect', () => {
-    cy.get('div#left-Line').click();
+    cy.clickToolBtn('Line');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.get('div#left-Polygon').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

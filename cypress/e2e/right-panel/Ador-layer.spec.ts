@@ -44,6 +44,7 @@ describe('Ador Layer', () => {
     cy.get('[class="ant-select-selector"]')
       .should('have.text', '10W Diode Laser');
   });
+
   it('Merge Printing & Laser Layer', () => {
     cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
       .click({ force: true });

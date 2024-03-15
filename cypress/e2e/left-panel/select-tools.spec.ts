@@ -9,7 +9,7 @@ describe('select tools', () => {
     cy.wait(500);
     cy.realType('TEST SELECT');
     cy.get('#svg_1').should('exist');
-    cy.get('#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.get('#svg_1').realClick();
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
@@ -29,7 +29,7 @@ describe('select tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
-    cy.get('div#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -44,7 +44,7 @@ describe('select tools', () => {
   });
   it('select rotate', () => {
     cy.landingEditor();
-    cy.get('div#left-Element').click();
+    cy.clickToolBtn('Element');
     cy.get('[class="ant-modal-header"]').contains('Element').should('exist');
     cy.get('[class="ant-modal-body"]').should('exist');
     cy.get('[class="adm-capsule-tabs-tab adm-capsule-tabs-tab-active"]').should('exist');

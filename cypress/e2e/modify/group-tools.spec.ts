@@ -6,17 +6,16 @@ describe('group tools', () => {
   const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__btn';
 
   const drawingObject = () => {
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
-    cy.get('div#left-Ellipse').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
-    cy.get('div#left-Polygon').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -24,28 +23,27 @@ describe('group tools', () => {
   };
 
   const drawingObjInDiffLayer = () => {
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
     cy.get('div.layers > .tab-icon').click();
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
-    cy.get('div#left-Ellipse').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
     cy.get('div.layers > .tab-icon').click();
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
-    cy.get('div#left-Polygon').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   };
 
   const selectAll = () => {
-    cy.get('div#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -70,7 +68,7 @@ describe('group tools', () => {
     cy.get('button#group').click();
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Group');
     cy.get('button#ungroup').click();
-    cy.get('div#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '0');
@@ -98,7 +96,7 @@ describe('group tools', () => {
     cy.get('button#group').click();
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 3 > Group');
     cy.get('button#ungroup').click();
-    cy.get('div#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.window().then((win) => {
       const el = win.eval('svgCanvas.getSelectedElems()');
       cy.get(el).should('length', '0');

@@ -10,7 +10,7 @@ describe('select tools', () => {
       .get('.ant-select-selection-item img');
 
   const drawText1 = () => {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(1000);
@@ -21,7 +21,7 @@ describe('select tools', () => {
   };
 
   const drawText2 = () => {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').realClick({ x: 150, y: 150 });
 

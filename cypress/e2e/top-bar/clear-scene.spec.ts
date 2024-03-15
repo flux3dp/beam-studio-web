@@ -1,6 +1,6 @@
 it('check clear scene', () => {
   cy.landingEditor();
-  cy.get('div#left-Pen>img').click();
+  cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.get('svg#svgcontent').trigger('mousedown', 300, 320, { force: true });
@@ -34,7 +34,7 @@ it('check clear scene after preference', () => {
   cy.get('.skip').click();
   cy.get('.src-web-app-pages-SelectMachineModel-module__btn--vSspa').contains('Skip').click();
   cy.get('[type="button"]').contains('No').click();
-  cy.get('div#left-Pen>img').click();
+  cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.get('svg#svgcontent').trigger('mousedown', 300, 320, { force: true });

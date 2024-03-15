@@ -108,7 +108,7 @@ describe('verify undo/redo behaviors', () => {
   }
 
   function text() {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(500);
     cy.realType('Test Undo/Redo');

@@ -5,6 +5,7 @@ const zoomBlockPrefix = 'src-web-app-components-beambox-ZoomBlock-module_';
 const zoomRatioText = () => cy.get(`[class*="${zoomBlockPrefix}_ratio"]`);
 import { md5 } from '../../support/utils';
 
+
 describe('Camera', () => {
   if (isRunningAtGithub) {
     it('skip test on github', () => {
@@ -97,7 +98,7 @@ describe('Camera', () => {
         .contains('HEXA (Braxton)').click();
       cy.get('.src-web-app-components-beambox-top-bar-PreviewButton-module__button--wgUSF')
         .click();
-  
+
     });
   */
 });

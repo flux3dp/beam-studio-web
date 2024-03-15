@@ -56,7 +56,7 @@ describe('manipulate view', () => {
   it('use layer color', () => {
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
     cy.get('div[class*="src-web-app-widgets-ColorPicker-module__color"]').should('have.attr', 'style', 'background: rgb(63, 81, 181);');
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -71,8 +71,7 @@ describe('manipulate view', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
     cy.get('.rc-menu > :nth-child(9)').should('have.attr', 'aria-checked', 'true');
-    cy.get('div#left-Ellipse').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('svg#svgcontent').should(($shapeRendering) => {

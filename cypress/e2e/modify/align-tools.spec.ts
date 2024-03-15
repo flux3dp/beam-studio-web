@@ -65,24 +65,24 @@ describe('align tools', () => {
   };
 
   function drawingRect() {
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
 
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
 
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
 
-    cy.get('div#left-Cursor').click();
+    cy.clickToolBtn('Cursor');
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

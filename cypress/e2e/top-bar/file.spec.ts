@@ -44,7 +44,7 @@ describe('manipulate file', () => {
 
   it('save as file', () => {
     const cypressDownloadNewBeamPath = Cypress.env('cypressDownloadNewBeamPath');
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

@@ -1,22 +1,21 @@
 describe('set operations', () => {
   beforeEach(() => {
     cy.landingEditor();
-    cy.get('div#left-Rectangle').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#infill').click();
-    cy.get('div#left-Ellipse').click();
-    cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
+    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#infill').click();
- });
+  });
 
   it('Union', () => {
     cy.get('#svgcontent')
-      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300,force: true })
-      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0,force: true })
+      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300, force: true })
+      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0, force: true })
       .trigger('mouseup')
     cy.get('button#union').click();
     cy.get('#svg_4')
@@ -27,8 +26,8 @@ describe('set operations', () => {
 
   it('Subtract', () => {
     cy.get('#svgcontent')
-      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300,force: true })
-      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0,force: true })
+      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300, force: true })
+      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0, force: true })
       .trigger('mouseup')
     cy.get('button#subtract').click();
     cy.get('#svg_4')
@@ -39,8 +38,8 @@ describe('set operations', () => {
 
   it('Intersect', () => {
     cy.get('#svgcontent')
-      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300,force: true })
-      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0,force: true })
+      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300, force: true })
+      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0, force: true })
       .trigger('mouseup')
     cy.get('button#intersect').click();
     cy.get('#svg_4')
@@ -51,8 +50,8 @@ describe('set operations', () => {
 
   it('Difference', () => {
     cy.get('#svgcontent')
-      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300,force: true })
-      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0,force: true })
+      .trigger('mousedown', { which: 1, pageX: 300, pageY: 300, force: true })
+      .trigger('mousemove', { which: 1, pageX: 0, pageY: 0, force: true })
       .trigger('mouseup')
     cy.get('button#difference').click();
     cy.get('#svg_4')

@@ -11,7 +11,7 @@ describe('conver to path & weld text', () => {
   }
 
   const drawText = () => {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(1000);
@@ -36,7 +36,7 @@ describe('conver to path & weld text', () => {
     cy.get('.ant-select-item-option-content img[alt="Mr Bedfort"]').click();
     cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Mr Bedfort'");
     cy.get('#convert_to_path').click();
-    cy.get('#svg_2', {timeout:(5000)}).should('exist');
+    cy.get('#svg_2', { timeout: (5000) }).should('exist');
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {
@@ -58,7 +58,7 @@ describe('conver to path & weld text', () => {
       .realType('-0.8{enter}');
     cy.get('#svg_1').should('have.attr', 'letter-spacing').and('eq', '-0.8em');
     cy.get('#weld').click();
-    cy.get('#svg_2', {timeout:(5000)}).should('exist');
+    cy.get('#svg_2', { timeout: (5000) }).should('exist');
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {

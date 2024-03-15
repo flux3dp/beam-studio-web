@@ -1,12 +1,13 @@
 it('Move Element', () => {
+
   cy.landingEditor();
   cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
-    .click( {force: true} );
+    .click({ force: true });
   cy.get('#power-input').clear().type('50{enter}');
   cy.get('#speed-input').clear().type('100{enter}');
   cy.get('#repeat').clear().type('5{enter}');
   cy.get('#layerdoubleclick-0').click();
-  cy.get('div#left-Element').click();
+  cy.clickToolBtn('Element');
   cy.get('[class="ant-modal-header"]').contains('Element').should('exist');
   cy.get('[class="ant-modal-body"]').should('exist');
   cy.get('[class="adm-capsule-tabs-tab adm-capsule-tabs-tab-active"]').should('exist');
@@ -34,22 +35,22 @@ it('Move Element', () => {
 it('Move three Elements', () => {
   cy.landingEditor();
   cy.get('[class="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn--i7y6f"]')
-    .click( {force: true} );
+    .click({ force: true });
   cy.get('#power-input').clear().type('50{enter}');
   cy.get('#speed-input').clear().type('100{enter}');
   cy.get('#repeat').clear().type('5{enter}');
   cy.get('#layerdoubleclick-0').click();
-  cy.get('div#left-Element').click();
+  cy.clickToolBtn('Element');
   cy.get('[class="ant-modal-header"]').contains('Element').should('exist');
   cy.get('[class="ant-modal-body"]').should('exist');
   cy.get('[class="adm-capsule-tabs-tab adm-capsule-tabs-tab-active"]').should('exist');
   cy.get('[class="anticon src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN"]')
     .eq(0).click();
-  cy.get('div#left-Element').click();
+  cy.clickToolBtn('Element');
   cy.get('.adm-capsule-tabs-tab-wrapper').contains('Graphics').click();
   cy.get('[class="anticon src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN"]')
     .eq(0).click();
-  cy.get('div#left-Element').click();
+  cy.clickToolBtn('Element');
   cy.get('.adm-capsule-tabs-tab-wrapper').contains('Line').click();
   cy.get('[class="anticon src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon--YhfHN"]')
     .eq(0).click();
@@ -77,7 +78,7 @@ it('Move three Elements', () => {
   cy.get('#speed-input').should('exist').should('have.attr', 'value', '100');
   cy.get('#repeat').should('exist').should('have.attr', 'value', '5');
   cy.get('#svg_10').should('exist')
-  .should('have.attr', 'fill', '#3F51B5');
+    .should('have.attr', 'fill', '#3F51B5');
   cy.get('#svg_11').should('exist')
     .should('have.attr', 'stroke', '#3F51B5');
 });
