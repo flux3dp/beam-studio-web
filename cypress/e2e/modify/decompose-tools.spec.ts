@@ -5,7 +5,9 @@ it('decompose', () => {
   cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
     .eq(12)
     .click();
-  cy.get('#svg_9').should('exist').click({ force: true });
+  cy.get('[class="ant-modal-header"]').should('not.exist');
+  cy.get('#svg_9').should('exist').should('have.attr', 'fill', '#333333');
+  cy.get('#svg_9').click({ force: true });
   cy.get('button#decompose_path').click();
   cy.get('#svg_10')
     .should('exist')

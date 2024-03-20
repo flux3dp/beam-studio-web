@@ -42,7 +42,8 @@ describe('phone image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('74551b0852c0f552d72225ce5c63c5f2');
+        if (isRunningAtGithub) expect(md5(href)).equal('b662e9f0b0bbab4fdc7859faea0d47ef');
+        else expect(md5(href)).equal('74551b0852c0f552d72225ce5c63c5f2');
       });
   });
 

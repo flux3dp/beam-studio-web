@@ -1,4 +1,4 @@
-describe('Ador Layer', () => {
+describe('ador layer', () => {
   const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__';
 
   const change2PrintingModule = () => {
