@@ -12,12 +12,6 @@ describe('manipulate laser panel', () => {
     cy.get('#repeat').should('have.value', repeat);
   }
 
-  function openDocumentSettings() {
-    cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(2) > .rc-menu__item').click();
-    cy.get('.rc-menu > :nth-child(22)').click();
-  }
-
   it('set customized List', () => {
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
     cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting').parent().click();
@@ -73,10 +67,7 @@ describe('manipulate laser panel', () => {
   // });
 
   it('check all parameter value with beamo canvas', () => {
-    openDocumentSettings();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('beamo').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('beamo');
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(45, 5, 1);
@@ -156,10 +147,7 @@ describe('manipulate laser panel', () => {
   });
 
   it('check all parameter value with beamboxpro canvas', () => {
-    openDocumentSettings();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('Beambox Pro').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Beambox Pro');
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(55, 7, 1);
@@ -200,10 +188,7 @@ describe('manipulate laser panel', () => {
   });
 
   it('check all parameter value with HEXA canvas', () => {
-    openDocumentSettings();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('HEXA').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('HEXA');
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(40, 6, 1);

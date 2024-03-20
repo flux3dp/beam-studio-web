@@ -11,7 +11,8 @@ describe('group tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
-    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.clickToolBtn('Ellipse');
+    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
@@ -30,7 +31,8 @@ describe('group tools', () => {
     cy.get('#svg_1').should('exist');
     cy.get('div.layers > .tab-icon').click();
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
-    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.clickToolBtn('Ellipse');
+    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');

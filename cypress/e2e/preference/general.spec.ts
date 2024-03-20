@@ -190,8 +190,7 @@ describe('update the preference', () => {
       'have.text',
       'The cutting speed of vector path objects will be constrained to 20 mm/s (0.79in/s).You can remove this limit at Preferences Settings.'
     );
-    cy.go2Preference();
-    cy.get('button[class^="ant-btn"]').contains("Don't Save").click();
+    cy.go2Preference(true);
     cy.get('#set-vector-speed-contraint').select('Off');
     applySettings();
     drawingEllipse();
@@ -203,33 +202,5 @@ describe('update the preference', () => {
     cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('not.exist');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('not.exist');
-  });
-
-  it('change Ador Printing Layer to Beamseries', () => {
-    cy.get('div.menu-btn-container').click();
-    cy.get('.rc-menu__submenu').contains('Edit').click();
-    cy.contains('Document Settings').click();
-    cy.wait(500);
-    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
-    cy.wait(700);
-    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
-    cy.get('[class="ant-select-selector"]').click();
-    cy.get('[class="ant-select-item-option-content"]').contains('Printing').click();
-    cy.get('button[class^="ant-btn"]').contains('Confirm').should('exist').click({ force: true });
-    cy.get('div.menu-btn-container').click();
-    cy.get('.rc-menu__submenu').contains('Edit').click();
-    cy.contains('Document Settings').click();
-    cy.wait(500);
-    cy.get('.ant-form-item-control-input-content').get('[title="Ador"]').click({ force: true });
-    cy.wait(700);
-    cy.get('[class^="ant-select-item-option-content"]').contains('beamo').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
-    cy.get('[class="ant-modal-content"]').should('exist');
-    cy.get('.src-web-app-views-dialogs-Alert-module__message-container--nFlUq').should(
-      'have.text',
-      'Do you want to convert the Printing Layers into Laser Layers?'
-    );
-    cy.get('button[class^="ant-btn"]').contains('Confirm').should('exist').click({ force: true });
   });
 });

@@ -10,7 +10,7 @@ describe('rectangle tools', () => {
     cy.wait(500);
     cy.get('[class^="ant-select-selection-item"]').eq(0).click();
     cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
+    cy.get('button.ant-btn').contains('Save').click({ force: true });
     cy.wait(500);
   }
 

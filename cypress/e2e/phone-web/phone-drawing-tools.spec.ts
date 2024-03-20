@@ -1,7 +1,6 @@
-it('check the existence of the tab-bar  tool', () => {
-  cy.landingEditor();
+it('check the existence of the tab-bar tool', () => {
   cy.viewport('iphone-xr');
-  cy.get('[class="src-web-app-components-mobile-CanvasTabBar-module__container--QIScp"]').should('exist');
+  cy.landingEditor();
   cy.get('.adm-tab-bar-item').contains('Camera').should('exist');
   cy.get('.adm-tab-bar-item').contains('Image').should('exist');
   cy.get('.adm-tab-bar-item').contains('Element').should('exist');
@@ -12,5 +11,4 @@ it('check the existence of the tab-bar  tool', () => {
   cy.get('.adm-tab-bar-item').contains('DMKT').should('exist');
   cy.get('.adm-tab-bar-item').contains('Undo').should('exist');
   cy.get('.adm-tab-bar-item').contains('Redo').should('exist');
-
-  });
+});

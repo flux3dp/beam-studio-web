@@ -180,7 +180,7 @@ describe('manipulate layers', () => {
     cy.get('select[class*="src-web-app-components-beambox-right-panel-SelLayerBlock-module__select"]').select('Layer 2');
     cy.get('button[class^="ant-btn"]').contains('Yes').click();
     cy.get('#svg_1').should('have.attr', 'stroke', '#3F51B5');
-    cy.get('div#left-Cursor>img').click({ force: true });
+    cy.clickToolBtn('Cursor');
     cy.get('#svg_1').click({ force: true });
     cy.get('div.tab.layers').click();
     cy.wait(500);

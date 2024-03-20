@@ -1,3 +1,6 @@
+const layerListPrefix = 'src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__';
+const moduleBlockPrefix = 'src-web-app-views-beambox-Right-Panels-ConfigPanel-ModuleBlock-module__';
+
 describe('upload tools', () => {
   it('upload png', () => {
     cy.landingEditor();
@@ -18,17 +21,19 @@ describe('upload tools', () => {
 
   it('upload dxf', () => {
     cy.landingEditor();
-    cy.fixture('basket.dxf').then(fileContent => {
-      cy.get("input[data-file-input='import_image").attachFile({
-        fileContent: fileContent.toString(),
-        fileName: 'basket.dxf',
-        mimeType: 'application/dxf'
-      });
-    });
-    cy.get('button[class^="ant-btn"]').contains('OK').should('be.exist').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('OK').should('be.exist').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('OK').should('be.exist').click({ force: true });
-    cy.wait(1000);
+    cy.uploadFile('basket.dxf');
+    cy.contains('.ant-modal-content', 'Please enter the Unit of your file (in mm)')
+      .contains('OK')
+      .should('be.exist')
+      .click();
+    cy.contains('.ant-modal-content', 'Drawing size is out of workarea.')
+      .contains('OK')
+      .should('be.exist')
+      .click();
+    cy.contains('.ant-modal-content', 'The version of this DXF file is not 2013')
+      .contains('OK')
+      .should('be.exist')
+      .click();
     cy.get('#svg_1').should('exist');
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
@@ -40,56 +45,37 @@ describe('upload tools', () => {
 
   it('upload Printing Beam to laser layer', () => {
     cy.landingEditor();
-    cy.get('div.menu-btn-container').click();
-    cy.get('.rc-menu__submenu').contains("Edit").click();
-    cy.contains('Document Settings').click();
-    cy.wait(500);
-    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
-    cy.wait(700);
-    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
-    cy.wait(500);
+    cy.changeWorkarea('Ador');
     cy.uploadFile('printing.beam');
-    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
-      .should('have.attr', 'data-layer', '預設圖層');
-    cy.get('.ant-select-selection-item').should('have.attr', 'title', 'Printing');
+    cy.get(`div[class*="${layerListPrefix}row"]`).should('have.attr', 'data-layer', '預設圖層');
+    cy.get(`div[class*="${moduleBlockPrefix}select"]`).should('have.text', 'Printing');
   });
 
   it('upload Laser Beam to printing layer', () => {
     cy.landingEditor();
-    cy.get('div.menu-btn-container').click();
-    cy.get('.rc-menu__submenu').contains("Edit").click();
-    cy.contains('Document Settings').click();
-    cy.wait(500);
-    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
-    cy.wait(700);
-    cy.get('[class^="ant-select-item-option-content"]').contains('Ador').click({ force: true });
-    cy.get('button[class^="ant-btn"]').contains('Save').click({ force: true });
-    cy.wait(500);
-    cy.get('[class="ant-select-selector"]')
-      .click();
-    cy.get('[class="ant-select-item-option-content"]')
-      .contains('Printing')
-      .click();
-    cy.get('[class="ant-modal-title"]')
-      .should('have.text', 'Do you want to convert the Laser module into Printing module?');
-    cy.get('button[class^="ant-btn"]').contains('Confirm')
-      .should('exist').click({ force: true });
+    cy.changeWorkarea('Ador');
+    cy.get(`div[class*="${moduleBlockPrefix}select"]`).as('module');
+    cy.get('@module').should('have.text', '20W Diode Laser');
+    cy.get('@module').get('.ant-select-selector').click();
+    cy.get('.ant-select-item-option-content').contains('Printing').click();
+    cy.get('.ant-modal-title')
+      .contains('Do you want to convert the Laser module into Printing module?')
+      .should('exist');
+    cy.get('button.ant-btn').contains('Confirm').should('exist').click();
+    cy.get('@module').should('have.text', 'Printing');
     cy.uploadFile('laser.beam');
-    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
-      .should('have.attr', 'data-layer', '預設圖層');
-    cy.get('.ant-select-selection-item').should('have.attr', 'title', '20W Diode Laser');
+    cy.get(`div[class*="${layerListPrefix}row"]`).should('have.attr', 'data-layer', '預設圖層');
+    cy.get('@module').should('have.text', '20W Diode Laser');
   });
 
   it('upload Printing Beam to Beamseries', () => {
     cy.landingEditor();
     cy.uploadFile('printing.beam');
-    cy.get('.ant-modal-content').contains('The document contains printing layer, would you like to change workarea to Ador?')
+    cy.get('.ant-modal-content')
+      .contains('The document contains printing layer, would you like to change workarea to Ador?')
       .should('exist');
     cy.get('.ant-btn').contains('Yes').click();
-    cy.get('.src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__row--2O-iF')
-      .should('have.attr', 'data-layer', '預設圖層');
-    cy.get('.ant-select-selection-item').should('have.attr', 'title', 'Printing');
+    cy.get(`div[class*="${layerListPrefix}row"]`).should('have.attr', 'data-layer', '預設圖層');
+    cy.get(`div[class*="${moduleBlockPrefix}select"]`).should('have.text', 'Printing');
   });
-
 });

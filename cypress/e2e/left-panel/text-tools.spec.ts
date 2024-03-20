@@ -1,4 +1,4 @@
-describe('select tools', () => {
+describe('text tools', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
@@ -39,7 +39,7 @@ describe('select tools', () => {
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder img[alt="Noto Sans"]').click();
     fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
-    cy.get('#svg_1').should('have.attr', 'font-family', '\'Noto Sans\'');
+    cy.get('#svg_1').should('have.attr', 'font-family', 'Noto Sans');
   });
 
   it('text style', () => {
@@ -47,7 +47,7 @@ describe('select tools', () => {
     drawText2();
     cy.get('div#object-panel').should('exist');
     cy.get('.ant-select-selection-item[title="Font"]').click();
-    cy.get('[alt="Noto Sans"]').click();
+    cy.get('.rc-virtual-list-holder img[alt="Noto Sans"]').click();
     cy.get('.ant-select[title="Style"]').click();
     cy.contains('Italic').click();
     cy.get('#svg_2').should('have.attr', 'font-style').and('eq', 'italic');
@@ -131,7 +131,4 @@ describe('select tools', () => {
     cy.get('button[title="Infill"]').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
-
-
 });
-

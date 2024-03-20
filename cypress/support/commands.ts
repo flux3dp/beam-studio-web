@@ -56,7 +56,7 @@ Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
   cy.wait(1000);
 });
 
-Cypress.Commands.add('uploadFile', (fileName: string, fileType) => {
+Cypress.Commands.add('uploadFile', (fileName: string, fileType = '') => {
   cy.get('input[data-file-input="import_image"').then(($input) => {
     cy.fixture(fileName, 'base64')
       .then(Cypress.Blob.base64StringToBlob)
@@ -88,20 +88,22 @@ Cypress.Commands.add('setUpBackend', (ip: string) => {
 });
 
 Cypress.Commands.add('connectMachine', (machineName: string) => {
-  cy.findAllByTestId('select-machine').should('exist');
-  cy.findAllByTestId('select-machine').click();
-  cy.findAllByText(machineName).should('exist');
-  cy.findAllByText(machineName).click();
-  cy.get('.ant-modal-footer').get('.ant-btn-primary', { timeout: 150000 }).contains('Yes').click();
+  cy.findByTestId('select-machine').should('exist');
+  cy.findByTestId('select-machine').click();
+  cy.findByText(machineName).should('exist');
+  cy.findByText(machineName).click();
+  cy.get('.ant-modal-footer .ant-btn-primary', { timeout: 150000 }).contains('Yes').click();
+  cy.findByTestId('select-machine').contains(machineName);
 });
 
-Cypress.Commands.add('go2Preference', () => {
+Cypress.Commands.add('go2Preference', (handleSave = false) => {
   cy.get('div.top-bar-menu-container').click();
-  cy.get('li.rc-menu__submenu').should('have.length', 6);
+  cy.get('ul.rc-menu--dir-bottom>li.rc-menu__submenu').should('have.length', 6);
   cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
-  cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click({
-    force: true,
-  });
+  cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click();
+  if (handleSave) {
+    cy.get('button.ant-btn').contains("Don't Save").click();
+  }
 });
 
 Cypress.Commands.add('checkToolBtnActive', (id: string, active = true) => {
@@ -115,6 +117,17 @@ Cypress.Commands.add('clickToolBtn', (id: string) => {
   cy.get(`div#left-${id}`).should('exist');
   cy.get(`div#left-${id}`).click();
   cy.checkToolBtnActive(id);
+});
+
+Cypress.Commands.add('changeWorkarea', (workarea: string, save = true) => {
+  cy.get('div.menu-btn-container').click();
+  cy.get('.rc-menu__submenu').contains('Edit').click();
+  cy.contains('Document Settings').click();
+  cy.contains('.ant-form-item', 'Working Area').find('.ant-select').as('select');
+  cy.get('@select').find('.ant-select-selection-item').click();
+  cy.get('@select').should('have.class', 'ant-select-open');
+  cy.get('.ant-select-item-option-content').contains(workarea).click({ force: true });
+  if (save) cy.get('button.ant-btn').contains('Save').click({ force: true });
 });
 
 //

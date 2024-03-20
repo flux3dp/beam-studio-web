@@ -3,7 +3,7 @@ it('snap to vertices', () => {
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
   cy.get('.rc-menu > :nth-child(18)').click().should('have.attr', 'tabindex', '-1');
-  cy.get('#left-Pen > img').click();
+  cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });

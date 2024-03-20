@@ -1,30 +1,56 @@
 describe('verify top bar behaviors under device disconnection', () => {
   beforeEach(() => {
-    // cy.loginAndLandingEditor();
+    cy.landingEditor();
   });
 
-  // it('show #801 while clicking on preview button', () => {
-  //   cy.get('div.preview-button-container').should('exist');
-  //   cy.get('div.preview-button-container').click().click();
-  //   cy.get('.ant-modal-content').contains('#801');
-  // });
+  it('show #801 while clicking on preview button', () => {
+    cy.get('.top-bar [title="Preview"]').should('exist');
+    cy.get('.top-bar [title="Preview"]').click();
+    cy.get('#preview-shoot').should('exist');
+    cy.get('#preview-shoot').click();
+    cy.get('.ant-modal-content').contains('#801').should('exist');
+  });
 
-  // it('show #801 while clicking on GO button', () => {
-  //   cy.get('div.go-btn').should('exist');
-  //   cy.get('div.go-btn').click();
-  //   cy.get('.ant-modal-content').contains('#801');
-  // });
+  it('show #801 while clicking on select machine button', () => {
+    cy.findByTestId('select-machine').should('exist');
+    cy.findByTestId('select-machine').click();
+    cy.get('.ant-modal-content').contains('#801').should('exist');
+  });
 
-  // it('path-preview button is disabled when no machine', () => {
-  //   cy.get('div.path-preview-button').should('exist');
-  //   cy.get('div.path-preview-button-container').should('have.class', 'disabled');
-  // });
+  it('show #801 while clicking on framing button', () => {
+    cy.get('.top-bar [title="Running Frame"]').should('exist');
+    cy.get('.top-bar [title="Running Frame"]').click();
+    cy.get('.ant-message-notice-info').contains('Please add objects first').should('exist');
 
-  // it('toturial is unable to show when no machine', () => {
-  //   cy.get('div.menu-btn-container').click();
-  //   cy.get(':nth-child(5) > .rc-menu__item').click();
-  //   cy.get(':nth-child(5) > .rc-menu > :nth-child(2)').click();
-  //   cy.wait(5000);
-  //   cy.get('.ant-modal-content').should('have.text', 'Unable to find machine for Tutorial. Do you want to go to connection setting page, retry or skip tutorial?Set ConnectionRetrySkip')
-  // });
+    cy.clickToolBtn('Rectangle');
+    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
+    cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
+    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.get('.top-bar [title="Running Frame"]').click();
+    cy.get('.ant-modal-content').contains('#801').should('exist');
+  });
+
+  it('path preview button is disabled', () => {
+    cy.get('.top-bar [title="Path preview"]').should('exist');
+    cy.get('.top-bar [title="Path preview"]').invoke('attr', 'class').should('contain', 'disabled');
+    cy.get('.top-bar [title="Path preview"]').should('have.css', 'pointer-events', 'none');
+  });
+
+  it('GO button is disabled', () => {
+    cy.get('.top-bar [title="Start Work"]').should('exist');
+    cy.get('.top-bar [title="Start Work"]').invoke('attr', 'class').should('contain', 'disabled');
+    cy.get('.top-bar [title="Path preview"]').should('have.css', 'pointer-events', 'none');
+  });
+
+  it('toturial is unable to start', () => {
+    cy.get('div.menu-btn-container').click();
+    cy.contains('Help').click();
+    cy.contains('Show Start Tutorial').click();
+    cy.contains('Searching machine for tutorial...').should('exist');
+    cy.contains('Searching machine for tutorial...').should('not.exist');
+    cy.get('.ant-modal-content').should(
+      'have.text',
+      'Unable to find machine for Tutorial. Do you want to go to connection setting page, retry or skip tutorial?Set ConnectionRetrySkip'
+    );
+  });
 });

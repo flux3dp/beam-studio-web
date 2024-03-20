@@ -1,5 +1,4 @@
 describe('Element-Tools', () => {
-
   it('Element-Tools', () => {
     cy.landingEditor();
     cy.clickToolBtn('Element');

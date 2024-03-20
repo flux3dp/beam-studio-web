@@ -60,7 +60,8 @@ describe('array tools', () => {
   it('group', () => {
     cy.uploadFile('flux.png', 'image/png');
     // Create ellipse
-    cy.clickToolBtn('Ellipse'); cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
+    cy.clickToolBtn('Ellipse');
+    cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);

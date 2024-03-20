@@ -15,24 +15,17 @@ it('check clear scene', () => {
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
   cy.get(':nth-child(23)').contains('Clear Scene').click();
-  cy.contains('button span', 'Yes').click()
+  cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
 
-function go2Preference() {
-  cy.get('div.top-bar-menu-container').click();
-  cy.get('li.rc-menu__submenu').should('have.length', 5);
-  cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
-  cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click({ force: true });
-}
-
 it('check clear scene after preference', () => {
   cy.landingEditor();
-  go2Preference();
-  cy.get('b').click();
-  cy.get('.btn').contains('Next').click();
-  cy.get('.skip').click();
-  cy.get('.src-web-app-pages-SelectMachineModel-module__btn--vSspa').contains('Skip').click();
+  cy.go2Preference();
+  cy.contains('Reset Beam Studio').click();
+  cy.contains('Next').click();
+  cy.contains('Work Offline').click();
+  cy.contains('Skip').click();
   cy.get('[type="button"]').contains('No').click();
   cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
@@ -49,6 +42,6 @@ it('check clear scene after preference', () => {
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
   cy.get(':nth-child(23)').contains('Clear Scene').click();
-  cy.contains('button span', 'Yes').click()
+  cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
