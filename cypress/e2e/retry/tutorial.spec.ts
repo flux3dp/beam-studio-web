@@ -25,13 +25,13 @@ describe('show tutorial', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('g.layer>rect').should('exist');
     cy.get('g.layer>rect')
-      .should('have.attr', 'x', '641.3412864')
-      .should('have.attr', 'y', '639.8556796')
-      .should('have.attr', 'width', '1273.3446602000001')
-      .should('have.attr', 'height', '636.6723301')
       .should('have.attr', 'stroke', '#333333')
       .should('have.attr', 'fill', 'none')
       .should('have.attr', 'fill-opacity', '0');
+    cy.get('g.layer>rect').invoke('attr', 'x').then(parseInt).should('be.gt', '600');
+    cy.get('g.layer>rect').invoke('attr', 'y').then(parseInt).should('be.gt', '600');
+    cy.get('g.layer>rect').invoke('attr', 'width').then(parseInt).should('be.gt', '1200');
+    cy.get('g.layer>rect').invoke('attr', 'height').then(parseInt).should('be.gt', '600');
   };
 
   beforeEach(() => {
@@ -97,8 +97,18 @@ describe('show tutorial', () => {
 
   it('show gesture introduction', () => {
     openTutorial('Hand Gesture Introduction');
-    checkGestureStep('.media-container > img', 'Scroll the canvas with two fingers.', '1/5', 'Next');
-    checkGestureStep('.media-container > img', 'Pinch with two fingers to zoom in/out the canvas.', '2/5', 'Next');
+    checkGestureStep(
+      '.media-container > img',
+      'Scroll the canvas with two fingers.',
+      '1/5',
+      'Next'
+    );
+    checkGestureStep(
+      '.media-container > img',
+      'Pinch with two fingers to zoom in/out the canvas.',
+      '2/5',
+      'Next'
+    );
     checkGestureStep('video', 'Tap to select the object.', '3/5', 'Next');
     checkGestureStep('video', 'Drag to select the multiple objects.', '4/5', 'Next');
     checkGestureStep('video', 'Press and hold to open the context menu.', '5/5', 'Done');

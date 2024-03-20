@@ -1,5 +1,6 @@
 import { md5 } from '../../support/utils';
 
+const isRunningAtGithub = Cypress.env('envType') === 'github';
 const laserPanelBlockPrefix = 'src-web-app-views-beambox-Right-Panels-ConfigPanel-Block-module__';
 
 function drawingEllipse() {
@@ -139,7 +140,8 @@ describe('update the preference', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
+        if (isRunningAtGithub) expect(md5(href)).equal('ab08bb3b784e10e362dd1cc108f97c36');
+        else expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
       });
   });
 

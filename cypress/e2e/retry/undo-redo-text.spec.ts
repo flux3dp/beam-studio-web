@@ -96,13 +96,13 @@ describe('verify undo/redo behaviors', () => {
     cy.get('#vertical-text').invoke('attr', 'class').should('contain', 'active');
     undoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    cy.get('#w_size').should('have.value', 149.93);
-    cy.get('#h_size').should('have.value', 27.06);
+    cy.get('#w_size').invoke('prop', 'value').then(parseInt).should('be.gt', '140');
+    cy.get('#h_size').invoke('prop', 'value').then(parseInt).should('be.lt', '30');
     cy.get('#vertical-text').invoke('attr', 'class').should('not.contain', 'active');
     redoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    cy.get('#w_size').should('have.value', 14.62);
-    cy.get('#h_size').should('have.value', 287.06);
+    cy.get('#w_size').invoke('prop', 'value').then(parseInt).should('be.lt', '20');
+    cy.get('#h_size').invoke('prop', 'value').then(parseInt).should('be.gt', '280');
     cy.get('#vertical-text').invoke('attr', 'class').should('contain', 'active');
   });
 

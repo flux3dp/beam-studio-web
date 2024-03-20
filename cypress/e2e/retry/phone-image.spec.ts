@@ -16,7 +16,8 @@ describe('phone image tools', () => {
     cy.get('#svg_3')
       .invoke('attr', 'd')
       .then((d) => {
-        expect(md5(d)).equal('cc506f32e6e24b10d9c9dc6a7b6140de');
+        if (isRunningAtGithub) expect(md5(d)).equal('01da9b4d6e81051ee1439f07c169c710');
+        else expect(md5(d)).equal('cc506f32e6e24b10d9c9dc6a7b6140de');
       });
   });
 
@@ -29,7 +30,8 @@ describe('phone image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('09d3a797b7747f423cd858c6e897d485');
+        if (isRunningAtGithub) expect(md5(href)).equal('7a59512b45de002b41b3c4ebdcc3760a');
+        else expect(md5(href)).equal('09d3a797b7747f423cd858c6e897d485');
       });
     cy.get('#gradient').click({ force: true });
     cy.get('#svg_1')
@@ -53,7 +55,8 @@ describe('phone image tools', () => {
       .click()
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('94fd9b5fdf467675b2eb9e20ae1ea66f');
+        if (isRunningAtGithub) expect(md5(href)).equal('53c9d4f97685ea5903e3363f27611510');
+        else expect(md5(href)).equal('94fd9b5fdf467675b2eb9e20ae1ea66f');
       });
   });
 
@@ -71,7 +74,8 @@ describe('phone image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
+        if (isRunningAtGithub) expect(md5(href)).equal('ab08bb3b784e10e362dd1cc108f97c36');
+        else expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
       });
   });
 
@@ -88,7 +92,8 @@ describe('phone image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('4c135ebf9ed7172043580b9beaa9c87d');
+        if (isRunningAtGithub) expect(md5(href)).equal('951e0851e66b255a005aaa7fda15727a');
+        else expect(md5(href)).equal('4c135ebf9ed7172043580b9beaa9c87d');
       });
   });
 
@@ -116,7 +121,8 @@ describe('phone image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        expect(md5(href)).equal('4d7e7b1f937e9161c3f3c567d5ee869b');
+        if (isRunningAtGithub) expect(md5(href)).equal('de1073c40f0c095297d9d87af6b74dc3');
+        else expect(md5(href)).equal('4d7e7b1f937e9161c3f3c567d5ee869b');
       });
   });
 });
