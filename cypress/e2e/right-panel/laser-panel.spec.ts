@@ -1,4 +1,5 @@
-const configOperationsPrefix = 'src-web-app-views-beambox-Right-Panels-LaserPanel-ConfigOperations-module__';
+const configOperationsPrefix =
+  'src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigOperations-module__';
 const configListPrefix = 'src-web-app-views-beambox-Right-Panels-LaserManage-ConfigList-module__';
 
 describe('manipulate laser panel', () => {
@@ -12,19 +13,28 @@ describe('manipulate laser panel', () => {
     cy.get('#repeat').should('have.value', repeat);
   }
 
-  it('set customized List', () => {
+  it('set customized list', () => {
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting').parent().click();
+    cy.get('#custom-config-list')
+      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting')
+      .parent()
+      .click();
     cy.get('button[class*="ant-btn"]').eq(1).click();
     cy.get('#custom-config-list').children().should('have.length', '15');
-    cy.get(`div[class*="${configListPrefix}list"]`).get(`div[class*="${configListPrefix}name"]`).eq(1).click();
+    cy.get(`div[class*="${configListPrefix}list"]`)
+      .get(`div[class*="${configListPrefix}name"]`)
+      .eq(1)
+      .click();
     cy.get('button[class*="ant-btn"]').eq(0).click();
     cy.get('#custom-config-list').children().should('have.length', '16');
   });
 
   it('reset the parameter', () => {
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting').parent().click();
+    cy.get('#custom-config-list')
+      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting')
+      .parent()
+      .click();
     cy.get('button[class^="ant-btn"]').contains('Delete').click();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.get('#laser-config-dropdown').children().should('have.length', '18');
@@ -39,7 +49,7 @@ describe('manipulate laser panel', () => {
     cy.get('#power-input').clear().type('100').blur();
     cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
-    cy.get('div.add-preset-btn').click();
+    cy.get('.preset-dropdown-containter img[src="img/icon-plus.svg"]').click();
     cy.get('.text-input').type('Hello Flux').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
@@ -231,15 +241,19 @@ describe('manipulate laser panel', () => {
     cy.get('#power-input').clear().type('100').blur();
     cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
-    cy.get('div.add-preset-btn').click();
+    cy.get('.preset-dropdown-containter img[src="img/icon-plus.svg"]').click();
     cy.get('.text-input').type('Hi Flux').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get('[title="Export"]').click();
     cy.wait(5000);
-    cy.readFile(cypressDownloadPath).its('customizedLaserConfigs').its('16').its('name').should('eq', 'Hi Flux');
+    cy.readFile(cypressDownloadPath)
+      .its('customizedLaserConfigs')
+      .its('16')
+      .its('name')
+      .should('eq', 'Hi Flux');
   });
 
-  it.only('import parameter file', () => {
+  it('import parameter file', () => {
     cy.get('[title="Import"] > img').click();
     cy.get('#file-input').attachFile('testfile.json');
     cy.contains('Confirm').click();

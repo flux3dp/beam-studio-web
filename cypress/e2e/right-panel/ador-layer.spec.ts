@@ -1,15 +1,15 @@
 describe('Ador Layer', () => {
   const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__';
 
-  const changeModule = (module: string) => {
+  const change2PrintingModule = () => {
     cy.get('.ant-select-selector').click();
-    cy.get('.ant-select-item-option-content').contains(module).click();
+    cy.get('.ant-select-item-option-content').contains('Printing').click();
     cy.get('.ant-modal-title').should(
       'have.text',
-      module === 'Printing' ? 'Do you want to convert the Laser module into Printing module?' : ''
+      'Do you want to convert the Laser module into Printing module?'
     );
     cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
-    cy.get('.ant-select-selector').should('have.text', module);
+    cy.get('.ant-select-selector').should('have.text', 'Printing');
   };
 
   const getLayerPanelValue = (label: string) => {
@@ -37,7 +37,7 @@ describe('Ador Layer', () => {
   it('merge printing and laser layers', () => {
     cy.changeWorkarea('Ador');
     cy.get(`button[class*="${addLayerBtnPrefix}btn"]`).click({ force: true });
-    changeModule('Printing');
+    change2PrintingModule();
     cy.get(`button[class*="${addLayerBtnPrefix}btn"]`).click({ force: true });
     cy.get('.ant-select-selector').should('have.text', '20W Diode Laser');
 
@@ -63,7 +63,7 @@ describe('Ador Layer', () => {
   it('move to printing or laser layers', () => {
     cy.changeWorkarea('Ador');
     cy.get(`button[class*="${addLayerBtnPrefix}btn"]`).click({ force: true });
-    changeModule('Printing');
+    change2PrintingModule();
     cy.clickToolBtn('Element');
     cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
       .eq(0)
@@ -97,7 +97,7 @@ describe('Ador Layer', () => {
     cy.get('#print-advanced-mode').select('Off');
     cy.get('.btn.btn-done').contains('Apply').click();
     cy.changeWorkarea('Ador');
-    changeModule('Printing');
+    change2PrintingModule();
 
     getLayerPanelValue('Saturation').should('have.text', 'Regular');
     dragSlider('saturation', -100);
@@ -133,7 +133,7 @@ describe('Ador Layer', () => {
     cy.get('#print-advanced-mode').select('On');
     cy.get('[class="btn btn-done"]').contains('Apply').click();
     cy.changeWorkarea('Ador');
-    changeModule('Printing');
+    change2PrintingModule();
 
     cy.get('#saturation-input').should('have.value', '3');
     dragSlider('saturation', -200);

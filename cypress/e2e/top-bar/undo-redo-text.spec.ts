@@ -26,8 +26,6 @@ describe('verify undo/redo behaviors', () => {
   it('text with font', () => {
     drawText();
     cy.get('.ant-select-selection-item[title="Font"]').click();
-    cy.get('.rc-virtual-list-holder img[alt="Noto Sans"]').click();
-    cy.get('.ant-select-selection-item[title="Font"]').click();
     cy.get('.rc-virtual-list-holder img[alt="lobster"]').click();
     cy.get('#svg_1').click({ force: true });
     fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');
@@ -96,13 +94,13 @@ describe('verify undo/redo behaviors', () => {
     cy.get('#vertical-text').invoke('attr', 'class').should('contain', 'active');
     undoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    cy.get('#w_size').invoke('prop', 'value').then(parseInt).should('be.gt', '140');
-    cy.get('#h_size').invoke('prop', 'value').then(parseInt).should('be.lt', '30');
+    cy.get('#w_size').invoke('prop', 'value').then(parseInt).should('be.gt', 140);
+    cy.get('#h_size').invoke('prop', 'value').then(parseInt).should('be.lt', 30);
     cy.get('#vertical-text').invoke('attr', 'class').should('not.contain', 'active');
     redoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    cy.get('#w_size').invoke('prop', 'value').then(parseInt).should('be.lt', '20');
-    cy.get('#h_size').invoke('prop', 'value').then(parseInt).should('be.gt', '280');
+    cy.get('#w_size').invoke('prop', 'value').then(parseInt).should('be.lt', 20);
+    cy.get('#h_size').invoke('prop', 'value').then(parseInt).should('be.gt', 280);
     cy.get('#vertical-text').invoke('attr', 'class').should('contain', 'active');
   });
 

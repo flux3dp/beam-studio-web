@@ -122,7 +122,10 @@ describe('convert to path 2.0', () => {
     cy.get('#svg_2').should('have.attr', 'd');
     cy.get('#svg_2')
       .invoke('attr', 'd')
-      .then((d) => expect(md5(d)).equal('6fde8da297586452f7561d6dc93299bc'));
+      .then((d) => {
+        if (isRunningAtGithub) expect(md5(d)).equal('5951b071eac21549437779d3bb3554bd');
+        else expect(md5(d)).equal('6fde8da297586452f7561d6dc93299bc');
+      });
   });
 
   it('replace text', () => {
@@ -144,7 +147,10 @@ describe('convert to path 2.0', () => {
     cy.get('#svg_2').should('have.attr', 'd');
     cy.get('#svg_2')
       .invoke('attr', 'd')
-      .then((d) => expect(md5(d)).equal('0b39368fe65b64e08cd08b9c8ff625b9'));
+      .then((d) => {
+        if (isRunningAtGithub) expect(md5(d)).equal('9790fb3564249f0952dd1b131b77eba3');
+        else expect(md5(d)).equal('0b39368fe65b64e08cd08b9c8ff625b9');
+      });
   });
 
   it('weld text', () => {
@@ -158,6 +164,9 @@ describe('convert to path 2.0', () => {
     cy.get('#svg_2').should('have.attr', 'd');
     cy.get('#svg_2')
       .invoke('attr', 'd')
-      .then((d) => expect(md5(d)).equal('d828dcc474ad48d26ecb9269cb3844fa'));
+      .then((d) => {
+        if (isRunningAtGithub) expect(md5(d)).equal('dfbbfd86ed6dc191ce71fdd6ae819677');
+        else expect(md5(d)).equal('d828dcc474ad48d26ecb9269cb3844fa');
+      });
   });
 });

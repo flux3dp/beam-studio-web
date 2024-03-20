@@ -93,7 +93,7 @@ Cypress.Commands.add('connectMachine', (machineName: string) => {
   cy.findByText(machineName).should('exist');
   cy.findByText(machineName).click();
   cy.get('.ant-modal-footer .ant-btn-primary', { timeout: 150000 }).contains('Yes').click();
-  cy.findByTestId('select-machine').contains(machineName);
+  cy.findByTestId('select-machine').contains(machineName).should('exist');
 });
 
 Cypress.Commands.add('go2Preference', (handleSave = false) => {
@@ -101,9 +101,7 @@ Cypress.Commands.add('go2Preference', (handleSave = false) => {
   cy.get('ul.rc-menu--dir-bottom>li.rc-menu__submenu').should('have.length', 6);
   cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
   cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click();
-  if (handleSave) {
-    cy.get('button.ant-btn').contains("Don't Save").click();
-  }
+  if (handleSave) cy.get('button.ant-btn').contains("Don't Save").click();
 });
 
 Cypress.Commands.add('checkToolBtnActive', (id: string, active = true) => {

@@ -50,9 +50,7 @@ describe('phone text tools', () => {
     cy.get('[class="adm-button adm-button-default adm-button-shape-rounded"]')
       .contains('.')
       .click({ force: true });
-    cy.get(
-      '[class="src-web-app-views-beambox-Right-Panels-ObjectPanelItem-module__input-keys--PK4UJ"]'
-    )
+    cy.get('[class=*"src-web-app-views-beambox-Right-Panels-ObjectPanelItem-module__input-keys"]')
       .contains('1')
       .click({ force: true });
     cy.get('#svg_1').should('have.attr', 'letter-spacing').and('eq', '0.1em');

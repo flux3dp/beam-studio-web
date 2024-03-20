@@ -1,5 +1,7 @@
 import { md5 } from '../../support/utils';
 
+const isRunningAtGithub = Cypress.env('envType') === 'github';
+
 describe('phone image tools', () => {
   beforeEach(() => {
     cy.viewport('iphone-xr');

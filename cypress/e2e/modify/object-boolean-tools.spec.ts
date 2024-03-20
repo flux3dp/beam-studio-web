@@ -1,13 +1,12 @@
 import { md5 } from '../../support/utils';
 
-const selectGrip = 'circle#selectorGrip_resize_';
-
 function drawingElements() {
   cy.clickToolBtn('Rectangle');
   cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.get('#svg_1').should('exist');
+  cy.wait(500);
   cy.get('#infill').click();
   cy.get('#x_position').clear().type('0{enter}');
   cy.get('#y_position').clear().type('0{enter}');
@@ -18,12 +17,12 @@ function drawingElements() {
   cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.get('#svg_2').should('exist');
+  cy.wait(500);
   cy.get('#infill').click();
   cy.get('#cx_position').clear().type('0{enter}');
   cy.get('#cy_position').clear().type('0{enter}');
   cy.get('#rx_size').clear().type('150{enter}');
   cy.get('#ry_size').clear().type('150{enter}');
-  // cy.pause();
   cy.wait(500);
 }
 
