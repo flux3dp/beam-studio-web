@@ -1,6 +1,6 @@
 const topbarModulesPrefix = 'src-web-app-components-beambox-top-bar-';
 
-describe('check the existence of the tab-bar tools', () => {
+describe('check the existence of the top bar tools on mobile', () => {
   beforeEach(() => {
     cy.viewport('iphone-xr');
     cy.landingEditor();

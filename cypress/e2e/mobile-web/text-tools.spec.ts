@@ -1,4 +1,4 @@
-describe('phone text tools', () => {
+describe('mobile text tools', () => {
   beforeEach(() => {
     cy.viewport('iphone-xr');
     cy.landingEditor();

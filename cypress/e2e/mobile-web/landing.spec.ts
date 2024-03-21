@@ -1,4 +1,4 @@
-describe('phone landing', () => {
+describe('mobile landing', () => {
   before(() => {
     cy.viewport('iphone-xr');
     cy.visit('/', {

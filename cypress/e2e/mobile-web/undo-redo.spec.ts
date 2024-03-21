@@ -1,4 +1,4 @@
-describe('phone undo redo', () => {
+describe('mobile undo redo', () => {
   beforeEach(() => {
     cy.viewport('iphone-xr');
     cy.landingEditor();

@@ -1,4 +1,4 @@
-it('check the existence of the tab-bar tool', () => {
+it('check the existence of the tab bar tool on mobile', () => {
   cy.viewport('iphone-xr');
   cy.landingEditor();
   cy.get('.adm-tab-bar-item').contains('Camera').should('exist');

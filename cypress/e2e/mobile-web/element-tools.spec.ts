@@ -2,7 +2,7 @@ import { md5 } from '../../support/utils';
 
 const shapePanelPrefix = 'src-web-app-views-beambox-ShapePanel-ShapePanel-module__';
 
-describe('phone element tools', () => {
+describe('mobile element tools', () => {
   beforeEach(() => {
     cy.viewport('iphone-xr');
     cy.landingEditor();
