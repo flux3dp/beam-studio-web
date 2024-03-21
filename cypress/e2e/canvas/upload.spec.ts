@@ -43,7 +43,7 @@ describe('upload tools', () => {
     cy.get('#h_size').should('have.attr', 'value').and('eq', '465.52');
   });
 
-  it('upload Printing Beam to laser layer', () => {
+  it('upload printing beam to laser layer', () => {
     cy.landingEditor();
     cy.changeWorkarea('Ador');
     cy.uploadFile('printing.beam');
@@ -51,7 +51,7 @@ describe('upload tools', () => {
     cy.get(`div[class*="${moduleBlockPrefix}select"]`).should('have.text', 'Printing');
   });
 
-  it('upload Laser Beam to printing layer', () => {
+  it('upload laser beam to printing layer', () => {
     cy.landingEditor();
     cy.changeWorkarea('Ador');
     cy.get(`div[class*="${moduleBlockPrefix}select"]`).as('module');
@@ -68,7 +68,7 @@ describe('upload tools', () => {
     cy.get('@module').should('have.text', '20W Diode Laser');
   });
 
-  it('upload Printing Beam to Beamseries', () => {
+  it('upload printing beam to beamseries', () => {
     cy.landingEditor();
     cy.uploadFile('printing.beam');
     cy.get('.ant-modal-content')

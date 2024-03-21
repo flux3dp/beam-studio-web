@@ -1,3 +1,5 @@
+import { md5 } from '../../support/utils';
+
 const shapePanelPrefix = 'src-web-app-views-beambox-ShapePanel-ShapePanel-module__';
 
 describe('import from element panel', () => {
@@ -26,11 +28,9 @@ describe('import from element panel', () => {
     cy.get(`.anticon[class*="${shapePanelPrefix}icon--"]`).eq(0).click();
     cy.get('#svg_9').should('exist');
     cy.get('#svg_9').should('have.attr', 'fill', '#333333');
-    cy.get('#svg_9').should(
-      'have.attr',
-      'd',
-      'M250.0001615,-1e-7 L327.5630628,156.1086281 L500.0000311,181.6358068 L375.4995411,303.6434539 L404.5082297,475.5284043 L250.0001615,394.8242581 L95.4920932,475.5284043 L124.5007819,303.6434539 L-2e-7,181.6358068 L172.4372602,156.1086281 L250.0001615,-1e-7 z'
-    );
+    cy.get('#svg_9')
+      .invoke('attr', 'd')
+      .then((html) => expect(md5(html)).equal('c6bc81cd8591fc0a1d2a4d77203d09e1'));
   });
 
   it('import line element', () => {
@@ -45,10 +45,8 @@ describe('import from element panel', () => {
     cy.get('#svg_1').should('have.attr', 'data-ratiofixed', 'true');
     cy.get('#svg_1').should('have.attr', 'style', 'pointer-events:none');
     cy.get('#svg_1').should('have.attr', 'vector-effect', 'non-scaling-stroke');
-    cy.get('#svg_1').should(
-      'have.attr',
-      'd',
-      'M0,250 L0,83.3333313 C0,37.3096658 37.3096658,0 83.3333313,0 L416.6666567,0 C462.689989,0 500,37.3096658 500,83.3333313 L500,250'
-    );
+    cy.get('#svg_1')
+      .invoke('attr', 'd')
+      .then((html) => expect(md5(html)).equal('0a946d3b75ebf64f8c1820b9f06c45f0'));
   });
 });

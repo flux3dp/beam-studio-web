@@ -89,7 +89,7 @@ describe('upload with machine', () => {
     cy.get('symbol#svg_1_image>image').should('have.attr', 'filter', 'url(#filter#333333)');
   });
 
-  it('upload svg > Printing > Layer & Change Color', () => {
+  it('upload svg > Printing > Layer and change color', () => {
     cy.connectMachine(beamSeriersName);
     cy.changeWorkarea('Ador');
     cy.uploadFile('svg.svg', 'image/svg+xml');
