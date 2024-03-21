@@ -1,4 +1,5 @@
-const configOperationsPrefix = 'src-web-app-views-beambox-Right-Panels-LaserPanel-ConfigOperations-module__';
+const configOperationsPrefix =
+  'src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigOperations-module__';
 const configListPrefix = 'src-web-app-views-beambox-Right-Panels-LaserManage-ConfigList-module__';
 
 describe('manipulate laser panel', () => {
@@ -12,25 +13,28 @@ describe('manipulate laser panel', () => {
     cy.get('#repeat').should('have.value', repeat);
   }
 
-  function openDocumentSettings() {
-    cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(2) > .rc-menu__item').click();
-    cy.get('.rc-menu > :nth-child(22)').click();
-  }
-
-  it('set customized List', () => {
+  it('set customized list', () => {
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting').parent().click();
+    cy.get('#custom-config-list')
+      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting')
+      .parent()
+      .click();
     cy.get('button[class*="ant-btn"]').eq(1).click();
     cy.get('#custom-config-list').children().should('have.length', '15');
-    cy.get(`div[class*="${configListPrefix}list"]`).get(`div[class*="${configListPrefix}name"]`).eq(1).click();
+    cy.get(`div[class*="${configListPrefix}list"]`)
+      .get(`div[class*="${configListPrefix}name"]`)
+      .eq(1)
+      .click();
     cy.get('button[class*="ant-btn"]').eq(0).click();
     cy.get('#custom-config-list').children().should('have.length', '16');
   });
 
   it('reset the parameter', () => {
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list').contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting').parent().click();
+    cy.get('#custom-config-list')
+      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting')
+      .parent()
+      .click();
     cy.get('button[class^="ant-btn"]').contains('Delete').click();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.get('#laser-config-dropdown').children().should('have.length', '18');
@@ -45,7 +49,7 @@ describe('manipulate laser panel', () => {
     cy.get('#power-input').clear().type('100').blur();
     cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
-    cy.get('div.add-preset-btn').click();
+    cy.get('.preset-dropdown-containter img[src="img/icon-plus.svg"]').click();
     cy.get('.text-input').type('Hello Flux').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
@@ -73,10 +77,7 @@ describe('manipulate laser panel', () => {
   // });
 
   it('check all parameter value with beamo canvas', () => {
-    openDocumentSettings();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('beamo').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('beamo');
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(45, 5, 1);
@@ -156,10 +157,7 @@ describe('manipulate laser panel', () => {
   });
 
   it('check all parameter value with beamboxpro canvas', () => {
-    openDocumentSettings();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('Beambox Pro').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Beambox Pro');
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(55, 7, 1);
@@ -200,10 +198,7 @@ describe('manipulate laser panel', () => {
   });
 
   it('check all parameter value with HEXA canvas', () => {
-    openDocumentSettings();
-    cy.get('[class^="ant-select-selection-item"]').click();
-    cy.get('[class^="ant-select-item-option-content"]').contains('HEXA').click();
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('HEXA');
 
     cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
     checkValue(40, 6, 1);
@@ -246,15 +241,19 @@ describe('manipulate laser panel', () => {
     cy.get('#power-input').clear().type('100').blur();
     cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
-    cy.get('div.add-preset-btn').click();
+    cy.get('.preset-dropdown-containter img[src="img/icon-plus.svg"]').click();
     cy.get('.text-input').type('Hi Flux').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.get('[title="Export"]').click();
     cy.wait(5000);
-    cy.readFile(cypressDownloadPath).its('customizedLaserConfigs').its('16').its('name').should('eq', 'Hi Flux');
+    cy.readFile(cypressDownloadPath)
+      .its('customizedLaserConfigs')
+      .its('16')
+      .its('name')
+      .should('eq', 'Hi Flux');
   });
 
-  it.only('import parameter file', () => {
+  it('import parameter file', () => {
     cy.get('[title="Import"] > img').click();
     cy.get('#file-input').attachFile('testfile.json');
     cy.contains('Confirm').click();

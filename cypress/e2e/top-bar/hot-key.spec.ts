@@ -207,14 +207,14 @@ import { md5 } from '../../support/utils';
 //   };
 
 //   function drawRect() {
-//     cy.get('div#left-Rectangle>img').click();
+//     cy.clickToolBtn('Rectangle');
 //     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
 //     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
 //     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
 //   };
 
 //   function selectAll() {
-//     cy.get('div#left-Cursor>img').click();
+//     cy.clickToolBtn('Cursor');
 //     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
 //     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
 //     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

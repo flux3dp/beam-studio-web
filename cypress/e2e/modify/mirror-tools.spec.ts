@@ -4,7 +4,7 @@ describe('mirror tools', () => {
   });
 
   it('horizontal flip ', () => {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(500);
     cy.realType('TEST TEXT HORIZONTAL');
@@ -16,7 +16,7 @@ describe('mirror tools', () => {
   });
 
   it('vertical flip', () => {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(500);
     cy.realType('TEST TEXT VERTICAL');

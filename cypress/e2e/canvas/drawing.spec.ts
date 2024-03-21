@@ -4,7 +4,7 @@ describe('drawing', () => {
   });
 
   it('rectangle', () => {
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
@@ -29,7 +29,7 @@ describe('drawing', () => {
   });
 
   it('ellipse', () => {
-    cy.get('div#left-Ellipse>img').click();
+    cy.clickToolBtn('Ellipse');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
@@ -48,7 +48,7 @@ describe('drawing', () => {
   });
 
   it('polygon', () => {
-    cy.get('div#left-Polygon>img').click();
+    cy.clickToolBtn('Polygon');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
@@ -71,7 +71,7 @@ describe('drawing', () => {
   });
 
   it('line', () => {
-    cy.get('div#left-Line>img').click();
+    cy.clickToolBtn('Line');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
@@ -83,11 +83,11 @@ describe('drawing', () => {
 
     cy.get('#svg_1').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Line');
-    cy.get('div#object-panel').should('exist')
+    cy.get('div#object-panel').should('exist');
   });
 
   it('pen', () => {
-    cy.get('div#left-Pen>img').click();
+    cy.clickToolBtn('Pen');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'crosshair');
 
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });

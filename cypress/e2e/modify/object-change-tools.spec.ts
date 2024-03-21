@@ -17,14 +17,14 @@ describe('object change tools', () => {
   });
 
   it('change object size by hand movement', () => {
-    cy.get('#width').type('{selectall}{backspace}150').blur();
-    cy.get('#height').type('{selectall}{backspace}150').blur();
-    cy.get('#width').should('have.value', '150');
-    cy.get('#height').should('have.value', '150');
+    cy.get('#w_size').type('{selectall}{backspace}150').blur();
+    cy.get('#h_size').type('{selectall}{backspace}150').blur();
+    cy.get('#w_size').should('have.value', '150');
+    cy.get('#h_size').should('have.value', '150');
   });
 
   function drawingPolygon() {
-    cy.get('div#left-Polygon>img').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

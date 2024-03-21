@@ -23,7 +23,8 @@ describe('manipulate image function', () => {
     cy.get('#svg_3')
       .invoke('attr', 'd')
       .then((d) => {
-        expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
+        if (isRunningAtGithub) expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
+        else expect(md5(d)).equal('da6270fbdc3ef610d316682c6a95389c');
       });
   });
 
@@ -90,14 +91,8 @@ describe('manipulate image function', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        cy.wrap(md5(href)).should('satisfy', (href) => {
-          // Local MD5 / Remote(Github Action) MD5
-          return (
-            href === '4d696e44b940d87e89ecccca671fd9c9' ||
-            href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' ||
-            href === '3c43c5b5ec5a8f24d2eb35a508d4b85d'
-          );
-        });
+        if (isRunningAtGithub) expect(md5(href)).equal('3c43c5b5ec5a8f24d2eb35a508d4b85d');
+        else expect(md5(href)).equal('4d696e44b940d87e89ecccca671fd9c9');
       });
   });
 
@@ -129,7 +124,6 @@ describe('manipulate image function', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        // Local MD5 / Remote(Github Action) MD5
         expect(md5(href)).equal('d0a40f28082679713deda90d73e0e86b');
       });
   });
@@ -144,14 +138,8 @@ describe('manipulate image function', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        cy.wrap(md5(href)).should('satisfy', (href) => {
-          // Local MD5 / Remote(Github Action) MD5
-          return (
-            href === '4d7e7b1f937e9161c3f3c567d5ee869b' ||
-            href === '89c7aa6cb93a4fd9f6e79c9da0e5ade2' ||
-            href === 'de1073c40f0c095297d9d87af6b74dc3'
-          );
-        });
+        if (isRunningAtGithub) expect(md5(href)).equal('de1073c40f0c095297d9d87af6b74dc3');
+        else expect(md5(href)).equal('4d7e7b1f937e9161c3f3c567d5ee869b');
       });
   });
 });

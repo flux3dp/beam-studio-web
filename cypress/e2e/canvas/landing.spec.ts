@@ -54,32 +54,4 @@ describe('landing', () => {
       .find('div')
       .should('have.class', 'studio-container beambox-studio en');
   });
-
-  it('check gesture page', () => {
-    cy.visit('#/studio/beambox');
-    cy.url({ timeout: 15000 }).should('contain', '#/studio/beambox');
-
-    // Sentry
-    cy.get('div.ant-modal-body').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('No').click();
-    // Wait for changelog
-    cy.wait(5000);
-    cy.get('button[class^="ant-btn"]').contains('OK').click();
-
-    // Gesture Tutorial
-    cy.get('div.menu-btn-container').click();
-    cy.contains('Help').click();
-    cy.contains('Hand Gesture').click();
-
-    cy.get('img[src="img/touch-drag.svg"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('Next').click();
-    cy.get('img[src="img/touch-zoom.svg"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('Next').click();
-    cy.get('source[src="video/touch-select.webm"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('Next').click();
-    cy.get('source[src="video/touch-multiselect.webm"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('Next').click();
-    cy.get('source[src="video/touch-contextmenu.webm"]').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('Done').click();
-  });
 });

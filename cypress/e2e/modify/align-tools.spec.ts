@@ -43,7 +43,7 @@ describe('align tools', () => {
 
   it('hdist of distribute', () => {
     cy.get('#hdist').click();
-    cy.get('div#left-Cursor>img').click();
+    cy.clickToolBtn('Cursor');
     cy.get('#svg_2').click({ force: true });
     cy.get('#selectorGrip_resize_se').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(175, 2); });
     cy.get('#selectorGrip_resize_se').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(200, 2); });
@@ -51,38 +51,38 @@ describe('align tools', () => {
 
   it('vdist of distribute', () => {
     cy.get('#vdist').click();
-    cy.get('div#left-Cursor>img').click();
+    cy.clickToolBtn('Cursor');
     cy.get('#svg_2').click({ force: true });
     cy.get('#selectorGrip_resize_nw').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(150, 2); });
     cy.get('#selectorGrip_resize_nw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(125, 2); });
   });
 
   function selectAll() {
-    cy.get('div#left-Cursor>img').click();
+    cy.clickToolBtn('Cursor');
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   };
 
   function drawingRect() {
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist');
 
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_2').should('exist');
 
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
 
-    cy.get('div#left-Cursor>img').click();
+    cy.clickToolBtn('Cursor');
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });

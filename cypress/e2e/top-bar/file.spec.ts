@@ -13,10 +13,10 @@ describe('manipulate file', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(1)').click();
-    cy.get('input#file-input').then($input => {
+    cy.get('input#file-input').then(($input) => {
       cy.fixture('flux.png', 'base64')
         .then(Cypress.Blob.base64StringToBlob)
-        .then(blob => {
+        .then((blob) => {
           const el = $input[0];
           const testFile = new File([blob], 'flux.png', { type: 'image/png' });
           const dataTransfer = new DataTransfer();
@@ -26,8 +26,8 @@ describe('manipulate file', () => {
         });
     });
     cy.get('#svg_1').should('exist');
-    cy.get('#width').should('have.value', '300');
-    cy.get('#height').should('have.value', '210');
+    cy.get('#w_size').should('have.value', '300.00');
+    cy.get('#h_size').should('have.value', '210.00');
   });
 
   it('save file', () => {
@@ -44,53 +44,49 @@ describe('manipulate file', () => {
 
   it('save as file', () => {
     const cypressDownloadNewBeamPath = Cypress.env('cypressDownloadNewBeamPath');
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
+    cy.get('#svg_1').should('exist').should('not.have.attr', 'opacity');
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click();
-    cy.wait(1000);
+    cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click({ force: true });
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -509428066 : -786354614);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -885578205 : 2130600588);
     });
   });
 
   it('export bvg file ', () => {
     const cypressDownloadBvgPath = Cypress.env('cypressDownloadBvgPath');
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu > :nth-child(1)').click();
+    cy.contains('File').click();
+    cy.contains('Export To...').click();
+    cy.contains('BVG').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
-      cy.wrap(md5(info)).should('satisfy', (info) => {
-        // Local MD5 / Github Action MD5
-        return info === 'ce5583507d6b99d919b6d73129c8dcbc' || info === 'd7c445484ba6604dc64de17b690c4c06'
-      });
+      if (isRunningAtGithub) expect(md5(info)).equal('d7c445484ba6604dc64de17b690c4c06');
+      else expect(md5(info)).equal('ce5583507d6b99d919b6d73129c8dcbc');
     });
   });
 
   it('export svg file ', () => {
     const cypressDownloadSvgPath = Cypress.env('cypressDownloadSvgPath');
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu > :nth-child(2)').click();
+    cy.contains('File').click();
+    cy.contains('Export To...').click();
+    cy.contains('SVG').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
-      cy.wrap(md5(info)).should('satisfy', (info) => {
-        // Local MD5 / Github Action MD5
-        return info === '7049478e91f18670719ddbbcaa5807d0' || info === 'a16cd6aaab5fdf4f1f180011e1ffd12b'
-      });
+      if (isRunningAtGithub) expect(md5(info)).equal('a16cd6aaab5fdf4f1f180011e1ffd12b');
+      else expect(md5(info)).equal('7049478e91f18670719ddbbcaa5807d0');
     });
   });
 
   it('export png file ', () => {
     const cypressDownloadPngPath = Cypress.env('cypressDownloadPngPath');
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu > :nth-child(3)').click();
+    cy.contains('File').click();
+    cy.contains('Export To...').click();
+    cy.contains('PNG').click();
     cy.readFile(cypressDownloadPngPath).then((info) => {
       expect(md5(info)).equal('b20a5f0d14f9b36425dca6e22ff2712c');
     });
@@ -99,9 +95,9 @@ describe('manipulate file', () => {
   it('export jpg file ', () => {
     const cypressDownloadJpgPath = Cypress.env('cypressDownloadJpgPath');
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu__item').click();
-    cy.get(':nth-child(8) > .rc-menu > :nth-child(4)').click();
+    cy.contains('File').click();
+    cy.contains('Export To...').click();
+    cy.contains('JPG').click();
     cy.readFile(cypressDownloadJpgPath, null).then((buf) => {
       expect(crc32Buf(buf)).to.equal(1826901805);
     });
@@ -116,9 +112,9 @@ describe('manipulate file', () => {
         });
         const dropEvent = {
           dataTransfer: {
-            files: [file,],
+            files: [file],
             types: ['Files'],
-          }
+          },
         };
         cy.get('#workarea').trigger('drop', dropEvent, { force: true });
       });

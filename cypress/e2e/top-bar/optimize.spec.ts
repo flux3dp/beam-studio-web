@@ -11,7 +11,7 @@ it('arrangement', () => {
   cy.get('.ant-modal-content').should('exist').and('have.text', 'Arrangement OptimizationThere is no element to arrange.OK');
   cy.contains('button span', 'OK').click()
 
-  cy.get('div#left-Rectangle>img').click();
+  cy.clickToolBtn('Rectangle');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });

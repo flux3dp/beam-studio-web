@@ -10,7 +10,7 @@ describe('verify undo/redo behaviors', () => {
   });
 
   it('geometry', () => {
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 350, 350, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -19,7 +19,7 @@ describe('verify undo/redo behaviors', () => {
   });
 
   it('path', () => {
-    cy.get('div#left-Line>img').click();
+    cy.clickToolBtn('Line');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
