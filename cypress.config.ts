@@ -13,6 +13,7 @@ export const envVariables = {
   envType: 'local',
   backendIP: '192.168.1.114',
   machineName: 'beamo (Adam)',
+  adorName: 'Ador (Cruz)',
 };
 
 export default defineConfig({
@@ -27,7 +28,7 @@ export default defineConfig({
   },
   retries: {
     runMode: 3,
-    openMode: 1
+    openMode: 1,
   },
   defaultCommandTimeout: 7000,
 })

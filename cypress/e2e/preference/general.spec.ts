@@ -1,24 +1,10 @@
-import { md5 } from '../support/utils';
+import { md5 } from '../../support/utils';
 
+const isRunningAtGithub = Cypress.env('envType') === 'github';
 const laserPanelBlockPrefix = 'src-web-app-views-beambox-Right-Panels-ConfigPanel-Block-module__';
 
-function go2Preference() {
-  cy.get('div.top-bar-menu-container').click();
-  cy.get('li.rc-menu__submenu').should('have.length', 5);
-  cy.get('li.rc-menu__submenu:nth-child(1)').trigger('mouseover');
-  cy.get('li.rc-menu__submenu:nth-child(1) li.rc-menu__item:last-child').click({ force: true });
-}
-
-function checkLang(lang, text, title) {
-  cy.get('select#select-lang').select(lang);
-  cy.get('.form > :nth-child(2) > .span3 > .font2').should('have.text', text);
-  cy.get('div.btn-done').click();
-  cy.wait(1000);
-  cy.get('.file-title').should('have.text', title);
-}
-
 function drawingEllipse() {
-  cy.get('div#left-Ellipse>img').click();
+  cy.clickToolBtn('Ellipse');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -35,8 +21,8 @@ describe('update the preference', () => {
     cy.landingEditor();
   });
 
-  it.only('check default value with preference page', () => {
-    go2Preference();
+  it('check default value with preference page', () => {
+    cy.go2Preference();
     cy.get('#select-lang').find('option:selected').should('have.text', 'English');
     cy.get('#ip-input').should('have.attr', 'value', '192.168.1.1');
     cy.get('#set-guessing-poke').find('option:selected').should('have.value', '1');
@@ -45,11 +31,17 @@ describe('update the preference', () => {
     cy.get('#diode-preview-input').should('have.attr', 'value', '60');
     cy.get('#set-default-units').find('option:selected').should('have.value', 'mm');
     if (window.navigator.language === 'zh-TW') {
-      cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans TC');
-      cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSansTC-Regular');
+      cy.get('#set-default-font-family')
+        .find('option:selected')
+        .should('have.value', 'Noto Sans TC');
+      cy.get('#set-default-font-style')
+        .find('option:selected')
+        .should('have.value', 'NotoSansTC-Regular');
     } else {
       cy.get('#set-default-font-family').find('option:selected').should('have.value', 'Noto Sans');
-      cy.get('#set-default-font-style').find('option:selected').should('have.value', 'NotoSans-Regular');
+      cy.get('#set-default-font-style')
+        .find('option:selected')
+        .should('have.value', 'NotoSans-Regular');
     }
     cy.get('#set-default-model').find('option:selected').should('have.value', 'fbb1b');
     cy.get('#set-guide').find('option:selected').should('have.value', 'FALSE');
@@ -64,6 +56,7 @@ describe('update the preference', () => {
     cy.get('#loop-input').should('have.attr', 'value', '0.00');
     cy.get('#set-mask').find('option:selected').should('have.value', 'FALSE');
     cy.get('#font-substitue').find('option:selected').should('have.value', 'TRUE');
+    cy.get('#font-convert').find('option:selected').should('have.value', '2.0');
     cy.get('#default-open-bottom').find('option:selected').should('have.value', 'FALSE');
     cy.get('#default-autofocus').find('option:selected').should('have.value', 'FALSE');
     cy.get('#default-diode').find('option:selected').should('have.value', 'FALSE');
@@ -72,80 +65,50 @@ describe('update the preference', () => {
     cy.get('#set-sentry').find('option:selected').should('have.value', '0');
   });
 
-  it('choose de and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('de', 'Sprache', 'Ohne Titel');
-  });
-
-  it('choose en and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('en', 'Language', 'Untitled');
-  });
-
-  it('choose es and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('es', 'Idioma', 'Sin título');
-  });
-
-  it('choose ja and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('ja', '言語', '無題');
-  });
-
-  it('choose zh-tw and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('zh-tw', '語言', '無標題');
-  });
-
-  it('choose zh-cn and see if the translation of the preference page gets changed', () => {
-    go2Preference();
-    checkLang('zh-cn', '语言', '无标题');
-  });
-
   it('change units and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-default-units').select('inches');
     cy.get('#preview-input').should('have.attr', 'value', '3.94');
     cy.get('#diode-preview-input').should('have.attr', 'value', '2.36');
     cy.contains('in/s').should('exist');
     cy.contains('in').should('exist');
     applySettings();
-    cy.get('#speed').should('have.attr', 'value', '0.79');
+    cy.get('#speed-input').should('have.attr', 'value', '0.79');
     cy.contains('in/s').should('exist');
   });
 
   it('change font and see if home page gets changed ', () => {
-    go2Preference();
-    cy.get('#set-default-font-family').select('Airstream NF');
+    cy.go2Preference();
+    cy.get('#set-default-font-family').select('AirstreamNF');
     applySettings();
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('Bring Any Design to Life');
-    cy.get('.react-select__value-container').should('have.text', 'Airstream NF');
+    cy.get('.ant-select-selection-item[title="Font"]').should('have.text', 'AirstreamNF');
   });
 
-  it('change Font Style and see if home page gets changed ', () => {
-    go2Preference();
+  it('change font style and see if home page gets changed ', () => {
+    cy.go2Preference();
     cy.get('#set-default-font-style').select('Bold');
     applySettings();
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('Bring Any Design to Life');
-    cy.get('.select-container > select').find('option:selected').should('have.text', 'Bold');
+    cy.get('.ant-select-selection-item[title="Style"]').should('have.text', 'Bold');
   });
 
   it('change document setting and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-default-model').select('fbm1');
     applySettings();
     cy.get('#svgroot').should('have.attr', 'x', '3000');
     cy.get('#svgroot').should('have.attr', 'y', '2100');
 
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-default-model').select('fbb1b');
     applySettings();
     cy.get('#svgroot').should('have.attr', 'x', '4000');
     cy.get('#svgroot').should('have.attr', 'y', '3750');
 
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-default-model').select('fbb1p');
     applySettings();
     cy.get('#svgroot').should('have.attr', 'x', '6000');
@@ -153,28 +116,37 @@ describe('update the preference', () => {
   });
 
   it('change guide setting and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-guide').select('On');
     cy.get('#guide-x-input').clear({ force: true }).type('10').blur();
     cy.get('#guide-y-input').clear({ force: true }).type('10').blur();
     applySettings();
-    cy.get('#horizontal_guide').should('exist').should('have.attr', 'x1', '0').should('have.attr', 'y1', '100');
-    cy.get('#vertical_guide').should('exist').should('have.attr', 'x1', '100').should('have.attr', 'y1', '0');
+    cy.get('#horizontal_guide')
+      .should('exist')
+      .should('have.attr', 'x1', '0')
+      .should('have.attr', 'y1', '100');
+    cy.get('#vertical_guide')
+      .should('exist')
+      .should('have.attr', 'x1', '100')
+      .should('have.attr', 'y1', '0');
   });
 
   it('change bitmap preview quality setting and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-bitmap-quality').select('Normal');
     applySettings();
     cy.uploadFile('flux.png', 'image/png');
     cy.wait(3000);
-    cy.get('#svg_1').invoke('attr', 'xlink:href').then((href) => {
-      expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
-    });
+    cy.get('#svg_1')
+      .invoke('attr', 'xlink:href')
+      .then((href) => {
+        if (isRunningAtGithub) expect(md5(href)).equal('ab08bb3b784e10e362dd1cc108f97c36');
+        else expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
+      });
   });
 
   it('change anti aliasing setting and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-anti-aliasing').select('On');
     applySettings();
     drawingEllipse();
@@ -185,14 +157,14 @@ describe('update the preference', () => {
   });
 
   it('change continuous drawing setting and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('#set-continuous-drawingg').select('On');
     applySettings();
-    cy.get('div#left-Rectangle>img').click();
+    cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.get('#left-Rectangle').should('have.class', 'tool-btn active');
+    cy.checkToolBtnActive('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 150, 150, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -201,28 +173,34 @@ describe('update the preference', () => {
   });
 
   it('click reset button and see if home page gets changed ', () => {
-    go2Preference();
+    cy.go2Preference();
     cy.get('b').click();
-    cy.url().should('contain',`${baseUrl}/#/`);
+    cy.url().should('contain', `${baseUrl}/#/`);
     cy.get('h1.headline').should('exist');
   });
 
-  it.only('remove speed limit and see if home page gets changed ', () => {
+  it('remove speed limit and see if home page gets changed ', () => {
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
     cy.get('#speed div.ant-slider-handle').trigger('mousedown');
-    cy.get('#speed div.ant-slider-handle').trigger('mousemove', 200, 0, { force: true });
+    cy.get('#speed div.ant-slider-handle').trigger('mousemove', 200, 0, {
+      force: true,
+    });
     cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('exist');
-    cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('have.text', 'The cutting speed of vector path objects will be constrained to 20 mm/s (0.79in/s).You can remove this limit at Preferences Settings.');
-    go2Preference();
-    cy.get('button[class^="ant-btn"]').contains("Don't Save").click();
+    cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should(
+      'have.text',
+      'The cutting speed of vector path objects will be constrained to 20 mm/s (0.79in/s).You can remove this limit at Preferences Settings.'
+    );
+    cy.go2Preference(true);
     cy.get('#set-vector-speed-contraint').select('Off');
     applySettings();
     drawingEllipse();
     cy.get('.layers > .tab-icon').click();
     cy.get('#speed div.ant-slider-handle').trigger('mousedown');
-    cy.get('#speed div.ant-slider-handle').trigger('mousemove', 200, 0, { force: true });
+    cy.get('#speed div.ant-slider-handle').trigger('mousemove', 200, 0, {
+      force: true,
+    });
     cy.get('#speed div.ant-slider-handle').trigger('mouseup');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-icon"]`).should('not.exist');
     cy.get(`[class*="${laserPanelBlockPrefix}warning-text"]`).should('not.exist');

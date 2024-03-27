@@ -9,7 +9,7 @@ describe('verify copy/paste behaviors', () => {
   });
 
   it('geometry', () => {
-    cy.get('div#left-Polygon>img').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -18,7 +18,7 @@ describe('verify copy/paste behaviors', () => {
   });
 
   it('path', () => {
-    cy.get('div#left-Line>img').click();
+    cy.clickToolBtn('Line');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -28,7 +28,7 @@ describe('verify copy/paste behaviors', () => {
   });
 
   it('text', () => {
-    cy.get('div#left-Text>img').click();
+    cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(500);
     cy.realType('Test Copy And Paste');
@@ -40,6 +40,7 @@ describe('verify copy/paste behaviors', () => {
   function copyAndPaste() {
     cy.get('#svg_1').should('exist');
     cy.get('#svg_1').realClick({ button: 'right' });
+    cy.wait(500);
     cy.get(':nth-child(1) > .react-contextmenu > :nth-child(2)').click({ force: true });
     cy.get('#svg_1').realClick({ button: 'right' });
     cy.get(':nth-child(1) > .react-contextmenu > :nth-child(3)').click({ force: true });

@@ -9,11 +9,6 @@ describe('manipulate document setting', () => {
     cy.contains('Document Settings').click();
   };
 
-  const selectModal = (modal :string) => {
-    cy.get('[class^="ant-select-selection-item"]').eq(0).click();
-    cy.get('[class^="ant-select-item-option-content"]').contains(modal).click();
-  };
-
   it('resolution', () => {
     openDocument();
     cy.wait(300);
@@ -25,43 +20,53 @@ describe('manipulate document setting', () => {
   });
 
   it('working area of beamo', () => {
-    openDocument();
-    selectModal('beamo');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('beamo');
     cy.get('#svgroot').should('have.attr', 'x', '3000');
     cy.get('#svgroot').should('have.attr', 'y', '2100');
   });
 
   it('working area of beambox', () => {
-    openDocument();
-    selectModal('Beambox');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Beambox');
     cy.get('#svgroot').should('have.attr', 'x', '4000');
     cy.get('#svgroot').should('have.attr', 'y', '3750');
   });
 
   it('working area of beambox pro', () => {
-    openDocument();
-    selectModal('Beambox Pro');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Beambox Pro');
     cy.get('#svgroot').should('have.attr', 'x', '6000');
     cy.get('#svgroot').should('have.attr', 'y', '3750');
   });
 
   it('working area of HEXA', () => {
-    openDocument();
-    selectModal('HEXA');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('HEXA');
     cy.get('#svgroot').should('have.attr', 'x', '7400');
     cy.get('#svgroot').should('have.attr', 'y', '4100');
   });
 
   it('working area of Ador', () => {
-    openDocument();
-    selectModal('Ador');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Ador');
     cy.get('#svgroot').should('have.attr', 'x', '4300');
     cy.get('#svgroot').should('have.attr', 'y', '3200');
+  });
+
+  it('change Ador printing layer to Beamseries', () => {
+    cy.changeWorkarea('Ador');
+    cy.get('#svgroot').should('have.attr', 'x', '4300');
+    cy.get('#svgroot').should('have.attr', 'y', '3200');
+    cy.get('.ant-select-selector').click();
+    cy.get('.ant-select-item-option-content').contains('Printing').click();
+    cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
+    cy.get('#svgroot').should('have.attr', 'x', '4300');
+    cy.get('#svgroot').should('have.attr', 'y', '3200');
+    cy.changeWorkarea('beamo');
+    cy.get('.ant-modal-content').should('exist');
+    cy.get('[class*="src-web-app-views-dialogs-Alert-module__message-container"]').should(
+      'have.text',
+      'Do you want to convert the Printing Layers into Laser Layers?'
+    );
+    cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
+    cy.get('#svgroot').should('have.attr', 'x', '3000');
+    cy.get('#svgroot').should('have.attr', 'y', '2100');
   });
 
   const clickAndCheck = (id: string, status: boolean) => {
@@ -76,8 +81,7 @@ describe('manipulate document setting', () => {
   };
 
   it('check default and adjust setting with working area of beamo', () => {
-    openDocument();
-    selectModal('beamo');
+    cy.changeWorkarea('beamo', false);
     cy.get('div.controls.disabled').should('not.exist');
     clickAndCheck('rotary_mode', true);
     clickAndCheck('borderless_mode', true);
@@ -86,8 +90,7 @@ describe('manipulate document setting', () => {
   });
 
   it('check default and adjust setting with working area of beambox', () => {
-    openDocument();
-    selectModal('Beambox');
+    cy.changeWorkarea('Beambox', false);
     clickAndCheck('rotary_mode', true);
     checkDisabled('borderless_mode');
     checkDisabled('autofocus-module');
@@ -95,8 +98,7 @@ describe('manipulate document setting', () => {
   });
 
   it('check default and adjust setting with working area of beambox pro', () => {
-    openDocument();
-    selectModal('Beambox Pro');
+    cy.changeWorkarea('Beambox Pro', false);
     clickAndCheck('rotary_mode', true);
     checkDisabled('borderless_mode');
     checkDisabled('autofocus-module');
@@ -104,8 +106,7 @@ describe('manipulate document setting', () => {
   });
 
   it('check default and adjust setting with working area of HEXA', () => {
-    openDocument();
-    selectModal('HEXA');
+    cy.changeWorkarea('HEXA', false);
     clickAndCheck('rotary_mode', true);
     checkDisabled('borderless_mode');
     checkDisabled('autofocus-module');
@@ -113,8 +114,7 @@ describe('manipulate document setting', () => {
   });
 
   it('check default and adjust setting with working area of Ador', () => {
-    openDocument();
-    selectModal('Ador');
+    cy.changeWorkarea('Ador', false);
     checkDisabled('rotary_mode');
     checkDisabled('borderless_mode');
     checkDisabled('autofocus-module');
@@ -127,25 +127,17 @@ describe('manipulate document setting', () => {
   };
 
   it('check rotary with different working area', () => {
-    openDocument();
-    selectModal('beamo');
+    cy.changeWorkarea('beamo', false);
     clickAndCheck('rotary_mode', true);
     cy.get('button[class^="ant-btn"]').contains('Save').click();
     checkRotary();
-    openDocument();
-    selectModal('Beambox');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Beambox');
     checkRotary();
-    openDocument();
-    selectModal('Beambox Pro');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('Beambox Pro');
     checkRotary();
-    openDocument();
-    selectModal('HEXA');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
+    cy.changeWorkarea('HEXA');
     checkRotary();
-    openDocument();
-    selectModal('Ador');
+    cy.changeWorkarea('Ador', false);
     checkDisabled('rotary_mode');
     cy.get('button[class^="ant-btn"]').contains('Save').click();
     cy.get('#rotaryLine').should('have.attr', 'display', 'none');
@@ -153,16 +145,14 @@ describe('manipulate document setting', () => {
   });
 
   it('check open bottom', () => {
-    openDocument();
-    selectModal('beamo');
+    cy.changeWorkarea('beamo', false);
     clickAndCheck('borderless_mode', true);
     cy.get('button[class^="ant-btn"]').contains('Save').click();
     cy.get('#open-bottom-boundary > rect').should('have.attr', 'display', 'block');
   });
 
   it('check autofocus', () => {
-    openDocument();
-    selectModal('beamo');
+    cy.changeWorkarea('beamo', false);
     clickAndCheck('autofocus-module', true);
     cy.get('button[class^="ant-btn"]').contains('Save').click();
     cy.findAllByText('Add-on').should('exist');
@@ -172,12 +162,13 @@ describe('manipulate document setting', () => {
     cy.get('#height').should('have.value', '3.00');
   });
 
-  it.only('check diode laser', () => {
-    openDocument();
-    selectModal('beamo');
+  it('check diode laser', () => {
+    cy.changeWorkarea('beamo', false);
     clickAndCheck('diode_module', true);
     cy.get('button[class^="ant-btn"]').contains('Save').click();
-    cy.get('#diode-boundary').children().should('have.attr', 'd', 'M3000,2100H0,V2000H2500V0H3000V2100');
+    cy.get('#diode-boundary')
+      .children()
+      .should('have.attr', 'd', 'M3000,2100H0,V2000H2500V0H3000V2100');
     cy.findAllByText('Add-on').should('exist');
     cy.findAllByText('Diode Laser').should('exist');
     cy.findAllByText('Diode Laser').next().should('have.attr', 'type', 'checkbox').click();

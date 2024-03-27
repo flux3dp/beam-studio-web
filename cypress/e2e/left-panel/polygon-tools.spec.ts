@@ -1,7 +1,7 @@
 describe('polygen tools', () => {
   beforeEach(() => {
     cy.landingEditor();
-    cy.get('div#left-Polygon>img').click();
+    cy.clickToolBtn('Polygon');
     cy.get('svg#svgcontent').trigger('mousedown', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 250, 250, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
