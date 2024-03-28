@@ -12,6 +12,5 @@ describe('qrcode tools', () => {
     cy.get('#svg_1')
       .invoke('prop', 'innerHTML')
       .then((html) => expect(md5(html)).equal('d41d8cd98f00b204e9800998ecf8427e'));
-
   });
 });
