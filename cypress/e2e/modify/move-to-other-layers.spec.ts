@@ -15,13 +15,9 @@ describe('move to other layers', () => {
       '[class*="src-web-app-components-beambox-right-panel-AddLayerButton-module__btn"]'
     ).click({ force: true });
     cy.get('#svg_1').click().trigger('contextmenu');
-    cy.get('.react-contextmenu')
-      .contains('Move elements to:')
-      .trigger('mouseover');
+    cy.get('.react-contextmenu').contains('Move elements to:').trigger('mouseover');
     cy.wait(1000);
-    cy.get('.react-contextmenu-item.react-contextmenu-item')
-      .contains('Layer 2')
-      .click();
+    cy.get('.react-contextmenu-item.react-contextmenu-item').contains('Layer 2').click();
     cy.get('#svgcontent').click();
     cy.get('#svg_1').click();
     cy.get('.layers > .tab-icon').click();

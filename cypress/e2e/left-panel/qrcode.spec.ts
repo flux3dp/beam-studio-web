@@ -4,6 +4,7 @@ describe('qrcode tools', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
+
   it('qrcode', () => {
     cy.get('#left-QRCode').click();
     cy.get('.ant-input').type('I can do all things.');
