@@ -7,7 +7,6 @@ module.exports = merge(common, {
   devServer: {
     static: './dist',
     compress: true,
-    host: '0.0.0.0',
   },
   output: {
     path: path.join(__dirname, 'dist'),
