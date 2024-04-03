@@ -12,6 +12,7 @@ module.exports = {
     hashFunction: 'xxhash64',
   },
   mode: 'development',
+  devtool: 'source-map',
   resolve: {
     modules: [
       path.join(__dirname, 'public/js/lib'),
@@ -164,6 +165,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
+      clean: true,
     }),
     new CopyPlugin({
       patterns: [
@@ -176,6 +178,7 @@ module.exports = {
         { from: path.resolve(__dirname, 'public/js/lib/svg-nest'), to: path.resolve(__dirname, 'dist/js/lib/svg-nest') },
         { from: path.resolve(__dirname, 'public/js/lib/dxf2svg.js'), to: path.resolve(__dirname, 'dist') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/imagetracer.js'), to: path.resolve(__dirname, 'dist') },
+        { from: path.resolve(__dirname, 'src/vendor'), to: path.resolve(__dirname, 'dist/vendor') },
         { from: path.resolve(__dirname, 'src/manifest.json'), to: path.resolve(__dirname, 'dist') },
       ],
     }),
