@@ -34,7 +34,7 @@ jobs:
           node-version: 16.19
       - uses: browser-actions/setup-chrome@latest
         with:
-          chrome-version: 120
+          chrome-version: 123
       - run: |
           echo "BROWSER_PATH=$(which chrome)" >> $GITHUB_ENV
       - name: Cypress install
