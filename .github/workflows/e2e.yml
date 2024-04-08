@@ -53,7 +53,7 @@ jobs:
           config-file: cypress.config.ci.ts
           record: true
           group: "Actions"
-          browser: chrome
+          browser: ${{ env.BROWSER_PATH }}
           install: false
           parallel: true
           start: yarn start
