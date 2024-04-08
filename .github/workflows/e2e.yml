@@ -37,6 +37,10 @@ jobs:
           chrome-version: 123
       - run: |
           echo "BROWSER_PATH=$(which chrome)" >> $GITHUB_ENV
+      - run: |
+          echo "BROWSER_PATH=$(which chrome)"
+          echo $BROWSER_PATH
+          echo ${{ env.GITHUB_SHA_SHORT }}
       - name: Cypress install
         uses: cypress-io/github-action@v6
         with:
