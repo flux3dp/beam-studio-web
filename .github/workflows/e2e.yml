@@ -42,7 +42,6 @@ jobs:
           echo "BROWSER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}"
           echo $BROWSER_PATH
           echo "${{ steps.setup-chrome.outputs.chrome-path }}"
-          echo ${{ env.GITHUB_SHA_SHORT }}
       - name: Cypress install
         uses: cypress-io/github-action@v6
         with:
@@ -59,7 +58,7 @@ jobs:
           config-file: cypress.config.ci.ts
           record: true
           group: "Actions"
-          browser: ${{ env.BROWSER_PATH }}
+          browser: "${{ env.BROWSER_PATH }}"
           install: false
           parallel: true
           start: yarn start
