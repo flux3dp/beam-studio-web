@@ -33,6 +33,7 @@ jobs:
         with:
           node-version: 16.19
       - uses: browser-actions/setup-chrome@latest
+        id: setup-chrome
         with:
           chrome-version: 123
       - run: |
