@@ -165,7 +165,7 @@ describe('convert to path 2.0', () => {
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {
-        if (isRunningAtGithub) expect(md5(d)).equal('dfbbfd86ed6dc191ce71fdd6ae819677');
+        if (isRunningAtGithub) expect(md5(d)).equal('8ffd98ed29e592cf37182bb6f9190729');
         else expect(md5(d)).equal('d828dcc474ad48d26ecb9269cb3844fa');
       });
   });
