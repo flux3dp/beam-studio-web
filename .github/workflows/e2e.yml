@@ -35,7 +35,7 @@ jobs:
       - uses: browser-actions/setup-chrome@latest
         id: setup-chrome
         with:
-          chrome-version: 123
+          chrome-version: stable
       - run: |
           echo "BROWSER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}" >> $GITHUB_ENV
       - run: |
