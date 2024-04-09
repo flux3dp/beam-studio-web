@@ -38,9 +38,6 @@ jobs:
           chrome-version: stable
       - run: |
           echo "BROWSER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}" >> $GITHUB_ENV
-      - run: |
-          echo "BROWSER_PATH=${{ steps.setup-chrome.outputs.chrome-path }}"
-          echo $BROWSER_PATH
           echo "${{ steps.setup-chrome.outputs.chrome-path }}"
       - name: Cypress install
         uses: cypress-io/github-action@v6
