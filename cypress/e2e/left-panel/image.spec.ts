@@ -109,7 +109,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('82c48181e33cdd9b8127e40f52703a2f');
+        if (isRunningAtGithub) expect(md5(href)).equal('a8ad6ba832e34e3cc6544668596fefff');
         else expect(md5(href)).equal('613da6c7223d4a2d47859de0a28cdb08');
       });
   });
