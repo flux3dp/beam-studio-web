@@ -1,8 +1,8 @@
 import { md5 } from '../../support/utils';
 
 const isRunningAtGithub = Cypress.env('envType') === 'github';
-const beamSeriersName = Cypress.env('beamSeriersName');
-
+const machineName = Cypress.env('machineName');
+const adorName = Cypress.env('adorName');
 describe('disassemable', () => {
   if (isRunningAtGithub) {
     it('skip test on github', () => {
@@ -17,7 +17,7 @@ describe('disassemable', () => {
   });
 
   it('disassemable', () => {
-    cy.connectMachine(beamSeriersName);
+    cy.connectMachine(machineName);
     cy.uploadFile('svg.svg', 'image/svg+xml');
     cy.get('div[class*="src-web-app-views-dialogs-AlertAndProgress-module__nonstop--"').should(
       'exist'
@@ -25,6 +25,8 @@ describe('disassemable', () => {
     cy.contains('.ant-modal-content', 'Select layering style:').as('modal');
     cy.get('@modal').contains('Layer').click();
     cy.get('@modal').contains('OK').click();
+    cy.wait(5000);
+
     cy.get('div[class*="src-web-app-views-dialogs-AlertAndProgress-module__nonstop--"', {
       timeout: 10000,
     }).should('not.exist');

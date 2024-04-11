@@ -1,4 +1,4 @@
-import { defineConfig } from 'cypress'
+import { defineConfig } from 'cypress';
 
 export const envVariables = {
   cypressDownloadPath: './cypress/downloads/download.json',
@@ -11,9 +11,9 @@ export const envVariables = {
   username: 'beam-studio-web@flux3dp.com',
   password: 'Flux42642569',
   envType: 'local',
-  backendIP: '192.168.1.114',
-  machineName: 'beamo (Adam)',
-  adorName: 'Ador (Cruz)',
+  backendIP: '192.168.1.153',
+  machineName: 'beamo (Franklin)',
+  adorName: 'ador(biulala)',
 };
 
 export default defineConfig({
@@ -21,14 +21,13 @@ export default defineConfig({
   env: envVariables,
   e2e: {
     setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.ts')(on, config)
+      return require('./cypress/plugins/index.ts')(on, config);
     },
     baseUrl: 'http://localhost:8080',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
   retries: {
     runMode: 3,
-    openMode: 1,
   },
   defaultCommandTimeout: 7000,
-})
+});

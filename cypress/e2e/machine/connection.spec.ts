@@ -1,5 +1,5 @@
 const isRunningAtGithub = Cypress.env('envType') === 'github';
-const beamSeriersName = Cypress.env('beamSeriersName');
+const machineName = Cypress.env('machineName');
 const adorName = Cypress.env('adorName');
 
 describe('test machine connection', () => {
@@ -16,7 +16,7 @@ describe('test machine connection', () => {
   });
 
   it('select connect Beam Seriers machine', () => {
-    cy.connectMachine(beamSeriersName);
+    cy.connectMachine(machineName);
   });
 
   it('select connect Ador machine', () => {
