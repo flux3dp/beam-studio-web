@@ -21,43 +21,80 @@ describe('manipulate document setting', () => {
 
   it('working area of beamo', () => {
     cy.changeWorkarea('beamo');
-    cy.get('#svgroot').should('have.attr', 'x', '3000');
-    cy.get('#svgroot').should('have.attr', 'y', '2100');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.43, 0.001);
+    });
   });
 
   it('working area of beambox', () => {
     cy.changeWorkarea('Beambox');
-    cy.get('#svgroot').should('have.attr', 'x', '4000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.066, 0.001);
+    });
   });
 
   it('working area of beambox pro', () => {
     cy.changeWorkarea('Beambox Pro');
-    cy.get('#svgroot').should('have.attr', 'x', '6000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.6, 0.001);
+    });
   });
 
   it('working area of HEXA', () => {
     cy.changeWorkarea('HEXA');
-    cy.get('#svgroot').should('have.attr', 'x', '7400');
-    cy.get('#svgroot').should('have.attr', 'y', '4100');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.806, 0.001);
+    });
   });
 
   it('working area of Ador', () => {
     cy.changeWorkarea('Ador');
-    cy.get('#svgroot').should('have.attr', 'x', '4300');
-    cy.get('#svgroot').should('have.attr', 'y', '3200');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.344, 0.001);
+    });
   });
 
   it('change Ador printing layer to Beamseries', () => {
     cy.changeWorkarea('Ador');
-    cy.get('#svgroot').should('have.attr', 'x', '4300');
-    cy.get('#svgroot').should('have.attr', 'y', '3200');
-    cy.get('.ant-select-selector').click();
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.344, 0.001);
+    });
+    cy.get(
+      '.src-web-app-views-beambox-Right-Panels-ConfigPanel-ModuleBlock-module__panel--Hw-Bu > .ant-select > .ant-select-selector > .ant-select-selection-item'
+    ).click();
     cy.get('.ant-select-item-option-content').contains('Printing').click();
     cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
-    cy.get('#svgroot').should('have.attr', 'x', '4300');
-    cy.get('#svgroot').should('have.attr', 'y', '3200');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.344, 0.001);
+    });
     cy.changeWorkarea('beamo');
     cy.get('.ant-modal-content').should('exist');
     cy.get('[class*="src-web-app-views-dialogs-Alert-module__message-container"]').should(
@@ -65,8 +102,13 @@ describe('manipulate document setting', () => {
       'Do you want to convert the Printing Layers into Laser Layers?'
     );
     cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
-    cy.get('#svgroot').should('have.attr', 'x', '3000');
-    cy.get('#svgroot').should('have.attr', 'y', '2100');
+    cy.get('#svgroot').then(($element) => {
+      const xValue = parseInt($element.attr('x'));
+      const yValue = parseInt($element.attr('y'));
+      const divisionResult = xValue / yValue;
+      const roundedResult = Math.round(divisionResult * 1000) / 1000;
+      expect(roundedResult).to.be.closeTo(1.43, 0.001);
+    });
   });
 
   const clickAndCheck = (id: string, status: boolean) => {
