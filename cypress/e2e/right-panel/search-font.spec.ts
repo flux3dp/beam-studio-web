@@ -34,8 +34,8 @@ describe('text tools', () => {
       .should('exist')
       .click()
       .realType('Noto Sans');
-    cy.get(
-      '#rc_select_2_list_0 > .ant-select-item-option-content > .src-web-app-views-beambox-Right-Panels-Options-Blocks-TextOptions-module__family-option--fobNj > .src-web-app-views-beambox-Right-Panels-Options-Blocks-TextOptions-module__img-container--H9PO2 > img'
-    ).click();
+    cy.wait(500);
+    cy.get('.ant-select-dropdown').should('be.visible');
+    cy.get('img[alt="Noto Sans"]').click();
   });
 });
