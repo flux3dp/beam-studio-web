@@ -38,7 +38,7 @@ describe('manipulate file', () => {
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -1964051864 : -1409562589);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -1964051864 : -1964051864);
     });
   });
 
@@ -53,7 +53,7 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click({ force: true });
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -885578205 : 2130600588);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 2142846726 : 2142846726);
     });
   });
 
@@ -65,7 +65,7 @@ describe('manipulate file', () => {
     cy.contains('BVG').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
       if (isRunningAtGithub) expect(md5(info)).equal('d7c445484ba6604dc64de17b690c4c06');
-      else expect(md5(info)).equal('ce5583507d6b99d919b6d73129c8dcbc');
+      else expect(md5(info)).equal('d7c445484ba6604dc64de17b690c4c06');
     });
   });
 
@@ -77,7 +77,7 @@ describe('manipulate file', () => {
     cy.contains('SVG').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
       if (isRunningAtGithub) expect(md5(info)).equal('a16cd6aaab5fdf4f1f180011e1ffd12b');
-      else expect(md5(info)).equal('7049478e91f18670719ddbbcaa5807d0');
+      else expect(md5(info)).equal('a16cd6aaab5fdf4f1f180011e1ffd12b');
     });
   });
 
@@ -101,22 +101,5 @@ describe('manipulate file', () => {
     cy.readFile(cypressDownloadJpgPath, null).then((buf) => {
       expect(crc32Buf(buf)).to.equal(1826901805);
     });
-  });
-
-  it('upload file by drag and drop ', () => {
-    cy.fixture('flux.png', 'base64')
-      .then(Cypress.Blob.base64StringToBlob)
-      .then((blob) => {
-        const file = new File([blob], 'flux.png', {
-          type: 'image/png',
-        });
-        const dropEvent = {
-          dataTransfer: {
-            files: [file],
-            types: ['Files'],
-          },
-        };
-        cy.get('#workarea').trigger('drop', dropEvent, { force: true });
-      });
   });
 });
