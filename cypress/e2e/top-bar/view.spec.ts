@@ -41,8 +41,8 @@ describe('manipulate view', () => {
   it('show grids', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
-    cy.get('.rc-menu > :nth-child(6)').should('have.attr', 'aria-checked', 'true');
-    cy.get('#canvasGrid').should('have.attr', 'style', 'display: inline;');
+    cy.contains('Show Grids').click();
+    cy.get('#canvasGrid').should('have.attr', 'style', 'display: none;');
   });
 
   it('show rulers', () => {
@@ -55,7 +55,11 @@ describe('manipulate view', () => {
 
   it('use layer color', () => {
     cy.get(`button[class*="${addLayerBtnPrefix}"]`).click({ force: true });
-    cy.get('div[class*="src-web-app-widgets-ColorPicker-module__color"]').should('have.attr', 'style', 'background: rgb(63, 81, 181);');
+    cy.get('div[class*="src-web-app-widgets-ColorPicker-module__color"]').should(
+      'have.attr',
+      'style',
+      'background: rgb(63, 81, 181);'
+    );
     cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
@@ -70,14 +74,14 @@ describe('manipulate view', () => {
   it('anti aliasing', () => {
     cy.get('div.menu-btn-container').click();
     cy.get(':nth-child(3) > .rc-menu__item').click();
-    cy.get('.rc-menu > :nth-child(9)').should('have.attr', 'aria-checked', 'true');
+    cy.contains('Anti-Aliasing').click();
     cy.clickToolBtn('Ellipse');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 200, 200, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('svg#svgcontent').should(($shapeRendering) => {
       const str = $shapeRendering.attr('style');
-      expect(str.substring(50)).equal('');
+      expect(str).to.include('shape-rendering: optimizespeed;');
     });
   });
 });
