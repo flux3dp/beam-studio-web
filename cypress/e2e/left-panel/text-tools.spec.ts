@@ -39,7 +39,7 @@ describe('text tools', () => {
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder img[alt="Noto Sans"]').click();
     fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
-    cy.get('#svg_1').should('have.attr', 'font-family', 'Noto Sans');
+    cy.get('#svg_1').should('have.attr', 'font-family', "'Noto Sans'");
   });
 
   it('text style', () => {

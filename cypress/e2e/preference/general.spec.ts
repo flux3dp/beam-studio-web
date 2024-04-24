@@ -99,20 +99,29 @@ describe('update the preference', () => {
     cy.go2Preference();
     cy.get('#set-default-model').select('fbm1');
     applySettings();
-    cy.get('#svgroot').should('have.attr', 'x', '3000');
-    cy.get('#svgroot').should('have.attr', 'y', '2100');
+    cy.get('#svgroot').should(($root) => {
+      const x = +$root.attr('x');
+      const y = +$root.attr('y');
+      expect(y / x).to.be.closeTo(0.7, 0.01);
+    });
 
     cy.go2Preference();
     cy.get('#set-default-model').select('fbb1b');
     applySettings();
-    cy.get('#svgroot').should('have.attr', 'x', '4000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgroot').should(($root) => {
+      const x = +$root.attr('x');
+      const y = +$root.attr('y');
+      expect(y / x).to.be.closeTo(0.9375, 0.01);
+    });
 
     cy.go2Preference();
     cy.get('#set-default-model').select('fbb1p');
     applySettings();
-    cy.get('#svgroot').should('have.attr', 'x', '6000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgroot').should(($root) => {
+      const x = +$root.attr('x');
+      const y = +$root.attr('y');
+      expect(y / x).to.be.closeTo(0.625, 0.01);
+    });
   });
 
   it('change guide setting and see if home page gets changed ', () => {

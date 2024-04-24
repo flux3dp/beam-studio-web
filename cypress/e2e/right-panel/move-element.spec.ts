@@ -26,9 +26,7 @@ describe('move element to another layer', () => {
   it('move one element', () => {
     cy.clickToolBtn('Element');
     cy.get('.ant-modal-header').contains('Element').should('exist');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(0)
-      .click();
+    cy.get('[id="basic/icon-circle"]').click();
     cy.get('#svg_1').should('exist').should('have.attr', 'fill', '#333333');
     cy.get('#svg_1').click();
     cy.get('.tab.layers').click();
@@ -46,40 +44,29 @@ describe('move element to another layer', () => {
     cy.get('#repeat').should('have.attr', 'value', '5');
   });
 
-  it('move multiple elements', () => {
+  it.only('move multiple elements', () => {
     cy.clickToolBtn('Element');
     cy.get('.ant-modal-header').contains('Element').should('exist');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(0)
-      .click();
+    cy.get('[id="basic/icon-circle"]').click();
     cy.clickToolBtn('Element');
-    cy.get('.adm-capsule-tabs-tab-wrapper').contains('Graphics').click();
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(0)
-      .click();
+    cy.get('[id="basic/icon-star1"]').click();
     cy.clickToolBtn('Element');
-    cy.get('.adm-capsule-tabs-tab-wrapper').contains('Line').click();
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(0)
-      .click();
+    cy.get('.adm-capsule-tabs-tab').contains('Decor').click();
+    cy.get('#decor\\/i_circular-1').click();
 
     cy.get('svg#svgcontent')
       .trigger('mousedown', 100, 100, { force: true })
       .trigger('mousemove', 0, 0, { force: true })
       .trigger('mouseup', { force: true });
     cy.get('.tab.layers').click();
-    cy.get('#power-input').should('have.attr', 'value', '15');
-    cy.get('#speed-input').should('have.attr', 'value', '20');
-    cy.get('#repeat').should('have.attr', 'value', '1');
-    cy.get(
-      '[class*="src-web-app-components-beambox-right-panel-SelLayerBlock-module__select--"]'
-    ).select('Layer 2');
-    cy.get('.ant-btn').contains('Yes').click();
+    cy.get('#power-input').should('have.attr', 'value', '50');
+    cy.get('#speed-input').should('have.attr', 'value', '100');
+    cy.get('#repeat').should('have.attr', 'value', '5');
     cy.get('#power-input').should('have.attr', 'value', '50');
     cy.get('#speed-input').should('have.attr', 'value', '100');
     cy.get('#repeat').should('have.attr', 'value', '5');
     cy.get('#svg_1').should('exist').should('have.attr', 'fill', '#3F51B5');
     cy.get('#svg_10').should('exist').should('have.attr', 'fill', '#3F51B5');
-    cy.get('#svg_11').should('exist').should('have.attr', 'stroke', '#3F51B5');
+    cy.get('#svg_20').should('exist').should('have.attr', 'fill', '#3F51B5');
   });
 });

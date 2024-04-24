@@ -25,12 +25,15 @@ describe('upload tools', () => {
     cy.contains('.ant-modal-content', 'Please enter the Unit of your file (in mm)')
       .contains('OK')
       .should('be.exist')
-      .click();
+      .click({ force: true });
     cy.contains('.ant-modal-content', 'Drawing size is out of workarea.')
       .contains('OK')
       .should('be.exist')
       .click();
-    cy.contains('.ant-modal-content', 'The version of this DXF file is not 2013')
+    cy.contains(
+      '.ant-modal-content',
+      'The version of this DXF file is not 2013, there might be potential incompatibility problems.'
+    )
       .contains('OK')
       .should('be.exist')
       .click();
@@ -56,7 +59,7 @@ describe('upload tools', () => {
     cy.changeWorkarea('Ador');
     cy.get(`div[class*="${moduleBlockPrefix}select"]`).as('module');
     cy.get('@module').should('have.text', '20W Diode Laser');
-    cy.get('@module').get('.ant-select-selector').click();
+    cy.get('@module').click();
     cy.get('.ant-select-item-option-content').contains('Printing').click();
     cy.get('.ant-modal-title')
       .contains('Do you want to convert the Laser module into Printing module?')

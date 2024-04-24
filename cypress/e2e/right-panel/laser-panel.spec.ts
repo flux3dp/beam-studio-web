@@ -1,64 +1,71 @@
 const configOperationsPrefix =
-  'src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigOperations-module__';
-const configListPrefix = 'src-web-app-views-beambox-Right-Panels-LaserManage-ConfigList-module__';
+  "src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigOperations-module__";
+const configListPrefix =
+  "src-web-app-views-beambox-Right-Panels-LaserManage-ConfigList-module__";
 
-describe('manipulate laser panel', () => {
+describe("manipulate laser panel", () => {
   beforeEach(() => {
     cy.landingEditor();
   });
 
   function checkValue(power, speed, repeat) {
-    cy.get('#power-input').should('have.value', power);
-    cy.get('#speed-input').should('have.value', speed);
-    cy.get('#repeat').should('have.value', repeat);
+    cy.get("#power-input").should("have.value", power);
+    cy.get("#speed-input").should("have.value", speed);
+    cy.get("#repeat").should("have.value", repeat);
   }
 
-  it('set customized list', () => {
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list')
-      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting')
+  it("set customized list", () => {
+    cy.get(
+      `div[class*="${configOperationsPrefix}button"][title="Manage"]`
+    ).click();
+    cy.get("#custom-config-list")
+      .contains(`div[class*="${configListPrefix}name"]`, "Wood - 5mm Cutting")
       .parent()
       .click();
     cy.get('button[class*="ant-btn"]').eq(1).click();
-    cy.get('#custom-config-list').children().should('have.length', '15');
+    cy.get("#custom-config-list").children().should("have.length", "15");
     cy.get(`div[class*="${configListPrefix}list"]`)
       .get(`div[class*="${configListPrefix}name"]`)
       .eq(1)
       .click();
     cy.get('button[class*="ant-btn"]').eq(0).click();
-    cy.get('#custom-config-list').children().should('have.length', '16');
+    cy.get("#custom-config-list").children().should("have.length", "16");
   });
 
-  it('reset the parameter', () => {
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list')
-      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting')
+  it("reset the parameter", () => {
+    cy.get(
+      `div[class*="${configOperationsPrefix}button"][title="Manage"]`
+    ).click();
+    cy.get("#custom-config-list")
+      .contains(`div[class*="${configListPrefix}name"]`, "Wood - 3mm Cutting")
       .parent()
       .click();
-    cy.get('button[class^="ant-btn"]').contains('Delete').click();
-    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
-    cy.get('#laser-config-dropdown').children().should('have.length', '18');
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('button[class^="ant-btn"]').contains('Reset').click();
-    cy.get('button[class^="ant-btn"]').contains('Yes').click();
-    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
-    cy.get('#laser-config-dropdown').children().should('have.length', '19');
+    cy.get('button[class^="ant-btn"]').contains("Delete").click();
+    cy.get('button[class^="ant-btn"]').contains("Save and Exit").click();
+    cy.get(
+      `div[class*="${configOperationsPrefix}button"][title="Manage"]`
+    ).click();
+    cy.get('button[class^="ant-btn"]').contains("Reset").click();
+    cy.get('button[class^="ant-btn"]').contains("Yes").click();
+    cy.get('button[class^="ant-btn"]').contains("Save and Exit").click();
   });
 
-  it('add new parameter at initial panel', () => {
-    cy.get('#power-input').clear().type('100').blur();
-    cy.get('#speed-input').clear().type('70').blur();
-    cy.get('#repeat').clear().type('3').blur();
-    cy.get('.preset-dropdown-containter img[src="img/icon-plus.svg"]').click();
-    cy.get('.text-input').type('Hello Flux').blur();
-    cy.get('button[class^="ant-btn"]').contains('OK').click();
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.contains('Hello Flux').should('exist');
-    cy.contains(`div[class*="${configListPrefix}name"]`, 'Hello Flux').click();
-    cy.get('#laser-power').should('have.value', '100');
-    cy.get('#laser-speed').should('have.value', '70');
-    cy.get('#laser-repeat').should('have.value', '3');
-    cy.get('#laser-z-step').should('have.value', '0');
+  it("add new parameter at initial panel", () => {
+    cy.get("#power-input").clear().type("100").blur();
+    cy.get("#speed-input").clear().type("70").blur();
+    cy.get("#repeat").clear().type("3").blur();
+    cy.get('[class*="SaveConfigButton-module__btn"]').click();
+    cy.get(".text-input").type("Hello Flux").blur();
+    cy.get('button[class^="ant-btn"]').contains("OK").click();
+    cy.get(
+      `div[class*="${configOperationsPrefix}button"][title="Manage"]`
+    ).click();
+    cy.contains("Hello Flux").should("exist");
+    cy.contains(`div[class*="${configListPrefix}name"]`, "Hello Flux").click();
+    cy.get("#laser-power").should("have.value", "100");
+    cy.get("#laser-speed").should("have.value", "70");
+    cy.get("#laser-repeat").should("have.value", "3");
+    cy.get("#laser-z-step").should("have.value", "0");
   });
 
   // it('add new parameter at laser panel', () => {
@@ -76,188 +83,174 @@ describe('manipulate laser panel', () => {
   //   checkValue(40, 20, 10);
   // });
 
-  it('check all parameter value with beamo canvas', () => {
-    cy.changeWorkarea('beamo');
-
-    cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
-    checkValue(45, 5, 1);
-    cy.get('#laser-config-dropdown').select('Wood - 5mm Cutting');
-    checkValue(55, 4, 2);
-    cy.get('#laser-config-dropdown').select('Wood - Engraving');
-    checkValue(25, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Acrylic - 3mm Cutting');
-    checkValue(55, 4, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - 5mm Cutting');
-    checkValue(55, 5, 2);
-    cy.get('#laser-config-dropdown').select('Acrylic - Engraving');
-    checkValue(25, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
-    checkValue(60, 3, 1);
-    cy.get('#laser-config-dropdown').select('Leather - 5mm Cutting');
-    checkValue(60, 3, 2);
-    cy.get('#laser-config-dropdown').select('Leather - Engraving');
-    checkValue(30, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Fabric - 3mm Cutting');
-    checkValue(50, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
-    checkValue(50, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - Engraving');
-    checkValue(20, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Rubber - Engraving');
-    checkValue(50, 100, 1);
-    cy.get('#laser-config-dropdown').select('Glass - Engraving');
-    checkValue(35, 150, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving');
-    checkValue(50, 80, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving (Diode Laser)');
-    checkValue(100, 10, 1);
+  it("check all parameter value with beamo canvas", () => {
+    cy.changeWorkarea("beamo");
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Wood - 3mm Cutting")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "45");
+    cy.get("#speed-input").should("have.value", "5");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Wood - Engraving")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "25");
+    cy.get("#speed-input").should("have.value", "150");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Acrylic - 3mm Cutting")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "55");
+    cy.get("#speed-input").should("have.value", "4");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Acrylic - Engraving")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "25");
+    cy.get("#speed-input").should("have.value", "150");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Leather - 3mm Cutting")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "60");
+    cy.get("#speed-input").should("have.value", "3");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Leather - 5mm Cutting")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "60");
+    cy.get("#speed-input").should("have.value", "3");
+    cy.get("#repeat").should("have.value", "2");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Fabric - 3mm Cutting")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "50");
+    cy.get("#speed-input").should("have.value", "20");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Fabric - Engraving")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "20");
+    cy.get("#speed-input").should("have.value", "150");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Rubber - Engraving")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "50");
+    cy.get("#speed-input").should("have.value", "100");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Glass - Engraving")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "35");
+    cy.get("#speed-input").should("have.value", "150");
+    cy.get("#repeat").should("have.value", "1");
+    //
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Metal - Engraving")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "50");
+    cy.get("#speed-input").should("have.value", "80");
+    cy.get("#repeat").should("have.value", "1");
   });
 
-  it('check all parameter value with beambox canvas', () => {
-    cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
-    checkValue(60, 6, 1);
-    cy.get('#laser-config-dropdown').select('Wood - 5mm Cutting');
-    checkValue(60, 3, 1);
-    cy.get('#laser-config-dropdown').select('Wood - Engraving');
-    checkValue(25, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Acrylic - 3mm Cutting');
-    checkValue(60, 8, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - 5mm Cutting');
-    checkValue(60, 4, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - Engraving');
-    checkValue(25, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
-    checkValue(65, 3, 1);
-    cy.get('#laser-config-dropdown').select('Leather - 5mm Cutting');
-    checkValue(65, 3, 1);
-    cy.get('#laser-config-dropdown').select('Leather - Engraving');
-    checkValue(30, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Fabric - 3mm Cutting');
-    checkValue(60, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
-    checkValue(60, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - Engraving');
-    checkValue(20, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Rubber - Engraving');
-    checkValue(45, 130, 1);
-    cy.get('#laser-config-dropdown').select('Glass - Engraving');
-    checkValue(30, 150, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving');
-    checkValue(50, 120, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving (Diode Laser)');
-    checkValue(100, 10, 1);
+  it("check all parameter value with Ador canvas to Laser", () => {
+    cy.changeWorkarea("Ador");
+    cy.get(
+      ".src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigPanel-module__preset-dropdown-container--G71UZ > .ant-select > .ant-select-selector > .ant-select-selection-item"
+    ).click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Wood - 3mm Cutting")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "100");
+    cy.get("#speed-input").should("have.value", "8");
+    cy.get("#repeat").should("have.value", "1");
   });
 
-  it('check all parameter value with beamboxpro canvas', () => {
-    cy.changeWorkarea('Beambox Pro');
-
-    cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
-    checkValue(55, 7, 1);
-    cy.get('#laser-config-dropdown').select('Wood - 5mm Cutting');
-    checkValue(55, 4, 1);
-    cy.get('#laser-config-dropdown').select('Wood - Engraving');
-    checkValue(20, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Acrylic - 3mm Cutting');
-    checkValue(55, 7, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - 5mm Cutting');
-    checkValue(55, 4, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - Engraving');
-    checkValue(15, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
-    checkValue(55, 4, 1);
-    cy.get('#laser-config-dropdown').select('Leather - 5mm Cutting');
-    checkValue(55, 3, 1);
-    cy.get('#laser-config-dropdown').select('Leather - Engraving');
-    checkValue(20, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Fabric - 3mm Cutting');
-    checkValue(35, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
-    checkValue(35, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - Engraving');
-    checkValue(15, 150, 1);
-
-    cy.get('#laser-config-dropdown').select('Rubber - Engraving');
-    checkValue(40, 150, 1);
-    cy.get('#laser-config-dropdown').select('Glass - Engraving');
-    checkValue(25, 150, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving');
-    checkValue(50, 140, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving (Diode Laser)');
-    checkValue(100, 10, 1);
+  it("check all parameter value with Ador canvas to Printing", () => {
+    cy.changeWorkarea("Ador");
+    cy.get(
+      ".src-web-app-views-beambox-Right-Panels-ConfigPanel-ModuleBlock-module__panel--Hw-Bu > .ant-select > .ant-select-selector > .ant-select-selection-item"
+    ).click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Printing")
+      .click({ force: true });
+    cy.get(".ant-btn-primary > span").click();
+    cy.wait(500);
+    cy.get(
+      ".src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigPanel-module__preset-dropdown-container--G71UZ > .ant-select > .ant-select-selector > .ant-select-selection-item"
+    ).click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Wood - Printing")
+      .click({ force: true });
+    cy.get(
+      ".src-web-app-views-beambox-Right-Panels-ConfigPanel-InkBlock-module__panel--vp9bJ"
+    ).should("contain", "Low");
+    cy.get(".layerparams > :nth-child(4)").should("contain", "Regular");
   });
 
-  it('check all parameter value with HEXA canvas', () => {
-    cy.changeWorkarea('HEXA');
-
-    cy.get('#laser-config-dropdown').select('Wood - 3mm Cutting');
-    checkValue(40, 6, 1);
-    cy.get('#laser-config-dropdown').select('Wood - 5mm Cutting');
-    checkValue(65, 3, 1);
-    cy.get('#laser-config-dropdown').select('Wood - Engraving');
-    checkValue(20, 300, 1);
-
-    cy.get('#laser-config-dropdown').select('Acrylic - 3mm Cutting');
-    checkValue(40, 6, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - 5mm Cutting');
-    checkValue(55, 3, 1);
-    cy.get('#laser-config-dropdown').select('Acrylic - Engraving');
-    checkValue(15, 300, 1);
-
-    cy.get('#laser-config-dropdown').select('Leather - 3mm Cutting');
-    checkValue(40, 6, 1);
-    cy.get('#laser-config-dropdown').select('Leather - 5mm Cutting');
-    checkValue(55, 3, 1);
-    cy.get('#laser-config-dropdown').select('Leather - Engraving');
-    checkValue(20, 300, 1);
-
-    cy.get('#laser-config-dropdown').select('Fabric - 3mm Cutting');
-    checkValue(15, 25, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - 5mm Cutting');
-    checkValue(20, 20, 1);
-    cy.get('#laser-config-dropdown').select('Fabric - Engraving');
-    checkValue(15, 250, 1);
-
-    cy.get('#laser-config-dropdown').select('Rubber - Engraving');
-    checkValue(45, 300, 1);
-    cy.get('#laser-config-dropdown').select('Glass - Engraving');
-    checkValue(35, 150, 1);
-    cy.get('#laser-config-dropdown').select('Metal - Engraving');
-    checkValue(20, 150, 1);
-  });
-
-  it('export parameter file', () => {
-    const cypressDownloadPath = Cypress.env('cypressDownloadPath');
-    cy.get('#power-input').clear().type('100').blur();
-    cy.get('#speed-input').clear().type('70').blur();
-    cy.get('#repeat').clear().type('3').blur();
-    cy.get('.preset-dropdown-containter img[src="img/icon-plus.svg"]').click();
-    cy.get('.text-input').type('Hi Flux').blur();
-    cy.get('button[class^="ant-btn"]').contains('OK').click();
-    cy.get('[title="Export"]').click();
-    cy.wait(5000);
+  it("export parameter file", () => {
+    const cypressDownloadPath = Cypress.env("cypressDownloadPath");
+    cy.get("#power-input").clear().type("100").blur();
+    cy.get("#speed-input").clear().type("70").blur();
+    cy.get("#repeat").clear().type("3").blur();
+    cy.get(
+      ".src-web-app-views-beambox-Right-Panels-ConfigPanel-SaveConfigButton-module__btn--uh2Fr > img"
+    ).click();
+    cy.get(".ant-input").type("ABC!{enter}");
+    cy.get('[title="Export"] > img').click();
+    cy.wait(1000);
     cy.readFile(cypressDownloadPath)
-      .its('customizedLaserConfigs')
-      .its('16')
-      .its('name')
-      .should('eq', 'Hi Flux');
+      .its("customizedLaserConfigs")
+      .its("16")
+      .its("name")
+      .should("eq", "ABC!");
   });
 
-  it('import parameter file', () => {
+  it("import parameter file", () => {
     cy.get('[title="Import"] > img').click();
-    cy.get('#file-input').attachFile('testfile.json');
-    cy.contains('Confirm').click();
-    cy.get('#laser-config-dropdown').select('testFile');
-    checkValue(100, 50, 10);
+    cy.get("#file-input").attachFile("testfile.json");
+    cy.contains("Confirm").click();
+    cy.get(".ant-select-selection-item").click();
+    cy.get(".ant-select-dropdown")
+      .should("be.visible")
+      .contains("Metal - Engraving (Diode Laser)")
+      .click({ force: true });
+    cy.get("#power-input").should("have.value", "100");
+    cy.get("#speed-input").should("have.value", "10");
   });
 });

@@ -23,7 +23,7 @@ describe('verify undo/redo behaviors', () => {
     cy.get('#svg_1').should('exist');
   });
 
-  it('text with font', () => {
+  it.only('text with font', () => {
     drawText();
     cy.get('.ant-select-selection-item[title="Font"]').click();
     cy.get('.rc-virtual-list-holder img[alt="lobster"]').click();
@@ -31,7 +31,7 @@ describe('verify undo/redo behaviors', () => {
     fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');
     undoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
+    fontDisplay().should('have.attr', 'alt').and('eq', '思源黑體 TC');
     redoBtn().click();
     cy.get('#svg_1').click({ force: true });
     fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');

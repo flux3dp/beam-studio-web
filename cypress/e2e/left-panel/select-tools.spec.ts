@@ -45,12 +45,8 @@ describe('select tools', () => {
 
   it('select rotate', () => {
     cy.clickToolBtn('Element');
-    cy.get('[class="ant-modal-header"]').contains('Element').should('exist');
     cy.get('[class="ant-modal-body"]').should('exist');
-    cy.get('[class="adm-capsule-tabs-tab adm-capsule-tabs-tab-active"]').should('exist');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(1)
-      .click();
+    cy.get('[id="basic/icon-square1"]').click();
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
@@ -58,7 +54,7 @@ describe('select tools', () => {
       .trigger('mouseup', { force: true });
     cy.get('#svg_1')
       .should('exist')
-      .should('have.attr', 'transform', 'rotate(45 250.00000000000003,216.50650024414062) ');
+      .should('have.attr', 'transform', 'rotate(45 249.99999999999991,250.00000000000003) ');
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
@@ -66,15 +62,13 @@ describe('select tools', () => {
       .trigger('mouseup', { force: true });
     cy.get('#svg_1')
       .should('exist')
-      .should('have.attr', 'transform', 'rotate(90 250,216.50650024414065) ');
+      .should('have.attr', 'transform', 'rotate(90 250,250.00000000000003) ');
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
       .trigger('mousemove', { which: 1, pageX: 200, pageY: 200, shiftKey: true, force: true })
       .trigger('mouseup', { force: true });
-    cy.get('#svg_1')
-      .should('exist')
-      .should('have.attr', 'transform', 'rotate(135 249.99999999999997,216.50650024414062) ');
+    cy.get('#svg_1').should('exist').should('have.attr', 'transform', 'rotate(135 250,250) ');
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
@@ -82,6 +76,6 @@ describe('select tools', () => {
       .trigger('mouseup', { force: true });
     cy.get('#svg_1')
       .should('exist')
-      .should('have.attr', 'transform', 'rotate(-180 250,216.5065002441406) ');
+      .should('have.attr', 'transform', 'rotate(-180 250.00000000000003,249.99999999999997) ');
   });
 });

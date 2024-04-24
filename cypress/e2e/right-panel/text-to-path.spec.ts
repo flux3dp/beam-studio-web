@@ -1,8 +1,8 @@
 import { md5 } from '../../support/utils';
 
 const isRunningAtGithub = Cypress.env('envType') === 'github';
-const isInteractive = Cypress.config('isInteractive');
-const beamSeriersName = Cypress.env('beamSeriersName');
+const machineName = Cypress.env('machineName');
+const adorName = Cypress.env('adorName');
 
 const drawText = () => {
   cy.clickToolBtn('Text');
@@ -48,7 +48,7 @@ describe('convert to path 1.0', () => {
     cy.go2Preference();
     cy.get('#font-convert').select('1.0');
     cy.get('.btn.btn-done').contains('Apply').click();
-    cy.connectMachine(beamSeriersName);
+    cy.connectMachine(machineName);
     drawText();
     cy.window().then((win) => cy.spy(win.console, 'log').as('log'));
   });
@@ -81,12 +81,13 @@ describe('convert to path 1.0', () => {
     cy.get('#svg_2').click({ force: true });
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Path');
     checkConsoleLog();
+    cy.wait(1000);
     cy.get('#svg_2').should('have.attr', 'd');
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {
         // text y position is slightly different after changing font family
-        if (isInteractive) expect(md5(d)).equal('6102fcf66d921bcb93212f2cee1b2ad2');
+        if (isRunningAtGithub) expect(md5(d)).equal('6102fcf66d921bcb93212f2cee1b2ad2');
         else expect(md5(d)).equal('757b73da31fade6a7ade848068c8fa04');
       });
   });

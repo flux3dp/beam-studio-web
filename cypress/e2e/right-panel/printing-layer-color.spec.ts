@@ -24,9 +24,7 @@ describe('printing layer color', () => {
 
   it('expand layer and change color', () => {
     cy.clickToolBtn('Element');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(0)
-      .click();
+    cy.get('[id="basic/icon-circle"]').click();
     cy.get('#svg_1').should('be.visible').click();
     cy.get(`div[class*="${colorPickerPrefix}color"]`)
       .eq(0)
@@ -63,9 +61,7 @@ describe('printing layer color', () => {
 
     cy.get('#presprayArea').should('be.visible');
     cy.clickToolBtn('Element');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
-      .eq(0)
-      .click();
+    cy.get('[id="basic/icon-circle"]').click();
     cy.get('#svg_5').should('be.visible').should('have.attr', 'fill', '#009FE3');
   });
 
