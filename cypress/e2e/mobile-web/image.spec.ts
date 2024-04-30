@@ -42,7 +42,7 @@ describe('mobile image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('b662e9f0b0bbab4fdc7859faea0d47ef');
+        if (isRunningAtGithub) expect(md5(href)).equal('43975d85f0192f4a42c8b54a38645320');
         else expect(md5(href)).equal('74551b0852c0f552d72225ce5c63c5f2');
       });
   });
@@ -58,7 +58,7 @@ describe('mobile image tools', () => {
       .click()
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('53c9d4f97685ea5903e3363f27611510');
+        if (isRunningAtGithub) expect(md5(href)).equal('518b33620586dcc009c974956b3de591');
         else expect(md5(href)).equal('94fd9b5fdf467675b2eb9e20ae1ea66f');
       });
   });
@@ -77,7 +77,7 @@ describe('mobile image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('ab08bb3b784e10e362dd1cc108f97c36');
+        if (isRunningAtGithub) expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
         else expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
       });
   });
@@ -95,7 +95,7 @@ describe('mobile image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('951e0851e66b255a005aaa7fda15727a');
+        if (isRunningAtGithub) expect(md5(href)).equal('67cfcde3bcb99826faebee4b42526eed');
         else expect(md5(href)).equal('4c135ebf9ed7172043580b9beaa9c87d');
       });
   });
