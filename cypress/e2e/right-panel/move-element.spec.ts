@@ -26,7 +26,7 @@ describe('move element to another layer', () => {
   it('move one element', () => {
     cy.clickToolBtn('Element');
     cy.get('.ant-modal-header').contains('Element').should('exist');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
+    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
     cy.get('#svg_1').should('exist').should('have.attr', 'fill', '#333333');
@@ -49,17 +49,17 @@ describe('move element to another layer', () => {
   it('move multiple elements', () => {
     cy.clickToolBtn('Element');
     cy.get('.ant-modal-header').contains('Element').should('exist');
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
+    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
     cy.clickToolBtn('Element');
     cy.get('.adm-capsule-tabs-tab-wrapper').contains('Graphics').click();
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
+    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
     cy.clickToolBtn('Element');
     cy.get('.adm-capsule-tabs-tab-wrapper').contains('Line').click();
-    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapePanel-module__icon"]')
+    cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
 
