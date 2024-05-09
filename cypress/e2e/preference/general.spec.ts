@@ -99,20 +99,17 @@ describe('update the preference', () => {
     cy.go2Preference();
     cy.get('#set-default-model').select('fbm1');
     applySettings();
-    cy.get('#svgroot').should('have.attr', 'x', '3000');
-    cy.get('#svgroot').should('have.attr', 'y', '2100');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 3000 2100');
 
     cy.go2Preference();
     cy.get('#set-default-model').select('fbb1b');
     applySettings();
-    cy.get('#svgroot').should('have.attr', 'x', '4000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 4000 3750');
 
     cy.go2Preference();
     cy.get('#set-default-model').select('fbb1p');
     applySettings();
-    cy.get('#svgroot').should('have.attr', 'x', '6000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 6000 3750');
   });
 
   it('change guide setting and see if home page gets changed ', () => {
