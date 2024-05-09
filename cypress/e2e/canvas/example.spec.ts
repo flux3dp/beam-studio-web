@@ -1,15 +1,12 @@
 import { md5 } from '../../support/utils';
 
-function checkExample(exampleName: string, res: string | undefined, handleSave = false) {
+function checkExample(exampleName: string, res: string | undefined) {
   cy.get('div.menu-btn-container').click();
   cy.get('.rc-menu__submenu').contains('File').click();
   cy.get('.rc-menu__submenu').contains('Examples').click();
   cy.get('.rc-menu__item').contains(exampleName).click();
 
   if (res) {
-    if (handleSave) {
-      cy.get('button.ant-btn').contains("Don't Save").click();
-    }
     cy.get('#svgcontent')
       .invoke('prop', 'outerHTML')
       .then((html) => expect(md5(html)).equal(res));
