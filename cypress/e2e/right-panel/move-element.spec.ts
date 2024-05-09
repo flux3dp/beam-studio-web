@@ -47,26 +47,29 @@ describe('move element to another layer', () => {
   });
 
   it('move multiple elements', () => {
+    cy.contains('Layer 1').click();
     cy.clickToolBtn('Element');
     cy.get('.ant-modal-header').contains('Element').should('exist');
     cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
     cy.clickToolBtn('Element');
-    cy.get('.adm-capsule-tabs-tab-wrapper').contains('Graphics').click();
+    cy.get('.adm-capsule-tabs-tab-wrapper').contains('Decor').click();
     cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
     cy.clickToolBtn('Element');
-    cy.get('.adm-capsule-tabs-tab-wrapper').contains('Line').click();
+    cy.get('.adm-capsule-tabs-tab-wrapper').contains('Animal').click();
     cy.get('.anticon[class*="src-web-app-views-beambox-ShapePanel-ShapeIcon-module__icon"]')
       .eq(0)
       .click();
-
+    cy.get('.ant-modal-mask').should('not.exist');
+    cy.get('#svg_19').should('exist');
     cy.get('svg#svgcontent')
       .trigger('mousedown', 100, 100, { force: true })
       .trigger('mousemove', 0, 0, { force: true })
       .trigger('mouseup', { force: true });
+
     cy.get('.tab.layers').click();
     cy.get('#power-input').should('have.attr', 'value', '15');
     cy.get('#speed-input').should('have.attr', 'value', '20');
@@ -80,6 +83,6 @@ describe('move element to another layer', () => {
     cy.get('#repeat').should('have.attr', 'value', '5');
     cy.get('#svg_1').should('exist').should('have.attr', 'fill', '#3F51B5');
     cy.get('#svg_10').should('exist').should('have.attr', 'fill', '#3F51B5');
-    cy.get('#svg_11').should('exist').should('have.attr', 'stroke', '#3F51B5');
+    cy.get('#svg_19').should('exist').should('have.attr', 'fill', '#3F51B5');
   });
 });
