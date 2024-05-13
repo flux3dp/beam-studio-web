@@ -19,7 +19,7 @@ it('check clear scene', () => {
   cy.get('#svg_1').should('not.exist');
 });
 
-it.only('check clear scene after reset', () => {
+it('check clear scene after reset', () => {
   cy.landingEditor();
   cy.go2Preference();
   cy.contains('Reset Beam Studio').click();

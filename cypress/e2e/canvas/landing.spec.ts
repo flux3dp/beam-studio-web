@@ -38,9 +38,12 @@ describe('landing', () => {
         cy.get('button[class^="ant-btn"]').contains('No').click();
       }
     });
-    // skip alert
-    cy.get('div.ant-modal-body').should('exist');
-    cy.get('button[class^="ant-btn"]').contains('OK').click();
+    // Tutorial
+    cy.get('body').then((body) => {
+      if (body.find('div.ant-modal-body').length > 0) {
+        cy.get('button[class^="ant-btn"]').contains('No').click();
+      }
+    });
 
     // change log
     cy.get('div.ant-modal-body').should('exist');

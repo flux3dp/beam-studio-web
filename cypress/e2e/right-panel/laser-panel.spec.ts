@@ -8,11 +8,6 @@ describe('manipulate laser panel', () => {
     cy.landingEditor();
   });
 
-  const selectPreset = (presetName: string) => {
-    cy.get(`[class*="${ConfigPanelPrefix}preset-dropdown"] > .ant-select-selector`).click();
-    cy.get('.ant-select-item').contains(presetName).click();
-  };
-
   function checkValue(power, speed, repeat) {
     cy.get('#power-input').should('have.value', power);
     cy.get('#speed-input').should('have.value', speed);
@@ -80,166 +75,166 @@ describe('manipulate laser panel', () => {
     cy.get('#laser-repeat').clear().type('10').blur();
     cy.get('#laser-z-step').clear().type('5').blur();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
-    selectPreset('aaa');
+    cy.selectPreset('aaa');
     checkValue(40, 20, 10);
   });
 
   it('check all parameter value with beamo canvas', () => {
     cy.changeWorkarea('beamo');
-    selectPreset('Wood - 3mm Cutting');
+    cy.selectPreset('Wood - 3mm Cutting');
     checkValue(45, 5, 1);
-    selectPreset('Wood - 5mm Cutting');
+    cy.selectPreset('Wood - 5mm Cutting');
     checkValue(55, 4, 2);
-    selectPreset('Wood - Engraving');
+    cy.selectPreset('Wood - Engraving');
     checkValue(25, 150, 1);
 
-    selectPreset('Acrylic - 3mm Cutting');
+    cy.selectPreset('Acrylic - 3mm Cutting');
     checkValue(55, 4, 1);
-    selectPreset('Acrylic - 5mm Cutting');
+    cy.selectPreset('Acrylic - 5mm Cutting');
     checkValue(55, 5, 2);
-    selectPreset('Acrylic - Engraving');
+    cy.selectPreset('Acrylic - Engraving');
     checkValue(25, 150, 1);
 
-    selectPreset('Leather - 3mm Cutting');
+    cy.selectPreset('Leather - 3mm Cutting');
     checkValue(60, 3, 1);
-    selectPreset('Leather - 5mm Cutting');
+    cy.selectPreset('Leather - 5mm Cutting');
     checkValue(60, 3, 2);
-    selectPreset('Leather - Engraving');
+    cy.selectPreset('Leather - Engraving');
     checkValue(30, 150, 1);
 
-    selectPreset('Fabric - 3mm Cutting');
+    cy.selectPreset('Fabric - 3mm Cutting');
     checkValue(50, 20, 1);
-    selectPreset('Fabric - 5mm Cutting');
+    cy.selectPreset('Fabric - 5mm Cutting');
     checkValue(50, 20, 1);
-    selectPreset('Fabric - Engraving');
+    cy.selectPreset('Fabric - Engraving');
     checkValue(20, 150, 1);
 
-    selectPreset('Rubber - Engraving');
+    cy.selectPreset('Rubber - Engraving');
     checkValue(50, 100, 1);
-    selectPreset('Glass - Engraving');
+    cy.selectPreset('Glass - Engraving');
     checkValue(35, 150, 1);
-    selectPreset('Metal - Engraving');
+    cy.selectPreset('Metal - Engraving');
     checkValue(50, 80, 1);
-    selectPreset('Metal - Engraving (Diode Laser)');
+    cy.selectPreset('Metal - Engraving (Diode Laser)');
     checkValue(100, 10, 1);
   });
 
   it('check all parameter value with beambox canvas', () => {
-    selectPreset('Wood - 3mm Cutting');
+    cy.selectPreset('Wood - 3mm Cutting');
     checkValue(60, 6, 1);
-    selectPreset('Wood - 5mm Cutting');
+    cy.selectPreset('Wood - 5mm Cutting');
     checkValue(60, 3, 1);
-    selectPreset('Wood - Engraving');
+    cy.selectPreset('Wood - Engraving');
     checkValue(25, 150, 1);
 
-    selectPreset('Acrylic - 3mm Cutting');
+    cy.selectPreset('Acrylic - 3mm Cutting');
     checkValue(60, 8, 1);
-    selectPreset('Acrylic - 5mm Cutting');
+    cy.selectPreset('Acrylic - 5mm Cutting');
     checkValue(60, 4, 1);
-    selectPreset('Acrylic - Engraving');
+    cy.selectPreset('Acrylic - Engraving');
     checkValue(25, 150, 1);
 
-    selectPreset('Leather - 3mm Cutting');
+    cy.selectPreset('Leather - 3mm Cutting');
     checkValue(65, 3, 1);
-    selectPreset('Leather - 5mm Cutting');
+    cy.selectPreset('Leather - 5mm Cutting');
     checkValue(65, 1, 1);
-    selectPreset('Leather - Engraving');
+    cy.selectPreset('Leather - Engraving');
     checkValue(30, 150, 1);
 
-    selectPreset('Fabric - 3mm Cutting');
+    cy.selectPreset('Fabric - 3mm Cutting');
     checkValue(60, 20, 1);
-    selectPreset('Fabric - 5mm Cutting');
+    cy.selectPreset('Fabric - 5mm Cutting');
     checkValue(60, 20, 1);
-    selectPreset('Fabric - Engraving');
+    cy.selectPreset('Fabric - Engraving');
     checkValue(20, 150, 1);
 
-    selectPreset('Rubber - Engraving');
+    cy.selectPreset('Rubber - Engraving');
     checkValue(45, 130, 1);
-    selectPreset('Glass - Engraving');
+    cy.selectPreset('Glass - Engraving');
     checkValue(30, 150, 1);
-    selectPreset('Metal - Engraving');
+    cy.selectPreset('Metal - Engraving');
     checkValue(50, 120, 1);
-    selectPreset('Metal - Engraving (Diode Laser)');
+    cy.selectPreset('Metal - Engraving (Diode Laser)');
     checkValue(100, 10, 1);
   });
 
   it('check all parameter value with beamboxpro canvas', () => {
     cy.changeWorkarea('Beambox Pro');
 
-    selectPreset('Wood - 3mm Cutting');
+    cy.selectPreset('Wood - 3mm Cutting');
     checkValue(55, 7, 1);
-    selectPreset('Wood - 5mm Cutting');
+    cy.selectPreset('Wood - 5mm Cutting');
     checkValue(55, 4, 1);
-    selectPreset('Wood - Engraving');
+    cy.selectPreset('Wood - Engraving');
     checkValue(20, 150, 1);
 
-    selectPreset('Acrylic - 3mm Cutting');
+    cy.selectPreset('Acrylic - 3mm Cutting');
     checkValue(55, 7, 1);
-    selectPreset('Acrylic - 5mm Cutting');
+    cy.selectPreset('Acrylic - 5mm Cutting');
     checkValue(55, 4, 1);
-    selectPreset('Acrylic - Engraving');
+    cy.selectPreset('Acrylic - Engraving');
     checkValue(15, 150, 1);
 
-    selectPreset('Leather - 3mm Cutting');
+    cy.selectPreset('Leather - 3mm Cutting');
     checkValue(55, 4, 1);
-    selectPreset('Leather - 5mm Cutting');
+    cy.selectPreset('Leather - 5mm Cutting');
     checkValue(55, 2, 1);
-    selectPreset('Leather - Engraving');
+    cy.selectPreset('Leather - Engraving');
     checkValue(20, 150, 1);
 
-    selectPreset('Fabric - 3mm Cutting');
+    cy.selectPreset('Fabric - 3mm Cutting');
     checkValue(35, 20, 1);
-    selectPreset('Fabric - 5mm Cutting');
+    cy.selectPreset('Fabric - 5mm Cutting');
     checkValue(35, 20, 1);
-    selectPreset('Fabric - Engraving');
+    cy.selectPreset('Fabric - Engraving');
     checkValue(15, 150, 1);
 
-    selectPreset('Rubber - Engraving');
+    cy.selectPreset('Rubber - Engraving');
     checkValue(40, 150, 1);
-    selectPreset('Glass - Engraving');
+    cy.selectPreset('Glass - Engraving');
     checkValue(25, 150, 1);
-    selectPreset('Metal - Engraving');
+    cy.selectPreset('Metal - Engraving');
     checkValue(50, 140, 1);
-    selectPreset('Metal - Engraving (Diode Laser)');
+    cy.selectPreset('Metal - Engraving (Diode Laser)');
     checkValue(100, 10, 1);
   });
 
   it('check all parameter value with HEXA canvas', () => {
     cy.changeWorkarea('HEXA');
 
-    selectPreset('Wood - 3mm Cutting');
+    cy.selectPreset('Wood - 3mm Cutting');
     checkValue(40, 6, 1);
-    selectPreset('Wood - 5mm Cutting');
+    cy.selectPreset('Wood - 5mm Cutting');
     checkValue(65, 3, 1);
-    selectPreset('Wood - Engraving');
+    cy.selectPreset('Wood - Engraving');
     checkValue(20, 300, 1);
 
-    selectPreset('Acrylic - 3mm Cutting');
+    cy.selectPreset('Acrylic - 3mm Cutting');
     checkValue(40, 6, 1);
-    selectPreset('Acrylic - 5mm Cutting');
+    cy.selectPreset('Acrylic - 5mm Cutting');
     checkValue(55, 3, 1);
-    selectPreset('Acrylic - Engraving');
+    cy.selectPreset('Acrylic - Engraving');
     checkValue(15, 300, 1);
 
-    selectPreset('Leather - 3mm Cutting');
+    cy.selectPreset('Leather - 3mm Cutting');
     checkValue(40, 6, 1);
-    selectPreset('Leather - 5mm Cutting');
+    cy.selectPreset('Leather - 5mm Cutting');
     checkValue(55, 3, 1);
-    selectPreset('Leather - Engraving');
+    cy.selectPreset('Leather - Engraving');
     checkValue(20, 300, 1);
 
-    selectPreset('Fabric - 3mm Cutting');
+    cy.selectPreset('Fabric - 3mm Cutting');
     checkValue(15, 25, 1);
-    selectPreset('Fabric - 5mm Cutting');
+    cy.selectPreset('Fabric - 5mm Cutting');
     checkValue(20, 20, 1);
-    selectPreset('Fabric - Engraving');
+    cy.selectPreset('Fabric - Engraving');
     checkValue(15, 250, 1);
 
-    selectPreset('Rubber - Engraving');
+    cy.selectPreset('Rubber - Engraving');
     checkValue(45, 300, 1);
-    selectPreset('Glass - Engraving');
+    cy.selectPreset('Glass - Engraving');
     checkValue(35, 150, 1);
-    selectPreset('Metal - Engraving');
+    cy.selectPreset('Metal - Engraving');
     checkValue(20, 150, 1);
   });
 
@@ -264,7 +259,7 @@ describe('manipulate laser panel', () => {
     cy.get('[title="Import"] > img').click();
     cy.get('#file-input').attachFile('testfile.json');
     cy.contains('Confirm').click();
-    selectPreset('testFile');
+    cy.selectPreset('testFile');
     checkValue(100, 50, 10);
   });
 });

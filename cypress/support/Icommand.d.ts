@@ -12,6 +12,7 @@ declare global {
       checkToolBtnActive: (id: string, active?: boolean) => Chainable<void>;
       clickToolBtn: (id: string) => Chainable<void>;
       changeWorkarea: (workarea: string, save?: boolean) => Chainable<void>;
+      selectPreset: (presetName: string) => Chainable<void>;
     }
   }
 }

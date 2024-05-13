@@ -1,8 +1,8 @@
 it('snap to vertices', () => {
   cy.landingEditor();
   cy.get('div.menu-btn-container').click();
-  cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get('.rc-menu > :nth-child(18)').click().should('have.attr', 'tabindex', '-1');
+  cy.get(':nth-child(3) > .rc-menu__item').click();
+  cy.get('.rc-menu').contains('Snap To Vertices').click();
   cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
