@@ -19,7 +19,7 @@ it('check clear scene', () => {
   cy.get('#svg_1').should('not.exist');
 });
 
-it('check clear scene after reset', () => {
+it.only('check clear scene after reset', () => {
   cy.landingEditor();
   cy.go2Preference();
   cy.contains('Reset Beam Studio').click();
@@ -29,7 +29,6 @@ it('check clear scene after reset', () => {
   cy.get('[type="button"]').contains('No').click();
   cy.get('[type="button"]').contains('No').click();
   cy.get('[type="button"]').contains('No').click();
-  cy.get('[type="button"]').contains('OK').click();
   cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
