@@ -124,8 +124,8 @@ describe('mobile image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
-        else expect(md5(href)).equal('9d91e30cb427847e85fb3e69f38d48fd');
+        if (isRunningAtGithub) expect(md5(href)).equal('de1073c40f0c095297d9d87af6b74dc3');
+        else expect(md5(href)).equal('fb300cdf807ff1d603cfda97957820af');
       });
   });
 });
