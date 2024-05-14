@@ -54,7 +54,7 @@ const exampleList = [
   {
     label: 'Material Cutting Test',
     adorRes: 'e3282d392ba4b4117d826bc968ce228a',
-    beamseriesRes: '92aa987b1188bf082911e23cbaabb51b',
+    beamseriesRes: 'b62963dfec2c59cc8510b87b0a66e0c6',
   },
   {
     label: 'Material Cutting Test - Simple',
@@ -63,7 +63,7 @@ const exampleList = [
   },
   {
     label: 'Material Line Test',
-    beamseriesRes: '92aa987b1188bf082911e23cbaabb51b',
+    beamseriesRes: 'f6dde5457c57f0e9112d769db9413460',
   },
   {
     label: 'Material Printing Test',

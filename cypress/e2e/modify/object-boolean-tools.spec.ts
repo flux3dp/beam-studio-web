@@ -36,18 +36,10 @@ function selectAll() {
 }
 
 function checkDimensions(x: number, y: number, w: number, h: number) {
-  cy.get('#x_position')
-    .invoke('val')
-    .then((val) => expect(parseFloat(val as string)).to.be.closeTo(x, 0.01));
-  cy.get('#y_position')
-    .invoke('val')
-    .then((val) => expect(parseFloat(val as string)).to.be.closeTo(y, 0.01));
-  cy.get('#w_size')
-    .invoke('val')
-    .then((val) => expect(parseFloat(val as string)).to.be.closeTo(w, 0.01));
-  cy.get('#h_size')
-    .invoke('val')
-    .then((val) => expect(parseFloat(val as string)).to.be.closeTo(h, 0.01));
+  cy.inputValueCloseTo('#x_position', x, 0.01);
+  cy.inputValueCloseTo('#y_position', y, 0.01);
+  cy.inputValueCloseTo('#w_size', w, 0.01);
+  cy.inputValueCloseTo('#h_size', h, 0.01);
 }
 
 describe('object boolean tools', () => {

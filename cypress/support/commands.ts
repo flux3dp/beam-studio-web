@@ -134,6 +134,12 @@ Cypress.Commands.add('selectPreset', (presetName: string) => {
   cy.get('.ant-select-item').contains(presetName).click();
 });
 
+Cypress.Commands.add('inputValueCloseTo', (selector: string, value: number, tolerance: number) => {
+  cy.get(selector).invoke('val').then((val) => {
+    expect(parseFloat(val as string)).to.be.closeTo(value, tolerance);
+  });
+});
+
 //
 //
 // -- This is a child command --

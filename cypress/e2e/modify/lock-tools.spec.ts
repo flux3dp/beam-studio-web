@@ -14,6 +14,7 @@ it('lock', () => {
     .trigger('mousedown', { which: 1, pageX: 0, pageY: 0 })
     .trigger('mousemove', { which: 1, pageX: 200, pageY: 0 })
     .trigger('mouseup');
-  cy.get('#w_size').invoke('val').then((val) => expect(parseFloat(val as string)).to.be.closeTo(195, 1));
-  cy.get('#h_size').invoke('val').then((val) => expect(parseFloat(val as string)).to.be.closeTo(195, 1));
+
+  cy.inputValueCloseTo('#w_size', 195, 1);
+  cy.inputValueCloseTo('#h_size', 195, 1);
 });

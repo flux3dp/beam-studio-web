@@ -13,6 +13,7 @@ declare global {
       clickToolBtn: (id: string) => Chainable<void>;
       changeWorkarea: (workarea: string, save?: boolean) => Chainable<void>;
       selectPreset: (presetName: string) => Chainable<void>;
+      inputValueCloseTo: (selector: string, value: number, tolerance: number) => Chainable<void>;
     }
   }
 }

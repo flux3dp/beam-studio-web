@@ -19,6 +19,6 @@ it('offset', () => {
   cy.get('#select-offset-corner').select('Round');
   cy.get('.control > .ui > input').type('{selectall}{backspace}10');
   cy.get('.primary').click();
-  cy.get('#w_size').should('have.value', '166.43');
-  cy.get('#h_size').should('have.value', '179.17');
+  cy.inputValueCloseTo('#w_size', 166.43, 0.01);
+  cy.inputValueCloseTo('#h_size', 179.17, 0.01);
 });
