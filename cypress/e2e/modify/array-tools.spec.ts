@@ -8,7 +8,7 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', -10, -10, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.wait(500);
+    cy.get('.tab.objects').click();
     cy.get('#array').click();
     cy.get('#columns').clear().type('2').blur();
     cy.get('#rows').clear().type('2').blur();
@@ -69,9 +69,8 @@ describe('array tools', () => {
     cy.get('svg#svgcontent').trigger('mousedown', 50, 50, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 600, 600, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.wait(500);
+    cy.get('.tab.objects').click();
     cy.get('#group').click();
-    cy.wait(500);
     doAllThing();
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
     cy.get('#svg_11').children('image').should('have.length', '1');

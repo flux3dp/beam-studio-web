@@ -7,6 +7,7 @@ function drawingElements() {
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.get('#svg_1').should('exist');
   cy.wait(500);
+  cy.get('.tab.objects').click();
   cy.get('#infill').click();
   cy.get('#x_position').clear().type('0{enter}');
   cy.get('#y_position').clear().type('0{enter}');
