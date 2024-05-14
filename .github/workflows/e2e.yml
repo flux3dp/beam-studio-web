@@ -7,7 +7,7 @@ on:
       core_branch:
         description: "Core Branch"
         required: false
-        default: "develop"
+        default: "master"
 
 jobs:
   e2e-test:
