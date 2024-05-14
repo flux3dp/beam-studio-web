@@ -107,7 +107,7 @@ describe('manipulate document setting', () => {
     checkDisabled('diode_module');
   });
 
-  it.only('check default and adjust setting with working area of Ador', () => {
+  it('check default and adjust setting with working area of Ador', () => {
     cy.changeWorkarea('Ador', false);
     clickAndCheck('rotary_mode', true);
     checkDisabled('borderless_mode');
