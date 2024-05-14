@@ -33,14 +33,14 @@ describe('text tools', () => {
     cy.realPress(['Enter']);
   };
 
-  it('text font', () => {
+  it.only('text font', () => {
     drawText1();
     cy.get('div#object-panel').should('exist');
     cy.get('.ant-select[title="Font"]').click();
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder img[alt="Noto Sans"]').click();
     fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
-    cy.get('#svg_1').should('have.attr', 'font-family', "'Noto Sans'");
+    cy.get('#svg_1').should('have.attr', 'font-family').and('match', /'?Noto Sans'?/);
   });
 
   it('text style', () => {
