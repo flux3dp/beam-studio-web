@@ -1,6 +1,7 @@
 describe('text on path', () => {
   beforeEach(() => {
     cy.landingEditor();
+    cy.wait(300);
     cy.clickToolBtn('Text');
     cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
@@ -20,6 +21,7 @@ describe('text on path', () => {
       .trigger('mousemove', { pageX: 200, pageY: 100, force: true })
       .trigger('mouseup', { force: true });
     cy.get('div.element-title').contains('Multiple Objects');
+    cy.get('.tab.objects').click();
     cy.get('button#create_textpath').click();
     cy.get('div.element-title').contains('Layer 1 > Text on Path');
     cy.get('#svg_2')

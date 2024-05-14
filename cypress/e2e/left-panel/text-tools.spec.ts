@@ -1,6 +1,7 @@
 describe('text tools', () => {
   beforeEach(() => {
     cy.landingEditor();
+    cy.wait(300);
   });
 
   const fontDisplay = () =>
@@ -16,8 +17,8 @@ describe('text tools', () => {
     cy.wait(1000);
     cy.realType('TEST TEXT FONT');
     cy.get('#svg_1').should('exist');
-    cy.wait(500);
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
+    cy.get('.tab.objects').click();
   };
 
   const drawText2 = () => {
@@ -39,7 +40,7 @@ describe('text tools', () => {
     cy.wait(1000);
     cy.get('.rc-virtual-list-holder img[alt="Noto Sans"]').click();
     fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
-    cy.get('#svg_1').should('have.attr', 'font-family', 'Noto Sans');
+    cy.get('#svg_1').should('have.attr', 'font-family', "'Noto Sans'");
   });
 
   it('text style', () => {

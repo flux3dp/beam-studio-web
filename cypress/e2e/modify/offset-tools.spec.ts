@@ -1,5 +1,6 @@
 it('offset', () => {
   cy.landingEditor();
+  cy.wait(300);
   cy.clickToolBtn('Rectangle');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
@@ -13,6 +14,7 @@ it('offset', () => {
   cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.wait(500);
+  cy.get('.tab.objects').click();
   cy.get('#offset').click();
   cy.get('#select-offset-corner').select('Round');
   cy.get('.control > .ui > input').type('{selectall}{backspace}10');
