@@ -12,6 +12,7 @@ describe('manipulate image function', () => {
   it('remove gradient see if trace function gets changed', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').click({ force: true });
+    cy.get('.tab.objects').click();
     cy.get('#trace').should('have.attr', 'disabled');
     cy.get('.ant-switch').click({ force: true });
     cy.wait(1500);
@@ -28,13 +29,14 @@ describe('manipulate image function', () => {
       });
   });
 
-  it('check gradient with image', () => {
+  it('test change gradient image', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.get('.ant-switch').click({ force: true });
     cy.get('#svg_1')
       .should('have.attr', 'data-threshold', '128')
       .should('have.attr', 'data-shading', 'false');
     cy.get('#svg_1').click({ force: true });
+    cy.get('.tab.objects').click();
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
@@ -51,12 +53,13 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('8b1b3ac285d65fae820c86dc5b728efd');
-        else expect(md5(href)).equal('03405fae4019b9d85f9e9e9a6fac08a5');
+        else expect(md5(href)).equal('36b111b8c08d250064c774b875de4b5e');
       });
   });
 
   it('check replace with image', () => {
     cy.uploadFile('flux.png', 'image/png');
+    cy.get('.tab.objects').click();
     cy.get('#replace_with').click();
     cy.get('#file-input').attachFile('map.jpg');
     cy.get('.progress', { timeout: 3000 }).should('not.exist');
@@ -66,25 +69,26 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('8b79e9a445262e8412a863d5ec06d16b');
-        else expect(md5(href)).equal('819ff9e7463b66e739da0bf948390faf');
+        else expect(md5(href)).equal('59107a6d4d71693c9b8ffe4948efe496');
       });
   });
 
-  it('check grading with image', () => {
+  it('check change grading', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').click({ force: true });
     cy.wait(2000);
     cy.get('#svg_1').click({ force: true });
+    cy.get('.tab.objects').click();
     cy.get('#grading').click();
     cy.get('div.ant-modal').should('exist');
     cy.wait(2000);
-    cy.get('rect#1')
-      .trigger('mousedown', { which: 1, clientX: 922, clientY: 125, force: true })
-      .trigger('mousemove', { which: 1, clientX: 922, clientY: 325, force: true })
-      .then(() => {
-        cy.get('rect#1').trigger('mouseup');
-      });
+    cy.get('.progress', { timeout: 5000 }).should('not.exist');
+    cy.get('rect#1').trigger('mousedown', { clientX: 900, clientY: 125, force: true });
+    cy.get('rect#1').should('have.attr', 'fill-opacity', '1').should('have.attr', 'y', '-3');
+    cy.get('svg.curve-control-svg').trigger('mousemove', { clientX: 900, clientY: 325, force: true });
+    cy.get('svg.curve-control-svg').trigger('mouseup');
+    cy.get('rect#1').should('have.attr', 'fill-opacity', '1').should('have.attr', 'y', '197');
     cy.get('button[class^="ant-btn"]').contains('Okay').click();
     cy.get('.progress', { timeout: 5000 }).should('not.exist');
     cy.wait(10000);
@@ -92,13 +96,14 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('3c43c5b5ec5a8f24d2eb35a508d4b85d');
-        else expect(md5(href)).equal('4d696e44b940d87e89ecccca671fd9c9');
+        else expect(md5(href)).equal('b6fd51e23ba0fff1ff6a7165d38c13d7');
       });
   });
 
-  it('check crop with image', () => {
+  it('check crop image', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
+    cy.get('.tab.objects').click();
     cy.get('#crop').click();
     cy.wait(3000);
     cy.get('.point-se').move({ deltaX: 0, deltaY: -200 });
@@ -110,13 +115,14 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('a8ad6ba832e34e3cc6544668596fefff');
-        else expect(md5(href)).equal('613da6c7223d4a2d47859de0a28cdb08');
+        else expect(md5(href)).equal('6b86150e9da77fc6891d6c577e02c9ad');
       });
   });
 
-  it('check bevel with image', () => {
+  it('check bevel image', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('preview.png', 'image/png');
+    cy.get('.tab.objects').click();
     cy.get('#bevel').click();
     cy.get('.progress', { timeout: 120000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
@@ -131,6 +137,7 @@ describe('manipulate image function', () => {
   it('check invert with image', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
+    cy.get('.tab.objects').click();
     cy.get('#invert').click();
     cy.get('.progress', { timeout: 20000 }).should('not.exist');
     cy.get('#svg_1').click({ force: true });
@@ -139,7 +146,7 @@ describe('manipulate image function', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('de1073c40f0c095297d9d87af6b74dc3');
-        else expect(md5(href)).equal('4d7e7b1f937e9161c3f3c567d5ee869b');
+        else expect(md5(href)).equal('9d91e30cb427847e85fb3e69f38d48fd');
       });
   });
 });
