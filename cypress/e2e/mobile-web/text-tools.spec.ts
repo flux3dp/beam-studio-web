@@ -12,13 +12,13 @@ describe('mobile text tools', () => {
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('div#object-panel').should('exist');
     cy.wait(500);
-  });
-
-  it('text font', () => {
     cy.get('#font_family').click();
     cy.get(
       '[class*="src-web-app-views-beambox-Right-Panels-ObjectPanelItem-module__option"] img[alt="Noto Sans"]'
     ).click();
+  });
+
+  it('check font family', () => {
     cy.get('#svg_1').should('have.attr', 'font-family', "'Noto Sans'");
   });
 

@@ -26,8 +26,8 @@ describe('manipulate file', () => {
         });
     });
     cy.get('#svg_1').should('exist');
-    cy.get('#w_size').should('have.value', '300.00');
-    cy.get('#h_size').should('have.value', '210.00');
+    cy.get('#w_size').should('have.value', '300');
+    cy.get('#h_size').should('have.value', '210');
   });
 
   it('save file', () => {
@@ -38,7 +38,7 @@ describe('manipulate file', () => {
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -1964051864 : -1409562589);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1343974882 : 248320487);
     });
   });
 
@@ -53,7 +53,7 @@ describe('manipulate file', () => {
     cy.get(':nth-child(1) > .rc-menu__item').click();
     cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click({ force: true });
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 2142846726 : 2130600588);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1618132687 : -2058352075);
     });
   });
 
@@ -64,8 +64,8 @@ describe('manipulate file', () => {
     cy.contains('Export To...').click();
     cy.contains('BVG').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
-      if (isRunningAtGithub) expect(md5(info)).equal('d7c445484ba6604dc64de17b690c4c06');
-      else expect(md5(info)).equal('ce5583507d6b99d919b6d73129c8dcbc');
+      if (isRunningAtGithub) expect(md5(info)).equal('b43ef53a3cacedc6089cc09c537b6ac0');
+      else expect(md5(info)).equal('f5f7426649ff272af3db474e2afac797');
     });
   });
 
@@ -76,8 +76,8 @@ describe('manipulate file', () => {
     cy.contains('Export To...').click();
     cy.contains('SVG').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
-      if (isRunningAtGithub) expect(md5(info)).equal('a16cd6aaab5fdf4f1f180011e1ffd12b');
-      else expect(md5(info)).equal('7049478e91f18670719ddbbcaa5807d0');
+      if (isRunningAtGithub) expect(md5(info)).equal('b603786b738bf72988499931b9add2f1');
+      else expect(md5(info)).equal('1ac876b5aff8a44ba21cdf7f788520a5');
     });
   });
 

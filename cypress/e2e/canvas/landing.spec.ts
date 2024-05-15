@@ -17,7 +17,9 @@ describe('landing', () => {
     cy.visit('#/initialize/connect/select-machine-model');
     cy.url({ timeout: 15000 }).should('contain', '#/initialize/connect/select-machine-model');
     cy.get('div[class^="src-web-app-pages-SelectMachineModel"]').should('exist');
-    cy.get('div[class^="src-web-app-pages-SelectMachineModel-module__main"] div[class^="src-web-app-pages-SelectMachineModel-module__btn--"]').should('have.length', 4);
+    cy.get(
+      'div[class^="src-web-app-pages-SelectMachineModel-module__main"] div[class^="src-web-app-pages-SelectMachineModel-module__btn--"]'
+    ).should('have.length', 4);
     cy.contains('Skip' || 'Back').click();
     window.localStorage.setItem('new-user', 'true');
   });
@@ -31,27 +33,31 @@ describe('landing', () => {
     cy.get('button[class^="ant-btn"]').contains('No').click();
 
     // Camera Calibration
-    cy.get('body')
-      .then((body) => {
-        if (body.find('div.ant-modal-body').length > 0) {
-          cy.get('button[class^="ant-btn"]').contains('No').click();
-          cy.get('div.ant-modal-body').should('exist');
-          cy.get('button[class^="ant-btn"]').contains('OK').click();
-        }
-      });
-
+    cy.get('body').then((body) => {
+      if (body.find('div.ant-modal-body').length > 0) {
+        cy.get('button[class^="ant-btn"]').contains('No').click();
+      }
+    });
     // Tutorial
-    cy.get('body')
-      .then((body) => {
-        if (body.find('div.ant-modal-body').length > 0) {
-          cy.get('button[class^="ant-btn"]').contains('No').click();
-          cy.get('div.ant-modal-body').should('exist');
-          cy.get('button[class^="ant-btn"]').contains('OK').click();
-        }
-      });
+    cy.get('body').then((body) => {
+      if (body.find('div.ant-modal-body').length > 0) {
+        cy.get('button[class^="ant-btn"]').contains('No').click();
+      }
+    });
 
-    cy.get('#root')
-      .find('div')
-      .should('have.class', 'studio-container beambox-studio en');
+    // change log
+    cy.get('div.ant-modal-body').should('exist');
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
+
+    // Questionnaire
+    cy.get('div.ant-modal-body').should('exist');
+    cy.get('button[class^="ant-btn"]').contains('No').click();
+
+    // Text convert 2.0
+    cy.get('div.ant-modal-body').should('exist');
+    cy.get('button[class^="ant-btn"]').contains('Yes').click();
+
+    cy.get('div.ant-modal-body').should('not.exist');
+    cy.get('#root').find('div').should('have.class', 'studio-container beambox-studio en');
   });
 });

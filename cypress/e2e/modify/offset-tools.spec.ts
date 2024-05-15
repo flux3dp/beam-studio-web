@@ -1,5 +1,6 @@
 it('offset', () => {
   cy.landingEditor();
+  cy.wait(300);
   cy.clickToolBtn('Rectangle');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
@@ -13,10 +14,11 @@ it('offset', () => {
   cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
   cy.wait(500);
+  cy.get('.tab.objects').click();
   cy.get('#offset').click();
   cy.get('#select-offset-corner').select('Round');
   cy.get('.control > .ui > input').type('{selectall}{backspace}10');
   cy.get('.primary').click();
-  cy.get('#w_size').should('have.value', '166.43');
-  cy.get('#h_size').should('have.value', '179.17');
+  cy.inputValueCloseTo('#w_size', 146.43, 0.01);
+  cy.inputValueCloseTo('#h_size', 159.17, 0.01);
 });

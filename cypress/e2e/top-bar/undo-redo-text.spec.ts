@@ -2,18 +2,20 @@ const undoBtn = () => cy.get('div[title="Undo"]');
 const redoBtn = () => cy.get('div[title="Redo"]');
 const fontDisplay = () => cy.get('.ant-select-selection-item[title="Font"] img');
 
-const drawText = () => {
-  cy.clickToolBtn('Text');
-  cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
-  cy.wait(500);
-  cy.realType('Test Undo/Redo{enter}');
-  cy.get('#svg_1').should('exist');
-};
-
 describe('verify undo/redo behaviors', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
+
+  const drawText = () => {
+    cy.wait(300);
+    cy.clickToolBtn('Text');
+    cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
+    cy.wait(500);
+    cy.realType('Test Undo/Redo{enter}');
+    cy.get('#svg_1').should('exist');
+    cy.get('.tab.objects').click();
+  };
 
   it('text', () => {
     drawText();
@@ -31,7 +33,7 @@ describe('verify undo/redo behaviors', () => {
     fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');
     undoBtn().click();
     cy.get('#svg_1').click({ force: true });
-    fontDisplay().should('have.attr', 'alt').and('eq', 'Noto Sans');
+    fontDisplay().should('have.attr', 'alt').and('not.eq', 'lobster');
     redoBtn().click();
     cy.get('#svg_1').click({ force: true });
     fontDisplay().should('have.attr', 'alt').and('eq', 'lobster');

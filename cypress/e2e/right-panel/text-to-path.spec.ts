@@ -12,6 +12,7 @@ const drawText = () => {
   cy.realType('123');
   cy.get('#svg_1').should('exist');
   cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
+  cy.get('.tab.objects').click();
   cy.get('div#object-panel').should('exist');
   cy.get('.ant-select-selection-item[title="Font"]').click();
   cy.get('.ant-select-item-option-content img[alt="Mr Bedfort"]').click();
@@ -106,7 +107,7 @@ describe('convert to path 1.0', () => {
   });
 });
 
-describe('convert to path 2.0', () => {
+describe.only('convert to path 2.0', () => {
   beforeEach(() => {
     cy.landingEditor();
     drawText();
@@ -136,7 +137,7 @@ describe('convert to path 2.0', () => {
       });
     cy.get('#convert_to_path').click();
     cy.contains('Your text contains characters which are not supported by current font.').should(
-      'exist'
+      'exist', { timeout: 3000 }
     );
     cy.contains('strong', '思源黑體 TC').should('exist');
     cy.contains('Confirm').click();

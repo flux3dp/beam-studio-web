@@ -1,6 +1,7 @@
 describe('group tools', () => {
   beforeEach(() => {
     cy.landingEditor();
+    cy.wait(300);
   });
 
   const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__btn';
@@ -50,6 +51,7 @@ describe('group tools', () => {
     cy.get('svg#svgcontent').trigger('mousemove', 300, 300, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.findAllByText('Multiple Objects').should('exist');
+    cy.get('.tab.objects').click();
   };
 
   it('group', () => {

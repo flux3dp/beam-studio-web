@@ -8,6 +8,7 @@ describe('mirror tools', () => {
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(500);
     cy.realType('TEST TEXT HORIZONTAL');
+    cy.get('.tab.objects').click();
     cy.get('#horizontal_flip').click();
     cy.get('#svg_1').should(($value) => {
       const str = $value.attr('transform');
@@ -20,6 +21,7 @@ describe('mirror tools', () => {
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(500);
     cy.realType('TEST TEXT VERTICAL');
+    cy.get('.tab.objects').click();
     cy.get('#vertical_flip').click();
     cy.get('#svg_1').should(($value) => {
       const str = $value.attr('transform');

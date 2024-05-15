@@ -7,30 +7,30 @@ describe('upload tools', () => {
     cy.wait(500);
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#svg_1').should('exist');
-    cy.get('#w_size').should('have.value', '300.00');
-    cy.get('#h_size').should('have.value', '210.00');
+    cy.get('#w_size').should('have.value', '300');
+    cy.get('#h_size').should('have.value', '210');
   });
 
   it('upload jpg', () => {
     cy.landingEditor();
     cy.uploadFile('map.jpg', 'image/jpg');
     cy.get('#svg_1').should('exist');
-    cy.get('#w_size').should('have.value', '553.00');
-    cy.get('#h_size').should('have.value', '387.90');
+    cy.get('#w_size').should('have.value', '553');
+    cy.get('#h_size').should('have.value', '387.9');
   });
 
   it('upload dxf', () => {
     cy.landingEditor();
     cy.uploadFile('basket.dxf');
+    cy.contains('.ant-modal-content', 'The version of this DXF file is not 2013')
+      .contains('OK')
+      .should('be.exist')
+      .click();
     cy.contains('.ant-modal-content', 'Please enter the Unit of your file (in mm)')
       .contains('OK')
       .should('be.exist')
       .click();
     cy.contains('.ant-modal-content', 'Drawing size is out of workarea.')
-      .contains('OK')
-      .should('be.exist')
-      .click();
-    cy.contains('.ant-modal-content', 'The version of this DXF file is not 2013')
       .contains('OK')
       .should('be.exist')
       .click();
@@ -40,7 +40,7 @@ describe('upload tools', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
     cy.get('#w_size').should('have.attr', 'value').and('eq', '522.17');
-    cy.get('#h_size').should('have.attr', 'value').and('eq', '465.52');
+    cy.get('#h_size').should('have.attr', 'value').and('eq', '465.51');
   });
 
   it('upload printing beam to laser layer', () => {
@@ -56,7 +56,7 @@ describe('upload tools', () => {
     cy.changeWorkarea('Ador');
     cy.get(`div[class*="${moduleBlockPrefix}select"]`).as('module');
     cy.get('@module').should('have.text', '20W Diode Laser');
-    cy.get('@module').get('.ant-select-selector').click();
+    cy.get(`div[class*="${moduleBlockPrefix}select"] > .ant-select-selector`).click();
     cy.get('.ant-select-item-option-content').contains('Printing').click();
     cy.get('.ant-modal-title')
       .contains('Do you want to convert the Laser module into Printing module?')

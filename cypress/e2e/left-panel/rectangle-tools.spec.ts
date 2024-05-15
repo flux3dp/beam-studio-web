@@ -1,11 +1,12 @@
 describe('rectangle tools', () => {
   beforeEach(() => {
     cy.landingEditor();
+    cy.wait(300);
     cy.clickToolBtn('Rectangle');
     cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
     cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.wait(500);
+    cy.get('.tab.objects').click();
   });
 
   it('rounded corner', () => {

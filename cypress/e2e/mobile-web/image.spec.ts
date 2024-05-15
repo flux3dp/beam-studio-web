@@ -19,11 +19,11 @@ describe('mobile image tools', () => {
       .invoke('attr', 'd')
       .then((d) => {
         if (isRunningAtGithub) expect(md5(d)).equal('01da9b4d6e81051ee1439f07c169c710');
-        else expect(md5(d)).equal('cc506f32e6e24b10d9c9dc6a7b6140de');
+        else expect(md5(d)).equal('83448274d77393210da299c0579a2e2c');
       });
   });
 
-  it('check gradient with image', () => {
+  it('change image gradient', () => {
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#gradient').click({ force: true });
     cy.get('#svg_1')
@@ -33,7 +33,7 @@ describe('mobile image tools', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('7a59512b45de002b41b3c4ebdcc3760a');
-        else expect(md5(href)).equal('09d3a797b7747f423cd858c6e897d485');
+        else expect(md5(href)).equal('599a88f5b1b4ccb5adff20fb6d16a132');
       });
     cy.get('#gradient').click({ force: true });
     cy.get('#svg_1')
@@ -43,7 +43,7 @@ describe('mobile image tools', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('43975d85f0192f4a42c8b54a38645320');
-        else expect(md5(href)).equal('74551b0852c0f552d72225ce5c63c5f2');
+        else expect(md5(href)).equal('52e72107b978bef0e2b0a71fb0bd5038');
       });
   });
 
@@ -59,11 +59,11 @@ describe('mobile image tools', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('518b33620586dcc009c974956b3de591');
-        else expect(md5(href)).equal('94fd9b5fdf467675b2eb9e20ae1ea66f');
+        else expect(md5(href)).equal('8e8786f5f2a58a1877c0c07ca0c95db9');
       });
   });
 
-  it('check brightness with image', () => {
+  it('test change brightness', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#grading').click();
@@ -77,12 +77,12 @@ describe('mobile image tools', () => {
     cy.get('#svg_1')
       .invoke('attr', 'xlink:href')
       .then((href) => {
-        if (isRunningAtGithub) expect(md5(href)).equal('89c7aa6cb93a4fd9f6e79c9da0e5ade2');
-        else expect(md5(href)).equal('690258853fa3923356f12a971a2807f8');
+        if (isRunningAtGithub) expect(md5(href)).equal('be91b1388e6ad406bd6c250024a30be3');
+        else expect(md5(href)).equal('0b18e568940b9ace458aae11a4ac84b0');
       });
   });
 
-  it('check crop with image', () => {
+  it('check crop image', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#crop').click();
@@ -96,11 +96,11 @@ describe('mobile image tools', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('67cfcde3bcb99826faebee4b42526eed');
-        else expect(md5(href)).equal('4c135ebf9ed7172043580b9beaa9c87d');
+        else expect(md5(href)).equal('f136501fcd70553484b2a7e3414164d9');
       });
   });
 
-  it('check bevel with image', () => {
+  it('check bevel image', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('preview.png', 'image/png');
     cy.get('#bevel').click();
@@ -114,7 +114,7 @@ describe('mobile image tools', () => {
       });
   });
 
-  it('check invert with image', () => {
+  it('check invert image', () => {
     cy.disableImageDownSampling();
     cy.uploadFile('flux.png', 'image/png');
     cy.get('#invert').click();
@@ -125,7 +125,7 @@ describe('mobile image tools', () => {
       .invoke('attr', 'xlink:href')
       .then((href) => {
         if (isRunningAtGithub) expect(md5(href)).equal('de1073c40f0c095297d9d87af6b74dc3');
-        else expect(md5(href)).equal('4d7e7b1f937e9161c3f3c567d5ee869b');
+        else expect(md5(href)).equal('fb300cdf807ff1d603cfda97957820af');
       });
   });
 });

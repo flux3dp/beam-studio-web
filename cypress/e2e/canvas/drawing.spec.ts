@@ -1,6 +1,7 @@
 describe('drawing', () => {
   beforeEach(() => {
     cy.landingEditor();
+    cy.wait(300);
   });
 
   it('rectangle', () => {
@@ -23,7 +24,7 @@ describe('drawing', () => {
       expect($grip.attr('cx')).to.be.closeTo(100, 2);
       expect($grip.attr('cy')).to.be.closeTo(200, 2);
     });
-
+    cy.get('.tab.objects').click();
     cy.get('button#infill').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
@@ -43,6 +44,7 @@ describe('drawing', () => {
     cy.get('#selectorGrip_resize_ne').first().should(($grip) => { expect($grip.attr('cx')).to.be.closeTo(400, 2); });
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(400, 2); });
 
+    cy.get('.tab.objects').click();
     cy.get('button#infill').click();
     cy.get('#svg_1').should('have.attr', 'fill').and('not.eq', 'none');
   });
@@ -63,6 +65,7 @@ describe('drawing', () => {
     cy.get('#selectorGrip_resize_sw').first().should(($grip) => { expect($grip.attr('cy')).to.be.closeTo(453, 2); });
     cy.wait(500);
 
+    cy.get('.tab.objects').click();
     cy.get('div.option-input > input').clear().type('8').blur();
     cy.get('#svg_1').should('have.attr', 'sides').and('eq', '8');
 

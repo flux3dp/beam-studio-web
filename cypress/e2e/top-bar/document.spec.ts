@@ -1,4 +1,6 @@
 describe('manipulate document setting', () => {
+  const moduleBlockPrefix = 'src-web-app-views-beambox-Right-Panels-ConfigPanel-ModuleBlock-module__';
+
   beforeEach(() => {
     cy.landingEditor();
   });
@@ -21,43 +23,36 @@ describe('manipulate document setting', () => {
 
   it('working area of beamo', () => {
     cy.changeWorkarea('beamo');
-    cy.get('#svgroot').should('have.attr', 'x', '3000');
-    cy.get('#svgroot').should('have.attr', 'y', '2100');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 3000 2100');
   });
 
   it('working area of beambox', () => {
     cy.changeWorkarea('Beambox');
-    cy.get('#svgroot').should('have.attr', 'x', '4000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 4000 3750');
   });
 
   it('working area of beambox pro', () => {
     cy.changeWorkarea('Beambox Pro');
-    cy.get('#svgroot').should('have.attr', 'x', '6000');
-    cy.get('#svgroot').should('have.attr', 'y', '3750');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 6000 3750');
   });
 
   it('working area of HEXA', () => {
     cy.changeWorkarea('HEXA');
-    cy.get('#svgroot').should('have.attr', 'x', '7400');
-    cy.get('#svgroot').should('have.attr', 'y', '4100');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 7400 4100');
   });
 
   it('working area of Ador', () => {
     cy.changeWorkarea('Ador');
-    cy.get('#svgroot').should('have.attr', 'x', '4300');
-    cy.get('#svgroot').should('have.attr', 'y', '3200');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 4300 3200');
   });
 
   it('change Ador printing layer to Beamseries', () => {
     cy.changeWorkarea('Ador');
-    cy.get('#svgroot').should('have.attr', 'x', '4300');
-    cy.get('#svgroot').should('have.attr', 'y', '3200');
-    cy.get('.ant-select-selector').click();
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 4300 3200');
+    cy.get(`div[class*="${moduleBlockPrefix}select"] > .ant-select-selector`).click();
     cy.get('.ant-select-item-option-content').contains('Printing').click();
     cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
-    cy.get('#svgroot').should('have.attr', 'x', '4300');
-    cy.get('#svgroot').should('have.attr', 'y', '3200');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 4300 3200');
     cy.changeWorkarea('beamo');
     cy.get('.ant-modal-content').should('exist');
     cy.get('[class*="src-web-app-views-dialogs-Alert-module__message-container"]').should(
@@ -65,8 +60,7 @@ describe('manipulate document setting', () => {
       'Do you want to convert the Printing Layers into Laser Layers?'
     );
     cy.get('button.ant-btn').contains('Confirm').should('exist').click({ force: true });
-    cy.get('#svgroot').should('have.attr', 'x', '3000');
-    cy.get('#svgroot').should('have.attr', 'y', '2100');
+    cy.get('#svgcontent').should('have.attr', 'viewBox', '0 0 3000 2100');
   });
 
   const clickAndCheck = (id: string, status: boolean) => {
@@ -115,7 +109,7 @@ describe('manipulate document setting', () => {
 
   it('check default and adjust setting with working area of Ador', () => {
     cy.changeWorkarea('Ador', false);
-    checkDisabled('rotary_mode');
+    clickAndCheck('rotary_mode', true);
     checkDisabled('borderless_mode');
     checkDisabled('autofocus-module');
     checkDisabled('diode_module');
@@ -138,10 +132,7 @@ describe('manipulate document setting', () => {
     cy.changeWorkarea('HEXA');
     checkRotary();
     cy.changeWorkarea('Ador', false);
-    checkDisabled('rotary_mode');
-    cy.get('button[class^="ant-btn"]').contains('Save').click();
-    cy.get('#rotaryLine').should('have.attr', 'display', 'none');
-    cy.get('#transparentRotaryLine').should('have.attr', 'display', 'none');
+    checkRotary();
   });
 
   it('check open bottom', () => {

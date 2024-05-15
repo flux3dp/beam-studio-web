@@ -14,7 +14,7 @@ it('check clear scene', () => {
   cy.get('#svg_1').should('exist');
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get(':nth-child(23)').contains('Clear Scene').click();
+  cy.get('.rc-menu').contains('Clear Scene').click();
   cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
@@ -26,7 +26,17 @@ it('check clear scene after reset', () => {
   cy.contains('Next').click();
   cy.contains('Work Offline').click();
   cy.contains('Skip').click();
-  cy.get('[type="button"]').contains('No').click();
+  cy.get('button[class^="ant-btn"]').contains('No').click();
+  cy.get('body').then((body) => {
+    if (body.find('div.ant-modal-body').length > 0) {
+      cy.get('button[class^="ant-btn"]').contains('No').click();
+    }
+  });
+  cy.get('body').then((body) => {
+    if (body.find('div.ant-modal-body').length > 0) {
+      cy.get('button[class^="ant-btn"]').contains('No').click();
+    }
+  });
   cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
   cy.get('svg#svgcontent').trigger('mouseup', { force: true });
@@ -41,7 +51,7 @@ it('check clear scene after reset', () => {
   cy.get('#svg_1').should('exist');
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get(':nth-child(23)').contains('Clear Scene').click();
+  cy.get('.rc-menu').contains('Clear Scene').click();
   cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
