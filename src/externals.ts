@@ -23,6 +23,5 @@ import 'recalculate';
 import 'draw';
 import 'layer';
 import 'path';
-import 'clipper_unminified';
 import 'jqueryUi';
 import 'jpicker';
