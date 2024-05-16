@@ -58,7 +58,6 @@ module.exports = {
       layer: path.join(__dirname, 'public/js/lib/svgeditor/layer'),
       path: path.join(__dirname, 'public/js/lib/svgeditor/path'),
       // svgcanvas: 'public/js/lib/svgeditor/svgcanvas',
-      clipper_unminified: path.join(__dirname, 'public/js/lib/clipper_unminified'),
       jqueryUi: path.join(__dirname, 'public/js/lib/svgeditor/jquery-ui/jquery-ui-1.8.17.custom.min'),
       jpicker: path.join(__dirname, 'public/js/lib/svgeditor/jgraduate/jpicker'),
       canvg: path.join(__dirname, 'public/js/lib/svgeditor/canvg/canvg'),
@@ -171,6 +170,7 @@ module.exports = {
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/img') },
         { from: path.resolve(__dirname, 'src/web/assets/img'), to: path.resolve(__dirname, 'dist/core-img') },
+        { from: path.resolve(__dirname, 'src/web/assets/fcode'), to: path.resolve(__dirname, 'dist/fcode') },
         { from: path.resolve(__dirname, 'src/assets/styles'), to: path.resolve(__dirname, 'dist/styles') },
         { from: path.resolve(__dirname, 'src/web/assets/video'), to: path.resolve(__dirname, 'dist/video') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
