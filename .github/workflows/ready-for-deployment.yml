@@ -59,6 +59,5 @@ jobs:
           config-file: cypress.config.prod.ts
           record: true
           parallel: true
-          browser: chrome
           start: |
             yarn install
