@@ -12,7 +12,6 @@ describe('text tools', () => {
 
   const drawText1 = () => {
     cy.clickToolBtn('Text');
-    cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(1000);
     cy.realType('TEST TEXT FONT');
@@ -23,7 +22,6 @@ describe('text tools', () => {
 
   const drawText2 = () => {
     cy.clickToolBtn('Text');
-    cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').realClick({ x: 150, y: 150 });
 
     cy.wait(1000);

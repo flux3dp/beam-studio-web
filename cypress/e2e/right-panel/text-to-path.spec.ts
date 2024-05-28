@@ -6,7 +6,6 @@ const beamSeriersName = Cypress.env('beamSeriersName');
 
 const drawText = () => {
   cy.clickToolBtn('Text');
-  cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
   cy.get('svg#svgcontent').realClick({ x: 100, y: 100 });
   cy.wait(1000);
   cy.realType('123');

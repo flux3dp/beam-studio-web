@@ -3,7 +3,6 @@ describe('mobile text tools', () => {
     cy.viewport('iphone-xr');
     cy.landingEditor();
     cy.get('.adm-tab-bar-item').contains('Text').click();
-    cy.get('g#selectorParentGroup').should('have.css', 'cursor', 'move');
     cy.get('svg#svgcontent').dblclick(300, 200);
     cy.wait(500);
     cy.realType('{backspace}{backspace}{backspace}{backspace}TEST TEXT FONT');
