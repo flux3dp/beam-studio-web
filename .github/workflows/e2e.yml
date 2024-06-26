@@ -2,11 +2,12 @@ name: e2e
 
 on:
   pull_request:
-    branches:
-      - develop-e2e
-  push:
-    branches:
-      - develop-e2e
+  workflow_dispatch:
+    inputs:
+      core_branch:
+        description: "Core Branch"
+        required: false
+        default: "master"
 
 jobs:
   e2e-test:
@@ -22,7 +23,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: flux3dp/beam-studio-core
-          ref: develop
+          ref: ${{ github.event.inputs.core_branch }}
           path: .github/actions/beam-studio-core
       - name: Copy Beam Studio Core
         run: |
