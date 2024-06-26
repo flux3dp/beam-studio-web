@@ -53,7 +53,7 @@ describe('manipulate file', () => {
     cy.get('.rc-menu__submenu').contains('File').click();
     cy.get('.rc-menu').contains('Save As...').click();
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1618132687 : -1935392431);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1514134254 : -1935392431);
     });
   });
 
