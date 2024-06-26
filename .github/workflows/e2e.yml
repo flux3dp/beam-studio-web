@@ -59,4 +59,4 @@ jobs:
           parallel: true
           start: yarn start
           wait-on: "http://localhost:8080"
-          wait-on-timeout: 120
+          wait-on-timeout: 300
