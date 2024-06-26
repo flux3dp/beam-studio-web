@@ -38,8 +38,8 @@ const exampleList = [
   },
   {
     label: 'Example of beambox',
-    adorRes: 'ea5a3e9f7dfbf480369d19fb79a85d94',
-    beamseriesRes: '803189fb875a8ee7bdcec110acf407ec',
+    adorRes: 'b2638140ef30438b985b3acb4b582d21',
+    beamseriesRes: '6552958c795c15e83494cd233155662b',
   },
   {
     label: 'Material Engraving Test',

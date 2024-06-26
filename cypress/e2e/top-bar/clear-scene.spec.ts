@@ -14,7 +14,7 @@ it('check clear scene', () => {
   cy.get('#svg_1').should('exist');
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get('.rc-menu').contains('Clear Scene').click();
+  cy.get('.rc-menu').contains('New').click();
   cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
@@ -51,7 +51,7 @@ it('check clear scene after reset', () => {
   cy.get('#svg_1').should('exist');
   cy.get('div.menu-btn-container').click();
   cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get('.rc-menu').contains('Clear Scene').click();
+  cy.get('.rc-menu').contains('New').click();
   cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
