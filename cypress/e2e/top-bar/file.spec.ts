@@ -11,8 +11,8 @@ describe('manipulate file', () => {
 
   it('open file ', () => {
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(1) > .rc-menu > :nth-child(1)').click();
+    cy.get('.rc-menu__submenu').contains('File').click();
+    cy.get('.rc-menu').contains('Open').click();
     cy.get('input#file-input').then(($input) => {
       cy.fixture('flux.png', 'base64')
         .then(Cypress.Blob.base64StringToBlob)
@@ -33,8 +33,8 @@ describe('manipulate file', () => {
   it('save file', () => {
     const cypressDownloadBeamPath = Cypress.env('cypressDownloadBeamPath');
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(1) > .rc-menu > :nth-child(3)').click();
+    cy.get('.rc-menu__submenu').contains('File').click();
+    cy.get('.rc-menu').contains('Save').click();
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
@@ -50,10 +50,10 @@ describe('manipulate file', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.get('#svg_1').should('exist').should('not.have.attr', 'opacity');
     cy.get('div.menu-btn-container').click();
-    cy.get(':nth-child(1) > .rc-menu__item').click();
-    cy.get(':nth-child(1) > .rc-menu > :nth-child(4)').click({ force: true });
+    cy.get('.rc-menu__submenu').contains('File').click();
+    cy.get('.rc-menu').contains('Save As...').click();
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1618132687 : -2058352075);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1514134254 : -1935392431);
     });
   });
 

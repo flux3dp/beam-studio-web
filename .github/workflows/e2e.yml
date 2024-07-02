@@ -11,7 +11,7 @@ on:
 
 jobs:
   e2e-test:
-    runs-on: macos-12
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -59,4 +59,4 @@ jobs:
           parallel: true
           start: yarn start
           wait-on: "http://localhost:8080"
-          wait-on-timeout: 120
+          wait-on-timeout: 300

@@ -1,4 +1,4 @@
-it('check clear scene', () => {
+it('check new file', () => {
   cy.landingEditor();
   cy.clickToolBtn('Pen');
   cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
@@ -13,13 +13,13 @@ it('check clear scene', () => {
   cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
   cy.get('#svg_1').should('exist');
   cy.get('div.menu-btn-container').click();
-  cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get('.rc-menu').contains('Clear Scene').click();
+  cy.get('.rc-menu__submenu').contains('File').click();
+  cy.get('.rc-menu').contains('New').click();
   cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
 
-it('check clear scene after reset', () => {
+it('check new file after reset', () => {
   cy.landingEditor();
   cy.go2Preference();
   cy.contains('Reset Beam Studio').click();
@@ -50,8 +50,8 @@ it('check clear scene after reset', () => {
   cy.get('svg#svgcontent').trigger('mousedown', 0, 0, { force: true });
   cy.get('#svg_1').should('exist');
   cy.get('div.menu-btn-container').click();
-  cy.get(':nth-child(2) > .rc-menu__item').click();
-  cy.get('.rc-menu').contains('Clear Scene').click();
+  cy.get('.rc-menu__submenu').contains('File').click();
+  cy.get('.rc-menu').contains('New').click();
   cy.contains('button span', 'Yes').click();
   cy.get('#svg_1').should('not.exist');
 });
