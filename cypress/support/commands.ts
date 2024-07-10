@@ -35,8 +35,9 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   });
   cy.contains('Work Offline').click();
   // time for svgcanvas loading
-  cy.get('#workarea').should('exist');
   cy.wait(1000);
+  // Use GoButton to detect frontend render
+  cy.get('.top-bar [title="Start Work"]', { timeout: 15000 }).should('exist', { timeout: 15000 });
 });
 
 Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
