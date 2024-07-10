@@ -35,6 +35,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   });
   cy.contains('Work Offline').click();
   // time for svgcanvas loading
+  cy.get('#workarea').should('exist');
   cy.wait(1000);
 });
 

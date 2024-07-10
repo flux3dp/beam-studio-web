@@ -6,8 +6,6 @@ describe('verify top bar behaviors under device disconnection', () => {
   it('show #801 while clicking on preview button', () => {
     cy.get('.top-bar [title="Preview"]').should('exist');
     cy.get('.top-bar [title="Preview"]').click();
-    cy.get('#preview-shoot').should('exist');
-    cy.get('#preview-shoot').click();
     cy.get('.ant-modal-content').contains('#801').should('exist');
   });
 
