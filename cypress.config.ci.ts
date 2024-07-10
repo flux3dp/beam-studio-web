@@ -6,5 +6,6 @@ export default {
     ...envVariables,
     envType: 'github',
     connectMachineIP: undefined,
-  }
+  },
+  experimentalMemoryManagement: true,
 }
