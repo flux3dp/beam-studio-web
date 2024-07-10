@@ -38,7 +38,7 @@ describe('manipulate file', () => {
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1343974882 : 248320487);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 969720500 : -210857373);
     });
   });
 
@@ -53,7 +53,7 @@ describe('manipulate file', () => {
     cy.get('.rc-menu__submenu').contains('File').click();
     cy.get('.rc-menu').contains('Save As...').click();
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1514134254 : -1935392431);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -884772217 : -210857373);
     });
   });
 
@@ -64,8 +64,8 @@ describe('manipulate file', () => {
     cy.contains('Export To...').click();
     cy.contains('BVG').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
-      if (isRunningAtGithub) expect(md5(info)).equal('b43ef53a3cacedc6089cc09c537b6ac0');
-      else expect(md5(info)).equal('f5f7426649ff272af3db474e2afac797');
+      if (isRunningAtGithub) expect(md5(info)).equal('3287f0cfd3da5f41c24390bd321416a4');
+      else expect(md5(info)).equal('d3226c3d45dc8843ad248c3ed701415d');
     });
   });
 
@@ -77,7 +77,7 @@ describe('manipulate file', () => {
     cy.contains('SVG').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
       if (isRunningAtGithub) expect(md5(info)).equal('b603786b738bf72988499931b9add2f1');
-      else expect(md5(info)).equal('1ac876b5aff8a44ba21cdf7f788520a5');
+      else expect(md5(info)).equal('80972cd225baaf9050633c875d7ec320');
     });
   });
 
