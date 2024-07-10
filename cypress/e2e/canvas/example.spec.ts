@@ -44,26 +44,26 @@ const exampleList = [
   {
     label: 'Material Engraving Test',
     adorRes: '22f173149936c6013852f36b4c8c7d2c',
-    beamseriesRes: '000023114baaf69be16cc7d3a5a1ffa8',
+    beamseriesRes: 'f2e3b31af0acc0854e3b63e2f163a58d',
   },
   {
     label: 'Material Engraving Test - Classic',
     adorRes: 'c8106ce4d8aa62f980bbfc2f67ed218e',
-    beamseriesRes: '3e9e5c89bef49a6db995bff71cab9c98',
+    beamseriesRes: '329869c034836d173134be01da0f0378',
   },
   {
     label: 'Material Cutting Test',
     adorRes: 'e3282d392ba4b4117d826bc968ce228a',
-    beamseriesRes: 'b62963dfec2c59cc8510b87b0a66e0c6',
+    beamseriesRes: 'cb02eeff1b1484323609cd0fc753e902',
   },
   {
     label: 'Material Cutting Test - Simple',
     adorRes: 'cb190e98c4a193db5773daebf6a66f4b',
-    beamseriesRes: '33377b55bedf39cbc59fa0fe95b8882b',
+    beamseriesRes: 'e8397fe194e20d959fb2d6ed7a60b48c',
   },
   {
     label: 'Material Line Test',
-    beamseriesRes: 'f6dde5457c57f0e9112d769db9413460',
+    beamseriesRes: '68a995263933bcdc0aff470ae5449e68',
   },
   {
     label: 'Material Printing Test',
@@ -71,7 +71,7 @@ const exampleList = [
   },
   {
     label: 'Acrylic Focus Probe - 3mm',
-    beamseriesRes: '52d222a0a8ccb01c5919d6a4bd86948f',
+    beamseriesRes: '056006eaa0484709b5599a7f7e0118c8',
   },
 ];
 
