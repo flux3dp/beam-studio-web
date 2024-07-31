@@ -41,7 +41,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
   post-deployment-test:
     needs: deployment
-    runs-on: macos-13
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:

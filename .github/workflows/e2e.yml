@@ -11,7 +11,7 @@ on:
 
 jobs:
   e2e-test:
-    runs-on: macos-13
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -52,7 +52,6 @@ jobs:
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
-          browser: chrome
           config-file: cypress.config.ci.ts
           record: true
           group: "Actions"
