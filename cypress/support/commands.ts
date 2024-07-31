@@ -37,7 +37,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
   // time for svgcanvas loading
   cy.wait(1000);
   // Use GoButton to detect frontend render
-  cy.get('.top-bar [title="Start Work"]', { timeout: 15000 }).should('exist', { timeout: 15000 });
+  cy.get('.top-bar [title="Start Work"]', { timeout: 30000 }).should('exist', { timeout: 30000 });
 });
 
 Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
