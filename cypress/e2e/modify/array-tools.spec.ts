@@ -51,7 +51,7 @@ describe('array tools', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(1500);
-    cy.realType('Test Array');
+    cy.inputText('Test Array');
     doAllThing();
     cy.get('div.top-bar div.element-title').should('have.text', 'Multiple Objects');
     cy.get('g[data-tempgroup="true"]').children('text').should('have.length', '4');

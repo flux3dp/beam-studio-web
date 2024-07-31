@@ -12,7 +12,7 @@ describe('verify undo/redo behaviors', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(500);
-    cy.realType('Test Undo/Redo{enter}');
+    cy.inputText('Test Undo/Redo{enter}');
     cy.get('#svg_1').should('exist');
     cy.get('.tab.objects').click();
   };

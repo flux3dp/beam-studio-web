@@ -7,7 +7,7 @@ describe('select tools', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(500);
-    cy.realType('TEST SELECT');
+    cy.inputText('TEST SELECT');
     cy.get('#svg_1').should('exist');
     cy.clickToolBtn('Cursor');
     cy.get('#svg_1').realClick();

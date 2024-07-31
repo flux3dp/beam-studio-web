@@ -142,6 +142,10 @@ Cypress.Commands.add('inputValueCloseTo', (selector: string, value: number, tole
   });
 });
 
+Cypress.Commands.add('inputText', (value: string, selector = 'input#text') => {
+  cy.get(selector).type(value, { force: true });
+});
+
 //
 //
 // -- This is a child command --

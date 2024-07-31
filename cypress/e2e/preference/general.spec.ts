@@ -82,7 +82,7 @@ describe('update the preference', () => {
     cy.get('#set-default-font-family').select('AirstreamNF');
     applySettings();
     cy.clickToolBtn('Text');
-    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('Bring Any Design to Life');
+    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).inputText('Bring Any Design to Life');
     cy.get('.ant-select-selection-item[title="Font"]').should('have.text', 'AirstreamNF');
   });
 
@@ -91,7 +91,7 @@ describe('update the preference', () => {
     cy.get('#set-default-font-style').select('Bold');
     applySettings();
     cy.clickToolBtn('Text');
-    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).realType('Bring Any Design to Life');
+    cy.get('svg#svgcontent').realClick({ x: 100, y: 200 }).inputText('Bring Any Design to Life');
     cy.get('.ant-select-selection-item[title="Style"]').should('have.text', 'Bold');
   });
 

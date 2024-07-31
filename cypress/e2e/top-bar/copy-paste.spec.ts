@@ -31,7 +31,7 @@ describe('verify copy/paste behaviors', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(500);
-    cy.realType('Test Copy And Paste');
+    cy.inputText('Test Copy And Paste');
     cy.wait(500);
     copyAndPaste();
     cy.get('g.layer').find('text').should('have.length', '2');
