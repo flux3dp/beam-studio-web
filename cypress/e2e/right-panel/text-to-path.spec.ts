@@ -8,7 +8,7 @@ const drawText = () => {
   cy.clickToolBtn('Text');
   cy.get('svg#svgcontent').realClick({ x: 100, y: 100 });
   cy.wait(1000);
-  cy.realType('123');
+  cy.inputText('123');
   cy.get('#svg_1').should('exist');
   cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
   cy.get('.tab.objects').click();

@@ -5,7 +5,7 @@ describe('text on path', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(1000);
-    cy.realType('123456789{enter}');
+    cy.inputText('123456789{enter}');
     cy.get('div.element-title').contains('Layer 1 > Text');
     cy.clickToolBtn('Ellipse');
     cy.get('svg#svgcontent')

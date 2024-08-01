@@ -8,11 +8,10 @@ it('arrangement', () => {
 
   cy.get('#svg_1').click({ force: true });
   cy.get('.tab.objects').click();
-  cy.contains('Auto Arrange').click();
-  cy.wait(100);
-  cy.get('.svg-nest-button.active').click();
+  cy.contains('Smart Nest').click();
+  cy.get('div[class*="src-web-app-views-beambox-SvgNestButtons-module__container"] > button.ant-btn-primary').click();
   cy.wait(10000);
-  cy.get('.svg-nest-button.active > .text').should('have.text', 'Stop');
+  cy.get('div[class*="src-web-app-views-beambox-SvgNestButtons-module__container"] > button.ant-btn-primary').should('have.text', 'Stop');
   cy.get('#svg_1').should(($location) => {
     const xLocation = $location.attr('x');
     const yLocation = $location.attr('y');

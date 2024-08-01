@@ -33,9 +33,11 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
     // eslint-disable-next-line no-param-reassign
     win.onbeforeunload = null;
   });
-  cy.contains('Work Offline').click();
+  cy.contains('Work Offline', { timeout: 30000 }).click();
   // time for svgcanvas loading
   cy.wait(1000);
+  // Use GoButton to detect frontend render
+  cy.get('.top-bar [title="Start Work"]', { timeout: 30000 }).should('exist', { timeout: 30000 });
 });
 
 Cypress.Commands.add('loginAndLandingEditor', (opts = {}) => {
@@ -138,6 +140,10 @@ Cypress.Commands.add('inputValueCloseTo', (selector: string, value: number, tole
   cy.get(selector).invoke('val').then((val) => {
     expect(parseFloat(val as string)).to.be.closeTo(value, tolerance);
   });
+});
+
+Cypress.Commands.add('inputText', (value: string) => {
+  cy.realType(value);
 });
 
 //

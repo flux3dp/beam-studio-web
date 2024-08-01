@@ -14,7 +14,7 @@ describe('text tools', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 100, y: 200 });
     cy.wait(1000);
-    cy.realType('TEST TEXT FONT');
+    cy.inputText('TEST TEXT FONT');
     cy.get('#svg_1').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.get('.tab.objects').click();
@@ -25,7 +25,7 @@ describe('text tools', () => {
     cy.get('svg#svgcontent').realClick({ x: 150, y: 150 });
 
     cy.wait(1000);
-    cy.realType('TEST TEXT STYLE');
+    cy.inputText('TEST TEXT STYLE');
     cy.get('#svg_2').should('exist');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
     cy.realPress(['Enter']);
@@ -97,7 +97,7 @@ describe('text tools', () => {
     drawText2();
     cy.get('#svg_1').dblclick();
     cy.realPress(['Shift', 'Enter']);
-    cy.realType('LINE SPACING TEST');
+    cy.inputText('LINE SPACING TEST');
     cy.get('#svg_1').should('include.text', 'TEXT FONTLINE SPACING TEST');
     cy.get('div[title="Line spacing"] + div.option-input > input')
       .should('have.value', '1')
@@ -108,7 +108,7 @@ describe('text tools', () => {
 
     cy.get('#svg_2').dblclick();
     cy.realPress(['Shift', 'Enter']);
-    cy.realType('LINE SPACING TEST');
+    cy.inputText('LINE SPACING TEST');
     cy.get('#svg_2').should('include.text', 'TEXT STYLELINE SPACING TEST');
     cy.get('div[title="Line spacing"] + div.option-input > input')
       .should('have.value', '1')

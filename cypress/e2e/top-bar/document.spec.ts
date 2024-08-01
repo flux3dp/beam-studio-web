@@ -69,14 +69,12 @@ describe('manipulate document setting', () => {
     cy.get(`button#${id}`).should('have.attr', 'aria-checked', String(status));
   };
 
-  const checkDisabled = (id: string) => {
-    cy.get(`button#${id}`).should('have.attr', 'aria-checked', 'false');
-    cy.get(`button#${id}`).should('have.attr', 'disabled');
+  const checkNotExists = (id: string) => {
+    cy.get(`button#${id}`).should('not.exist');
   };
 
   it('check default and adjust setting with working area of beamo', () => {
     cy.changeWorkarea('beamo', false);
-    cy.get('div.controls.disabled').should('not.exist');
     clickAndCheck('rotary_mode', true);
     clickAndCheck('borderless_mode', true);
     clickAndCheck('autofocus-module', true);
@@ -86,33 +84,33 @@ describe('manipulate document setting', () => {
   it('check default and adjust setting with working area of beambox', () => {
     cy.changeWorkarea('Beambox', false);
     clickAndCheck('rotary_mode', true);
-    checkDisabled('borderless_mode');
-    checkDisabled('autofocus-module');
-    checkDisabled('diode_module');
+    checkNotExists('borderless_mode');
+    checkNotExists('autofocus-module');
+    checkNotExists('diode_module');
   });
 
   it('check default and adjust setting with working area of beambox pro', () => {
     cy.changeWorkarea('Beambox Pro', false);
     clickAndCheck('rotary_mode', true);
-    checkDisabled('borderless_mode');
-    checkDisabled('autofocus-module');
-    checkDisabled('diode_module');
+    checkNotExists('borderless_mode');
+    checkNotExists('autofocus-module');
+    checkNotExists('diode_module');
   });
 
   it('check default and adjust setting with working area of HEXA', () => {
     cy.changeWorkarea('HEXA', false);
     clickAndCheck('rotary_mode', true);
-    checkDisabled('borderless_mode');
-    checkDisabled('autofocus-module');
-    checkDisabled('diode_module');
+    checkNotExists('borderless_mode');
+    checkNotExists('autofocus-module');
+    checkNotExists('diode_module');
   });
 
   it('check default and adjust setting with working area of Ador', () => {
     cy.changeWorkarea('Ador', false);
     clickAndCheck('rotary_mode', true);
-    checkDisabled('borderless_mode');
-    checkDisabled('autofocus-module');
-    checkDisabled('diode_module');
+    checkNotExists('borderless_mode');
+    checkNotExists('autofocus-module');
+    checkNotExists('diode_module');
   });
 
   const checkRotary = () => {

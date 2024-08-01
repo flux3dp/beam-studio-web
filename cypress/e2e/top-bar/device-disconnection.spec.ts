@@ -1,4 +1,5 @@
 describe('verify top bar behaviors under device disconnection', () => {
+  const isRunningAtGithub = Cypress.env('envType') === 'github';
   beforeEach(() => {
     cy.landingEditor();
   });
@@ -6,8 +7,6 @@ describe('verify top bar behaviors under device disconnection', () => {
   it('show #801 while clicking on preview button', () => {
     cy.get('.top-bar [title="Preview"]').should('exist');
     cy.get('.top-bar [title="Preview"]').click();
-    cy.get('#preview-shoot').should('exist');
-    cy.get('#preview-shoot').click();
     cy.get('.ant-modal-content').contains('#801').should('exist');
   });
 
@@ -30,16 +29,19 @@ describe('verify top bar behaviors under device disconnection', () => {
     cy.get('.ant-modal-content').contains('#801').should('exist');
   });
 
-  it('path preview button is disabled', () => {
-    cy.get('.top-bar [title="Path preview"]').should('exist');
-    cy.get('.top-bar [title="Path preview"]').invoke('attr', 'class').should('contain', 'disabled');
-    cy.get('.top-bar [title="Path preview"]').should('have.css', 'pointer-events', 'none');
-  });
+  if (!isRunningAtGithub) {
+    // github does not support webgl
+    it('path preview button is disabled', () => {
+      cy.get('.top-bar [title="Path preview"]').should('exist');
+      cy.get('.top-bar [title="Path preview"]').invoke('attr', 'class').should('contain', 'disabled');
+      cy.get('.top-bar [title="Path preview"]').should('have.css', 'pointer-events', 'none');
+    });
+  }
 
   it('GO button is disabled', () => {
     cy.get('.top-bar [title="Start Work"]').should('exist');
     cy.get('.top-bar [title="Start Work"]').invoke('attr', 'class').should('contain', 'disabled');
-    cy.get('.top-bar [title="Path preview"]').should('have.css', 'pointer-events', 'none');
+    cy.get('.top-bar [title="Start Work"]').should('have.css', 'pointer-events', 'none');
   });
 
   it('toturial is unable to start', () => {

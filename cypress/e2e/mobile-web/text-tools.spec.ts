@@ -5,7 +5,7 @@ describe('mobile text tools', () => {
     cy.get('.adm-tab-bar-item').contains('Text').click();
     cy.get('svg#svgcontent').dblclick(300, 200);
     cy.wait(500);
-    cy.realType('{backspace}{backspace}{backspace}{backspace}TEST TEXT FONT');
+    cy.inputText('{backspace}{backspace}{backspace}{backspace}TEST TEXT FONT');
     cy.get('#svg_1').should('exist');
     cy.get('#svg_1').should('have.text', 'TEST TEXT FONT');
     cy.get('div.top-bar div.element-title').should('have.text', 'Layer 1 > Text');
@@ -58,7 +58,7 @@ describe('mobile text tools', () => {
   it('line spacing', () => {
     cy.get('#svg_1').dblclick({ force: true });
     cy.realPress(['Shift', 'Enter']);
-    cy.realType('LINE SPACING TEST{enter}');
+    cy.inputText('LINE SPACING TEST{enter}');
     cy.get('#svg_1').should('include.text', 'LINE SPACING TEST');
     cy.get('#line_spacing').click();
     cy.get('[class="adm-button adm-button-default adm-button-shape-rounded"]')

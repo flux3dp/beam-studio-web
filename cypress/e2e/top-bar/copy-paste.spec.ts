@@ -2,6 +2,18 @@ describe('verify copy/paste behaviors', () => {
   beforeEach(() => {
     cy.landingEditor();
   });
+
+  const copyAndPaste = () => {
+    cy.get('#svg_1').should('exist');
+    cy.get('#svg_1').realClick({ button: 'right' });
+    cy.wait(500);
+
+    cy.get('.react-contextmenu').contains('Copy').click();
+    cy.get('#svg_1').realClick({ button: 'right' });
+    cy.get('.react-contextmenu').contains('Paste').click();
+    cy.get('#svg_2').should('exist');
+  };
+
   it('image', () => {
     cy.uploadFile('flux.png', 'image/png');
     copyAndPaste();
@@ -31,19 +43,9 @@ describe('verify copy/paste behaviors', () => {
     cy.clickToolBtn('Text');
     cy.get('svg#svgcontent').realClick({ x: 10, y: 20 });
     cy.wait(500);
-    cy.realType('Test Copy And Paste');
+    cy.inputText('Test Copy And Paste');
     cy.wait(500);
     copyAndPaste();
     cy.get('g.layer').find('text').should('have.length', '2');
   });
-
-  function copyAndPaste() {
-    cy.get('#svg_1').should('exist');
-    cy.get('#svg_1').realClick({ button: 'right' });
-    cy.wait(500);
-    cy.get(':nth-child(1) > .react-contextmenu > :nth-child(2)').click({ force: true });
-    cy.get('#svg_1').realClick({ button: 'right' });
-    cy.get(':nth-child(1) > .react-contextmenu > :nth-child(3)').click({ force: true });
-    cy.get('#svg_2').should('exist');
-  };
 });

@@ -1,3 +1,5 @@
+/* eslint-disable prefer-rest-params */
+/* eslint-disable no-param-reassign */
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -25,3 +27,20 @@ import '@testing-library/cypress/add-commands';
 // require('./commands')
 
 Cypress.on('uncaught:exception', (err, runnable) => false);
+
+Cypress.on('window:before:load', (win) => {
+  const original = win.EventTarget.prototype.addEventListener;
+
+  win.EventTarget.prototype.addEventListener = function patcher() {
+    if (arguments && arguments[0] === 'beforeunload') {
+      return;
+    }
+    // eslint-disable-next-line consistent-return
+    return original.apply(this, arguments);
+  };
+
+  Object.defineProperty(win, 'onbeforeunload', {
+    get: () => {},
+    set: () => {},
+  });
+});

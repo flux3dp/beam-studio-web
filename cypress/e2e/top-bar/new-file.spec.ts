@@ -15,7 +15,7 @@ it('check new file', () => {
   cy.get('div.menu-btn-container').click();
   cy.get('.rc-menu__submenu').contains('File').click();
   cy.get('.rc-menu').contains('New').click();
-  cy.contains('button span', 'Yes').click();
+  cy.contains('button span', "Don't Save").click();
   cy.get('#svg_1').should('not.exist');
 });
 
@@ -52,6 +52,6 @@ it('check new file after reset', () => {
   cy.get('div.menu-btn-container').click();
   cy.get('.rc-menu__submenu').contains('File').click();
   cy.get('.rc-menu').contains('New').click();
-  cy.contains('button span', 'Yes').click();
+  cy.contains('button span', "Don't Save").click();
   cy.get('#svg_1').should('not.exist');
 });
