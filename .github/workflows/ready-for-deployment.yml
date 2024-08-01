@@ -55,6 +55,7 @@ jobs:
           CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         with:
+          headed: true
           group: 'Group'
           config-file: cypress.config.prod.ts
           record: true

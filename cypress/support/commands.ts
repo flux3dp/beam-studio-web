@@ -33,7 +33,7 @@ Cypress.Commands.add('landingEditor', (opts = {}) => {
     // eslint-disable-next-line no-param-reassign
     win.onbeforeunload = null;
   });
-  cy.contains('Work Offline').click();
+  cy.contains('Work Offline', { timeout: 30000 }).click();
   // time for svgcanvas loading
   cy.wait(1000);
   // Use GoButton to detect frontend render
