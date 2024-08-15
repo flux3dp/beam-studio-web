@@ -57,6 +57,10 @@ describe('landing', () => {
     cy.get('div.ant-modal-body').should('exist');
     cy.get('button[class^="ant-btn"]').contains('Yes').click();
 
+    // Auto Switch Tab
+    cy.get('div.ant-modal-body').should('exist');
+    cy.get('button[class^="ant-btn"]').contains('Yes').click();
+
     cy.get('div.ant-modal-body').should('not.exist');
     cy.get('#root').find('div').should('have.class', 'studio-container beambox-studio en');
   });
