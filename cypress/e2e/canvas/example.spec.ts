@@ -48,12 +48,12 @@ const exampleList = [
   },
   {
     label: 'Material Engraving Test - Classic',
-    adorRes: '3b79e4ed6a970d48d7c71e29672acc64',
-    beamseriesRes: '329869c034836d173134be01da0f0378',
+    adorRes: 'c8106ce4d8aa62f980bbfc2f67ed218e',
+    beamseriesRes: '3b79e4ed6a970d48d7c71e29672acc64',
   },
   {
     label: 'Material Cutting Test',
-    adorRes: 'b4a0f15fe65965e3a45ad68a335129f5',
+    adorRes: 'e3282d392ba4b4117d826bc968ce228a',
     beamseriesRes: 'cb02eeff1b1484323609cd0fc753e902',
   },
   {
