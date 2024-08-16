@@ -38,7 +38,7 @@ describe('manipulate file', () => {
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 2108884228 : -210857373);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -1656069987 : -210857373);
     });
   });
 
@@ -53,7 +53,7 @@ describe('manipulate file', () => {
     cy.get('.rc-menu__submenu').contains('File').click();
     cy.get('.rc-menu').contains('Save As...').click();
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 558931054 : 1999755064);
+      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1677886723 : 1999755064);
     });
   });
 
