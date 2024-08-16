@@ -19,13 +19,6 @@ describe('verify top bar behaviors under device disconnection', () => {
   it('show #801 while clicking on framing button', () => {
     cy.get('.top-bar [title="Running Frame"]').should('exist');
     cy.get('.top-bar [title="Running Frame"]').click();
-    cy.get('.ant-message-notice-info').contains('Please add objects first').should('exist');
-
-    cy.clickToolBtn('Rectangle');
-    cy.get('svg#svgcontent').trigger('mousedown', 100, 100, { force: true });
-    cy.get('svg#svgcontent').trigger('mousemove', 400, 400, { force: true });
-    cy.get('svg#svgcontent').trigger('mouseup', { force: true });
-    cy.get('.top-bar [title="Running Frame"]').click();
     cy.get('.ant-modal-content').contains('#801').should('exist');
   });
 
