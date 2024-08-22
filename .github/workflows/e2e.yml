@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.19
+          node-version: 20.11
       # - uses: browser-actions/setup-chrome@latest
       #   id: setup-chrome
       #   with:
