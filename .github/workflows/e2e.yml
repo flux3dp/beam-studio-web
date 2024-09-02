@@ -8,13 +8,10 @@ on:
         description: "Core Branch"
         required: false
         default: "master"
-  push:
-    branches:
-      - develop-e2e
 
 jobs:
   e2e-test:
-    runs-on: macos-latest
+    runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
