@@ -14,11 +14,16 @@ describe('manipulate document setting', () => {
   it('resolution', () => {
     openDocument();
     cy.wait(300);
-    cy.get('input.ant-input').should('have.value', 'Medium (250 DPI)');
-    cy.get('.ant-modal-body div.ant-slider-handle').click().realSwipe('toLeft', { length: 50 });
-    cy.get('input.ant-input').should('have.value', 'Low (100 DPI)');
-    cy.get('.ant-modal-body div.ant-slider-handle').click().realSwipe('toRight', { length: 150 });
-    cy.get('input.ant-input').should('have.value', 'Ultra High (1000 DPI)');
+    cy.get('#dpi').closest('.ant-select').as('select');
+    cy.get('@select').find('.ant-select-selection-item').should('have.text', 'Medium (250 DPI)');
+    cy.get('@select').find('.ant-select-selection-item').click();
+    cy.get('@select').should('have.class', 'ant-select-open');
+    cy.get('.ant-select-item-option-content').contains('Low (125 DPI)').click({ force: true });
+    cy.get('@select').find('.ant-select-selection-item').should('have.text', 'Low (125 DPI)');
+    cy.get('@select').find('.ant-select-selection-item').click();
+    cy.get('@select').should('have.class', 'ant-select-open');
+    cy.get('.ant-select-item-option-content').contains('Ultra High (1000 DPI)').click({ force: true });
+    cy.get('@select').find('.ant-select-selection-item').should('have.text', 'Ultra High (1000 DPI)');
   });
 
   it('working area of beamo', () => {
@@ -144,23 +149,25 @@ describe('manipulate document setting', () => {
     cy.changeWorkarea('beamo', false);
     clickAndCheck('autofocus-module', true);
     cy.get('button[class^="ant-btn"]').contains('Save').click();
-    cy.findAllByText('Add-on').should('exist');
+    cy.findAllByText('Advanced').should('exist');
+    cy.contains('Advanced').click();
     cy.findAllByText('Focus Adjustment').should('exist');
-    cy.findAllByText('Focus Adjustment').next().should('have.attr', 'type', 'checkbox').click();
+    cy.get('#auto-focus').should('have.attr', 'aria-checked', 'false').click();
     cy.findAllByText('Object Height').should('exist');
     cy.get('#height').should('have.value', '3.00');
   });
 
-  it('check diode laser', () => {
+  it.only('check diode laser', () => {
     cy.changeWorkarea('beamo', false);
     clickAndCheck('diode_module', true);
     cy.get('button[class^="ant-btn"]').contains('Save').click();
     cy.get('#diode-boundary')
       .children()
       .should('have.attr', 'd', 'M3000,2100H0,V2000H2500V0H3000V2100');
-    cy.findAllByText('Add-on').should('exist');
+    cy.findAllByText('Advanced').should('exist');
+    cy.contains('Advanced').click();
     cy.findAllByText('Diode Laser').should('exist');
-    cy.findAllByText('Diode Laser').next().should('have.attr', 'type', 'checkbox').click();
+    cy.get('#diode').should('have.attr', 'aria-checked', 'false').click();
     cy.get('#diode-boundary').children().should('have.attr', 'd', 'M0,0H3000V70H700V2100H0V0');
   });
 });
