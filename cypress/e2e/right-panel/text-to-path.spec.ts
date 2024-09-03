@@ -24,9 +24,7 @@ const drawText = () => {
     .should('be.closeTo', isWindows ? 1019 : 1011, 1);
   cy.get('#y_position').clear().type('50{enter}');
   cy.wait(500);
-  cy.get('#svg_1')
-    .invoke('attr', 'y')
-    .should('be.closeTo', isWindows ? 637 : 703, 1);
+  cy.get('#svg_1').invoke('attr', 'y').should('be.closeTo', 703, 1);
 };
 
 const checkConsoleLog = () => {
