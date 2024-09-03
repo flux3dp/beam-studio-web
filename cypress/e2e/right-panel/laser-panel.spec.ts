@@ -2,7 +2,8 @@ const configOperationsPrefix =
   'src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigOperations-module__';
 const configListPrefix = 'src-web-app-views-beambox-Right-Panels-LaserManage-ConfigList-module__';
 const ConfigPanelPrefix = 'src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigPanel-module__';
-
+const presetManagementPrefix =
+  'src-web-app-components-dialogs-PresetsManagementPanel-PresetsManagementPanel-module__';
 describe('manipulate laser panel', () => {
   beforeEach(() => {
     cy.landingEditor();
@@ -14,66 +15,52 @@ describe('manipulate laser panel', () => {
     cy.get('#repeat').should('have.value', repeat);
   }
 
-  it('set customized list', () => {
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list')
-      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 5mm Cutting')
-      .parent()
-      .click();
-    cy.get('button[class*="ant-btn"]').eq(1).click();
-    cy.get('#custom-config-list').children().should('have.length', '15');
-    cy.get(`div[class*="${configListPrefix}list"]`)
-      .get(`div[class*="${configListPrefix}name"]`)
-      .eq(1)
-      .click();
-    cy.get('button[class*="ant-btn"]').eq(0).click();
-    cy.get('#custom-config-list').children().should('have.length', '16');
+  it('should have correct presets length', () => {
+    cy.get('button[title="Manage Parameters"]').click();
+    cy.get(`div[class*="${presetManagementPrefix}list"]`).children().should('have.length', '15');
   });
 
   it('reset the parameter', () => {
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('#custom-config-list')
-      .contains(`div[class*="${configListPrefix}name"]`, 'Wood - 3mm Cutting')
-      .parent()
-      .click();
-    cy.get('button[class^="ant-btn"]').contains('Delete').click();
+    cy.get('button[title="Manage Parameters"]').click();
+    cy.get(`div[class*="${presetManagementPrefix}eye"]`).eq(0).click();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
+    cy.get(`[class*="${ConfigPanelPrefix}preset-dropdown"] > .ant-select-selector`).click();
+    cy.get('.ant-select-item').should('have.length', '15');
+    cy.get('button[title="Manage Parameters"]').click();
+    cy.get('button[class^="ant-btn"]').contains('Reset').click();
+    cy.get('button[class^="ant-btn"]').contains('Confirm').click();
     cy.get(`[class*="${ConfigPanelPrefix}preset-dropdown"] > .ant-select-selector`).click();
     cy.get('.ant-select-item').should('have.length', '16');
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('button[class^="ant-btn"]').contains('Reset').click();
-    cy.get('button[class^="ant-btn"]').contains('Yes').click();
-    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
-    cy.get(`[class*="${ConfigPanelPrefix}preset-dropdown"] > .ant-select-selector`).click();
-    cy.get('.ant-select-item').should('have.length', '17');
-  });
-
-  it('add new parameter at initial panel', () => {
-    cy.get('#power-input').clear().type('100').blur();
-    cy.get('#speed-input').clear().type('70').blur();
-    cy.get('#repeat').clear().type('3').blur();
-    cy.get('[class*="src-web-app-views-beambox-Right-Panels-ConfigPanel-SaveConfigButton-module__btn"]').click();
-    cy.get('.text-input').type('Hello Flux').blur();
-    cy.get('button[class^="ant-btn"]').contains('OK').click();
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.contains('Hello Flux').should('exist');
-    cy.contains(`div[class*="${configListPrefix}name"]`, 'Hello Flux').click();
-    cy.get('#laser-power').should('have.value', '100');
-    cy.get('#laser-speed').should('have.value', '70');
-    cy.get('#laser-repeat').should('have.value', '3');
-    cy.get('#laser-z-step').should('have.value', '0');
   });
 
   it('add new parameter at laser panel', () => {
-    cy.get(`div[class*="${configOperationsPrefix}button"][title="Manage"]`).click();
-    cy.get('span[class="anticon anticon-plus-circle"]').click();
+    cy.get('#power-input').clear().type('100').blur();
+    cy.get('#speed-input').clear().type('70').blur();
+    cy.get('#repeat').clear().type('3').blur();
+    cy.get(
+      'button[class*="src-web-app-views-beambox-Right-Panels-ConfigPanel-SaveConfigButton-module"]'
+    ).click();
+    cy.get('.text-input').type('Hello Flux').blur();
+    cy.get('button[class^="ant-btn"]').contains('OK').click();
+    cy.get('button[title="Manage Parameters"]').click();
+    cy.contains('Hello Flux').should('exist');
+    cy.contains(`div[class*="${presetManagementPrefix}item"]`, 'Hello Flux').click();
+    cy.get('input[data-testid="power"]').should('have.value', '100');
+    cy.get('input[data-testid="speed"]').should('have.value', '70');
+    cy.get('input[data-testid="repeat"]').should('have.value', '3');
+    cy.get('input[data-testid="zStep"]').should('have.value', '0');
+  });
+
+  it('add new parameter at presets management panel', () => {
+    cy.get('button[title="Manage Parameters"]').click();
+    cy.contains('Add New').click();
     cy.get('.text-input').type('aaa').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
     cy.contains('aaa').should('exist');
-    cy.get('#laser-power').clear().type('40').blur();
-    cy.get('#laser-speed').clear().type('20').blur();
-    cy.get('#laser-repeat').clear().type('10').blur();
-    cy.get('#laser-z-step').clear().type('5').blur();
+    cy.get('input[data-testid="power"]').clear().type('40').blur();
+    cy.get('input[data-testid="speed"]').clear().type('20').blur();
+    cy.get('input[data-testid="repeat"]').clear().type('10').blur();
+    cy.get('input[data-testid="zStep"]').clear().type('5').blur();
     cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.selectPreset('aaa');
     checkValue(40, 20, 10);
@@ -119,7 +106,7 @@ describe('manipulate laser panel', () => {
     checkValue(100, 10, 1);
   });
 
-  it('check all parameter value with beambox canvas', () => {
+  it('check all parameter value with Beambox canvas', () => {
     cy.selectPreset('Wood - 3mm Cutting');
     checkValue(60, 6, 1);
     cy.selectPreset('Wood - 5mm Cutting');
@@ -154,11 +141,9 @@ describe('manipulate laser panel', () => {
     checkValue(30, 150, 1);
     cy.selectPreset('Metal - Engraving');
     checkValue(50, 120, 1);
-    cy.selectPreset('Metal - Engraving (Diode Laser)');
-    checkValue(100, 10, 1);
   });
 
-  it('check all parameter value with beamboxpro canvas', () => {
+  it('check all parameter value with Beambox Pro canvas', () => {
     cy.changeWorkarea('Beambox Pro');
 
     cy.selectPreset('Wood - 3mm Cutting');
@@ -195,8 +180,6 @@ describe('manipulate laser panel', () => {
     checkValue(25, 150, 1);
     cy.selectPreset('Metal - Engraving');
     checkValue(50, 140, 1);
-    cy.selectPreset('Metal - Engraving (Diode Laser)');
-    checkValue(100, 10, 1);
   });
 
   it('check all parameter value with HEXA canvas', () => {
@@ -243,22 +226,28 @@ describe('manipulate laser panel', () => {
     cy.get('#power-input').clear().type('100').blur();
     cy.get('#speed-input').clear().type('70').blur();
     cy.get('#repeat').clear().type('3').blur();
-    cy.get('[class*="src-web-app-views-beambox-Right-Panels-ConfigPanel-SaveConfigButton-module__btn"]').click();
+    cy.get(
+      'button[class*="src-web-app-views-beambox-Right-Panels-ConfigPanel-SaveConfigButton-module"]'
+    ).click();
     cy.get('.text-input').type('Hi Flux').blur();
     cy.get('button[class^="ant-btn"]').contains('OK').click();
+    cy.get('button[title="Manage Parameters"]').click();
     cy.get('[title="Export"]').click();
     cy.wait(5000);
     cy.readFile(cypressDownloadPath)
-      .its('customizedLaserConfigs')
-      .its('16')
+      .its('presets')
+      .should('have.length', 49)
+      .its('48')
       .its('name')
       .should('eq', 'Hi Flux');
   });
 
-  it('import parameter file', () => {
-    cy.get('[title="Import"] > img').click();
+  it('import old format parameter file', () => {
+    cy.get('button[title="Manage Parameters"]').click();
+    cy.get('button[title="Import"]').click();
     cy.get('#file-input').attachFile('testfile.json');
     cy.contains('Confirm').click();
+    cy.get('button[class^="ant-btn"]').contains('Save and Exit').click();
     cy.selectPreset('testFile');
     checkValue(100, 50, 10);
   });
