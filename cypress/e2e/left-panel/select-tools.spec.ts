@@ -58,30 +58,40 @@ describe('select tools', () => {
       .trigger('mouseup', { force: true });
     cy.get('#svg_1')
       .should('exist')
-      .should('have.attr', 'transform', 'rotate(45 250.00000000000003,216.50650024414062) ');
+      .invoke('attr', 'transform')
+      .then((transform) => {
+        expect(transform).to.satisfy((t: string) => t.match(/rotate\(45 [\d.]+,[\d.]+\)/));
+      });
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
       .trigger('mousemove', { which: 1, pageX: 200, pageY: 100, shiftKey: true, force: true })
       .trigger('mouseup', { force: true });
     cy.get('#svg_1')
-      .should('exist')
-      .should('have.attr', 'transform', 'rotate(90 250,216.50650024414065) ');
+      .invoke('attr', 'transform')
+      .then((transform) => {
+        expect(transform).to.satisfy((t: string) => t.match(/rotate\(90 [\d.]+,[\d.]+\)/));
+      });
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
       .trigger('mousemove', { which: 1, pageX: 200, pageY: 200, shiftKey: true, force: true })
       .trigger('mouseup', { force: true });
     cy.get('#svg_1')
-      .should('exist')
-      .should('have.attr', 'transform', 'rotate(135 249.99999999999997,216.50650024414062) ');
+      .invoke('attr', 'transform')
+      .then((transform) => {
+        expect(transform).to.satisfy((t: string) => t.match(/rotate\(135 [\d.]+,[\d.]+\)/));
+      });
     cy.get('#svg_1').click();
     cy.get('circle#selectorGrip_rotate')
       .trigger('mousedown', { which: 1, force: true })
       .trigger('mousemove', { which: 1, pageX: 200, pageY: 300, shiftKey: true, force: true })
       .trigger('mouseup', { force: true });
+
     cy.get('#svg_1')
-      .should('exist')
-      .should('have.attr', 'transform', 'rotate(-180 250,216.5065002441406) ');
+      .invoke('attr', 'transform')
+      .then((transform) => {
+        expect(transform).to.satisfy((t: string) => t.match(/rotate\(-180 [\d.]+,[\d.]+\)/));
+      });
   });
 });

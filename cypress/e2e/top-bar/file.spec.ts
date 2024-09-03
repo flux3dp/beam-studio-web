@@ -3,6 +3,7 @@ import { buf as crc32Buf } from 'crc-32';
 import { md5 } from '../../support/utils';
 
 const isRunningAtGithub = Cypress.env('envType') === 'github';
+const isWindows = Cypress.platform === 'win32';
 
 describe('manipulate file', () => {
   beforeEach(() => {
@@ -38,7 +39,11 @@ describe('manipulate file', () => {
     cy.wait(1000);
 
     cy.readFile(cypressDownloadBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? 1091338501 : -210857373);
+      let expectedValue = -210857373;
+      if (isRunningAtGithub) {
+        expectedValue = isWindows ? 502435180 : 1091338501;
+      }
+      expect(crc32Buf(buf)).to.equal(expectedValue);
     });
   });
 
@@ -53,7 +58,11 @@ describe('manipulate file', () => {
     cy.get('.rc-menu__submenu').contains('File').click();
     cy.get('.rc-menu').contains('Save As...').click();
     cy.readFile(cypressDownloadNewBeamPath, null).then((buf) => {
-      expect(crc32Buf(buf)).to.equal(isRunningAtGithub ? -901845600 : 1999755064);
+      let expectedValue = 1999755064;
+      if (isRunningAtGithub) {
+        expectedValue = isWindows ? -1360034278 : -901845600;
+      }
+      expect(crc32Buf(buf)).to.equal(expectedValue);
     });
   });
 
@@ -64,8 +73,13 @@ describe('manipulate file', () => {
     cy.contains('Export To...').click();
     cy.contains('BVG').click();
     cy.readFile(cypressDownloadBvgPath).then((info) => {
-      if (isRunningAtGithub) expect(md5(info)).equal('6665836ae47675168573b48d43702405');
-      else expect(md5(info)).equal('d3226c3d45dc8843ad248c3ed701415d');
+      let expectedValue = 'd3226c3d45dc8843ad248c3ed701415d';
+      if (isRunningAtGithub) {
+        expectedValue = isWindows
+          ? '57096d67eaf64c2bc9672604b6828536'
+          : '6665836ae47675168573b48d43702405';
+      }
+      expect(md5(info)).equal(expectedValue);
     });
   });
 
@@ -76,8 +90,13 @@ describe('manipulate file', () => {
     cy.contains('Export To...').click();
     cy.contains('SVG').click();
     cy.readFile(cypressDownloadSvgPath).then((info) => {
-      if (isRunningAtGithub) expect(md5(info)).equal('7b2d301bee1027fdf5e3042821dded8d');
-      else expect(md5(info)).equal('80972cd225baaf9050633c875d7ec320');
+      let expectedValue = '80972cd225baaf9050633c875d7ec320';
+      if (isRunningAtGithub) {
+        expectedValue = isWindows
+          ? '28ff059299139662b5b79b4d044c41e2'
+          : '7b2d301bee1027fdf5e3042821dded8d';
+      }
+      expect(md5(info)).equal(expectedValue);
     });
   });
 
@@ -93,12 +112,12 @@ describe('manipulate file', () => {
   });
 
   it('export jpg file ', () => {
-    const cypressDownloadJpgPath = Cypress.env('cypressDownloadJpgPath');
+    const path = isWindows ? Cypress.env('cypressDownloadJpgPath') : Cypress.env('cypressDownloadJpegPath');
     cy.get('div.menu-btn-container').click();
     cy.contains('File').click();
     cy.contains('Export To...').click();
     cy.contains('JPG').click();
-    cy.readFile(cypressDownloadJpgPath, null).then((buf) => {
+    cy.readFile(path, null).then((buf) => {
       expect(crc32Buf(buf)).to.equal(1826901805);
     });
   });

@@ -4,7 +4,8 @@ describe('verify shortcuts', () => {
   });
 
   it('jump to the preference page', () => {
-    cy.get('body').type('{command+k}');
+    const cmdKey = Cypress.platform === 'darwin' ? 'command' : 'ctrl';
+    cy.get('body').type(`{${cmdKey}+k}`);
     cy.url().should('contain', '#/studio/settings');
   });
 

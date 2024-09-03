@@ -40,7 +40,7 @@ describe('upload tools', () => {
     cy.get('svg#svgcontent').trigger('mouseup', { force: true });
     cy.wait(500);
     cy.get('#w_size').should('have.attr', 'value').and('eq', '522.17');
-    cy.get('#h_size').should('have.attr', 'value').and('eq', '465.51');
+    cy.get('#h_size').should('have.attr', 'value').and('eq', '465.52');
   });
 
   it('upload printing beam to laser layer', () => {

@@ -1,4 +1,5 @@
 describe('manipulate view', () => {
+  const isRunningAtGithub = Cypress.env('envType') === 'github';
   const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__btn';
   const zoomBlockPrefix = 'src-web-app-components-beambox-ZoomBlock-module_';
   const zoomRatio = () => cy.get(`[class*="${zoomBlockPrefix}_ratio"]`);
@@ -34,7 +35,8 @@ describe('manipulate view', () => {
     cy.get('.rc-menu').contains('Auto Fit to Window Size').click();
     zoomRatio().should('have.text', '42%');
     cy.viewport(1500, 1200);
-    zoomRatio().should('have.text', '76%');
+    const targetValue = Cypress.platform === 'win32' ? '75%' : '76%';
+    zoomRatio().should('have.text', targetValue);
   });
 
   it('show grids', () => {

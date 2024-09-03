@@ -123,7 +123,7 @@ Cypress.Commands.add('changeWorkarea', (workarea: string, save = true) => {
   cy.get('div.menu-btn-container').click();
   cy.get('.rc-menu__submenu').contains('Edit').click();
   cy.contains('Document Settings').click();
-  cy.contains('.ant-form-item', 'Working Area').find('.ant-select').as('select');
+  cy.get('#workareaSelect').closest('.ant-select').as('select');
   cy.get('@select').find('.ant-select-selection-item').click();
   cy.get('@select').should('have.class', 'ant-select-open');
   cy.get('.ant-select-item-option-content').contains(workarea).click({ force: true });

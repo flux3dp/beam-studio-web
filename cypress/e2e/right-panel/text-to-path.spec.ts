@@ -1,6 +1,7 @@
 import { md5 } from '../../support/utils';
 
 const isRunningAtGithub = Cypress.env('envType') === 'github';
+const isWindows = Cypress.platform === 'win32';
 const isInteractive = Cypress.config('isInteractive');
 const beamSeriersName = Cypress.env('beamSeriersName');
 
@@ -18,7 +19,9 @@ const drawText = () => {
   cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Mr Bedfort'");
   cy.get('#x_position').clear().type('100{enter}');
   cy.wait(500);
-  cy.get('#svg_1').invoke('attr', 'x').should('be.closeTo', 1011, 1);
+  cy.get('#svg_1')
+    .invoke('attr', 'x')
+    .should('be.closeTo', isWindows ? 1019 : 1011, 1);
   cy.get('#y_position').clear().type('50{enter}');
   cy.wait(500);
   cy.get('#svg_1').invoke('attr', 'y').should('be.closeTo', 703, 1);
@@ -123,8 +126,11 @@ describe.only('convert to path 2.0', () => {
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {
-        if (isRunningAtGithub) expect(md5(d)).equal('5951b071eac21549437779d3bb3554bd');
-        else expect(md5(d)).equal('6fde8da297586452f7561d6dc93299bc');
+        let expectedValue = '6fde8da297586452f7561d6dc93299bc';
+        if (isRunningAtGithub) {
+          expectedValue = isWindows ? 'a93f7f803e8eea840d61531458838987' : '5951b071eac21549437779d3bb3554bd';
+        }
+        expect(md5(d)).equal(expectedValue);
       });
   });
 
@@ -136,7 +142,8 @@ describe.only('convert to path 2.0', () => {
       });
     cy.get('#convert_to_path').click();
     cy.contains('Your text contains characters which are not supported by current font.').should(
-      'exist', { timeout: 3000 }
+      'exist',
+      { timeout: 3000 }
     );
     cy.contains('strong', '思源黑體 TC').should('exist');
     cy.contains('Confirm').click();
@@ -148,8 +155,11 @@ describe.only('convert to path 2.0', () => {
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {
-        if (isRunningAtGithub) expect(md5(d)).equal('9790fb3564249f0952dd1b131b77eba3');
-        else expect(md5(d)).equal('0b39368fe65b64e08cd08b9c8ff625b9');
+        let expectedValue = '0b39368fe65b64e08cd08b9c8ff625b9';
+        if (isRunningAtGithub) {
+          expectedValue = isWindows ? '415ea1b80d7fc380646248203bfd10e4' : '9790fb3564249f0952dd1b131b77eba3';
+        }
+        expect(md5(d)).equal(expectedValue);
       });
   });
 
@@ -165,8 +175,11 @@ describe.only('convert to path 2.0', () => {
     cy.get('#svg_2')
       .invoke('attr', 'd')
       .then((d) => {
-        if (isRunningAtGithub) expect(md5(d)).equal('8ffd98ed29e592cf37182bb6f9190729');
-        else expect(md5(d)).equal('d828dcc474ad48d26ecb9269cb3844fa');
+        let expectedValue = 'd828dcc474ad48d26ecb9269cb3844fa';
+        if (isRunningAtGithub) {
+          expectedValue = isWindows ? '9f6739e16128b247684722743e8b04a1' : '8ffd98ed29e592cf37182bb6f9190729';
+        }
+        expect(md5(d)).equal(expectedValue);
       });
   });
 });
