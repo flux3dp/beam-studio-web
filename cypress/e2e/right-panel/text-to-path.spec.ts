@@ -1,6 +1,7 @@
 import { md5 } from '../../support/utils';
 
 const isRunningAtGithub = Cypress.env('envType') === 'github';
+const isWindows = Cypress.platform === 'win32';
 const isInteractive = Cypress.config('isInteractive');
 const beamSeriersName = Cypress.env('beamSeriersName');
 
@@ -18,10 +19,14 @@ const drawText = () => {
   cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Mr Bedfort'");
   cy.get('#x_position').clear().type('100{enter}');
   cy.wait(500);
-  cy.get('#svg_1').invoke('attr', 'x').should('be.closeTo', 1011, 5);
+  cy.get('#svg_1')
+    .invoke('attr', 'x')
+    .should('be.closeTo', isWindows ? 1019 : 1011, 1);
   cy.get('#y_position').clear().type('50{enter}');
   cy.wait(500);
-  cy.get('#svg_1').invoke('attr', 'y').should('be.closeTo', 703, 5);
+  cy.get('#svg_1')
+    .invoke('attr', 'y')
+    .should('be.closeTo', isWindows ? 637 : 703, 1);
 };
 
 const checkConsoleLog = () => {
@@ -136,7 +141,8 @@ describe.only('convert to path 2.0', () => {
       });
     cy.get('#convert_to_path').click();
     cy.contains('Your text contains characters which are not supported by current font.').should(
-      'exist', { timeout: 3000 }
+      'exist',
+      { timeout: 3000 }
     );
     cy.contains('strong', '思源黑體 TC').should('exist');
     cy.contains('Confirm').click();
