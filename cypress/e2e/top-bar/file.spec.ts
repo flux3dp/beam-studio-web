@@ -112,12 +112,12 @@ describe('manipulate file', () => {
   });
 
   it('export jpg file ', () => {
-    const cypressDownloadJpgPath = Cypress.env('cypressDownloadJpgPath');
+    const path = isWindows ? Cypress.env('cypressDownloadJpgPath') : Cypress.env('cypressDownloadJpegPath');
     cy.get('div.menu-btn-container').click();
     cy.contains('File').click();
     cy.contains('Export To...').click();
     cy.contains('JPG').click();
-    cy.readFile(cypressDownloadJpgPath, null).then((buf) => {
+    cy.readFile(path, null).then((buf) => {
       expect(crc32Buf(buf)).to.equal(1826901805);
     });
   });
