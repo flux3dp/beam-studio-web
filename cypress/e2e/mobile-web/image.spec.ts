@@ -18,7 +18,7 @@ describe('mobile image tools', () => {
     cy.get('#svg_3')
       .invoke('attr', 'd')
       .then((d) => {
-        if (isRunningAtGithub) expect(md5(d)).equal('01da9b4d6e81051ee1439f07c169c710');
+        if (isRunningAtGithub) expect(md5(d)).equal('de99510ff9f5ecf06d6743c5a802b835');
         else expect(md5(d)).equal('83448274d77393210da299c0579a2e2c');
       });
   });

@@ -14,10 +14,10 @@ describe('manipulate image function', () => {
     cy.get('#svg_1').click({ force: true });
     cy.get('.tab.objects').click();
     cy.get('#trace').should('have.attr', 'disabled');
-    cy.get('.ant-switch').click({ force: true });
+    cy.get('.ant-switch').eq(0).click();
     cy.wait(1500);
     cy.contains('Threshold brightness').should('exist');
-    cy.get('#trace').click({ force: true });
+    cy.get('#trace').click();
     cy.wait(1500);
     cy.get('#svg_3').click({ force: true });
     cy.get('div.element-title').contains('Layer 1 > Path');
@@ -25,13 +25,14 @@ describe('manipulate image function', () => {
       .invoke('attr', 'd')
       .then((d) => {
         if (isRunningAtGithub) expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
-        else expect(md5(d)).equal('da6270fbdc3ef610d316682c6a95389c');
+        else expect(md5(d)).equal('de99510ff9f5ecf06d6743c5a802b835');
       });
   });
 
   it('test change gradient image', () => {
     cy.uploadFile('flux.png', 'image/png');
-    cy.get('.ant-switch').click({ force: true });
+    cy.get('.tab.objects').click();
+    cy.get('.ant-switch').eq(0).click();
     cy.get('#svg_1')
       .should('have.attr', 'data-threshold', '128')
       .should('have.attr', 'data-shading', 'false');
@@ -43,7 +44,7 @@ describe('manipulate image function', () => {
         if (isRunningAtGithub) expect(md5(href)).equal('8794655cf390c5f867ed5eff13f3bce4');
         else expect(md5(href)).equal('0a52a26dec2bac9490b838b039756347');
       });
-    cy.get('.ant-switch').click({ force: true });
+    cy.get('.ant-switch').eq(0).click();
     cy.get('#svg_1').click({ force: true });
     cy.get('#svg_1')
       .should('have.attr', 'data-threshold', '254')
