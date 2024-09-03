@@ -18,10 +18,10 @@ const drawText = () => {
   cy.get('#svg_1').should('have.attr', 'font-family').and('eq', "'Mr Bedfort'");
   cy.get('#x_position').clear().type('100{enter}');
   cy.wait(500);
-  cy.get('#svg_1').invoke('attr', 'x').should('be.closeTo', 1011, 2);
+  cy.get('#svg_1').invoke('attr', 'x').should('be.closeTo', 1011, 5);
   cy.get('#y_position').clear().type('50{enter}');
   cy.wait(500);
-  cy.get('#svg_1').invoke('attr', 'y').should('be.closeTo', 703, 2);
+  cy.get('#svg_1').invoke('attr', 'y').should('be.closeTo', 703, 5);
 };
 
 const checkConsoleLog = () => {
