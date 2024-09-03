@@ -1,6 +1,7 @@
 const layerListClassPrefix = 'src-web-app-views-beambox-Right-Panels-LayerPanel-LayerList-module__';
 const addLayerBtnPrefix = 'src-web-app-components-beambox-right-panel-AddLayerButton-module__btn';
 const layerColorPickerPrefix = 'src-web-app-widgets-ColorPicker-module__';
+const layerNameSelector = 'div[class*="src-web-app-views-beambox-Right-Panels-ConfigPanel-ConfigPanel-module__layername"]';
 
 describe('manipulate layers', () => {
   beforeEach(() => {
@@ -20,7 +21,7 @@ describe('manipulate layers', () => {
     cy.get(
       `div[class*="${layerListClassPrefix}item"] div[class*="${layerListClassPrefix}name"]`
     ).should('have.text', 'Layer 1');
-    cy.get('div#laser-panel div.layername').should('have.text', 'Parameter Settings (Layer 1)');
+    cy.get(layerNameSelector).should('have.text', 'Parameter Settings (Layer 1)');
     cy.get(`div[class*="${layerColorPickerPrefix}color"]`).should(
       'have.attr',
       'style',
@@ -35,7 +36,7 @@ describe('manipulate layers', () => {
     cy.get(`div[class*="${layerListClassPrefix}current"]`)
       .should('have.attr', 'data-layer')
       .should('eq', 'Layer 2');
-    cy.get('div#laser-panel div.layername').should('have.text', 'Parameter Settings (Layer 2)');
+    cy.get(layerNameSelector).should('have.text', 'Parameter Settings (Layer 2)');
     cy.get(`div[class*="${layerColorPickerPrefix}color"]`).should(
       'have.attr',
       'style',
@@ -47,7 +48,7 @@ describe('manipulate layers', () => {
     cy.get(`div[class*="${layerListClassPrefix}item"]`).dblclick();
     cy.get('input.text-input').clear().type('Hello Flux');
     cy.get('button[class^="ant-btn"]').contains('OK').click();
-    cy.get('div#laser-panel div.layername').should('have.text', 'Parameter Settings (Hello Flux)');
+    cy.get(layerNameSelector).should('have.text', 'Parameter Settings (Hello Flux)');
   });
 
   it('delete the layer', () => {
