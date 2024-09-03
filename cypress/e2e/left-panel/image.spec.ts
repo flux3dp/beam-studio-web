@@ -24,8 +24,7 @@ describe('manipulate image function', () => {
     cy.get('#svg_3')
       .invoke('attr', 'd')
       .then((d) => {
-        if (isRunningAtGithub) expect(md5(d)).equal('a8d4941da1ab94530511018d4833e70b');
-        else expect(md5(d)).equal('de99510ff9f5ecf06d6743c5a802b835');
+        expect(md5(d)).equal('de99510ff9f5ecf06d6743c5a802b835');
       });
   });
 
