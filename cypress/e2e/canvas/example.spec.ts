@@ -38,14 +38,14 @@ const exampleList = [
   },
   {
     label: 'Example of beamo',
-    adorRes: 'bc3f0fed38f408ae26316944269c76ea',
-    adorResWin: '4d27da8184859cb967a58260a347eed7',
+    adorRes: '7c07caadd8e494ad3586a7f773cbac8a',
+    adorResWin: '86cabcae6bf8c83c3f06b4c4db3ddb8b',
     beamseriesRes: 'd4e9154a144a9a742c016f68e8fc879f',
   },
   {
     label: 'Example of beambox',
-    adorRes: 'b2638140ef30438b985b3acb4b582d21',
-    adorResWin: '28cdb79e5e2fa110e6c2c919172a72e0',
+    adorRes: '9c1a31175c421a17392cd3cc05c092b2',
+    adorResWin: 'b2d80ef5c364fe9530a9a4f92df94ab8',
     beamseriesRes: '1e4436aa12db8fb12c9c17d94485fe4f',
   },
   {
