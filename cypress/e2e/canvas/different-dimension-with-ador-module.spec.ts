@@ -124,7 +124,6 @@ describe('machine selection and svg dimensions test', () => {
             }
           }
         }
-
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -161,7 +160,6 @@ describe('machine selection and svg dimensions test', () => {
             }
           }
         }
-        
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -179,7 +177,7 @@ describe('machine selection and svg dimensions test', () => {
         const value = dims[dim];
         x.push(value.x);
         y.push(value.y);
-      });      
+      });
 
       const set1 = new Set(x);
       const set2 = new Set(y);
