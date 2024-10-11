@@ -21,9 +21,6 @@ describe('drawing', () => {
 
     cy.get('#speed-input')
       .should('have.attr', 'id', 'speed-input')
-      .should('have.value', '20')
-    // .clear()
-    // .type('30')
-    // .should('have.value', '30');
+      .should('have.value', '20');
   });
 });

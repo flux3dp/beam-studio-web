@@ -15,7 +15,7 @@ describe('Element fill or stroke test', () => {
     const filledClass = 'src-web-app-views-beambox-Right-Panels-Options-Blocks-InFillBlock-module__filled--Fq1Rj';
 
     // Click through elements
-    elements.forEach(element => {
+    elements.forEach((element) => {
       cy.get(element).click();
       cy.wait(1000);
     });
