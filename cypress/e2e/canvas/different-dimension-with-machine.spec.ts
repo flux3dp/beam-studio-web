@@ -18,7 +18,6 @@ describe('machine selection and svg dimensions test', () => {
       // Click on "Document Settings"
       cy.contains('li[role="menuitem"]', 'Document Settings').click();
 
-
       // Select the machine from the dropdown
 
       cy.get('span.ant-select-selection-item').click({ multiple: true, force: true });
@@ -39,7 +38,7 @@ describe('machine selection and svg dimensions test', () => {
 
       // Log the svgDimensions object using cy.log
       cy.wrap(svgDimensions).then((dims) => {
-        let y = [];
+        const y = [];
 
         for (const dim in dims) {
           cy.log(`dims[${dim}]: ${dims[dim].y}`);

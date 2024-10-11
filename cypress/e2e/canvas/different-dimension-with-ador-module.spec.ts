@@ -133,7 +133,7 @@ describe('machine selection and svg dimensions test', () => {
         //   x: parseFloat($el.attr('x')),
         //   y: parseFloat($el.attr('y'))
         // };
-        for (let mod in svgDimensions) {
+        for (const mod in svgDimensions) {
           if (svgDimensions[mod].module === module) {
             svgDimensions[mod].x = parseFloat($el.attr('x'));
             svgDimensions[mod].y = parseFloat($el.attr('y'));
@@ -142,12 +142,11 @@ describe('machine selection and svg dimensions test', () => {
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
-        }
+        };
       })
       .then((coordinates) => {
         cy.log(`SVG Text X attribute: ${coordinates.x}, Y attribute: ${coordinates.y}`);
       });
-
 
     cy.contains('span.ant-select-selection-item', '2W Infrared Laser')
       .click(); // Perform the click action
@@ -171,7 +170,7 @@ describe('machine selection and svg dimensions test', () => {
 
     cy.get('#module-boundary text')
       .then(($el) => {
-        for (let mod in svgDimensions) {
+        for (const mod in svgDimensions) {
           if (svgDimensions[mod].module === module) {
             svgDimensions[mod].x = parseFloat($el.attr('x'));
             svgDimensions[mod].y = parseFloat($el.attr('y'));
@@ -180,23 +179,23 @@ describe('machine selection and svg dimensions test', () => {
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
-        }
+        };
       })
       .then((coordinates) => {
         cy.log(`SVG Text X attribute: ${coordinates.x}, Y attribute: ${coordinates.y}`);
       });
 
     cy.wrap(svgDimensions).then((dims) => {
-      let x = [];
-      let y = [];
+      const x = [];
+      const y = [];
 
-      for (let dim in dims) {
+      for (const dim in dims) {
         x.push(dims[dim].x);
         y.push(dims[dim].y);
       }
 
-      let set1 = new Set(x);
-      let set2 = new Set(y);
+      const set1 = new Set(x);
+      const set2 = new Set(y);
 
       expect(set1.size).to.equal(x.length);
       expect(set2.size).to.equal(y.length);
