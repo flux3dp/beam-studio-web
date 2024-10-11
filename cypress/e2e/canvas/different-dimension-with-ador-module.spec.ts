@@ -91,7 +91,7 @@ describe('machine selection and svg dimensions test', () => {
           if (Number.isFinite(x) && Number.isFinite(y)) {
             Object.assign(matchingDim, { x, y });
           }
-        }        
+        }
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
