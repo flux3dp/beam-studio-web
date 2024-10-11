@@ -3,18 +3,18 @@ describe('machine selection and svg dimensions test', () => {
     cy.landingEditor();
   });
 
-  it('should change SVG dimensions when selecting different machines', () => {  
+  it('should change SVG dimensions when selecting different machines', () => {
     const machines = ['beamo', 'Beambox', 'HEXA'];
-    const svgDimensions = {}; 
+    const svgDimensions = {};
 
     // Iterate through each machine
     machines.forEach((machine) => {
       // Click on the top bar menu container
       cy.get('.src-web-app-components-beambox-top-bar-TopBar-module__menu--Oh39C').click();
-  
+
       // Click on the "Edit" submenu
       cy.contains('li.rc-menu__submenu', 'Edit').click();
-  
+
       // Click on "Document Settings"
       cy.contains('li[role="menuitem"]', 'Document Settings').click();
 
@@ -40,11 +40,11 @@ describe('machine selection and svg dimensions test', () => {
       // Log the svgDimensions object using cy.log
       cy.wrap(svgDimensions).then((dims) => {
         let y = [];
-          
-          for (let dim in dims) {
-            cy.log(`dims[${dim}]: ${dims[dim].y}`);
-            y.push(dims[dim].y);
-          }
+
+        for (let dim in dims) {
+          cy.log(`dims[${dim}]: ${dims[dim].y}`);
+          y.push(dims[dim].y);
+        }
 
         let set1 = new Set(y);
         // set1 length = y length
