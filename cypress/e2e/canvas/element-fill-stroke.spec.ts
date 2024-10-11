@@ -14,18 +14,15 @@ describe('Element fill or stroke test', () => {
     const infillButtonSelector = '#infill';
     const filledClass = 'src-web-app-views-beambox-Right-Panels-Options-Blocks-InFillBlock-module__filled--Fq1Rj';
 
-    // Click through elements
     elements.forEach((element) => {
       cy.get(element).click();
       cy.wait(1000);
     });
 
-    // Check initial state of infill button
     cy.get(`${infillButtonSelector}.${filledClass}`).should('exist');
     cy.wait(1000);
 
-    // Toggle infill button and check states
-    for (let i = 0; i < 2; i=i+1) {
+    for (let i = 0; i < 2; i=i + 1) {
       cy.get(infillButtonSelector).click();
       cy.wait(1000);
 
