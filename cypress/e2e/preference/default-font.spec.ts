@@ -4,22 +4,16 @@ describe(('dafault font'), () => {
   });
 
   it('default font : noto serif', () => {
-    // Open the menu
     cy.get('.menu-btn-container').click();
 
-    // Navigate to File menu
     cy.contains('div[role="menuitem"]', 'File').click();
 
-    // Click on Preferences
     cy.contains('li[role="menuitem"]', 'Preferences').click();
 
-    // set-default-font-family
     cy.get('#set-default-font-family').select('Noto Serif');
 
-    // Click the "Apply" button
     cy.get('div.btn.btn-done').click();
 
-    // left-Text
     cy.get('div#left-Text').click();
 
     cy.get('svg#svgcontent').realClick({ x: 150, y: 150 });
@@ -33,7 +27,6 @@ describe(('dafault font'), () => {
       .should('exist')
       .click({ force: true });
 
-    // <div class="tab objects" title="Text (O)">
     cy.get('div.tab.objects[title="Text (O)"]')
       .click();
 
@@ -42,22 +35,16 @@ describe(('dafault font'), () => {
   });
 
   it('default font : noto sans', () => {
-    // Open the menu
     cy.get('.menu-btn-container').click();
 
-    // Navigate to File menu
     cy.contains('div[role="menuitem"]', 'File').click();
 
-    // Click on Preferences
     cy.contains('li[role="menuitem"]', 'Preferences').click();
 
-    // set-default-font-family
     cy.get('#set-default-font-family').select('Noto Sans');
 
-    // Click the "Apply" button
     cy.get('div.btn.btn-done').click();
 
-    // left-Text
     cy.get('div#left-Text').click();
 
     cy.get('svg#svgcontent').realClick({ x: 150, y: 150 });
@@ -71,7 +58,6 @@ describe(('dafault font'), () => {
       .should('exist')
       .click({ force: true });
 
-    // <div class="tab objects" title="Text (O)">
     cy.get('div.tab.objects[title="Text (O)"]')
       .click();
 
