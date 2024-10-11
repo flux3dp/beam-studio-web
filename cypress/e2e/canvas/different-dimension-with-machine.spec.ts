@@ -41,12 +41,12 @@ describe('machine selection and svg dimensions test', () => {
       cy.wrap(svgDimensions).then((dims) => {
         let y = [];
 
-        for (let dim in dims) {
+        for (const dim in dims) {
           cy.log(`dims[${dim}]: ${dims[dim].y}`);
           y.push(dims[dim].y);
         }
 
-        let set1 = new Set(y);
+        const set1 = new Set(y);
         // set1 length = y length
         expect(set1.size).to.equal(y.length);
       });

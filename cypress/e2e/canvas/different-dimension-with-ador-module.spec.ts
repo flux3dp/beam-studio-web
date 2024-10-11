@@ -61,7 +61,7 @@ describe('machine selection and svg dimensions test', () => {
         //   x: parseFloat($el.attr('x')),
         //   y: parseFloat($el.attr('y'))
         // };
-        for (let mod in svgDimensions) {
+        for (const mod in svgDimensions) {
           if (svgDimensions[mod].module === module) {
             svgDimensions[mod].x = parseFloat($el.attr('x'));
             svgDimensions[mod].y = parseFloat($el.attr('y'));
@@ -70,7 +70,7 @@ describe('machine selection and svg dimensions test', () => {
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
-        }
+        };
       })
       .then((coordinates) => {
         cy.log(`SVG Text X attribute: ${coordinates.x}, Y attribute: ${coordinates.y}`);
@@ -97,7 +97,7 @@ describe('machine selection and svg dimensions test', () => {
         //   x: parseFloat($el.attr('x')),
         //   y: parseFloat($el.attr('y'))
         // };
-        for (let mod in svgDimensions) {
+        for (const mod in svgDimensions) {
           if (svgDimensions[mod].module === module) {
             svgDimensions[mod].x = parseFloat($el.attr('x'));
             svgDimensions[mod].y = parseFloat($el.attr('y'));
@@ -106,7 +106,7 @@ describe('machine selection and svg dimensions test', () => {
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
-        }
+        };
       })
       .then((coordinates) => {
         cy.log(`SVG Text X attribute: ${coordinates.x}, Y attribute: ${coordinates.y}`);
