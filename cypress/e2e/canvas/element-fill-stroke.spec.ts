@@ -25,7 +25,7 @@ describe('Element fill or stroke test', () => {
     cy.wait(1000);
 
     // Toggle infill button and check states
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i=i+1) {
       cy.get(infillButtonSelector).click();
       cy.wait(1000);
 
