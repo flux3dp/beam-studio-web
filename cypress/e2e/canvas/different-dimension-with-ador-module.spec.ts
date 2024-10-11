@@ -28,28 +28,22 @@ describe('machine selection and svg dimensions test', () => {
 
   // 20W Diode LaserCustom
   it('should change SVG dimensions when selecting different machines', () => {
-    // Click on the top bar menu container
     cy.get('.src-web-app-components-beambox-top-bar-TopBar-module__menu--Oh39C').click();
 
-    // Click on the "Edit" submenu
     cy.contains('li.rc-menu__submenu', 'Edit').click();
 
-    // Click on "Document Settings"
     cy.contains('li[role="menuitem"]', 'Document Settings').click();
 
-    // Select the machine from the dropdown
     cy.get('span.ant-select-selection-item').click({ multiple: true, force: true });
     cy.contains('.ant-select-item-option-content', 'Ador').click();
 
-    // Click the confirm button
     cy.contains('span', 'Save')
       .should('be.visible')
       .and('not.be.disabled')
       .click({ force: true });
 
     let module;
-    // get the title
-    // <span class="ant-select-selection-item" title="20W Diode Laser">20W Diode Laser</span>
+
     cy.get('span.ant-select-selection-item').then(($title) => {
       cy.log($title.text());
       module = $title.text();
@@ -57,16 +51,17 @@ describe('machine selection and svg dimensions test', () => {
 
     cy.get('#module-boundary text')
       .then(($el) => {
-        // return {
-        //   x: parseFloat($el.attr('x')),
-        //   y: parseFloat($el.attr('y'))
-        // };
-        for (const mod in svgDimensions) {
-          if (svgDimensions[mod].module === module) {
-            svgDimensions[mod].x = parseFloat($el.attr('x'));
-            svgDimensions[mod].y = parseFloat($el.attr('y'));
+        const matchingDim = svgDimensions.find(dim => dim.module === module);
+        if (matchingDim) {
+          const x = Number($el.attr('x'));
+          const y = Number($el.attr('y'));
+          if (Number.isFinite(x) && Number.isFinite(y)) {
+            Object.assign(matchingDim, { x, y });
+          } else {
+            console.error('Invalid x or y attribute');
           }
         }
+
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -77,15 +72,13 @@ describe('machine selection and svg dimensions test', () => {
       });
 
     cy.contains('span.ant-select-selection-item', '20W Diode Laser')
-      .click(); // Perform the click action
+      .click();
 
     // Ensure the element is visible before clicking
     cy.contains('div.ant-select-item-option-content', '10W Diode Laser')
-      .should('be.visible') // Assert that the element is visible
-      .click(); // Perform the click action
+      .should('be.visible')
+      .click();
 
-    // get the title
-    // <span class="ant-select-selection-item" title="20W Diode Laser">20W Diode Laser</span>
     cy.get('span.ant-select-selection-item').then(($title) => {
       cy.log($title.text());
       module = $title.text();
@@ -93,16 +86,17 @@ describe('machine selection and svg dimensions test', () => {
 
     cy.get('#module-boundary text')
       .then(($el) => {
-        // return {
-        //   x: parseFloat($el.attr('x')),
-        //   y: parseFloat($el.attr('y'))
-        // };
-        for (const mod in svgDimensions) {
-          if (svgDimensions[mod].module === module) {
-            svgDimensions[mod].x = parseFloat($el.attr('x'));
-            svgDimensions[mod].y = parseFloat($el.attr('y'));
+        const matchingDim = svgDimensions.find(dim => dim.module === module);
+        if (matchingDim) {
+          const x = Number($el.attr('x'));
+          const y = Number($el.attr('y'));
+          if (Number.isFinite(x) && Number.isFinite(y)) {
+            Object.assign(matchingDim, { x, y });
+          } else {
+            console.error('Invalid x or y attribute');
           }
-        }
+        }        
+        
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -113,15 +107,12 @@ describe('machine selection and svg dimensions test', () => {
       });
 
     cy.contains('span.ant-select-selection-item', '10W Diode Laser')
-      .click(); // Perform the click action
+      .click();
 
-    // Ensure the element is visible before clicking
     cy.contains('div.ant-select-item-option-content', '2W Infrared Laser')
-      .should('be.visible') // Assert that the element is visible
-      .click(); // Perform the click action
+      .should('be.visible')
+      .click();
 
-    // get the title
-    // <span class="ant-select-selection-item" title="20W Diode Laser">20W Diode Laser</span>
     cy.get('span.ant-select-selection-item').then(($title) => {
       cy.log($title.text());
       module = $title.text();
@@ -129,16 +120,16 @@ describe('machine selection and svg dimensions test', () => {
 
     cy.get('#module-boundary text')
       .then(($el) => {
-        // return {
-        //   x: parseFloat($el.attr('x')),
-        //   y: parseFloat($el.attr('y'))
-        // };
         for (const mod in svgDimensions) {
-          if (svgDimensions[mod].module === module) {
-            svgDimensions[mod].x = parseFloat($el.attr('x'));
-            svgDimensions[mod].y = parseFloat($el.attr('y'));
+          if (Object.prototype.hasOwnProperty.call(svgDimensions, mod)) {
+            const dim = svgDimensions[mod];
+            if (dim.module === module) {
+              dim.x = parseFloat($el.attr('x'));
+              dim.y = parseFloat($el.attr('y'));
+            }
           }
-        }
+        }        
+
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -149,20 +140,16 @@ describe('machine selection and svg dimensions test', () => {
       });
 
     cy.contains('span.ant-select-selection-item', '2W Infrared Laser')
-      .click(); // Perform the click action
+      .click();
 
-    // Ensure the element is visible before clicking
     cy.contains('div.ant-select-item-option-content', 'Printing')
-      .should('be.visible') // Assert that the element is visible
-      .click(); // Perform the click action
+      .should('be.visible')
+      .click();
 
-    // Ensure the button is visible before clicking
     cy.contains('button.ant-btn', 'Confirm')
       .should('be.visible')
       .click({ force: true });
 
-    // get the title
-    // <span class="ant-select-selection-item" title="20W Diode Laser">20W Diode Laser</span>
     cy.get('span.ant-select-selection-item').then(($title) => {
       cy.log($title.text());
       module = $title.text();
@@ -171,11 +158,15 @@ describe('machine selection and svg dimensions test', () => {
     cy.get('#module-boundary text')
       .then(($el) => {
         for (const mod in svgDimensions) {
-          if (svgDimensions[mod].module === module) {
-            svgDimensions[mod].x = parseFloat($el.attr('x'));
-            svgDimensions[mod].y = parseFloat($el.attr('y'));
+          if (Object.prototype.hasOwnProperty.call(svgDimensions, mod)) {
+            const dim = svgDimensions[mod];
+            if (dim.module === module) {
+              dim.x = parseFloat($el.attr('x'));
+              dim.y = parseFloat($el.attr('y'));
+            }
           }
         }
+        
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -189,10 +180,11 @@ describe('machine selection and svg dimensions test', () => {
       const x = [];
       const y = [];
 
-      for (const dim in dims) {
-        x.push(dims[dim].x);
-        y.push(dims[dim].y);
-      }
+      Object.keys(dims).forEach((dim) => {
+        const value = dims[dim];
+        x.push(value.x);
+        y.push(value.y);
+      });      
 
       const set1 = new Set(x);
       const set2 = new Set(y);
