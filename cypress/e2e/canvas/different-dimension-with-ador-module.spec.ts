@@ -51,14 +51,12 @@ describe('machine selection and svg dimensions test', () => {
 
     cy.get('#module-boundary text')
       .then(($el) => {
-        const matchingDim = svgDimensions.find(dim => dim.module === module);
+        const matchingDim = svgDimensions.find((dim) => dim.module === module);
         if (matchingDim) {
           const x = Number($el.attr('x'));
           const y = Number($el.attr('y'));
           if (Number.isFinite(x) && Number.isFinite(y)) {
             Object.assign(matchingDim, { x, y });
-          } else {
-            console.error('Invalid x or y attribute');
           }
         }
 
@@ -86,17 +84,14 @@ describe('machine selection and svg dimensions test', () => {
 
     cy.get('#module-boundary text')
       .then(($el) => {
-        const matchingDim = svgDimensions.find(dim => dim.module === module);
+        const matchingDim = svgDimensions.find((dim) => dim.module === module);
         if (matchingDim) {
           const x = Number($el.attr('x'));
           const y = Number($el.attr('y'));
           if (Number.isFinite(x) && Number.isFinite(y)) {
             Object.assign(matchingDim, { x, y });
-          } else {
-            console.error('Invalid x or y attribute');
           }
         }        
-        
         return {
           x: parseFloat($el.attr('x')),
           y: parseFloat($el.attr('y'))
@@ -128,7 +123,7 @@ describe('machine selection and svg dimensions test', () => {
               dim.y = parseFloat($el.attr('y'));
             }
           }
-        }        
+        }
 
         return {
           x: parseFloat($el.attr('x')),
