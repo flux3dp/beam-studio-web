@@ -22,7 +22,7 @@ describe('Element fill or stroke test', () => {
     cy.get(`${infillButtonSelector}.${filledClass}`).should('exist');
     cy.wait(1000);
 
-    for (let i = 0; i < 2; i=i + 1) {
+    for (let i = 0; i < 2; i = i + 1) {
       cy.get(infillButtonSelector).click();
       cy.wait(1000);
 
