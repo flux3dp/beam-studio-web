@@ -173,6 +173,7 @@ module.exports = {
         { from: path.resolve(__dirname, 'src/web/assets/fcode'), to: path.resolve(__dirname, 'dist/fcode') },
         { from: path.resolve(__dirname, 'src/assets/styles'), to: path.resolve(__dirname, 'dist/styles') },
         { from: path.resolve(__dirname, 'src/web/assets/video'), to: path.resolve(__dirname, 'dist/video') },
+        { from: path.resolve(__dirname, 'src/web/assets/assets'), to: path.resolve(__dirname, 'dist/assets') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/extensions'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/extensions') },
         { from: path.resolve(__dirname, 'public/js/lib/svgeditor/images'), to: path.resolve(__dirname, 'dist/js/lib/svgeditor/images') },
         { from: path.resolve(__dirname, 'public/js/lib/svg-nest'), to: path.resolve(__dirname, 'dist/js/lib/svg-nest') },
