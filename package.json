@@ -109,5 +109,5 @@
     "workbox-webpack-plugin": "^7.0.0",
     "worker-loader": "^3.0.8"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "pnpm@9.12.3"
 }
