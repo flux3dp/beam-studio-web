@@ -8,6 +8,10 @@ on:
         description: "Core Branch"
         required: false
         default: "master"
+  push:
+    branches:
+      "develop-e2e"
+
 
 jobs:
   e2e-test:
