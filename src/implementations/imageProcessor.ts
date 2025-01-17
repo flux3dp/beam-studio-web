@@ -10,6 +10,11 @@ if (typeof WorkerGlobalScope !== 'undefined' && global instanceof WorkerGlobalSc
 // @ts-expect-error
 const { Jimp } = global;
 
+const cachedJpegDecoder = Jimp.decoders['image/jpeg'];
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+Jimp.decoders['image/jpeg'] = (data: any) => cachedJpegDecoder(data, { maxMemoryUsageInMB: 1024 });
+
 export default {
   MIME_PNG: Jimp.MIME_PNG,
   BLEND_OVERLAY: Jimp.BLEND_OVERLAY,
