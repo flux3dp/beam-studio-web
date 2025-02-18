@@ -6,7 +6,6 @@ import 'helpers/global-helper';
 // need to import all required external modules before reading our own files
 // otherwise, the major global variables will not become accessible
 import './main';
-import './hotkeys';
 
 import storage from 'implementations/storage';
 import router from 'app/router';
